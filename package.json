@@ -11,9 +11,13 @@
     "@types/react-dom": "^16.9.8",
     "@types/webpack-env": "^1.15.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "dart-sass": "^1.25.0",
+    "fibers": "^5.0.0",
+    "material-components-web": "^7.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "sass": "^1.26.10",
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7"
   },

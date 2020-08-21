@@ -18,9 +18,24 @@ Hello.propTypes = {
   name: PropTypes.string
 }
 
+const TestButton = props => (
+  <button className="mdc-button foo-button">
+    <div className="mdc-button__ripple"></div>
+    <span className="mdc-button__label">{props.name}</span>
+  </button>
+)
+
+TestButton.defaultProps = {
+  name: 'Button'
+}
+
+TestButton.propTypes = {
+  name: PropTypes.string
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    <TestButton name="React" />,
     document.body.appendChild(document.createElement('div')),
   )
 })
