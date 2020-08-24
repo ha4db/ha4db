@@ -8,3 +8,8 @@ ja:
         login_name: ログイン名
         password_digest: パスワードダイジェスト
         password: パスワード
+
+  errors:
+    attributes:
+      password:
+        invalid: は半角英字、数字を組み合わせて入力してください

@@ -8,3 +8,8 @@ en:
         login_name: Login name
         password_digest: Password digest
         password: Password
+
+  errors:
+    attributes:
+      password:
+        invalid: must be a combination of letters and numbers.
