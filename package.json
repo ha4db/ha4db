@@ -1,5 +1,5 @@
 {
-  "name": "example",
+  "name": "ha4db",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.10.4",
