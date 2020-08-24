@@ -11,5 +11,8 @@ section.header
     = f.label :password, class: 'mdc-floating-label'
     span.mdc-line-ripple
   .button-container
-    = f.submit "login", class: "mdc-button mdc-button--raised do-login"
+    button.mdc-button.mdc-button--raised.do-login type="submit"
+      .mdc-button__ripple
+      i.material-icons.mdc-button__icon login
+      span.mdc-button__label login
 = javascript_pack_tag 'admin/sessions'
