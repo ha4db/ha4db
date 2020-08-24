@@ -86,6 +86,5 @@ RSpec.describe AdminUser, type: :model do
       end
     end
   end
-
 end
 # rubocop:enable Metrics/BlockLength
