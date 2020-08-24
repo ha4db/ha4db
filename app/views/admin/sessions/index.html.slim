@@ -1,0 +1,15 @@
+section.header
+  h1 admin login
+= form_for(@admin_user, url: {action:'login'}) do |f|
+  .mdc-text-field.mdc-text-field--filled.username
+    span.mdc-text-field__ripple
+    = f.text_field :login_name, class: 'mdc-text-field__input', required: true
+    = f.label :login_name, class: 'mdc-floating-label'
+    span.mdc-line-ripple
+  .mdc-text-field.mdc-text-field--filled.password
+    = f.text_field :password, class: 'mdc-text-field__input', required: true
+    = f.label :password, class: 'mdc-floating-label'
+    span.mdc-line-ripple
+  .button-container
+    = f.submit "login", class: "mdc-button mdc-button--raised do-login"
+= javascript_pack_tag 'admin/sessions'

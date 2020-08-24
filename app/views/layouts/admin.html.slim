@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title
+      | Ha4db admin
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
+    = javascript_pack_tag 'material'
+  - if defined? @current_admin_user
+    body.admin_views
+      h1 test
+      = yield
+  - else
+    body.admin_login
+      = yield
