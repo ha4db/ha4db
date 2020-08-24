@@ -1,0 +1,8 @@
+digraph models {
+  // general settings
+  graph [rankdir=LR]; // draw graph from left to right
+  node [shape=record, fontsize=12, width=3.0]; // fixed font size
+  edge [arrowhead=crow, fontsize=12]; // ER diagram
+
+  admin_users [label="admin_users(AdminUser)|{{id|login_name|password_digest|created_at|updated_at}|{Int|String|String|Datetime|Datetime}}"];
+}
