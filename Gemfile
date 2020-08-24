@@ -51,3 +51,6 @@ gem 'slim'
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
 end
+
+# factory_bot
+gem "factory_bot_rails"
