@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      admin_user: Admin user
+
+    attributes:
+      admin_user:
+        login_name: Login name
+        password_digest: Password digest
+        password: Password

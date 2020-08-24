@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      admin_user: 管理ユーザー
+
+    attributes:
+      admin_user:
+        login_name: ログイン名
+        password_digest: パスワードダイジェスト
+        password: パスワード

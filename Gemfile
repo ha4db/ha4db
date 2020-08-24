@@ -57,3 +57,8 @@ gem 'factory_bot_rails'
 
 # faker (create dummy data)
 gem 'faker'
+
+# i18n
+group :development do
+  gem 'i18n_generators'
+end
