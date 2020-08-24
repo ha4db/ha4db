@@ -53,4 +53,7 @@ group :development, :test do
 end
 
 # factory_bot
-gem "factory_bot_rails"
+gem 'factory_bot_rails'
+
+# faker (create dummy data)
+gem 'faker'
