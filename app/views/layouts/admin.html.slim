@@ -23,7 +23,7 @@ html
                     span.mdc-list-item__ripple
                     span.mdc-list-item__text
                       = link_to "Logout", {controller: 'admin/sessions', action: 'logout'}
-      .admin_views
+      main.mdc-top-app-bar--fixed-adjust
         = yield
       = javascript_pack_tag 'admin/layout'
 
