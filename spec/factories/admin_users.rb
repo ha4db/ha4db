@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :admin_user do
     login_name { Faker::Internet.user_name }
-    password { Faker::Internet.password(min_length: 8) }
+    password { 'passw0rd' }
   end
 end
