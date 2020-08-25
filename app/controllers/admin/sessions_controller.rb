@@ -31,7 +31,7 @@ module Admin
     def login_action(user)
       reset_session
       session[:admin_user_id] = user.id
-      redirect_to action: :list, controller: :top
+      redirect_to action: :index, controller: :top
     end
 
     def login_fail_action
