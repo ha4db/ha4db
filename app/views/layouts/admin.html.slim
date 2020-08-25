@@ -8,11 +8,11 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
     = javascript_pack_tag 'application'
-    = javascript_pack_tag 'material'
-  - if defined? @current_admin_user
-    body.admin_views
-      h1 test
-      = yield
-  - else
-    body.admin_login
-      = yield
+  body
+    - if defined? @current_admin_user
+      .admin_views
+        h1 test
+        = yield
+    - else
+      .admin_login
+        = yield

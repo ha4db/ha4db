@@ -1,3 +1,4 @@
+import "../../src/admin/sessions.scss"
 import { MDCRipple } from '@material/ripple'
 import { MDCTextField } from '@material/textfield'
 
