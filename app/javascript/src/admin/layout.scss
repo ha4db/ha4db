@@ -1,0 +1,9 @@
+@use "../common";
+@use "@material/top-app-bar/mdc-top-app-bar";
+@use "@material/list/mdc-list";
+@use "@material/menu-surface/mdc-menu-surface";
+@use "@material/menu/mdc-menu";
+
+.profile-toggle-button {
+  text-decoration: none;
+}
