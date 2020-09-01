@@ -10,12 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_003612) do
+ActiveRecord::Schema.define(version: 2020_09_01_051601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "admin_users", force: :cascade do |t|
+    t.string "login_name"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "bridges", force: :cascade do |t|
+    t.string "name"
+    t.geography "location", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["location"], name: "index_bridges_on_location", using: :gist
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "login_name"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
