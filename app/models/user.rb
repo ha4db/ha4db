@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-# AdminUser model
-class AdminUser < ApplicationRecord
+# User model
+class User < ApplicationRecord
   include UserImplement
 
   has_secure_password
+
   validates :login_name, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :password,
