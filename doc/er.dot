@@ -4,5 +4,25 @@ digraph models {
   node [shape=record, fontsize=12, width=3.0]; // fixed font size
   edge [arrowhead=crow, fontsize=12]; // ER diagram
 
+  // nodes
   admin_users [label="admin_users(AdminUser)|{{id|login_name|password_digest|created_at|updated_at}|{Int|String|String|Datetime|Datetime}}"];
+
+  users [label="users|{{id|login_name|password_digest|created_at|updated_at}|{Int|String|String|Datetime|Datetime}}"];
+
+  bridges [label="bridges|{{id|location|name|address|created_at|updated_at}|{Int|Geom|String|String|Datetime|Datetime}}"];
+
+  bridge_main_images [label="bridge_main_images|{{id|bridge_id|image|start_pos|end_pos|created_at|updated_at}|{Int|Int|ActiveStorage|Enum.Position|Enum.Position|Datetime|Datetime}}"];
+
+  inspections [label="inspections|{{id|bridge_id|report_contents|inspection_date|created_at|updated_at}|{Int|Int|Jsonb|Datetime|Datetime|Datetime}}"];
+
+  inspection_contents [label="inspection_contents|{{id|inspection_id|content|content_type|report_contents|created_at|updated_at}|{Int|Int|ActiveStorage|Enum.SupportContent|Jsonb|Datetime|Datetime}}"];
+
+  // enum
+  enum_position [label="Enum.Position|{{Top|Bottom|Left|Right}}"];
+  enum_support_contents [label="Enum.SupportContent|{{image/png|image/jpeg|image/svg|image/360-jpg|video/mp4|video/360-mp4}}"];
+
+  // edges
+  bridges -> bridge_main_images [label="id=bridge_id 1..n"];
+  bridges -> inspections [label="id=bridge_id 1..n"];
+  inspections -> inspection_contents [label="id=inspection_id 1..n"];
 }
