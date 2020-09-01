@@ -2,6 +2,14 @@
 
 The Bridge Management System.
 
+# Notes
+
+This system will be moved from internal gitlab to github.
+
+If you make issue, don't write issue number in commit log because after moving github the issue number will clear.
+
+Please write issue number in gitlab's MR comments before moving github.
+
 ## Ha4 mean?
 
 - Hashi means Bridge in Japanese.
