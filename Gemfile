@@ -70,3 +70,6 @@ gem 'roo', '~> 2.8.0'
 gem 'roo-xls'
 # caxlsx (write xlsx)
 gem 'caxlsx'
+
+# postgis
+gem 'activerecord-postgis-adapter'
