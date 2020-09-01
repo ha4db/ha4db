@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     post 'sessions/login'
     get 'sessions/logout'
     get 'top/index'
+    resources :users
   end
 end

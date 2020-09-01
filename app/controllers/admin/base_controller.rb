@@ -5,6 +5,6 @@ module Admin
   class BaseController < ApplicationController
     include AdminSessionAction
     layout 'admin'
-    before_action :let_user_login
+    before_action :let_admin_user_login
   end
 end
