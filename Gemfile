@@ -46,6 +46,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Template engine
 gem 'slim'
+gem 'slim-rails'
 
 # rspec
 group :development, :test do
@@ -62,3 +63,10 @@ gem 'faker'
 group :development do
   gem 'i18n_generators'
 end
+
+# roo-rb (parse xlsx)
+gem 'roo', '~> 2.8.0'
+# roo-xls (parse xls)
+gem 'roo-xls'
+# caxlsx (write xlsx)
+gem 'caxlsx'
