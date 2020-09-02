@@ -24,11 +24,17 @@ RSpec.describe '/admin/users', type: :request do
   # Admin::User. As you add validations to Admin::User, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      login_name: Faker::Internet.user_name,
+      password: 'passw0rd'
+    }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      login_name: Faker::Internet.user_name,
+      password: 'pass'
+    }
   end
 
   describe 'GET /index' do
@@ -72,7 +78,8 @@ RSpec.describe '/admin/users', type: :request do
 
       it 'redirects to the created admin_user' do
         post admin_users_url, params: { user: valid_attributes }
-        expect(response).to redirect_to(admin_user_url(@user))
+        user = User.last
+        expect(response).to redirect_to(admin_user_url(user))
       end
     end
 
