@@ -1,0 +1,5 @@
+@use "../common";
+@use "@material/button/mdc-button";
+@use "@material/icon-button/_index" as icon-button;
+
+@include icon-button.core-styles;

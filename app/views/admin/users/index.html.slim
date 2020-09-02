@@ -1,23 +1,37 @@
-h1 Listing users
+section.header
+  h1 Listing users
 
-table
-  thead
-    tr
-      th id
-      th login_name
-      th
-      th
-      th
+.mdc-data-table
+  .mdc-data-table__table-container
+    table.mdc-data-table__table[aria-label="Listing Users"]
+      thead
+        tr.mdc-data-table__header-row
+          th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
+          th.mdc-data-table__header-cell[role="columnheader" scope="col"] login_name
+          th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+          th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+          th.mdc-data-table__header-cell[role="columnheader" scope="col"]
 
-  tbody
-    - @users.each do |user|
-      tr
-        td = user.id
-        td = user.login_name
-        td = link_to 'Show', admin_user_path(user)
-        td = link_to 'Edit', edit_admin_user_path(user)
-        td = link_to 'Destroy', admin_user_path(user), data: { confirm: 'Are you sure?' }, method: :delete
+      tbody.mdc-data-table__content
+        - @users.each do |user|
+          tr.mdc-data-table__row
+            td.mdc-data-table__cell.mdc-data-table__cell--numeric = user.id
+            td.mdc-data-table__cell = user.login_name
+            td.mdc-data-table__cell
+              = link_to 'visibility', admin_user_path(user), class: 'mdc-icon-button material-icons'
+            td.mdc-data-table__cell
+              = link_to 'edit', edit_admin_user_path(user), class: 'mdc-icon-button material-icons'
+            td.mdc-data-table__cell
+              = link_to 'delete', admin_user_path(user), data: { confirm: 'Are you sure?' }, method: :delete, class: 'mdc-icon-button material-icons'
 
 br
 
-= link_to 'New User', new_admin_user_path
+div
+  - # = link_to 'New User', new_admin_user_path
+  a.mdc-button.mdc-button--raised[href=new_admin_user_path]
+    .mdc-button__ripple
+    i.material-icons.mdc-button__icon[aria-hidden="true"] person_addin
+    span.mdc-button__label New User
+
+= javascript_pack_tag 'commons/data-table'
+= javascript_pack_tag 'commons/button'

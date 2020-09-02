@@ -1,0 +1,9 @@
+@use "../common";
+@use "@material/checkbox/_index" as checkbox;
+@use "@material/icon-button/_index" as icon-button;
+@use "@material/data-table/data-table";
+
+@include checkbox.core-styles;
+@include icon-button.core-styles;
+@include data-table.core-styles;
+@include data-table.theme-baseline;
