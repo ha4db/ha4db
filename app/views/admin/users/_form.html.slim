@@ -5,5 +5,9 @@
       ul
         - @user.errors.full_messages.each do |message|
           li = message
+  = f.label :login_name
+  = f.text_field :login_name
 
+  = f.label :password
+  = f.password_field :password
   .actions = f.submit

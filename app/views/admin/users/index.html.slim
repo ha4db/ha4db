@@ -1,8 +1,10 @@
-h1 Listing admin_users
+h1 Listing users
 
 table
   thead
     tr
+      th id
+      th login_name
       th
       th
       th
@@ -10,6 +12,8 @@ table
   tbody
     - @users.each do |user|
       tr
+        td = user.id
+        td = user.login_name
         td = link_to 'Show', admin_user_path(user)
         td = link_to 'Edit', edit_admin_user_path(user)
         td = link_to 'Destroy', admin_user_path(user), data: { confirm: 'Are you sure?' }, method: :delete

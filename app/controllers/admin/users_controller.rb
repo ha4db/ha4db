@@ -2,7 +2,7 @@
 
 module Admin
   # Admin Users Controller
-  class UsersController < ApplicationController
+  class UsersController < Admin::BaseController
     before_action :set_user, only: %i[show edit update destroy]
 
     # GET /admin/users
@@ -30,7 +30,7 @@ module Admin
 
       respond_to do |format|
         if @user.save
-          format.html { redirect_to @user, notice: 'User was successfully created.' }
+          format.html { redirect_to [:admin, @user], notice: 'User was successfully created.' }
           format.json { render :show, status: :created, location: @user }
         else
           format.html { render :new }
@@ -43,8 +43,8 @@ module Admin
     # PATCH/PUT /admin/users/1.json
     def update
       respond_to do |format|
-        if @user.update(admin_user_params)
-          format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        if @user.update(user_params)
+          format.html { redirect_to [:admin, @user], notice: 'User was successfully updated.' }
           format.json { render :show, status: :ok, location: @user }
         else
           format.html { render :edit }
@@ -72,7 +72,7 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.fetch(:user, {})
+      params.fetch(:user, {}).permit(:login_name, :password)
     end
   end
 end
