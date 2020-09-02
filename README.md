@@ -42,6 +42,16 @@ rails db:migrate RAILS_ENV=test
 bin/rspec
 ```
 
+After run `rspec`, the coverage generated in `coverage/index.html`.
+
+### guard
+
+This project supports [guard](https://github.com/guard/guard).
+
+```sh
+bin/guard
+```
+
 ## Lint
 
 ```sh
