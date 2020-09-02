@@ -25,7 +25,7 @@ RSpec.describe '/admin/users', type: :request do
   # adjust the attributes here as well.
   let(:valid_attributes) do
     {
-      login_name: Faker::Internet.user_name,
+      login_name: 'user',
       password: 'passw0rd'
     }
   end
@@ -100,14 +100,17 @@ RSpec.describe '/admin/users', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          login_name: 'user1',
+          password: 'passw0rd'
+        }
       end
 
       it 'updates the requested user' do
         user = User.create! valid_attributes
         patch admin_user_url(user), params: { user: new_attributes }
         user.reload
-        skip('Add assertions for updated state')
+        expect(user.login_name).to eq 'user1'
       end
 
       it 'redirects to the user' do
