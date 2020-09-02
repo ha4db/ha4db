@@ -2,9 +2,21 @@ ja:
   activerecord:
     models:
       admin_user: 管理ユーザー
+      bridge: 橋
+      user: ユーザー
 
     attributes:
       admin_user:
+        login_name: ログイン名
+        password_digest: パスワードダイジェスト
+        password: パスワード
+
+      bridge:
+        address: 住所
+        location: 座標
+        name: 名前
+
+      user:
         login_name: ログイン名
         password_digest: パスワードダイジェスト
         password: パスワード
@@ -13,3 +25,4 @@ ja:
     attributes:
       password:
         invalid: は半角英字、数字を組み合わせて入力してください
+

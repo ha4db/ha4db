@@ -6,6 +6,7 @@ AllCops:
     - "Gemfile" # disable to check
     - "Rakefile" # disable to check
     - "node_modules/**/*" # disable to check
+    - "Guardfile" # disable to check
   DisplayCopNames: true
 
 Layout/EmptyLinesAroundAttributeAccessor:

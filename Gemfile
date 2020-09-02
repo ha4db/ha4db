@@ -48,9 +48,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim'
 gem 'slim-rails'
 
-# rspec
+# rspec & simplecov
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
+  gem 'simplecov'
 end
 
 # factory_bot
@@ -73,3 +74,11 @@ gem 'caxlsx'
 
 # postgis
 gem 'activerecord-postgis-adapter'
+
+# guard
+group :test do
+  gem 'guard'
+  gem 'guard-rspec', require: false
+  gem 'guard-rubocop', require: false
+end
+

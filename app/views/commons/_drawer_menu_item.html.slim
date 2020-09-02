@@ -1,0 +1,15 @@
+- if controller_name == controller
+  a.mdc-list-item.mdc-list-item--activated[href="#" aria-current="page"]
+    span.mdc-list-item__ripple
+    i.material-icons.mdc-list-item__graphic[aria-hidden="true"]
+      = icon
+    span.mdc-list-item__text
+      = text
+- else
+  - link = url_for controller: controller, action: action
+  a.mdc-list-item[href=link]
+    span.mdc-list-item__ripple
+    i.material-icons.mdc-list-item__graphic[aria-hidden="true"]
+      = icon
+    span.mdc-list-item__text
+      = text

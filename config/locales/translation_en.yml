@@ -2,9 +2,21 @@ en:
   activerecord:
     models:
       admin_user: Admin user
+      bridge: Bridge
+      user: User
 
     attributes:
       admin_user:
+        login_name: Login name
+        password_digest: Password digest
+        password: Password
+
+      bridge:
+        address: Address
+        location: Location
+        name: Name
+
+      user:
         login_name: Login name
         password_digest: Password digest
         password: Password
@@ -13,3 +25,4 @@ en:
     attributes:
       password:
         invalid: must be a combination of letters and numbers.
+

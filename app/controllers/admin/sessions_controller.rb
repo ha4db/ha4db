@@ -3,7 +3,7 @@
 module Admin
   # Admin Sessions Controller
   class SessionsController < Admin::BaseController
-    before_action :let_user_login, only: %i[]
+    before_action :let_admin_user_login, only: %i[]
     def index
       @admin_user = AdminUser.new
     end

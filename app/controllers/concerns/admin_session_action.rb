@@ -4,7 +4,7 @@
 module AdminSessionAction
   extend ActiveSupport::Concern
 
-  def let_user_login
+  def let_admin_user_login
     admin_user_id = session[:admin_user_id]
     unless admin_user_id.blank?
       @current_admin_user ||= AdminUser.find_by(id: admin_user_id)
