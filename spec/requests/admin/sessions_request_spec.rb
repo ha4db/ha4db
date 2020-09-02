@@ -37,4 +37,11 @@ RSpec.describe 'Admin::Sessions', type: :request do # rubocop:disable Metrics/Bl
       expect(response.body).to include @admin_user.login_name
     end
   end
+
+  describe 'POST /admin/sessions/login' do
+    it 'enable to login' do
+      get admin_sessions_logout_path
+      expect(response).to redirect_to admin_sessions_index_path
+    end
+  end
 end
