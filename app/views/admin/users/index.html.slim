@@ -7,7 +7,7 @@ section.header
       thead
         tr.mdc-data-table__header-row
           th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
-          th.mdc-data-table__header-cell[role="columnheader" scope="col"] login_name
+          th.mdc-data-table__header-cell[role="columnheader" scope="col"] = User.human_attribute_name(:login_name)
           th.mdc-data-table__header-cell[role="columnheader" scope="col"]
           th.mdc-data-table__header-cell[role="columnheader" scope="col"]
           th.mdc-data-table__header-cell[role="columnheader" scope="col"]
@@ -28,10 +28,10 @@ br
 
 div
   - # = link_to 'New User', new_admin_user_path
-  a.mdc-button.mdc-button--raised[href=new_admin_user_path]
-    .mdc-button__ripple
-    i.material-icons.mdc-button__icon[aria-hidden="true"] person_addin
-    span.mdc-button__label New User
+  a.mdc-fab.mdc-fab--extended[href=new_admin_user_path]
+    .mdc-fab__ripple
+    span.material-icons.mdc-fab__icon add
+    span.mdc-fab__label New User
 
 = javascript_pack_tag 'commons/data-table'
 = javascript_pack_tag 'commons/button'
