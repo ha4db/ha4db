@@ -1,10 +1,37 @@
-p#notice = notice
+- unless notice.nil?
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        p#notice = notice
 
-p id
-p = @user.id
-p login_name
-p = @user.login_name
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      ul.mdc-list
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text id
+            span.mdc-list-item__secondary-text = @user.id
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text login_name
+            span.mdc-list-item__secondary-text = @user.login_name
 
-=> link_to 'Edit', edit_admin_user_path(@user)
-'|
-=< link_to 'Back', admin_users_path
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      .mdc-layout-grid__inner
+        .mdc-layout-grid__cell
+          = link_to edit_admin_user_path(@user), class: 'mdc-fab mdc-fab--extended' do
+            .mdc-fab__ripple
+            span.material-icons.mdc-fab__icon edit
+            span.mdc-fab__label Edit
+        .mdc-layout-grid__cell
+          = link_to admin_users_path, class: 'mdc-fab mdc-fab--extended' do
+            .mdc-fab__ripple
+            span.material-icons.mdc-fab__icon arrow_back
+            span.mdc-fab__label Back
+
+= javascript_pack_tag 'commons/button'
