@@ -1,0 +1,9 @@
+@use "../common";
+@use "@material/floating-label/mdc-floating-label";
+@use "@material/line-ripple/mdc-line-ripple";
+@use "@material/textfield/mdc-text-field";
+@use "@material/textfield/_index" as textfield;
+@use "@material/textfield/helper-text";
+
+@include textfield.core-styles;
+@include helper-text.helper-text-core-styles;

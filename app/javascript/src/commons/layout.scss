@@ -5,6 +5,7 @@
 @use "@material/menu/mdc-menu";
 @use "@material/drawer/_index" as drawer;
 @use "@material/list/_index" as list;
+@use "@material/layout-grid/mdc-layout-grid";
 
 @include drawer.core-styles;
 @include drawer.dismissible-core-styles;

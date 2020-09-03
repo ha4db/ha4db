@@ -8,7 +8,7 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
     = javascript_pack_tag 'application'
-  body
+  body.mdc-typography
     - if defined? @current_admin_user
       header.mdc-top-app-bar
         .mdc-top-app-bar__row
@@ -20,7 +20,7 @@ html
               .mdc-menu.mdc-menu-surface[tabindex="-1"]
                 ul.mdc-list[role="menu" aria-hidden="true" aria-orientation="vertical"]
                   li
-                    = link_to "", {controller: 'admin/sessions', action: 'logout', class: 'mdc-list-item'}
+                    = link_to admin_sessions_logout_path, class: 'mdc-list-item' do
                       span.mdc-list-item__ripple
                       i.material-icons.mdc-list-item__graphic[aria-hidden="true"] clear
                       span.mdc-list-item__text Logout

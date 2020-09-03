@@ -1,0 +1,4 @@
+@use "../common";
+@use "@material/list/_index" as list;
+
+@include list.core-styles;

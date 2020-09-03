@@ -1,13 +1,28 @@
 = form_for [:admin, @user] do |f|
   - if @user.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      ul
-        - @user.errors.full_messages.each do |message|
-          li = message
-  = f.label :login_name
-  = f.text_field :login_name
+    .mdc-layout-grid
+      .mdc-layout-grid__inner
+        .mdc-layout-grid__cell--span-12
+          = render partial: 'commons/error_messages', locals: { obj:@user }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'user_login_name', model: User, field_name: :login_name }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_password_field', locals: { f: f, id: 'user_password', model: User, field_name: :password }
 
-  = f.label :password
-  = f.password_field :password
-  .actions = f.submit
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell
+        - if action_name == 'edit'
+          - icon = 'edit'
+          - label = 'Edit'
+        - else
+          - icon = 'add'
+          - label = 'Add'
+        = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: icon, label: label }
+
+= javascript_pack_tag 'commons/form'
+= javascript_pack_tag 'commons/button'

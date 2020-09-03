@@ -1,0 +1,12 @@
+.mdc-card#error_explanation
+  h3 = "#{pluralize(obj.errors.count, "error")} prohibited this user from being saved:"
+  ul.mdc-list
+    - obj.errors.full_messages.each do |message|
+      li.mdc-list-item
+        span.mdc-list-item__ripple
+        span.mdc-list-item__text = message
+= javascript_pack_tag 'commons/card'
+= javascript_pack_tag 'commons/list'
+sass:
+  #error_explanation
+    padding: 16px;

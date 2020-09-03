@@ -1,0 +1,4 @@
+@use "../common";
+@use "@material/card/_index" as card;
+
+@include card.core-styles;
