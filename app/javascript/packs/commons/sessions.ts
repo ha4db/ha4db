@@ -1,4 +1,4 @@
-import "../../src/commons/sessions.scss"
+import "../../stylesheets/commons/sessions.scss"
 import { MDCRipple } from '@material/ripple'
 import { MDCTextField } from '@material/textfield'
 

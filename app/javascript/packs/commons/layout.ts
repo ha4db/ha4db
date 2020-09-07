@@ -1,4 +1,4 @@
-import '../../src/commons/layout.scss'
+import '../../stylesheets/commons/layout.scss'
 import {MDCTopAppBar} from '@material/top-app-bar'
 import {MDCMenu} from '@material/menu'
 import {Corner} from '@material/menu-surface/constants'

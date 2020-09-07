@@ -1,4 +1,4 @@
-import "../../src/commons/button.scss"
+import "../../stylesheets/commons/button.scss"
 import { MDCRipple } from '@material/ripple'
 
 const mdc_buttons = document.querySelectorAll('.mdc_button')

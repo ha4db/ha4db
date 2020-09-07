@@ -1,4 +1,4 @@
-import "../../src/commons/list.scss"
+import "../../stylesheets/commons/list.scss"
 import {MDCList} from '@material/list'
 import {MDCRipple} from '@material/ripple'
 

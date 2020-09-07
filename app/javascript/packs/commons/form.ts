@@ -1,4 +1,4 @@
-import '../../src/commons/form.scss'
+import '../../stylesheets/commons/form.scss'
 import {MDCTextField} from '@material/textfield';
 import {MDCTextFieldHelperText} from '@material/textfield/helper-text';
 

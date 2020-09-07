@@ -1,1 +1,1 @@
-import '../../src/commons/card.scss'
+import '../../stylesheets/commons/card.scss'
