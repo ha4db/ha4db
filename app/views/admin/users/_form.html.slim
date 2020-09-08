@@ -1,4 +1,4 @@
-= form_for [:admin, @user] do |f|
+= form_with(model: [:admin, @user], local: true) do |f|
   - if @user.errors.any?
     .mdc-layout-grid
       .mdc-layout-grid__inner
