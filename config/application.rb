@@ -35,5 +35,10 @@ module Ha4db
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # For material components for web
+    config.action_view.field_error_proc = proc do |html_tag, _|
+      html_tag.html_safe
+    end
   end
 end
