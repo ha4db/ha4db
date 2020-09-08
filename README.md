@@ -33,6 +33,48 @@ rails db:create RAILS_ENV=development
 rails db:migrate RAILS_ENV=development
 ```
 
+### Running development server
+
+Open two terminal or use tmux or GNU screen.
+
+In one terminal, run `webpack-dev-server`.
+
+```sh
+bin/webpack-dev-server
+```
+
+In other terminal, run `rails s`.
+
+```sh
+bin/rails s
+```
+
+Indeed running only `rails s` is ok, but `webpack-dev-server` runs background and compiles at the moment when you modify something, so recommend to run both `webpack-dev-server` and `rails s`.
+
+### Create Administrator User
+
+You may need to add AdminUser.
+
+First, run `rails console `:
+
+```sh
+bin/rails c
+```
+
+And add user in console.
+
+```ruby
+a = AdminUser.new
+a.name = 'foo'
+a.password = 'sp0mhamegg'
+a.save
+```
+
+### Development entry points
+
+- [http://localhost:3000](http://localhost:3000)
+- [http://localhost:3000/admin/sessions/index](http://localhost:3000/admin/sessions/index)
+
 ## Running test suite
 
 ```sh
