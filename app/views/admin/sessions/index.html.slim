@@ -1,6 +1,6 @@
 section.header
   h1 admin login
-= form_for(@admin_user, url: {action:'login'}) do |f|
+= form_with(model: @admin_user, url: {action:'login'}, local: true) do |f|
   .mdc-text-field.mdc-text-field--filled.username
     span.mdc-text-field__ripple
     = f.text_field :login_name, class: 'mdc-text-field__input', required: true
