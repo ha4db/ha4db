@@ -44,8 +44,14 @@ ActiveRecord::Schema.define(version: 2020_09_08_052249) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-# Could not dump table "bridges" because of following StandardError
-#   Unknown type 'geography(Point,4326)' for column 'location'
+  create_table "bridges", force: :cascade do |t|
+    t.string "name"
+    t.geography "location", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["location"], name: "index_bridges_on_location", using: :gist
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "login_name"
