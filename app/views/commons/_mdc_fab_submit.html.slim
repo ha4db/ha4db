@@ -1,4 +1,4 @@
-= button_tag type: 'submit', class: "mdc-fab mdc-fab--extended" do
+= button_tag type: 'submit', class: "mdc-fab mdc-fab--extended", "data-disable-with": "<div class='mdc-fab__ripple'></div><span class='material-icons mdc-fab__icon'>send</span><span class='mdc-fab__label'>Sending...<span>" do
   .mdc-fab__ripple
   span.material-icons.mdc-fab__icon = icon
   span.mdc-fab__label = label
