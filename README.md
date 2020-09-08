@@ -30,6 +30,7 @@ bundle
 yarn
 export HA4DB_DEVELOPMENT_DATABASE_URL=postgis://myuser:mypass@localhost/ha4db_development
 rails db:create RAILS_ENV=development
+rails db:gis:setup RAILS_ENV=development
 rails db:migrate RAILS_ENV=development
 ```
 
@@ -80,6 +81,7 @@ a.save
 ```sh
 export HA4DB_TEST_DATABASE_URL=postgis://myuser:mypass@localhost/ha4db_test
 rails db:create RAILS_ENV=test
+rails db:gis:setup RAILS_ENV=test
 rails db:migrate RAILS_ENV=test
 bin/rspec
 ```
