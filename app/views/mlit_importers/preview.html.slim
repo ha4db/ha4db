@@ -1,2 +1,5 @@
 h1 MlitImporter#preview
 p Find me in app/views/mlit_importer/preview.html.slim
+
+= form_with(model: @bridge, local: true) do |f|
+  = f.hidden_field :name

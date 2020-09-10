@@ -1,2 +1,6 @@
 h1 MlitImporter#new
 p Find me in app/views/mlit_importer/new.html.slim
+
+= form_with(url: preview_mlit_importer_url, local: true, multipart: true) do |f|
+  = f.file_field :upload_file
+  = f.submit
