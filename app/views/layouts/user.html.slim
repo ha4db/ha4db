@@ -29,6 +29,7 @@ html
         .mdc-drawer__content
           nav.mdc-list
             = render partial: 'commons/drawer_menu_item', locals: { controller: 'top', action: 'index', icon: 'home', text: 'Home'}
+            = render partial: 'commons/drawer_menu_item', locals: { controller: 'bridges', action: 'index', icon: 'place', text: 'Bridge'}
       
       .mdc-drawer-app-content.mdc-top-app-bar--fixed-adjust
         main.main-content#main-content
