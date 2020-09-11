@@ -16,7 +16,11 @@ require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
 RSpec.describe '/bridges', type: :request do
-  # This should return the minimal set of attributes required to create a valid
+  before do
+    @user = FactoryBot.create(:user)
+    allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return({ user_id: @user.id })
+  end
+
   # Bridge. As you add validations to Bridge, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
@@ -27,18 +31,10 @@ RSpec.describe '/bridges', type: :request do
     skip('Add a hash of attributes invalid for your model')
   end
 
-  # This should return the minimal set of values that should be in the headers
-  # in order to pass any filters (e.g. authentication) defined in
-  # BridgesController, or in your router and rack
-  # middleware. Be sure to keep this updated too.
-  let(:valid_headers) do
-    {}
-  end
-
   describe 'GET /index' do
     it 'renders a successful response' do
       Bridge.create! valid_attributes
-      get bridges_url, headers: valid_headers, as: :json
+      get bridges_url
       expect(response).to be_successful
     end
   end
@@ -46,7 +42,22 @@ RSpec.describe '/bridges', type: :request do
   describe 'GET /show' do
     it 'renders a successful response' do
       bridge = Bridge.create! valid_attributes
-      get bridge_url(bridge), as: :json
+      get bridge_url(bridge)
+      expect(response).to be_successful
+    end
+  end
+
+  describe 'GET /new' do
+    it 'renders a successful response' do
+      get new_bridge_url
+      expect(response).to be_successful
+    end
+  end
+
+  describe 'GET /edit' do
+    it 'render a successful response' do
+      bridge = Bridge.create! valid_attributes
+      get edit_bridge_url(bridge)
       expect(response).to be_successful
     end
   end
@@ -55,32 +66,26 @@ RSpec.describe '/bridges', type: :request do
     context 'with valid parameters' do
       it 'creates a new Bridge' do
         expect do
-          post bridges_url,
-               params: { bridge: valid_attributes }, headers: valid_headers, as: :json
+          post bridges_url, params: { bridge: valid_attributes }
         end.to change(Bridge, :count).by(1)
       end
 
-      it 'renders a JSON response with the new bridge' do
-        post bridges_url,
-             params: { bridge: valid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:created)
-        expect(response.content_type).to match(a_string_including('application/json'))
+      it 'redirects to the created bridge' do
+        post bridges_url, params: { bridge: valid_attributes }
+        expect(response).to redirect_to(bridge_url(Bridge.last))
       end
     end
 
     context 'with invalid parameters' do
       it 'does not create a new Bridge' do
         expect do
-          post bridges_url,
-               params: { bridge: invalid_attributes }, as: :json
+          post bridges_url, params: { bridge: invalid_attributes }
         end.to change(Bridge, :count).by(0)
       end
 
-      it 'renders a JSON response with errors for the new bridge' do
-        post bridges_url,
-             params: { bridge: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to eq('application/json')
+      it "renders a successful response (i.e. to display the 'new' template)" do
+        post bridges_url, params: { bridge: invalid_attributes }
+        expect(response).to be_successful
       end
     end
   end
@@ -93,28 +98,24 @@ RSpec.describe '/bridges', type: :request do
 
       it 'updates the requested bridge' do
         bridge = Bridge.create! valid_attributes
-        patch bridge_url(bridge),
-              params: { bridge: invalid_attributes }, headers: valid_headers, as: :json
+        patch bridge_url(bridge), params: { bridge: new_attributes }
         bridge.reload
         skip('Add assertions for updated state')
       end
 
-      it 'renders a JSON response with the bridge' do
+      it 'redirects to the bridge' do
         bridge = Bridge.create! valid_attributes
-        patch bridge_url(bridge),
-              params: { bridge: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:ok)
-        expect(response.content_type).to eq('application/json')
+        patch bridge_url(bridge), params: { bridge: new_attributes }
+        bridge.reload
+        expect(response).to redirect_to(bridge_url(bridge))
       end
     end
 
     context 'with invalid parameters' do
-      it 'renders a JSON response with errors for the bridge' do
+      it "renders a successful response (i.e. to display the 'edit' template)" do
         bridge = Bridge.create! valid_attributes
-        patch bridge_url(bridge),
-              params: { bridge: invalid_attributes }, headers: valid_headers, as: :json
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to eq('application/json')
+        patch bridge_url(bridge), params: { bridge: invalid_attributes }
+        expect(response).to be_successful
       end
     end
   end
@@ -123,8 +124,14 @@ RSpec.describe '/bridges', type: :request do
     it 'destroys the requested bridge' do
       bridge = Bridge.create! valid_attributes
       expect do
-        delete bridge_url(bridge), headers: valid_headers, as: :json
+        delete bridge_url(bridge)
       end.to change(Bridge, :count).by(-1)
+    end
+
+    it 'redirects to the bridges list' do
+      bridge = Bridge.create! valid_attributes
+      delete bridge_url(bridge)
+      expect(response).to redirect_to(bridges_url)
     end
   end
 end

@@ -14,6 +14,7 @@
     "dart-sass": "^1.25.0",
     "fibers": "^5.0.0",
     "material-components-web": "^7.0.0",
+    "ol": "^6.4.3",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

@@ -1,0 +1,37 @@
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      section.header
+        h1 preview
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      ul.mdc-list
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text name
+            span.mdc-list-item__secondary-text = @bridge.name
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text address
+            span.mdc-list-item__secondary-text = @bridge.address
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-12
+      #preview_map.preview_map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude]
+      = javascript_pack_tag 'map/preview'
+
+= form_with(model: @bridge, url: mlit_importer_url, local: true) do |f|
+  = f.hidden_field :name
+  = f.hidden_field :address
+  = f.hidden_field :location
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell
+        = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: 'add', label: 'Add' }
+
+= javascript_pack_tag 'commons/form'
+= javascript_pack_tag 'commons/button'

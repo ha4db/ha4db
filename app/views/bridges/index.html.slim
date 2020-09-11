@@ -1,0 +1,48 @@
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      section.header
+        h1 Listing bridges
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      .mdc-data-table
+        .mdc-data-table__table-container
+          table.mdc-data-table__table[aria-label="Listing Users"]
+            thead
+              tr.mdc-data-table__header-row
+                th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Bridge.human_attribute_name(:name)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Bridge.human_attribute_name(:address)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+
+            tbody.mdc-data-table__content
+              - @bridges.each do |bridge|
+                tr.mdc-data-table__row
+                  td.mdc-data-table__cell.mdc-data-table__cell--numeric = bridge.id
+                  td.mdc-data-table__cell = bridge.name
+                  td.mdc-data-table__cell = bridge.address
+                  td.mdc-data-table__cell
+                    = link_to 'visibility', bridge, class: 'mdc-icon-button material-icons'
+                  td.mdc-data-table__cell
+                    = link_to 'edit', edit_bridge_path(bridge), class: 'mdc-icon-button material-icons'
+                  td.mdc-data-table__cell
+                    = link_to 'delete', bridge, data: { confirm: 'Are you sure?' }, method: :delete, class: 'mdc-icon-button material-icons'
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      a.mdc-fab.mdc-fab--extended[href=new_bridge_path]
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon add
+        span.mdc-fab__label New Bridge
+    .mdc-layout-grid__cell
+      a.mdc-fab.mdc-fab--extended[href=new_mlit_importer_path]
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon file_copy
+        span.mdc-fab__label Import from Excel
+
+= javascript_pack_tag 'commons/data-table'
+= javascript_pack_tag 'commons/button'
