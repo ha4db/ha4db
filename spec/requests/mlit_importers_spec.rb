@@ -9,6 +9,10 @@ RSpec.describe 'MlitImporters', type: :request do
     allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return({ user_id: @user.id })
   end
 
+  let(:valid_attributes) do
+    FactoryBot.build(:bridge).attributes
+  end
+
   describe 'GET /new' do
     it 'returns http success' do
       get new_mlit_importer_url
@@ -28,9 +32,15 @@ RSpec.describe 'MlitImporters', type: :request do
   end
 
   describe 'GET /create' do
-    it 'returns http success' do
-      post mlit_importer_url
-      expect(response).to have_http_status(:success)
+    it 'creates a new Bridge' do
+      expect do
+        post mlit_importer_url, params: { bridge: valid_attributes }
+      end.to change(Bridge, :count).by(1)
+    end
+
+    it 'redirects to the created bridge' do
+      post mlit_importer_url, params: { bridge: valid_attributes }
+      expect(response).to redirect_to(bridge_url(Bridge.last))
     end
   end
 end

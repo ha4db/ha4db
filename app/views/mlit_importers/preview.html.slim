@@ -24,7 +24,7 @@
       #preview_map.preview_map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude]
       = javascript_pack_tag 'map/preview'
 
-= form_with(model: @bridge, local: true) do |f|
+= form_with(model: @bridge, url: mlit_importer_url, local: true) do |f|
   = f.hidden_field :name
   = f.hidden_field :address
   = f.hidden_field :location
