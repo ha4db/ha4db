@@ -2,6 +2,10 @@
 
 # Mlit Importer class
 class MlitImporter
+  # for human_attribute_name
+  include ActiveModel::Model
+  attr_accessor :upload_file
+
   class << self
     def import(file)
       import_from_excel_file(file)
