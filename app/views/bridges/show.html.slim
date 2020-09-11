@@ -1,6 +1,47 @@
-p#notice = notice
+- unless notice.nil?
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        p#notice = notice
 
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      ul.mdc-list
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text id
+            span.mdc-list-item__secondary-text = @bridge.id
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text name
+            span.mdc-list-item__secondary-text = @bridge.name
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text address
+            span.mdc-list-item__secondary-text = @bridge.address
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-12
+      #preview_map.preview_map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude]
+      = javascript_pack_tag 'map/preview'
 
-=> link_to 'Edit', edit_bridge_path(@bridge)
-'|
-=< link_to 'Back', bridges_path
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      .mdc-layout-grid__inner
+        .mdc-layout-grid__cell
+          = link_to edit_bridge_path(@bridge), class: 'mdc-fab mdc-fab--extended' do
+            .mdc-fab__ripple
+            span.material-icons.mdc-fab__icon edit
+            span.mdc-fab__label Edit
+        .mdc-layout-grid__cell
+          = link_to bridges_path, class: 'mdc-fab mdc-fab--extended' do
+            .mdc-fab__ripple
+            span.material-icons.mdc-fab__icon arrow_back
+            span.mdc-fab__label Back
+
+= javascript_pack_tag 'commons/button'

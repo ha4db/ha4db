@@ -24,11 +24,13 @@ RSpec.describe '/bridges', type: :request do
   # Bridge. As you add validations to Bridge, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    FactoryBot.build(:bridge).attributes
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    bridge = FactoryBot.build(:bridge)
+    bridge.name = ''
+    bridge.attributes
   end
 
   describe 'GET /index' do
@@ -93,14 +95,15 @@ RSpec.describe '/bridges', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        FactoryBot.build(:bridge).attributes
       end
 
       it 'updates the requested bridge' do
+        new_params = new_attributes
         bridge = Bridge.create! valid_attributes
-        patch bridge_url(bridge), params: { bridge: new_attributes }
+        patch bridge_url(bridge), params: { bridge: new_params }
         bridge.reload
-        skip('Add assertions for updated state')
+        expect(bridge.name).to eq(new_params['name'])
       end
 
       it 'redirects to the bridge' do

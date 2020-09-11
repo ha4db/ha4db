@@ -17,6 +17,7 @@ class BridgesController < UserBaseController
   # GET /bridges/new
   def new
     @bridge = Bridge.new
+    @bridge.location = 'POINT(140.084556 36.104611)'
   end
 
   # GET /bridges/1/edit

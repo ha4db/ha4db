@@ -1,5 +1,16 @@
-h1 New bridge
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      section.header
+        h1 New bridge
 
 == render 'form'
 
-= link_to 'Back', bridges_path
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      = link_to bridges_path, class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label Back
+= javascript_pack_tag 'commons/button'

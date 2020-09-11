@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'bridges/edit', type: :view do
   before(:each) do
-    @bridge = assign(:bridge, Bridge.create!)
+    @bridge = FactoryBot.create(:bridge)
   end
 
   it 'renders the edit bridge form' do

@@ -1,9 +1,43 @@
-= form_for @bridge do |f|
+= form_with(model: @bridge, local: true) do |f|
   - if @bridge.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@bridge.errors.count, "error")} prohibited this bridge from being saved:"
-      ul
-        - @bridge.errors.full_messages.each do |message|
-          li = message
+    .mdc-layout-grid
+      .mdc-layout-grid__inner
+        .mdc-layout-grid__cell--span-12
+          = render partial: 'commons/error_messages', locals: { obj: @bridge }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_name', model: Bridge, field_name: :name }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_address', model: Bridge, field_name: :address }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        #edit_poi_map.edit_poi_map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude]
+        = javascript_pack_tag 'map/edit_poi'
+        = f.hidden_field :location
 
-  .actions = f.submit
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell
+        - if action_name == 'edit'
+          - icon = 'edit'
+          - label = 'Edit'
+        - else
+          - icon = 'add'
+          - label = 'Add'
+        = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: icon, label: label }
+
+= javascript_pack_tag 'commons/form'
+= javascript_pack_tag 'commons/button'
+
+javascript:
+  change_value_before_on_submit = (event) => {
+    const map = document.getElementById('edit_poi_map')
+    const new_location = `POINT(${map.dataset.longitude} ${map.dataset.latitude})`
+    document.getElementById('bridge_location').value = new_location
+    return true
+  }
+  document.querySelector('form').addEventListener('submit', change_value_before_on_submit)
