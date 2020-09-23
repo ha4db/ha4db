@@ -66,10 +66,10 @@ jobs:
       - name: Exec tests
         run: bundle exec rspec
       - name: Deploy coverage
-        if: ${{github.ref == 'refs/heads/main' && github.event_name == 'push' && success() }}
-        working-directory: ./coverage
         env:
           HA4DB_ACCESS_TOKEN: ${{ secrets.HA4DB_ACCESS_TOKEN }}
+        if: ${{github.ref == 'refs/heads/main' && github.event_name == 'push' && success() }}
+        working-directory: ./coverage
         run: |
           git config --global user.name "Taro Matsuzawa"
           git config --global user.email "btm@tech.email.ne.jp"
