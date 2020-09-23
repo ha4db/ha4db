@@ -67,7 +67,7 @@ jobs:
         run: bundle exec rspec
       - name: Deploy coverage
         if: ${{github.ref == 'refs/heads/main' && github.event_name == 'push' && success() }}
-        uses: cpina/github-action-push-to-another-repository@master
+        uses: smellman/github-action-push-to-another-repository@master
         env:
           API_TOKEN_GITHUB: ${{ secrets.HA4DB_ACCESS_TOKEN }}
         with:
@@ -76,3 +76,4 @@ jobs:
           destination-repository-name: 'coverage'
           user-email: taro+ha4db-bot@georepublic.co.jp
           destination-repository-username: 'ha4db'
+          target-branch: 'main'
