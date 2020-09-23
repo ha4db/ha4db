@@ -68,12 +68,14 @@ jobs:
       - name: Deploy coverage
         if: ${{github.ref == 'refs/heads/main' && github.event_name == 'push' && success() }}
         working-directory: ./coverage
+        env:
+          HA4DB_ACCESS_TOKEN: ${{ secrets.HA4DB_ACCESS_TOKEN }}
         run: |
           git config --global user.name "Taro Matsuzawa"
           git config --global user.email "btm@tech.email.ne.jp"
           git init .
           touch .nojekyll
           git add .
-          git commit --quiet -m "Deploy from Github Action"
-          git push --force https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/ha4db/coverage.git master:gh-pages
+          git commit --quiet -m "Deploy from Github Actions"
+          git push --force https://ha4db-bot:${{ HA4DB_ACCESS_TOKEN }}@github.com/ha4db/coverage.git master:gh-pages
           
