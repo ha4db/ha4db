@@ -1,4 +1,4 @@
-name: PostgreSQL service example
+name: ha4db ci
 on: push
 
 jobs:
