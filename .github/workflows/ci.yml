@@ -69,8 +69,8 @@ jobs:
         if: ${{github.ref == 'refs/heads/main' && github.event_name == 'push' && success() }}
         working-directory: ./coverage
         run: |
-          git config --global user.name "Taro Matsuzawa"
-          git config --global user.email "btm@tech.email.ne.jp"
+          git config --global user.name "ha4db-bot"
+          git config --global user.email "taro+ha4db-bot@georepublic.co.jp"
           git init .
           touch .nojekyll
           git add .
