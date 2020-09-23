@@ -69,14 +69,11 @@ jobs:
         if: ${{github.ref == 'refs/heads/main' && github.event_name == 'push' && success() }}
         working-directory: ./coverage
         run: |
-          git config --global user.name "ha4db-bot"
-          git config --global user.email "taro+ha4db-bot@georepublic.co.jp"
+          git config --global user.name "Taro Matsuzawa"
+          git config --global user.email "btm@tech.email.ne.jp"
           git init .
           touch .nojekyll
           git add .
           git commit --quiet -m "Deploy from Github Actions"
-          git remote set-url origin "https://$HA4DB_ACCESS_TOKEN@github.com/ha4db/coverage.git"
-          git push --force origin master:gh-pages
-        env:
-          HA4DB_ACCESS_TOKEN: ${{ secrets.HA4DB_ACCESS_TOKEN }}
+          git push --force https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/ha4db/coverage.git master:gh-pages
           
