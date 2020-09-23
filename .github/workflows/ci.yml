@@ -67,8 +67,8 @@ jobs:
         run: bundle exec rspec
       - name: Deploy coverage
         if: ${{github.ref == 'refs/heads/main' && github.event_name == 'push' && success() }}
+        working-directory: ./coverage
         run: |
-          cd coverage
           git config --global user.name "Taro Matsuzawa"
           git config --global user.email "btm@tech.email.ne.jp"
           git init .
