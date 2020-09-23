@@ -67,13 +67,14 @@ jobs:
         run: bundle exec rspec
       - name: Deploy coverage
         if: ${{github.ref == 'refs/heads/main' && github.event_name == 'push' && success() }}
-        working-directory: ./coverage
         run: |
-          git init .
           git config --global user.name "Taro Matsuzawa"
           git config --global user.email "btm@tech.email.ne.jp"
-          touch .nojekyll
-          git add .
-          git commit --quiet -m "Deploy from Github Action"
-          git push --force https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/ha4db/coverage.git main:gh-pages > /dev/null 2>&1
+          rm -fr .git
+          rm -fr .gitignore
+          cd coverage && git init . \
+          && touch .nojekyll \
+          && git add . \
+          && git commit --quiet -m "Deploy from Github Action" \
+          && git push --force https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/ha4db/coverage.git main:gh-pages > /dev/null 2>&1
           
