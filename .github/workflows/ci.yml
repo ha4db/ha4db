@@ -70,8 +70,9 @@ jobs:
         uses: cpina/github-action-push-to-another-repository@master
         env:
           API_TOKEN_GITHUB: ${{ secrets.HA4DB_ACCESS_TOKEN }}
-        source-directory: 'coverage'
-        destination-github-username: 'ha4db-bot'
-        destination-repository-name: 'coverage'
-        user-email: taro+ha4db-bot@georepublic.co.jp
-        destination-repository-username: 'ha4db'
+        with:
+          source-directory: 'coverage'
+          destination-github-username: 'ha4db-bot'
+          destination-repository-name: 'coverage'
+          user-email: taro+ha4db-bot@georepublic.co.jp
+          destination-repository-username: 'ha4db'
