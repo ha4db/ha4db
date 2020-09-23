@@ -40,9 +40,19 @@ jobs:
           echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
           curl -sL https://deb.nodesource.com/setup_12.x | bash -
           apt-get install -y yarn nodejs
-      - name: Build and setup
+      - name: Cache bundle directory
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
+      - name: Prepare bundler
         run: |
+          bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
+      - name: setup
+        run: |
           bundle exec rails yarn:install db:setup db:gis:setup assets:precompile
       - name: Exec tests
         run: bundle exec rspec
