@@ -75,7 +75,8 @@ jobs:
           touch .nojekyll
           git add .
           git commit --quiet -m "Deploy from Github Actions"
-          git push --force https://ha4db-bot:$HA4DB_ACCESS_TOKEN@github.com/ha4db/coverage.git master:gh-pages
+          git remote set-url origin "https://ha4db-bot:$HA4DB_ACCESS_TOKEN@github.com/ha4db/coverage.git"
+          git push --force origin master:gh-pages
         env:
           HA4DB_ACCESS_TOKEN: ${{ secrets.HA4DB_ACCESS_TOKEN }}
           
