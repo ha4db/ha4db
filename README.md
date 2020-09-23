@@ -1,3 +1,5 @@
+![ha4db ci](https://github.com/ha4db/ha4db/workflows/ha4db%20ci/badge.svg)
+
 # Ha4db
 
 The Bridge Management System.
