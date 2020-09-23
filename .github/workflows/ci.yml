@@ -65,3 +65,15 @@ jobs:
           bundle exec rails db:setup db:gis:setup assets:precompile
       - name: Exec tests
         run: bundle exec rspec
+      - name: Deploy coverage
+        if: ${{github.ref == 'refs/heads/master' && github.event_name == 'push' && success() }} 
+        run: |
+          cd coverage
+          git config --global user.name "Taro Matsuzawa"
+          git config --global user.email "btm@tech.email.ne.jp"
+          git init .
+          touch .nojekyll
+          git add .
+          git commit --quiet -m "Deploy from Github Action"
+          git push --force https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/ha4db/coverage.git master:gh-pages > /dev/null 2>&1
+          
