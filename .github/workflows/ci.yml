@@ -1,0 +1,79 @@
+name: ha4db ci
+on: [push, pull_request]
+
+jobs:
+  # Label of the container job
+  container-job:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    # Docker Hub image that `container-job` executes in
+    container: 
+      image: ruby:2.7.1
+      env:
+        HA4DB_TEST_DATABASE_URL: postgis://postgres:postgres@postgres/ha4db_test
+        RAILS_ENV: test
+
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgis/postgis:12-3.0
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      # Downloads a copy of the code in your repository before running CI tests
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Install yarn and node js
+        run: | 
+          curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+          echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+          curl -sL https://deb.nodesource.com/setup_12.x | bash -
+          apt-get install -y yarn nodejs
+      - name: Cache bundle directory
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
+      - name: Prepare bundler
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - name: Cache node_modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-
+      - name: Yarn install
+        run: bundle exec rails yarn:install
+      - name: setup
+        run: |
+          bundle exec rails db:setup db:gis:setup assets:precompile
+      - name: Exec tests
+        run: bundle exec rspec
+      - name: Deploy coverage
+        if: ${{github.ref == 'refs/heads/main' && github.event_name == 'push' && success() }}
+        uses: smellman/github-action-push-to-another-repository@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.HA4DB_ACCESS_TOKEN }}
+        with:
+          source-directory: 'coverage'
+          destination-github-username: 'ha4db-bot'
+          destination-repository-name: 'coverage'
+          user-email: taro+ha4db-bot@georepublic.co.jp
+          destination-repository-username: 'ha4db'
+          target-branch: 'main'
