@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/MarcGrimme/simplecov-small-badge.git
+  revision: e51824d56f061283a02ebd8c62491524281aaa99
+  specs:
+    simplecov-small-badge (0.2.4)
+      repo-small-badge (~> 0.2.7)
+      simplecov (~> 0.17)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -187,6 +195,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.8.0)
+    repo-small-badge (0.2.7)
+      victor (~> 0.2.8)
     rexml (3.2.4)
     rgeo (2.1.1)
     rgeo-activerecord (6.2.1)
@@ -278,6 +288,7 @@ GEM
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     unicode-display_width (1.7.0)
+    victor (0.2.8)
     web-console (4.0.4)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -319,6 +330,7 @@ DEPENDENCIES
   rubocop
   sass-rails (>= 6)
   simplecov
+  simplecov-small-badge!
   slim
   slim-rails
   spring

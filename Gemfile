@@ -52,6 +52,7 @@ gem 'slim-rails'
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
   gem 'simplecov'
+  gem 'simplecov-small-badge', github: 'MarcGrimme/simplecov-small-badge'
 end
 
 # factory_bot
