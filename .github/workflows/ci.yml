@@ -1,5 +1,5 @@
 name: ha4db ci
-on: push
+on: [push, pull_request]
 
 jobs:
   # Label of the container job

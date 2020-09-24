@@ -1,4 +1,5 @@
 ![ha4db ci](https://github.com/ha4db/ha4db/workflows/ha4db%20ci/badge.svg)
+![ha4db coverage](https://ha4db.github.io/coverage/coverage_badge_total.svg)
 
 # Ha4db
 
