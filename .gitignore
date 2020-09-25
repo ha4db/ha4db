@@ -37,3 +37,6 @@ yarn-debug.log*
 
 # simplecov
 /coverage/
+
+# documentation
+/doc/*.png

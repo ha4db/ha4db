@@ -5,24 +5,34 @@ digraph models {
   edge [arrowhead=crow, fontsize=12]; // ER diagram
 
   // nodes
-  admin_users [label="admin_users(AdminUser)|{{id|login_name|password_digest|created_at|updated_at}|{Int|String|String|Datetime|Datetime}}"];
+  admin_users [label="admin_users(管理者)|{{id|login_name(ログイン名)|password_digest|created_at|updated_at}|{Int|String|String|Datetime|Datetime}}"];
 
-  users [label="users|{{id|login_name|password_digest|created_at|updated_at}|{Int|String|String|Datetime|Datetime}}"];
+  users [label="users(ユーザ)|{{id|login_name(ログイン名)|password_digest|created_at|updated_at}|{Int|String|String|Datetime|Datetime}}"];
 
-  bridges [label="bridges|{{id|location|name|address|created_at|updated_at}|{Int|Geom|String|String|Datetime|Datetime}}"];
+  bridges [label="bridges(橋)|{{id|location(座標)|title(名称)|address(住所)|other_data(その他の内容)|created_at|updated_at}|{Int|Geom|String|String|Jsonb|Datetime|Datetime}}"];
 
-  bridge_main_images [label="bridge_main_images|{{id|bridge_id|image|start_pos|end_pos|created_at|updated_at}|{Int|Int|ActiveStorage|Enum.Position|Enum.Position|Datetime|Datetime}}"];
+  bridge_main_contents [label="bridge_main_contents(橋のメインコンテンツ)|{{id|bridge_id|data(画像/動画)|contents_type|start_pos(開始位置)|end_pos(終了位置)|created_at|updated_at}|{Int|Int|ActiveStorage|Enum.ContentsType|Enum.ExcelPosition/Nullable|Enum.ExcelPosition/Nullable|Datetime|Datetime}}"];
 
-  inspections [label="inspections|{{id|bridge_id|report_contents|inspection_date|created_at|updated_at}|{Int|Int|Jsonb|Datetime|Datetime|Datetime}}"];
+  inspection_points [label="inspection_points(点検箇所)|{{id|bridge_id|location(座標)|title(名称 or 大まかな名前)|category|description(詳細)|image|created_at|updated_at}|{Int|Int|Geom/Nullable|String|Enum.BridgeCategory|String|ActiveStorage|Datetime|Datetime}}"]
 
-  inspection_contents [label="inspection_contents|{{id|inspection_id|content|content_type|report_contents|created_at|updated_at}|{Int|Int|ActiveStorage|Enum.SupportContent|Jsonb|Datetime|Datetime}}"];
+  inspections [label="inspections(点検)|{{id|inspection_point_id|report_data(報告内容)|date(点検日)|created_at|updated_at}|{Int|Int|Jsonb|Datetime|Datetime|Datetime}}"];
+
+  inspection_contents [label="inspection_contents(点検コンテンツ)|{{id|inspection_id|data(画像/動画)|contents_type(画像/動画の種類)|created_at|updated_at}|{Int|Int|ActiveStorage|Enum.SupportContent|Datetime|Datetime}}"];
+
+  maintenances [label="maintenances(補修)|{{id|inspection_id|report_data(報告内容)|date(補修日)|created_at|updated_at}|{Int|Int|jsonb|Datetime|Datetime|Datetime}}"]
+
+  maintenance_contents [label="maintenances(補修コンテンツ)|{{id|maintenance_id|data(画像/動画)|contents_type(画像/動画の種類)|created_at|updated_at}|{Int|Int|ActiveStorage|Enum.ContentsType|Datetime|Datetime}}"]
 
   // enum
-  enum_position [label="Enum.Position|{{Top|Bottom|Left|Right}}"];
-  enum_support_contents [label="Enum.SupportContent|{{image/png|image/jpeg|image/svg|image/360-jpg|video/mp4|video/360-mp4}}"];
+  enum_position [label="Enum.ExcelPosition(Excelの開始/終了位置)|{{Top|Bottom|Left|Right}}"];
+  enum_support_contents [label="Enum.ContentsType(サポートするコンテンツ)|{{image/png|image/jpeg|image/svg|image/360-jpg|video/mp4|video/360-mp4}}"];
+  enum_bridge_category [label="Enum.BridgeCategory(橋脚の種類)|{{1(上部構造主桁)|2(上部構造横桁)|3(上部構造床版)|4(下部構造)|5(支承部)|6(その他)}}"]
 
   // edges
-  bridges -> bridge_main_images [label="id=bridge_id 1..n"];
-  bridges -> inspections [label="id=bridge_id 1..n"];
+  bridges -> bridge_main_contents [label="id=bridge_id 1..n"];
+  bridges -> inspection_points [label="id=bridge_id 1..n"];
+  inspection_points -> inspections [label="id=inspection_point_id 1..n"];
   inspections -> inspection_contents [label="id=inspection_id 1..n"];
+  inspections -> maintenances [label="id=inspection_id 1..1"];
+  maintenances -> maintenance_contents [label="id=maintenance_id"];
 }
