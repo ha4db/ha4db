@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgis/postgis:12-3.0
+    ports:
+      - '5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: /bin/sh -c "yarn --check-files && bundle exec rails s -p 3000 -b 0.0.0.0"
+    ports:
+      - '3000:3000'
+    environment:
+      TZ: 'Asia/Tokyo'
+      HA4DB_DEVELOPMENT_DATABASE_URL: postgis://postgres:password@postgres/ha4db_development
+      HA4DB_TEST_DATABASE_URL: postgis://postgres:password@postgres/ha4db_test
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - postgres
+    stdin_open: true
+    tty: true
+
+volumes:
+  pgdata:
