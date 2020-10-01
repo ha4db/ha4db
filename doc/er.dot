@@ -13,7 +13,7 @@ digraph models {
 
   bridge_main_contents [label="bridge_main_contents(橋のメインコンテンツ)|{{id|bridge_id|data(画像/動画)|contents_type|start_pos(開始位置)|end_pos(終了位置)|created_at|updated_at}|{Int|Int|ActiveStorage|Enum.ContentsType|Enum.ExcelPosition/Nullable|Enum.ExcelPosition/Nullable|Datetime|Datetime}}"];
 
-  bridge_contents [label="bridge_contents(橋のコンテンツ)|{{id|bridge_id|data(画像/動画)|contents_type(画像/動画の種類)|created_at|updated_at}|{Int|Int|ActiveStroage|Enum.SupportContent|Datetime|Datetime}}"]
+  bridge_contents [label="bridge_contents(橋のコンテンツ)|{{id|bridge_id|title(名前)|data(画像/動画)|contents_type(画像/動画の種類)|created_at|updated_at}|{Int|Int|String|ActiveStroage|Enum.SupportContent|Datetime|Datetime}}"]
 
   bridge_contents_inspections [label="bridge_contents_inspections(中間テーブル)|{{id|bridge_content_id|inspection_id|seek(動画の開始時間)|created_at|updated_at}|{Int|Int|Int|Int|Datetime|Datetime}}"]
 
