@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :bridge do
-    sequence(:name) { |i| "Bridge #{i}" }
+    sequence(:title) { |i| "Bridge #{i}" }
     location { 'POINT(139.895697 35.325315)' }
     sequence(:address) { |i| "Address #{i}" }
   end

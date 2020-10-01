@@ -29,7 +29,7 @@ RSpec.describe '/bridges', type: :request do
 
   let(:invalid_attributes) do
     bridge = FactoryBot.build(:bridge)
-    bridge.name = ''
+    bridge.title = ''
     bridge.attributes
   end
 
@@ -103,7 +103,7 @@ RSpec.describe '/bridges', type: :request do
         bridge = Bridge.create! valid_attributes
         patch bridge_url(bridge), params: { bridge: new_params }
         bridge.reload
-        expect(bridge.name).to eq(new_params['name'])
+        expect(bridge.title).to eq(new_params['title'])
       end
 
       it 'redirects to the bridge' do

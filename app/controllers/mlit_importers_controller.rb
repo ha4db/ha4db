@@ -29,6 +29,6 @@ class MlitImportersController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def bridge_params
-    params.fetch(:bridge, {}).permit(:name, :address, :location)
+    params.fetch(:bridge, {}).permit(:title, :address, :location)
   end
 end

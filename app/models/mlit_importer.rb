@@ -18,8 +18,8 @@ class MlitImporter
       bridge = Bridge.new
       # read first sheet
       sheet = xlsx.sheet(0)
-      name = sheet.cell(6, 1)
-      bridge.name = name
+      title = sheet.cell(6, 1)
+      bridge.title = title
       address = sheet.cell(6, 6)
       bridge.address = address
       latitude_string = sheet.cell(4, 11)
