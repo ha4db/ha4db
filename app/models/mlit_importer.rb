@@ -18,8 +18,8 @@ class MlitImporter
       bridge = Bridge.new
       # read first sheet
       sheet = xlsx.sheet(0)
-      name = sheet.cell(6, 1)
-      bridge.name = name
+      title = sheet.cell(6, 1)
+      bridge.title = title
       address = sheet.cell(6, 6)
       bridge.address = address
       latitude_string = sheet.cell(4, 11)
@@ -27,6 +27,8 @@ class MlitImporter
       latitude = LocationImplement.sexagesimal_to_float(latitude_string)
       longitude = LocationImplement.sexagesimal_to_float(longitude_string)
       bridge.location = "POINT(#{longitude} #{latitude})"
+      road_name = sheet.cell(6, 4)
+      bridge.road_name = road_name
       bridge
     end
   end

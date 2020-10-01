@@ -11,13 +11,18 @@
         li.mdc-list-item
           span.mdc-list-item__ripple
           span.mdc-list-item__text
-            span.mdc-list-item__primary-text name
-            span.mdc-list-item__secondary-text = @bridge.name
+            span.mdc-list-item__primary-text title
+            span.mdc-list-item__secondary-text = @bridge.title
         li.mdc-list-item
           span.mdc-list-item__ripple
           span.mdc-list-item__text
             span.mdc-list-item__primary-text address
             span.mdc-list-item__secondary-text = @bridge.address
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list_item__primary-text road name
+            span.mdc-list-item__secondary-text = @bridge.road_name
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-12
@@ -25,9 +30,10 @@
       = javascript_pack_tag 'map/preview'
 
 = form_with(model: @bridge, url: mlit_importer_url, local: true) do |f|
-  = f.hidden_field :name
+  = f.hidden_field :title
   = f.hidden_field :address
   = f.hidden_field :location
+  = f.hidden_field :road_name
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell

@@ -9,14 +9,14 @@ RSpec.describe Bridge, type: :model do
 
   subject { @bridge }
 
-  it { should respond_to(:name) }
+  it { should respond_to(:title) }
   it { should respond_to(:address) }
   it { should respond_to(:location) }
 
   it { should be_valid }
 
-  describe 'when name is not present' do
-    before { @bridge.name = ' ' }
+  describe 'when title is not present' do
+    before { @bridge.title = ' ' }
     it { should_not be_valid }
   end
 

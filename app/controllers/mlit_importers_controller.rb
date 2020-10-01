@@ -7,6 +7,9 @@ class MlitImportersController < UserBaseController
   def preview
     update_file = preview_params[:upload_file]
     @bridge = MlitImporter.import(update_file)
+    unless @bridge.valid?
+      render :new
+    end
   end
 
   def create
@@ -29,6 +32,6 @@ class MlitImportersController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def bridge_params
-    params.fetch(:bridge, {}).permit(:name, :address, :location)
+    params.fetch(:bridge, {}).permit(:title, :address, :location, :road_name)
   end
 end

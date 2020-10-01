@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_052249) do
+ActiveRecord::Schema.define(version: 2020_10_01_222417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,12 +45,14 @@ ActiveRecord::Schema.define(version: 2020_09_08_052249) do
   end
 
   create_table "bridges", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.geography "location", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "other_data"
     t.index ["location"], name: "index_bridges_on_location", using: :gist
+    t.index ["other_data"], name: "index_bridges_on_other_data", using: :gin
   end
 
   create_table "users", force: :cascade do |t|
