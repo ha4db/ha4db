@@ -28,7 +28,7 @@ class MlitImporter
       longitude = LocationImplement.sexagesimal_to_float(longitude_string)
       bridge.location = "POINT(#{longitude} #{latitude})"
       road_name = sheet.cell(6, 4)
-      bridge.other_data = {road_name: road_name}
+      bridge.road_name = road_name
       bridge
     end
   end

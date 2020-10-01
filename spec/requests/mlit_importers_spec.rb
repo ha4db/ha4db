@@ -33,7 +33,7 @@ RSpec.describe 'MlitImporters', type: :request do
         upload_file: Rack::Test::UploadedFile.new(file)
       }
       expect(response).to have_http_status(:success)
-      expect(response.body).to include('bridge[name]')
+      expect(response.body).to include('bridge[title]')
     end
 
     it 'render new' do
