@@ -40,3 +40,6 @@ yarn-debug.log*
 
 # documentation
 /doc/*.png
+
+# visual studio code
+/.vscode
