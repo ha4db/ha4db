@@ -4,6 +4,9 @@ en:
       admin_user: Admin user
       bridge: Bridge
       user: User
+      active_storage/attachment: Active storage/attachment
+      active_storage/blob: Active storage/blob
+      bridge_content: Bridge content
 
     attributes:
       admin_user:
@@ -14,15 +17,40 @@ en:
       bridge:
         address: Address
         location: Location
-        name: Name
+        title: Title
+        bridge_contents: Bridge contents
+        other_data: Other data
 
       user:
         login_name: Login name
         password_digest: Password digest
         password: Password
 
+      active_storage/attachment:
+        name: Name
+        record: :activerecord.models.record
+        record_type: Record type
+
+      active_storage/blob:
+        byte_size: Byte size
+        checksum: Checksum
+        content_type: Content type
+        filename: Filename
+        key: Key
+        metadata: Metadata
+        preview_image_attachment: :activerecord.models.preview_image_attachment
+        preview_image_blob: :activerecord.models.preview_image_blob
+
+      bridge_content:
+        data_attachment: :activerecord.models.data_attachment
+        data_blob: :activerecord.models.data_blob
+        title: Title
+
   errors:
     attributes:
       password:
         invalid: must be a combination of letters and numbers.
 
+  blob: :activerecord.models.blob
+  attachments: Attachments
+  bridge: :activerecord.models.bridge
