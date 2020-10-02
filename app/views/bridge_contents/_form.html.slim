@@ -1,0 +1,9 @@
+= form_for [@bridge, @bridge_content] do |f|
+  - if @bridge_content.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@bridge_content.errors.count, "error")} prohibited this bridge_content from being saved:"
+      ul
+        - @bridge_content.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

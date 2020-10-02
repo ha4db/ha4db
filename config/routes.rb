@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resource :mlit_importer, only: %i[new create] do
     post 'preview'
   end
-  resources :bridges
+  resources :bridges do
+    resources :bridge_contents
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'top#index'
   get 'top/index'

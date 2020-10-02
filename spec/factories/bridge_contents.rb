@@ -5,6 +5,8 @@ FactoryBot.define do
   factory :bridge_content do
     bridge
     sequence(:title) { |i| "Bridge Contents #{i}" }
-    data { fixture_file_upload(Rails.root.join('spec', 'testdata', 'testimage.jpg')) }
+    after(:build) do |bridge_content|
+      bridge_content.data = fixture_file_upload(Rails.root.join('spec', 'testdata', 'testimage.jpg'))
+    end
   end
 end

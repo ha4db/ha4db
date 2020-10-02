@@ -1,0 +1,19 @@
+h1 Listing bridge_contents
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @bridge_contents.each do |bridge_content|
+      tr
+        td = link_to 'Show', [@bridge, bridge_content]
+        td = link_to 'Edit', edit_bridge_bridge_content_path(@bridge, bridge_content)
+        td = link_to 'Destroy', [@bridge, bridge_content], data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Bridge content', new_bridge_bridge_content_path(@bridge)
