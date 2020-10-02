@@ -20,6 +20,7 @@ en:
         title: Title
         bridge_contents: Bridge contents
         other_data: Other data
+        road_name: Road name
 
       user:
         login_name: Login name

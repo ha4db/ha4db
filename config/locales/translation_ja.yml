@@ -20,6 +20,7 @@ ja:
         title: 名前
         bridge_contents: 橋のコンテンツ
         other_data: その他のデータ
+        road_name: 道路名
 
       user:
         login_name: ログイン名

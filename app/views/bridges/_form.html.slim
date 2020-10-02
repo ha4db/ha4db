@@ -15,6 +15,10 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_road_name', model: Bridge, field_name: :road_name }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
         #edit_poi_map.edit_poi_map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude]
         = javascript_pack_tag 'map/edit_poi'
         = f.hidden_field :location
