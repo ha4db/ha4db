@@ -8,16 +8,14 @@
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
-    .mdc-layout-grid__cell
-      .mdc-layout-grid__inner
-        .mdc-layout-grid__cell
-          = link_to [@bridge, @bridge_content], class: 'mdc-fab mdc-fab--extended' do
-            .mdc-fab__ripple
-            span.material-icons.mdc-fab__icon visibility
-            span.mdc-fab__label Show
-        .mdc-layout-grid__cell
-          = link_to bridge_bridge_contents_path(@bridge), class: 'mdc-fab mdc-fab--extended' do
-            .mdc-fab__ripple
-            span.material-icons.mdc-fab__icon arrow_back
-            span.mdc-fab__label Back
+    .mdc-layout-grid__cell--span-2
+      = link_to [@bridge, @bridge_content], class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon visibility
+        span.mdc-fab__label Show
+    .mdc-layout-grid__cell--span-2
+      = link_to bridge_bridge_contents_path(@bridge), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label Back
 = javascript_pack_tag 'commons/button'
