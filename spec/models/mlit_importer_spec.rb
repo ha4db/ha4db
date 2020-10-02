@@ -27,6 +27,5 @@ RSpec.describe MlitImporter, type: :model do
         expect(bridge.valid?).to eq(false)
       end
     end
-
   end
 end

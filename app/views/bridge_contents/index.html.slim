@@ -1,0 +1,41 @@
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      section.header
+        h1 Listing bridge_contents
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      .mdc-data-table
+        .mdc-data-table__table-container
+          table.mdc-data-table__table[aria-label="Listing bridge_contents"]
+            thead
+              tr.mdc-data-table__header-row
+                th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = BridgeContent.human_attribute_name(:title)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+
+            tbody.mdc-data-table__content
+              - @bridge_contents.each do |bridge_content|
+                tr.mdc-data-table__row
+                  td.mdc-data-table__cell.mdc-data-table__cell--numeric = bridge_content.id
+                  td.mdc-data-table__cell = bridge_content.title
+                  td.mdc-data-table__cell
+                    = link_to 'visibility', [@bridge, bridge_content], class: 'mdc-icon-button material-icons'
+                  td.mdc-data-table__cell
+                    = link_to 'edit', edit_bridge_bridge_content_path(@bridge, bridge_content), class: 'mdc-icon-button material-icons'
+                  td.mdc-data-table__cell
+                    = link_to 'delete', [@bridge, bridge_content], data: { confirm: 'Are you sure?' }, method: :delete, class: 'mdc-icon-button material-icons'
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      a.mdc-fab.mdc-fab--extended[href=new_bridge_bridge_content_path(@bridge)]
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon add
+        span.mdc-fab__label New Bridge Content
+
+= javascript_pack_tag 'commons/data-table'
+= javascript_pack_tag 'commons/button'

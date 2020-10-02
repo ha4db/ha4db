@@ -4,6 +4,9 @@ ja:
       admin_user: 管理ユーザー
       bridge: 橋
       user: ユーザー
+      active_storage/attachment: アクティブストレージ/アタッチメント
+      active_storage/blob: アクティブストレージ/ブロブ
+      bridge_content: 橋のコンテンツ
 
     attributes:
       admin_user:
@@ -14,15 +17,41 @@ ja:
       bridge:
         address: 住所
         location: 座標
-        name: 名前
+        title: 名前
+        bridge_contents: 橋のコンテンツ
+        other_data: その他のデータ
+        road_name: 道路名
 
       user:
         login_name: ログイン名
         password_digest: パスワードダイジェスト
         password: パスワード
 
+      active_storage/attachment:
+        name: 名前
+        record: :activerecord.models.record
+        record_type: レコードタイプ
+
+      active_storage/blob:
+        byte_size: バイトサイズ
+        checksum: チェックサム
+        content_type: コンテンツタイプ
+        filename: ファイル名
+        key: キー
+        metadata: メタデータ
+        preview_image_attachment: :activerecord.models.preview_image_attachment
+        preview_image_blob: :activerecord.models.preview_image_blob
+
+      bridge_content:
+        data_attachment: :activerecord.models.data_attachment
+        data_blob: :activerecord.models.data_blob
+        title: 名前
+
   errors:
     attributes:
       password:
         invalid: は半角英字、数字を組み合わせて入力してください
 
+  blob: :activerecord.models.blob
+  attachments: 添付ファイル
+  bridge: :activerecord.models.bridge

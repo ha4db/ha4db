@@ -1,0 +1,28 @@
+= form_for [@bridge, @bridge_content], local: true, multipart: true do |f|
+  - if @bridge_content.errors.any?
+    .mdc-layout-grid
+      .mdc-layout-grid__inner
+        .mdc-layout-grid__cell--span-12
+          = render partial: 'commons/error_messages', locals: { obj: @bridge_content }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_title', model: BridgeContent, field_name: :title }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_file_field', locals: { f: f, id: 'bridge_content_data', model: BridgeContent, field_name: :data }
+
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell
+        - if action_name == 'edit'
+          - icon = 'edit'
+          - label = 'Edit'
+        - else
+          - icon = 'add'
+          - label = 'Add'
+        = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: icon, label: label }
+
+= javascript_pack_tag 'commons/form'
+= javascript_pack_tag 'commons/button'

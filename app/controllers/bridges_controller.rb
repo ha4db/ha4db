@@ -72,6 +72,6 @@ class BridgesController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def bridge_params
-    params.fetch(:bridge, {}).permit(:title, :address, :location)
+    params.fetch(:bridge, {}).permit(:title, :address, :location, :road_name)
   end
 end

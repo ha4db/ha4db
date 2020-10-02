@@ -2,19 +2,19 @@
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
       section.header
-        h1 Editing bridge
+        h1 Editing bridge_content
 
 == render 'form'
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-2
-      = link_to @bridge, class: 'mdc-fab mdc-fab--extended' do
+      = link_to [@bridge, @bridge_content], class: 'mdc-fab mdc-fab--extended' do
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon visibility
         span.mdc-fab__label Show
     .mdc-layout-grid__cell--span-2
-      = link_to bridges_path, class: 'mdc-fab mdc-fab--extended' do
+      = link_to bridge_bridge_contents_path(@bridge), class: 'mdc-fab mdc-fab--extended' do
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon arrow_back
         span.mdc-fab__label Back
