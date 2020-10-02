@@ -7,9 +7,7 @@ class MlitImportersController < UserBaseController
   def preview
     update_file = preview_params[:upload_file]
     @bridge = MlitImporter.import(update_file)
-    unless @bridge.valid?
-      render :new
-    end
+    render :new unless @bridge.valid?
   end
 
   def create
