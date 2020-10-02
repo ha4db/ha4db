@@ -5,5 +5,6 @@ FactoryBot.define do
     sequence(:title) { |i| "Bridge #{i}" }
     location { 'POINT(139.895697 35.325315)' }
     sequence(:address) { |i| "Address #{i}" }
+    bridge_contents { [FactoryBot.build(:bridge_content, bridge: nil)] }
   end
 end

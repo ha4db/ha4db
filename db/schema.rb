@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2020_10_02_001122) do
   create_table "bridge_contents", force: :cascade do |t|
     t.bigint "bridge_id"
     t.string "title"
-    t.integer "contents_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bridge_id"], name: "index_bridge_contents_on_bridge_id"

@@ -6,7 +6,6 @@ class CreateBridgeContents < ActiveRecord::Migration[6.0]
     create_table :bridge_contents do |t|
       t.references :bridge
       t.string :title
-      t.integer :contents_type
 
       t.timestamps
     end
