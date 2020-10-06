@@ -7,6 +7,7 @@ ja:
       active_storage/attachment: アクティブストレージ/アタッチメント
       active_storage/blob: アクティブストレージ/ブロブ
       bridge_content: 橋のコンテンツ
+      inspection: 点検
 
     attributes:
       admin_user:
@@ -21,6 +22,7 @@ ja:
         bridge_contents: 橋のコンテンツ
         other_data: その他のデータ
         road_name: 道路名
+        inspections: 点検
 
       user:
         login_name: ログイン名
@@ -31,6 +33,7 @@ ja:
         name: 名前
         record: :activerecord.models.record
         record_type: レコードタイプ
+        blob: :activerecord.models.blob
 
       active_storage/blob:
         byte_size: バイトサイズ
@@ -41,10 +44,19 @@ ja:
         metadata: メタデータ
         preview_image_attachment: :activerecord.models.preview_image_attachment
         preview_image_blob: :activerecord.models.preview_image_blob
+        attachments: 添付ファイル
 
       bridge_content:
         data_attachment: :activerecord.models.data_attachment
         data_blob: :activerecord.models.data_blob
+        title: 名前
+        bridge: :activerecord.models.bridge
+
+      inspection:
+        category: 種類
+        date: 検査日
+        geom: ジオメトリ
+        report_data: 点検内容
         title: 名前
 
   errors:
@@ -55,3 +67,14 @@ ja:
   blob: :activerecord.models.blob
   attachments: 添付ファイル
   bridge: :activerecord.models.bridge
+
+  enums:
+    inspection:
+      category:
+        none: 未選択
+        superstructure_main_girder: 上部構造主桁
+        superstructure_horizontal_grider: 上部構造横桁
+        superstructure_slab: 上部構造床版
+        substructure: 下部構造
+        support_structure: 支承部
+        other: その他

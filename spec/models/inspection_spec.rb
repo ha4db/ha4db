@@ -3,5 +3,28 @@
 require 'rails_helper'
 
 RSpec.describe Inspection, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @inspection = FactoryBot.build(:inspection)
+  end
+
+  subject { @inspection }
+
+  it { should respond_to(:title) }
+  it { should respond_to(:report_data) }
+  it { should respond_to(:bridge) }
+  it { should respond_to(:category) }
+  it { should be_valid }
+
+  describe 'when title is not present' do
+    before { @inspection.title = ' ' }
+    it { should_not be_valid }
+  end
+
+  describe 'category' do
+    describe 'enable to change by integer' do
+      before { @inspection.category = 2 }
+      subject { @inspection.superstructure_horizontal_grider? }
+      it { should eq(true) }
+    end
+  end
 end

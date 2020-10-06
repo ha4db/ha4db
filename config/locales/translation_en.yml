@@ -7,6 +7,7 @@ en:
       active_storage/attachment: Active storage/attachment
       active_storage/blob: Active storage/blob
       bridge_content: Bridge content
+      inspection: Inspection
 
     attributes:
       admin_user:
@@ -21,6 +22,7 @@ en:
         bridge_contents: Bridge contents
         other_data: Other data
         road_name: Road name
+        inspections: Inspections
 
       user:
         login_name: Login name
@@ -31,6 +33,7 @@ en:
         name: Name
         record: :activerecord.models.record
         record_type: Record type
+        blob: :activerecord.models.blob
 
       active_storage/blob:
         byte_size: Byte size
@@ -41,10 +44,19 @@ en:
         metadata: Metadata
         preview_image_attachment: :activerecord.models.preview_image_attachment
         preview_image_blob: :activerecord.models.preview_image_blob
+        attachments: Attachments
 
       bridge_content:
         data_attachment: :activerecord.models.data_attachment
         data_blob: :activerecord.models.data_blob
+        title: Title
+        bridge: :activerecord.models.bridge
+
+      inspection:
+        category: Category
+        date: Date
+        geom: Geometry
+        report_data: Report data
         title: Title
 
   errors:
@@ -55,3 +67,14 @@ en:
   blob: :activerecord.models.blob
   attachments: Attachments
   bridge: :activerecord.models.bridge
+
+  enums:
+    inspection:
+      category:
+        none: None
+        superstructure_main_girder: Superstructure main girder
+        superstructure_horizontal_grider: Superstructure horizontal grider
+        superstructure_slab: Superstructure slab
+        substructure: Substructure
+        support_structure: Support structure
+        other: Other

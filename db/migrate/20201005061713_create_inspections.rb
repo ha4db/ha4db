@@ -8,7 +8,7 @@ class CreateInspections < ActiveRecord::Migration[6.0]
       t.geometry :geom, srid: 4326, geographic: true, has_z: true
       t.index :geom, using: :gist
       t.string :title
-      t.integer :category
+      t.integer :category, default: 0
       t.jsonb :report_data
       t.datetime :date
       t.timestamps

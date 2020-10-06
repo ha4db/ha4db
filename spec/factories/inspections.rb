@@ -6,5 +6,6 @@ FactoryBot.define do
     bridge
     sequence(:title) { |i| "Inspection #{i}" }
     geom { 'POINT(139.895697 35.325315)' }
+    category { Inspection.categories[:superstructure_main_girder] }
   end
 end

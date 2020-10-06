@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_10_05_061713) do
     t.bigint "bridge_id"
     t.geography "geom", limit: {:srid=>4326, :type=>"geometry", :has_z=>true, :geographic=>true}
     t.string "title"
-    t.integer "category"
+    t.integer "category", default: 0
     t.jsonb "report_data"
     t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
