@@ -71,7 +71,7 @@ ja:
   enums:
     inspection:
       category:
-        none: 未選択
+        unselected: 未選択
         superstructure_main_girder: 上部構造主桁
         superstructure_horizontal_grider: 上部構造横桁
         superstructure_slab: 上部構造床版

@@ -71,7 +71,7 @@ en:
   enums:
     inspection:
       category:
-        none: None
+        unselected: Unselected
         superstructure_main_girder: Superstructure main girder
         superstructure_horizontal_grider: Superstructure horizontal grider
         superstructure_slab: Superstructure slab
