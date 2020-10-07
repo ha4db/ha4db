@@ -65,7 +65,8 @@ ActiveRecord::Schema.define(version: 2020_10_05_061713) do
 
   create_table "inspections", force: :cascade do |t|
     t.bigint "bridge_id"
-    t.geography "geom", limit: {:srid=>4326, :type=>"geometry", :has_z=>true, :geographic=>true}
+    t.geography "geom", limit: {:srid=>4326, :type=>"geometry", :geographic=>true}
+    t.geometry "geom3d", limit: {:srid=>0, :type=>"geometry", :has_z=>true}
     t.string "title"
     t.integer "category", default: 0
     t.jsonb "report_data"
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_10_05_061713) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bridge_id"], name: "index_inspections_on_bridge_id"
     t.index ["geom"], name: "index_inspections_on_geom", using: :gist
+    t.index ["geom3d"], name: "index_inspections_on_geom3d", using: :gist
   end
 
   create_table "users", force: :cascade do |t|
