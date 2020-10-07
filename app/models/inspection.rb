@@ -4,6 +4,7 @@
 class Inspection < ApplicationRecord
   belongs_to :bridge
   validates :title, presence: true
+  validates :date, presence: true
   enum category: {
     unselected: 0,
     superstructure_main_girder: 1,

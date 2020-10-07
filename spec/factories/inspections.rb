@@ -7,5 +7,6 @@ FactoryBot.define do
     sequence(:title) { |i| "Inspection #{i}" }
     geom { 'POINT(139.895697 35.325315)' }
     category { Inspection.categories[:superstructure_main_girder] }
+    date { Faker::Date.backward(days: 14) }
   end
 end
