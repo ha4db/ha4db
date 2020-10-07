@@ -2,7 +2,7 @@ ja:
   activerecord:
     models:
       admin_user: 管理ユーザー
-      bridge: 橋
+      bridge: 橋梁
       user: ユーザー
       active_storage/attachment: アクティブストレージ/アタッチメント
       active_storage/blob: アクティブストレージ/ブロブ
