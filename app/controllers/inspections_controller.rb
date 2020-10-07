@@ -77,6 +77,6 @@ class InspectionsController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def inspection_params
-    params.fetch(:inspection, {}).permit(:title, :category, :geom)
+    params.fetch(:inspection, {}).permit(:title, :category, :geom, :date)
   end
 end

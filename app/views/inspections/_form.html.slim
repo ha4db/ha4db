@@ -8,6 +8,10 @@
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
         = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'inspection_title', model: Inspection, field_name: :title }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_date_field', locals: { f: f, id: 'inspection_date', model: Inspection, field_name: :date }
 
   .mdc-layout-grid
     .mdc-layout-grid__inner
