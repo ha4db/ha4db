@@ -3,6 +3,7 @@
 # Bridge class
 class Bridge < ApplicationRecord
   has_many :bridge_contents
+  has_many :inspections
 
   validates :title, presence: true
   validates :address, presence: true

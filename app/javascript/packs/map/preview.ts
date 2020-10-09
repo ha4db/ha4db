@@ -2,11 +2,12 @@ import '../../stylesheets/map/preview'
 import 'ol/ol.css'
 import { Map, View } from 'ol'
 import Feature from 'ol/Feature'
-import { Icon, Style } from 'ol/style'
 import Point from 'ol/geom/Point'
+import WKT from 'ol/format/WKT'
 import VectorSource from 'ol/source/Vector'
 import {Vector as VectorLayer} from 'ol/layer'
 import gsi_std_layer from './layers/gsi-std'
+import common_style from './styles/common_style'
 
 const target = 'preview_map'
 const map = document.getElementById(target)
@@ -18,26 +19,24 @@ const view = new View({
   zoom: zoom
 })
 
-// set icon
-
 const iconFeature = new Feature({
   geometry: new Point(center)
 })
-const iconStyle = new Style({
-  image: new Icon({
-    imgSize: [50, 82],
-    anchor: [0.5, 82],
-    anchorXUnits: 'fraction',
-    anchorYUnits: 'pixels',
-    src: require('../../images/marker.svg')
-  })
-})
-iconFeature.setStyle(iconStyle)
+
+const wkt = map.dataset.feature
+const format = new WKT()
+
+let features = [iconFeature]
+if (wkt != '') {
+  features = [format.readFeature(wkt)]
+}
+
 const vectorSource = new VectorSource({
-  features: [iconFeature],
+  features: features,
 })
 const vectorLayer = new VectorLayer({
   source: vectorSource,
+  style: common_style,
 })
 new Map({
   target: 'preview_map',

@@ -13,6 +13,7 @@ RSpec.describe Bridge, type: :model do
   it { should respond_to(:address) }
   it { should respond_to(:location) }
   it { should respond_to(:bridge_contents) }
+  it { should respond_to(:inspections) }
 
   it { should be_valid }
 

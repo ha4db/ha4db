@@ -1,0 +1,7 @@
+label.mdc-text-field.mdc-text-field--outlined
+  span.mdc-notched-outline
+    span.mdc-notched-outline__leading
+    span.mdc-notched-outline__notch
+      span.mdc-floating-label[id="#{id}_floating"] = model.human_attribute_name(field_name)
+    span.mdc-notched-outline__trailing
+  = f.date_field field_name, class: 'mdc-text-field__input', 'aria-labelledby' => "#{id}_floating"
