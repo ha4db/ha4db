@@ -3,6 +3,7 @@ import 'ol/ol.css'
 import { Map, View } from 'ol'
 import Feature from 'ol/Feature'
 import Point from 'ol/geom/Point'
+import WKT from 'ol/format/WKT'
 import VectorSource from 'ol/source/Vector'
 import {Vector as VectorLayer} from 'ol/layer'
 import gsi_std_layer from './layers/gsi-std'
@@ -18,13 +19,20 @@ const view = new View({
   zoom: zoom
 })
 
-// set icon
-
 const iconFeature = new Feature({
   geometry: new Point(center)
 })
+
+const wkt = map.dataset.feature
+const format = new WKT()
+
+let features = [iconFeature]
+if (wkt != '') {
+  features = [format.readFeature(wkt)]
+}
+
 const vectorSource = new VectorSource({
-  features: [iconFeature],
+  features: features,
 })
 const vectorLayer = new VectorLayer({
   source: vectorSource,

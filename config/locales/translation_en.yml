@@ -55,6 +55,7 @@ en:
       inspection:
         category: Category
         date: Date
+        description: Description
         geom: Geometry
         report_data: Report data
         title: Title

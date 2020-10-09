@@ -14,4 +14,5 @@ class Inspection < ApplicationRecord
     support_structure: 5,
     other: 6
   }
+  store_accessor :report_data, :description
 end

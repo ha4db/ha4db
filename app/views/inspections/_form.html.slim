@@ -15,6 +15,10 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_area', locals: { f: f, id: 'inspection_description', model: Inspection, field_name: :description }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
         #edit_feature_map.map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude data-feature=@inspection.geom.to_s data-target="inspection_geom"]
         = f.hidden_field :geom
         select#type

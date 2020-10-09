@@ -6,7 +6,7 @@
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
-    .mdc-layout-grid__cell
+    .mdc-layout-grid__cell--span-12
       ul.mdc-list
         li.mdc-list-item
           span.mdc-list-item__ripple
@@ -23,7 +23,17 @@
           span.mdc-list-item__text
             span.mdc-list-item__primary-text = Inspection.human_attribute_name(:date)
             span.mdc-list-item__secondary-text = @inspection.date.strftime(I18n.t('date.formats.default'))
-
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Inspection.human_attribute_name(:description)
+    .mdc-layout-grid__cell--span-12
+      = simple_format(h(@inspection.description))
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-12
+      #preview_map.preview_map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude data-feature=@inspection.geom.to_s]
+      = javascript_pack_tag 'map/preview'
 
 .mdc-layout-grid
   .mdc-layout-grid__inner

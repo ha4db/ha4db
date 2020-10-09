@@ -55,6 +55,7 @@ ja:
       inspection:
         category: 種類
         date: 検査日
+        description: 詳細
         geom: ジオメトリ
         report_data: 点検内容
         title: 名前
