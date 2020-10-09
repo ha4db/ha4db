@@ -12,7 +12,16 @@
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
         = render partial: 'commons/mdc_outlined_date_field', locals: { f: f, id: 'inspection_date', model: Inspection, field_name: :date }
-
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        #edit_feature_map.map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude data-feature=@inspection.geom.to_s data-target="inspection_geom"]
+        = f.hidden_field :geom
+        select#type
+          option[value="Point"] Point
+          option[value="LineString"] LineString
+          option[value="Polygon"] Polygon
+        = javascript_pack_tag 'map/edit_feature'
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell
