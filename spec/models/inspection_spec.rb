@@ -43,5 +43,16 @@ RSpec.describe Inspection, type: :model do
     it { should respond_to(:y) }
     it { should respond_to(:z) }
   end
+
+  describe 'count' do
+    it 'up to 1' do
+      inspection = Inspection.new(bridge: FactoryBot.create(:bridge))
+      inspection.title = 'test'
+      inspection.date = '2020/10/15'
+      expect do
+        inspection.save
+      end.to change(Inspection, :count).by(1)
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength
