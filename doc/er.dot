@@ -15,7 +15,7 @@ digraph models {
 
   bridge_contents [label="bridge_contents(橋のコンテンツ)|{{id|bridge_id|title(名前)|data(画像/動画)|created_at|updated_at}|{Int|Int|String|ActiveStroage|Datetime|Datetime}}"]
 
-  bridge_contents_inspections [label="bridge_contents_inspections(中間テーブル)|{{id|bridge_content_id|inspection_id|seek(動画の開始時間)|created_at|updated_at}|{Int|Int|Int|Int|Datetime|Datetime}}"]
+  bridge_contents_inspections [label="bridge_contents_inspections(中間テーブル)|{{id|bridge_content_id|inspection_id|data(コンテンツ)|created_at|updated_at}|{Int|Int|Int|Jsonb|Datetime|Datetime}}"]
 
   inspections [label="inspections(点検)|{{id|bridge_id|geom(地理情報)|geom3d(地理情報3D)|category(橋脚の種類)|report_data(報告内容)|date(点検日)|created_at|updated_at}|{Int|Int|Geometry(任意)|Geometry(任意)|Enum.BridgeCategory|Jsonb|Datetime|Datetime|Datetime}}"];
 
