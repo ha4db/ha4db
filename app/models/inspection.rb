@@ -3,6 +3,8 @@
 # Inspection Model
 class Inspection < ApplicationRecord
   belongs_to :bridge
+  has_many :bridge_content_inspections
+  has_many :bridge_contents, through: :bridge_content_inspections
   validates :title, presence: true
   validates :date, presence: true
   enum category: {
