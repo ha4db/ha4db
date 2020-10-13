@@ -1,0 +1,21 @@
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      section.header
+        h1 Editing bridge_content_inspection
+
+== render 'form'
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-2
+      = link_to bridge_bridge_content_inspection_path(@bridge, @bridge_content, @bridge_content_inspection), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon visibility
+        span.mdc-fab__label Show
+    .mdc-layout-grid__cell--span-2
+      = link_to bridge_bridge_content_inspections_path(@bridge, @bridge_content), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label Back
+= javascript_pack_tag 'commons/button'

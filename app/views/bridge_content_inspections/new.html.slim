@@ -1,0 +1,16 @@
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      section.header
+        h1 New bridge_content_inspection
+
+== render 'form'
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      = link_to bridge_bridge_content_inspections_path(@bridge, @bridge_content), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label Back
+= javascript_pack_tag 'commons/button'

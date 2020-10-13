@@ -1,0 +1,24 @@
+= form_for [@bridge, @bridge_content, @bridge_content_inspection], url: bridge_bridge_content_inspections_path(@bridge, @bridge_content, @bridge_content_inspection), local: true do |f|
+  - if @bridge_content_inspection.errors.any?
+    .mdc-layout-grid
+      .mdc-layout-grid__inner
+        .mdc-layout-grid__cell--span-12
+          = render partial: 'commons/error_messages', locals: { obj: @bridge_content_inspection }
+  = f.hidden_field :seek
+  = f.hidden_field :position
+  = f.fields_for :inspection do |i|
+    = render partial: 'inspections/form_inspection', locals: { f: i }
+
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell
+        - if action_name == 'edit'
+          - icon = 'edit'
+          - label = 'Edit'
+        - else
+          - icon = 'add'
+          - label = 'Add'
+        = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: icon, label: label }
+
+= javascript_pack_tag 'commons/form'
+= javascript_pack_tag 'commons/button'
