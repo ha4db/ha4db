@@ -60,7 +60,8 @@ RSpec.describe BridgeContentInspection, type: :model do
         inspection.title = nil
         inspection_params = inspection.attributes
         bridge_content_inspection_params = { seek: 15 }
-        new_inspection = @bridge_content_inspection.create_inspection(bridge_content_inspection_params, inspection_params)
+        new_inspection = @bridge_content_inspection.create_inspection(bridge_content_inspection_params,
+                                                                      inspection_params)
         expect(@bridge_content_inspection.inspection).to eq nil
         expect(@bridge_content_inspection.seek).to eq 10
         expect(new_inspection).not_to eq nil
@@ -92,7 +93,8 @@ RSpec.describe BridgeContentInspection, type: :model do
         inspection = FactoryBot.build(:inspection)
         inspection_params = inspection.attributes
         bridge_content_inspection_params = { seek: 'fail value' }
-        new_inspection = @bridge_content_inspection.create_inspection(bridge_content_inspection_params, inspection_params)
+        new_inspection = @bridge_content_inspection.create_inspection(bridge_content_inspection_params,
+                                                                      inspection_params)
         expect(@bridge_content_inspection.inspection).not_to eq nil
         expect(new_inspection).not_to eq nil
       end
