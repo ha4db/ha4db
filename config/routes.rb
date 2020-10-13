@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     post 'preview'
   end
   resources :bridges do
-    resources :bridge_contents
+    resources :bridge_contents do
+      resources :inspections, controller: 'bridge_content_inspections'
+    end
     resources :inspections
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
