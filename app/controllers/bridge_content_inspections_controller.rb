@@ -34,9 +34,9 @@ class BridgeContentInspectionsController < UserBaseController
                                                                inspection_params)
 
     respond_to do |format|
-      if @inspection.errors == [] && @bridge_content_inspection.errors == []
+      if @inspection.errors.empty? && @bridge_content_inspection.errors.empty?
         format.html do
-          redirect_to @bridge_content_inspection,
+          redirect_to bridge_bridge_content_inspection_url(@bridge, @bridge_content, @bridge_content_inspection),
                       notice: 'Bridge content inspection was successfully created.'
         end
         format.json { render :show, status: :created, location: @bridge_content_inspection }
@@ -54,7 +54,7 @@ class BridgeContentInspectionsController < UserBaseController
       if @bridge_content_inspection.update(bridge_content_inspection_params) &&
          @inspection.update(inspection_params)
         format.html do
-          redirect_to @bridge_content_inspection,
+          redirect_to bridge_bridge_content_inspection_url(@bridge, @bridge_content, @bridge_content_inspection),
                       notice: 'Bridge content inspection was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @bridge_content_inspection }
@@ -71,7 +71,7 @@ class BridgeContentInspectionsController < UserBaseController
     @bridge_content_inspection.destroy
     respond_to do |format|
       format.html do
-        redirect_to bridge_content_inspections_url,
+        redirect_to bridge_bridge_content_inspections_url(@bridge, @bridge_content),
                     notice: 'Bridge content inspection was successfully destroyed.'
       end
       format.json { head :no_content }
