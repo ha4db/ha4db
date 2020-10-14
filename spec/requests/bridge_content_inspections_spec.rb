@@ -88,8 +88,11 @@ RSpec.describe '/bridge_content_inspections', type: :request do
       it 'redirects to the created bridge_content_inspection' do
         post bridge_bridge_content_bridge_content_inspections_url(@bridge, @bridge_content),
              params: { bridge_content_inspection: valid_attributes, inspection: inspection_valid_attribute }
-        expect(response).to redirect_to(bridge_bridge_content_bridge_content_inspection_url(@bridge, @bridge_content,
-                                                                                            BridgeContentInspection.last))
+        expect(response).to redirect_to(
+          bridge_bridge_content_bridge_content_inspection_url(@bridge,
+                                                              @bridge_content,
+                                                              BridgeContentInspection.last)
+        )
       end
     end
 
