@@ -10,7 +10,7 @@
   = javascript_pack_tag 'apps/seek'
   = f.hidden_field :position
   = fields model: @bridge_content_inspection.inspection do |i|
-    = render partial: 'inspections/form_inspection', locals: { f: i, target_geom: 'bridge_content_inspection_inspection_geom' }
+    = render partial: 'inspections/form_inspection', locals: { f: i }
 
   .mdc-layout-grid
     .mdc-layout-grid__inner

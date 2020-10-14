@@ -4,6 +4,13 @@
       .mdc-layout-grid__cell--span-12
         p#notice = notice
 
+= render partial: 'bridge_contents/bridge_content'
+= render partial: 'inspections/inspection'
+
+- if @bridge_content_inspection.seek
+  = hidden_field_tag 'bridge_content_inspection_seek', @bridge_content_inspection.seek
+  = javascript_pack_tag 'apps/seek'
+
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-2

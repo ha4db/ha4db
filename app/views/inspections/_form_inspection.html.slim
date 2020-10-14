@@ -18,7 +18,7 @@
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-12
-      #edit_feature_map.map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude data-feature=@inspection.geom.to_s data-target=target_geom]
+      #edit_feature_map.map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude data-feature=@inspection.geom.to_s data-target='inspection_geom']
       = f.hidden_field :geom
       select#type
         option[value="Point"] Point
