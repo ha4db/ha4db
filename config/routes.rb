@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   resources :bridges do
     resources :bridge_contents do
-      resources :inspections, controller: 'bridge_content_inspections'
+      resources :bridge_content_inspections
     end
     resources :inspections
   end

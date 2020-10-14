@@ -1,13 +1,16 @@
-= form_for [@bridge, @bridge_content, @bridge_content_inspection], url: bridge_bridge_content_inspections_path(@bridge, @bridge_content, @bridge_content_inspection), local: true do |f|
+= render partial: 'bridge_contents/bridge_content'
+
+= form_with model: @bridge_content_inspection, url: [@bridge, @bridge_content, @bridge_content_inspection], local: true do |f|
   - if @bridge_content_inspection.errors.any?
     .mdc-layout-grid
       .mdc-layout-grid__inner
         .mdc-layout-grid__cell--span-12
           = render partial: 'commons/error_messages', locals: { obj: @bridge_content_inspection }
   = f.hidden_field :seek
+  = javascript_pack_tag 'apps/seek'
   = f.hidden_field :position
-  = f.fields_for :inspection do |i|
-    = render partial: 'inspections/form_inspection', locals: { f: i }
+  = fields model: @bridge_content_inspection.inspection do |i|
+    = render partial: 'inspections/form_inspection', locals: { f: i, target_geom: 'bridge_content_inspection_inspection_geom' }
 
   .mdc-layout-grid
     .mdc-layout-grid__inner

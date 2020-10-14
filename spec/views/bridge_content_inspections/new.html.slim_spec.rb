@@ -15,7 +15,7 @@ RSpec.describe 'bridge_content_inspections/new', type: :view do
     render
 
     assert_select 'form[action=?][method=?]',
-                  bridge_bridge_content_inspections_path(@bridge, @bridge_content), 'post' do
+                  bridge_bridge_content_bridge_content_inspections_path(@bridge, @bridge_content), 'post' do
     end
   end
 end

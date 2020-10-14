@@ -25,15 +25,15 @@
                   td.mdc-data-table__cell.mdc-data-table__cell--numeric = inspection.id
                   td.mdc-data-table__cell = inspection.title
                   td.mdc-data-table__cell
-                    = link_to 'visibility', bridge_bridge_content_inspection_path(@bridge, @bridge_content, bridge_content_inspection), class: 'mdc-icon-button material-icons'
+                    = link_to 'visibility', bridge_bridge_content_bridge_content_inspection_path(@bridge, @bridge_content, bridge_content_inspection), class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell
-                    = link_to 'edit', edit_bridge_bridge_content_inspection_path(@bridge, @bridge_content, bridge_content_inspection), class: 'mdc-icon-button material-icons'
+                    = link_to 'edit', edit_bridge_bridge_content_bridge_content_inspection_path(@bridge, @bridge_content, bridge_content_inspection), class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell
-                    = link_to 'delete', bridge_bridge_content_inspection_path(@bridge, @bridge_content, bridge_content_inspection), data: { confirm: 'Are you sure?' }, method: :delete, class: 'mdc-icon-button material-icons'
+                    = link_to 'delete', bridge_bridge_content_bridge_content_inspection_path(@bridge, @bridge_content, bridge_content_inspection), data: { confirm: 'Are you sure?' }, method: :delete, class: 'mdc-icon-button material-icons'
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
-      a.mdc-fab.mdc-fab--extended[href=new_bridge_bridge_content_inspection_path(@bridge, @bridge_content)]
+      a.mdc-fab.mdc-fab--extended[href=new_bridge_bridge_content_bridge_content_inspection_path(@bridge, @bridge_content)]
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon add
         span.mdc-fab__label New Inspection

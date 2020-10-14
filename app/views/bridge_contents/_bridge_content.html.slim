@@ -1,0 +1,25 @@
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      ul.mdc-list
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text id
+            span.mdc-list-item__secondary-text = @bridge_content.id
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text title
+            span.mdc-list-item__secondary-text = @bridge_content.title
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-12
+      #data_view
+        - if @bridge_content.data.attached?
+          - if @bridge_content.data.content_type.start_with?('video')
+            video#video[src=url_for(@bridge_content.data) type=@bridge_content.data.content_type controls]
+          - elsif @bridge_content.data.content_type.start_with?('image')
+            img[src=url_for(@bridge_content.data)]
+

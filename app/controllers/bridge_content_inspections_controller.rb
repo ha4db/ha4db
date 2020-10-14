@@ -13,30 +13,29 @@ class BridgeContentInspectionsController < UserBaseController
                                                          .includes(:bridge_content, :inspection)
   end
 
-  # GET /bridges/1/bridge_contents/1/inspections/1
-  # GET /bridges/1/bridge_contents/1/inspections/1.json
+  # GET /bridges/1/bridge_contents/1/bridge_content_inspections/1
+  # GET /bridges/1/bridge_contents/1/bridge_content_inspections/1.json
   def show; end
 
-  # GET /bridges/1/bridge_contents/1/inspections/new
+  # GET /bridges/1/bridge_contents/1/bridge_content_inspections/new
   def new
     @bridge_content_inspection = BridgeContentInspection.new(bridge_content: @bridge_content)
     @inspection = @bridge_content_inspection.build_inspection(bridge: @bridge)
   end
 
-  # GET /bridges/1/bridge_contents/1/inspections/1/edit
+  # GET /bridges/1/bridge_contents/1/bridge_content_inspections/1/edit
   def edit; end
 
-  # POST /bridges/1/bridge_contents/1/inspections
-  # POST /bridges/1/bridge_contents/1/inspections.json
+  # POST /bridges/1/bridge_contents/1/bridge_content_inspections
+  # POST /bridges/1/bridge_contents/1/bridge_content_inspections.json
   def create
     @bridge_content_inspection = BridgeContentInspection.new(bridge_content: @bridge_content)
-    @inspection = @bridge_content_inspection.create_inspection(bridge_content_inspection_params,
-                                                               inspection_params)
+    @inspection = @bridge_content_inspection.create_inspection(bridge_content_inspection_params, inspection_params)
 
     respond_to do |format|
       if @inspection.errors.empty? && @bridge_content_inspection.errors.empty?
         format.html do
-          redirect_to bridge_bridge_content_inspection_url(@bridge, @bridge_content, @bridge_content_inspection),
+          redirect_to bridge_bridge_content_bridge_content_inspection_url(@bridge, @bridge_content, @bridge_content_inspection),
                       notice: 'Bridge content inspection was successfully created.'
         end
         format.json { render :show, status: :created, location: @bridge_content_inspection }
@@ -47,14 +46,14 @@ class BridgeContentInspectionsController < UserBaseController
     end
   end
 
-  # PATCH/PUT /bridges/1/bridge_contents/1/inspections/1
-  # PATCH/PUT /bridges/1/bridge_contents/1/inspections/1.json
+  # PATCH/PUT /bridges/1/bridge_contents/1/bridge_content_inspections/1
+  # PATCH/PUT /bridges/1/bridge_contents/1/bridge_content_inspections/1.json
   def update
     respond_to do |format|
       if @bridge_content_inspection.update(bridge_content_inspection_params) &&
          @inspection.update(inspection_params)
         format.html do
-          redirect_to bridge_bridge_content_inspection_url(@bridge, @bridge_content, @bridge_content_inspection),
+          redirect_to bridge_bridge_content_bridge_content_inspection_url(@bridge, @bridge_content, @bridge_content_inspection),
                       notice: 'Bridge content inspection was successfully updated.'
         end
         format.json { render :show, status: :ok, location: @bridge_content_inspection }
@@ -65,13 +64,13 @@ class BridgeContentInspectionsController < UserBaseController
     end
   end
 
-  # DELETE /bridges/1/bridge_contents/1/inspections/1
-  # DELETE /bridges/1/bridge_contents/1/inspections/1.json
+  # DELETE /bridges/1/bridge_contents/1/bridge_content_inspections/1
+  # DELETE /bridges/1/bridge_contents/1/bridge_content_inspections/1.json
   def destroy
     @bridge_content_inspection.destroy
     respond_to do |format|
       format.html do
-        redirect_to bridge_bridge_content_inspections_url(@bridge, @bridge_content),
+        redirect_to bridge_bridge_content_bridge_content_inspections_url(@bridge, @bridge_content),
                     notice: 'Bridge content inspection was successfully destroyed.'
       end
       format.json { head :no_content }

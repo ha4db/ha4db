@@ -48,7 +48,7 @@ RSpec.describe '/bridge_content_inspections', type: :request do
   describe 'GET /index' do
     it 'renders a successful response' do
       BridgeContentInspection.create! valid_attributes
-      get bridge_bridge_content_inspections_url(@bridge, @bridge_content)
+      get bridge_bridge_content_bridge_content_inspections_url(@bridge, @bridge_content)
       expect(response).to be_successful
     end
   end
@@ -56,14 +56,14 @@ RSpec.describe '/bridge_content_inspections', type: :request do
   describe 'GET /show' do
     it 'renders a successful response' do
       bridge_content_inspection = BridgeContentInspection.create! valid_attributes
-      get bridge_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection)
+      get bridge_bridge_content_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection)
       expect(response).to be_successful
     end
   end
 
   describe 'GET /new' do
     it 'renders a successful response' do
-      get new_bridge_bridge_content_inspection_url(@bridge, @bridge_content)
+      get new_bridge_bridge_content_bridge_content_inspection_url(@bridge, @bridge_content)
       expect(response).to be_successful
     end
   end
@@ -71,7 +71,7 @@ RSpec.describe '/bridge_content_inspections', type: :request do
   describe 'GET /edit' do
     it 'render a successful response' do
       bridge_content_inspection = BridgeContentInspection.create! valid_attributes
-      get edit_bridge_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection)
+      get edit_bridge_bridge_content_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection)
       expect(response).to be_successful
     end
   end
@@ -80,29 +80,29 @@ RSpec.describe '/bridge_content_inspections', type: :request do
     context 'with valid parameters' do
       it 'creates a new BridgeContentInspection' do
         expect do
-          post bridge_bridge_content_inspections_url(@bridge, @bridge_content),
+          post bridge_bridge_content_bridge_content_inspections_url(@bridge, @bridge_content),
                params: { bridge_content_inspection: valid_attributes, inspection: inspection_valid_attribute }
         end.to change(BridgeContentInspection, :count).by(1)
       end
 
       it 'redirects to the created bridge_content_inspection' do
-        post bridge_bridge_content_inspections_url(@bridge, @bridge_content),
+        post bridge_bridge_content_bridge_content_inspections_url(@bridge, @bridge_content),
              params: { bridge_content_inspection: valid_attributes, inspection: inspection_valid_attribute }
-        expect(response).to redirect_to(bridge_bridge_content_inspection_url(@bridge, @bridge_content,
-                                                                             BridgeContentInspection.last))
+        expect(response).to redirect_to(bridge_bridge_content_bridge_content_inspection_url(@bridge, @bridge_content,
+                                                                                            BridgeContentInspection.last))
       end
     end
 
     context 'with invalid parameters' do
       it 'does not create a new BridgeContentInspection' do
         expect do
-          post bridge_bridge_content_inspections_url(@bridge, @bridge_content),
+          post bridge_bridge_content_bridge_content_inspections_url(@bridge, @bridge_content),
                params: { bridge_content_inspection: invalid_attributes, inspection: inspection_invalid_attribute }
         end.to change(BridgeContentInspection, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post bridge_bridge_content_inspections_url(@bridge, @bridge_content),
+        post bridge_bridge_content_bridge_content_inspections_url(@bridge, @bridge_content),
              params: { bridge_content_inspection: invalid_attributes, inspection: inspection_invalid_attribute }
         expect(response).to be_successful
       end
@@ -119,7 +119,7 @@ RSpec.describe '/bridge_content_inspections', type: :request do
 
       it 'updates the requested bridge_content_inspection' do
         bridge_content_inspection = BridgeContentInspection.create! valid_attributes
-        patch bridge_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection),
+        patch bridge_bridge_content_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection),
               params: { bridge_content_inspection: new_attributes, inspection: inspection_valid_attribute }
         bridge_content_inspection.reload
         expect(bridge_content_inspection.seek).to eq '20'
@@ -127,19 +127,19 @@ RSpec.describe '/bridge_content_inspections', type: :request do
 
       it 'redirects to the bridge_content_inspection' do
         bridge_content_inspection = BridgeContentInspection.create! valid_attributes
-        patch bridge_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection),
+        patch bridge_bridge_content_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection),
               params: { bridge_content_inspection: new_attributes, inspection: inspection_valid_attribute }
         bridge_content_inspection.reload
-        expect(response).to redirect_to(bridge_bridge_content_inspection_url(@bridge,
-                                                                             @bridge_content,
-                                                                             bridge_content_inspection))
+        expect(response).to redirect_to(bridge_bridge_content_bridge_content_inspection_url(@bridge,
+                                                                                            @bridge_content,
+                                                                                            bridge_content_inspection))
       end
     end
 
     context 'with invalid parameters' do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         bridge_content_inspection = BridgeContentInspection.create! valid_attributes
-        patch bridge_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection),
+        patch bridge_bridge_content_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection),
               params: { bridge_content_inspection: valid_attributes, inspection: inspection_invalid_attribute }
         expect(response).to be_successful
       end
@@ -150,14 +150,14 @@ RSpec.describe '/bridge_content_inspections', type: :request do
     it 'destroys the requested bridge_content_inspection' do
       bridge_content_inspection = BridgeContentInspection.create! valid_attributes
       expect do
-        delete bridge_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection)
+        delete bridge_bridge_content_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection)
       end.to change(BridgeContentInspection, :count).by(-1)
     end
 
     it 'redirects to the bridge_content_inspections list' do
       bridge_content_inspection = BridgeContentInspection.create! valid_attributes
-      delete bridge_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection)
-      expect(response).to redirect_to(bridge_bridge_content_inspections_url(@bridge, @bridge_content))
+      delete bridge_bridge_content_bridge_content_inspection_url(@bridge, @bridge_content, bridge_content_inspection)
+      expect(response).to redirect_to(bridge_bridge_content_bridge_content_inspections_url(@bridge, @bridge_content))
     end
   end
 end

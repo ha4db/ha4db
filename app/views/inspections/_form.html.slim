@@ -1,5 +1,5 @@
 = form_for [@bridge, @inspection], local: true do |f|
-  = render partial: 'form_inspection', locals: { f: f }
+  = render partial: 'form_inspection', locals: { f: f, target_geom: 'inspection_geom' }
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell
