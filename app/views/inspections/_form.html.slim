@@ -1,31 +1,5 @@
-= form_for [@bridge, @inspection], local: true, multipart: true do |f|
-  - if @inspection.errors.any?
-    .mdc-layout-grid
-      .mdc-layout-grid__inner
-        .mdc-layout-grid__cell--span-12
-          = render partial: 'commons/error_messages', locals: { obj: @inspection }
-  .mdc-layout-grid
-    .mdc-layout-grid__inner
-      .mdc-layout-grid__cell--span-12
-        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'inspection_title', model: Inspection, field_name: :title }
-  .mdc-layout-grid
-    .mdc-layout-grid__inner
-      .mdc-layout-grid__cell--span-12
-        = render partial: 'commons/mdc_outlined_date_field', locals: { f: f, id: 'inspection_date', model: Inspection, field_name: :date }
-  .mdc-layout-grid
-    .mdc-layout-grid__inner
-      .mdc-layout-grid__cell--span-12
-        = render partial: 'commons/mdc_outlined_text_area', locals: { f: f, id: 'inspection_description', model: Inspection, field_name: :description }
-  .mdc-layout-grid
-    .mdc-layout-grid__inner
-      .mdc-layout-grid__cell--span-12
-        #edit_feature_map.map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude data-feature=@inspection.geom.to_s data-target="inspection_geom"]
-        = f.hidden_field :geom
-        select#type
-          option[value="Point"] Point
-          option[value="LineString"] LineString
-          option[value="Polygon"] Polygon
-        = javascript_pack_tag 'map/edit_feature'
+= form_for [@bridge, @inspection], local: true do |f|
+  = render partial: 'form_inspection', locals: { f: f, target_geom: 'inspection_geom' }
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell

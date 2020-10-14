@@ -31,7 +31,7 @@
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-12
-      #preview_map.preview_map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude]
+      #preview_map.preview_map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude data-feature=@bridge.location.to_s]
       = javascript_pack_tag 'map/preview'
 
 .mdc-layout-grid
