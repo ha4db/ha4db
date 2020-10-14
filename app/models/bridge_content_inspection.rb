@@ -8,7 +8,7 @@ class BridgeContentInspection < ApplicationRecord
   validates :inspection, presence: true
   store_accessor :data, :seek
   store_accessor :data, :position
-  validates :seek, numericality: { only_integer: false }, allow_nil: true
+  validates :seek, numericality: { only_integer: false }, allow_blank: true
 
   def create_inspection(bridge_content_inspection_params, inspection_params)
     new_inspection = Inspection.new(inspection_params.merge({ bridge: bridge_content.bridge }))
