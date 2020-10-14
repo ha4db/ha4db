@@ -11,6 +11,11 @@ body {
   padding-top: 0.1px; // Prevent header h1 margin from pushing body down
 }
 
-#video {
-  width: 100%;
+#data_view {
+  video {
+    max-width: 100%;
+  }
+  img {
+    max-width: 100%;
+  }
 }
