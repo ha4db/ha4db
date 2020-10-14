@@ -21,7 +21,13 @@ Lint/DuplicateRequire: # (new in 0.90)
 Lint/EmptyFile: # (new in 0.90)
   Enabled: true
 
+Lint/HashCompareByIdentity: # (new in 0.93)
+  Enabled: true
+
 Lint/IdentityComparison: # (new in 0.91)
+  Enabled: true
+
+Lint/RedundantSafeNavigation: # (new in 0.93)
   Enabled: true
 
 Lint/TrailingCommaInAttributeDeclaration: # (new in 0.90)
@@ -31,6 +37,9 @@ Lint/UselessMethodDefinition: # (new in 0.90)
   Enabled: true
 
 Lint/UselessTimes: # (new in 0.91)
+  Enabled: true
+
+Style/ClassEqualityComparison: # (new in 0.93)
   Enabled: true
 
 Style/CombinableLoops: # (new in 0.90)
