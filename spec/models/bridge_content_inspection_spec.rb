@@ -5,7 +5,8 @@ require 'rails_helper'
 # rubocop:disable Metrics/BlockLength
 RSpec.describe BridgeContentInspection, type: :model do
   before do
-    @bridge_content_inspection = FactoryBot.build(:bridge_content_inspection)
+    @bridge_content = FactoryBot.create(:bridge_content)
+    @bridge_content_inspection = FactoryBot.create(:bridge_content_inspection, bridge_content: @bridge_content)
   end
 
   subject { @bridge_content_inspection }
@@ -19,13 +20,14 @@ RSpec.describe BridgeContentInspection, type: :model do
 
   describe 'create_inspection method' do
     before do
-      @bridge_content_inspection.inspection = nil
+      @bridge_content_inspection = FactoryBot.build(:bridge_content_inspection,
+                                                    bridge_content: @bridge_content,
+                                                    inspection: nil)
     end
 
     describe 'with valid values' do
       it 'enable to create inspection' do
-        inspection = FactoryBot.build(:inspection)
-        inspection.bridge = nil
+        inspection = FactoryBot.build(:inspection, bridge: nil)
         inspection_params = inspection.attributes
         bridge_content_inspection_params = { seek: 15 }
         result = @bridge_content_inspection.create_inspection(bridge_content_inspection_params, inspection_params)
@@ -41,7 +43,7 @@ RSpec.describe BridgeContentInspection, type: :model do
         bridge_content_inspection_params = { seek: 15 }
         expect do
           @bridge_content_inspection.create_inspection(bridge_content_inspection_params, inspection_params)
-        end.to change(Inspection, :count).by(2) # it may FactoryBot bug
+        end.to change(Inspection, :count).by(1)
       end
 
       it 'count up bridge_content_inspection' do
@@ -57,13 +59,11 @@ RSpec.describe BridgeContentInspection, type: :model do
     describe 'with invalid inspect values' do
       it 'to be fail' do
         inspection = FactoryBot.build(:inspection)
-        inspection.title = nil
         inspection_params = inspection.attributes
-        bridge_content_inspection_params = { seek: 15 }
+        bridge_content_inspection_params = { seek: 'abc' }
         new_inspection = @bridge_content_inspection.create_inspection(bridge_content_inspection_params,
                                                                       inspection_params)
-        expect(@bridge_content_inspection.inspection).to eq nil
-        expect(@bridge_content_inspection.seek).to eq 10
+        expect(@bridge_content_inspection.inspection).not_to eq nil
         expect(new_inspection).not_to eq nil
       end
 

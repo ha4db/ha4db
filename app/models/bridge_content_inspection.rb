@@ -20,8 +20,6 @@ class BridgeContentInspection < ApplicationRecord
       end
     rescue ActiveRecord::RecordInvalid
       # do nothing
-    rescue ActiveRecord::Rollback
-      # do nothing
     end
     new_inspection
   end
