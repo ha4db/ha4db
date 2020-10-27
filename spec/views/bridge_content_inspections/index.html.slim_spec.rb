@@ -10,6 +10,7 @@ RSpec.describe 'bridge_content_inspections/index', type: :view do
              FactoryBot.create(:bridge_content_inspection, bridge_content: bridge_content),
              FactoryBot.create(:bridge_content_inspection, bridge_content: bridge_content)
            ])
+    assign(:unassigned_inspection, [])
   end
 
   it 'renders a list of bridge_content_inspections' do

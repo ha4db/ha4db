@@ -11,6 +11,8 @@ class BridgeContentInspectionsController < UserBaseController
   def index
     @bridge_content_inspections = BridgeContentInspection.where(bridge_content: @bridge_content)
                                                          .includes(:bridge_content, :inspection)
+    @unassigned_inspection = Inspection.where(bridge: @bridge)
+                                       .where.not(id: @bridge_content_inspections.map(&:inspection).map(&:id))
   end
 
   # GET /bridges/1/bridge_contents/1/bridge_content_inspections/1

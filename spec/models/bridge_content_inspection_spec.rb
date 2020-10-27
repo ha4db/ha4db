@@ -118,5 +118,18 @@ RSpec.describe BridgeContentInspection, type: :model do
       end
     end
   end
+
+  describe 'duplicate' do
+    before do
+      @bridge_content_inspection.save
+    end
+
+    it 'cannot save same object' do
+      new_bridge_content_inspection = FactoryBot.build(:bridge_content_inspection)
+      new_bridge_content_inspection.bridge_content = @bridge_content_inspection.bridge_content
+      new_bridge_content_inspection.inspection = @bridge_content_inspection.inspection
+      expect(new_bridge_content_inspection.save).to eq false
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength

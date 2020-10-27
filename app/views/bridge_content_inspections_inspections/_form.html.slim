@@ -1,0 +1,22 @@
+= render partial: 'bridge_contents/bridge_content'
+
+= form_with model: @bridge_content_inspection, url: url_for(controller: :bridge_content_inspections_inspections, action: :create, bridge_id: @bridge.id, bridge_content_id: @bridge_content.id, inspection_id: @inspection.id), local: true do |f|
+  - if @bridge_content_inspection.errors.any?
+    .mdc-layout-grid
+      .mdc-layout-grid__inner
+        .mdc-layout-grid__cell--span-12
+          = render partial: 'commons/error_messages', locals: { obj: @bridge_content_inspection }
+  = f.hidden_field :seek
+  = javascript_pack_tag 'apps/seek'
+  = f.hidden_field :position
+  = render partial: 'inspections/inspection'
+
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell
+        - icon = 'add'
+        - label = 'Add'
+        = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: icon, label: label }
+
+= javascript_pack_tag 'commons/form'
+= javascript_pack_tag 'commons/button'

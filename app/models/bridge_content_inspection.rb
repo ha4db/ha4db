@@ -5,7 +5,7 @@ class BridgeContentInspection < ApplicationRecord
   belongs_to :bridge_content
   belongs_to :inspection
   validates :bridge_content, presence: true
-  validates :inspection, presence: true
+  validates :inspection, presence: true, uniqueness: { scope: :bridge_content }
   store_accessor :data, :seek
   store_accessor :data, :position
   validates :seek, numericality: { only_integer: false }, allow_blank: true
