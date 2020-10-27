@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :bridges do
     resources :bridge_contents do
       resources :bridge_content_inspections
+      get 'inspections/:inspection_id/new', action: :new, controller: :bridge_content_inspections_inspections
+      post 'inspections/:inspection_id/create', action: :create, controller: :bridge_content_inspections_inspections
     end
     resources :inspections
   end
