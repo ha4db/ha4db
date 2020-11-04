@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_12_023959) do
+ActiveRecord::Schema.define(version: 2020_11_04_070155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,15 @@ ActiveRecord::Schema.define(version: 2020_10_12_023959) do
     t.index ["bridge_id"], name: "index_inspections_on_bridge_id"
     t.index ["geom"], name: "index_inspections_on_geom", using: :gist
     t.index ["geom3d"], name: "index_inspections_on_geom3d", using: :gist
+  end
+
+  create_table "soundnesses", force: :cascade do |t|
+    t.bigint "bridge_id"
+    t.datetime "evaluation_at"
+    t.string "evaluation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bridge_id"], name: "index_soundnesses_on_bridge_id"
   end
 
   create_table "users", force: :cascade do |t|
