@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       post 'inspections/:inspection_id/create', action: :create, controller: :bridge_content_inspections_inspections
     end
     resources :inspections
+    resources :soundnesses
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'top#index'
