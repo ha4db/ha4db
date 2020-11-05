@@ -8,6 +8,8 @@ ja:
       active_storage/blob: アクティブストレージ/ブロブ
       bridge_content: 橋のコンテンツ
       inspection: 点検
+      bridge_content_inspection: 橋のコンテンツと点検の中間モデル
+      soundness: 健全性
 
     attributes:
       admin_user:
@@ -23,6 +25,7 @@ ja:
         other_data: その他のデータ
         road_name: 道路名
         inspections: 点検
+        soundnesses: 健全性
 
       user:
         login_name: ログイン名
@@ -51,6 +54,8 @@ ja:
         data_blob: :activerecord.models.data_blob
         title: 名前
         bridge: :activerecord.models.bridge
+        bridge_content_inspections: :activerecord.models.bridge_content_inspection
+        inspections: :activerecord.models.inspection
 
       inspection:
         category: 種類
@@ -59,6 +64,18 @@ ja:
         geom: ジオメトリ
         report_data: 点検内容
         title: 名前
+        bridge: :activerecord.models.bridge
+        bridge_content_inspections: :activerecord.models.bridge_content_inspection
+        bridge_contents: :activerecord.models.bridge_content
+        geom3d: 3Dジオメトリ
+
+      bridge_content_inspection:
+        data: データ
+        inspection: :activerecord.models.inspection
+
+      soundness:
+        evaluation: 評価
+        evaluation_at: 評価日
 
   errors:
     attributes:
@@ -79,3 +96,5 @@ ja:
         substructure: 下部構造
         support_structure: 支承部
         other: その他
+
+  bridge_content: :activerecord.models.bridge_content
