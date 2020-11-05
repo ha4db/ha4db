@@ -14,6 +14,15 @@
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-12
+      ul.mdc-list
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = f.label :category
+            span.mdc-list-item__secondary-text = f.select :category, Inspection.categories.keys.map {|k| [I18n.t("enums.inspection.category.#{k}"), k]}
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-12
       = render partial: 'commons/mdc_outlined_text_area', locals: { f: f, id: 'inspection_description', model: Inspection, field_name: :description }
 .mdc-layout-grid
   .mdc-layout-grid__inner

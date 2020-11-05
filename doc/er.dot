@@ -23,7 +23,7 @@ digraph models {
 
   maintenance_contents [label="maintenances(補修コンテンツ)|{{id|maintenance_id|data(画像/動画)|created_at|updated_at}|{Int|Int|ActiveStorage|Datetime|Datetime}}"]
 
-  soundnesses [label="soundnesses(健全度)|{{id|bridge_id|evalution_at(評価日)|evalution(評価)|created_at|updated_at}|{Int|Int|Datetime|String|Datetime|Datetime}}"]
+  soundnesses [label="soundnesses(健全度)|{{id|bridge_id|evaluation_at(評価日)|evaluation(評価)|created_at|updated_at}|{Int|Int|Datetime|String|Datetime|Datetime}}"]
 
   // enum
   enum_position [label="Enum.ExcelPosition(Excelの開始/終了位置)|{{Top|Bottom|Left|Right}}"];

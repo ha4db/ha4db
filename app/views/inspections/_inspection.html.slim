@@ -20,6 +20,11 @@
         li.mdc-list-item
           span.mdc-list-item__ripple
           span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Inspection.human_attribute_name(:category)
+            span.mdc-list-item__secondary-text = I18n.t("enums.inspection.category.#{@inspection.category}")
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
             span.mdc-list-item__primary-text = Inspection.human_attribute_name(:description)
     .mdc-layout-grid__cell--span-12
       = simple_format(h(@inspection.description))

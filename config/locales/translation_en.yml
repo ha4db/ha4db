@@ -8,6 +8,8 @@ en:
       active_storage/blob: Active storage/blob
       bridge_content: Bridge content
       inspection: Inspection
+      bridge_content_inspection: Junction model between Bridge content and Inspection
+      soundness: Soundness
 
     attributes:
       admin_user:
@@ -23,6 +25,7 @@ en:
         other_data: Other data
         road_name: Road name
         inspections: Inspections
+        soundnesses: Soundnesses
 
       user:
         login_name: Login name
@@ -51,6 +54,8 @@ en:
         data_blob: :activerecord.models.data_blob
         title: Title
         bridge: :activerecord.models.bridge
+        bridge_content_inspections: :activerecord.models.bridge_content_inspection
+        inspections: :activerecord.models.inspection
 
       inspection:
         category: Category
@@ -59,6 +64,21 @@ en:
         geom: Geometry
         report_data: Report data
         title: Title
+        bridge: :activerecord.models.bridge
+        bridge_content_inspections: :activerecord.models.bridge_content_inspection
+        bridge_contents: :activerecord.models.bridge_content
+        geom3d: 3D Geometry
+
+      bridge_content_inspection:
+        data: Data
+        inspection: :activerecord.models.inspection
+        bridge_content: :activerecord.models.bridge_content
+
+      soundness:
+        evaluation: Evaluation
+        evaluation_at: Evaluation Date
+        bridge: :activerecord.models.bridge
+        overall_evaluation: Overall evaluation
 
   errors:
     attributes:
@@ -79,3 +99,12 @@ en:
         substructure: Substructure
         support_structure: Support structure
         other: Other
+    soundness:
+      overall_evaluation:
+        unselected: Unselected
+        one: 1
+        two: 2
+        three: 3
+        four: 4
+
+  bridge_content: :activerecord.models.bridge_content
