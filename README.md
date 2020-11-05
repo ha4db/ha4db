@@ -49,7 +49,7 @@ Indeed running only `rails s` is ok, but `webpack-dev-server` runs background an
 
 ### Create Administrator User
 
-You may need to add AdminUser.
+You may need to add `AdminUser`.
 
 First, run `rails console `:
 
@@ -121,7 +121,3 @@ rails g i18n_translation ja
 ```
 
 You need to check `config/locales/translation_*.yml` manually.
-
-## Deployment instructions
-
-...
