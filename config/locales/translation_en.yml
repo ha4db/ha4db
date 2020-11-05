@@ -72,10 +72,13 @@ en:
       bridge_content_inspection:
         data: Data
         inspection: :activerecord.models.inspection
+        bridge_content: :activerecord.models.bridge_content
 
       soundness:
         evaluation: Evaluation
         evaluation_at: Evaluation Date
+        bridge: :activerecord.models.bridge
+        overall_evaluation: Overall evaluation
 
   errors:
     attributes:
@@ -96,5 +99,12 @@ en:
         substructure: Substructure
         support_structure: Support structure
         other: Other
+    soundness:
+      overall_evaluation:
+        unselected: Unselected
+        one: 1
+        two: 2
+        three: 3
+        four: 4
 
   bridge_content: :activerecord.models.bridge_content

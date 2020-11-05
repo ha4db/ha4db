@@ -13,6 +13,7 @@ RSpec.describe Soundness, type: :model do
   it { should respond_to(:bridge) }
   it { should respond_to(:evaluation) }
   it { should respond_to(:evaluation_at) }
+  it { should respond_to(:overall_evaluation) }
   it { should be_valid }
 
   describe 'when evaluation is not present' do
@@ -23,6 +24,14 @@ RSpec.describe Soundness, type: :model do
   describe 'when evaluation_at is not present' do
     before { @soundness.evaluation_at = nil }
     it { should_not be_valid }
+  end
+
+  describe 'overall_evaluation' do
+    describe 'enable to change by integer' do
+      before { @soundness.overall_evaluation = 2 }
+      subject { @soundness.two? }
+      it { should eq(true) }
+    end
   end
 
   describe 'count' do

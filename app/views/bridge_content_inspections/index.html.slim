@@ -16,6 +16,8 @@
               tr.mdc-data-table__header-row
                 th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Inspection.human_attribute_name(:title)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Inspection.human_attribute_name(:date)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Inspection.human_attribute_name(:category)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
@@ -26,6 +28,8 @@
                 tr.mdc-data-table__row
                   td.mdc-data-table__cell.mdc-data-table__cell--numeric = inspection.id
                   td.mdc-data-table__cell = inspection.title
+                  td.mdc-data-table__cell = inspection.date.strftime(I18n.t('date.formats.default'))
+                  td.mdc-data-table__cell = I18n.t("enums.inspection.category.#{inspection.category}")
                   td.mdc-data-table__cell
                     = link_to 'visibility', bridge_bridge_content_bridge_content_inspection_path(@bridge, @bridge_content, bridge_content_inspection), class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell

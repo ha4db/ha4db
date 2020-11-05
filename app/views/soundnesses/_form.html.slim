@@ -7,6 +7,15 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
+        ul.mdc-list
+          li.mdc-list-item
+            span.mdc-list-item__ripple
+            span.mdc-list-item__text
+              span.mdc-list-item__primary-text = f.label :overall_evaluation
+              span.mdc-list-item__secondary-text = f.select :overall_evaluation, Soundness.overall_evaluations.keys.map {|k| [I18n.t("enums.soundness.overall_evaluation.#{k}"), k]}
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
         = render partial: 'commons/mdc_outlined_date_field', locals: { f: f, id: 'soundness_evaluation_at', model: Soundness, field_name: :evaluation_at }
   .mdc-layout-grid
     .mdc-layout-grid__inner

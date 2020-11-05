@@ -13,6 +13,7 @@
             thead
               tr.mdc-data-table__header-row
                 th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Soundness.human_attribute_name(:overall_evaluation)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Soundness.human_attribute_name(:evaluation_at)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Soundness.human_attribute_name(:evaluation)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
@@ -23,6 +24,7 @@
               - @soundnesses.each do |soundness|
                 tr.mdc-data-table__row
                   td.mdc-data-table__cell.mdc-data-table__cell--numeric = soundness.id
+                  td.mdc-data-table__cell = I18n.t("enums.soundness.overall_evaluation.#{soundness.overall_evaluation}")
                   td.mdc-data-table__cell = soundness.evaluation_at.strftime(I18n.t('date.formats.default'))
                   td.mdc-data-table__cell = soundness.evaluation
                   td.mdc-data-table__cell

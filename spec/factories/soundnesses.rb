@@ -6,5 +6,6 @@ FactoryBot.define do
     bridge
     sequence(:evaluation) { |i| "Soundness evaluation #{i}" }
     evaluation_at { Faker::Date.backward(days: 14) }
+    overall_evaluation { Soundness.overall_evaluations[:one] }
   end
 end

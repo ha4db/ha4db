@@ -7,7 +7,7 @@ class CreateSoundnesses < ActiveRecord::Migration[6.0]
       t.references :bridge
       t.datetime :evaluation_at
       t.string :evaluation
-
+      t.integer :overall_evaluation, default: 0
       t.timestamps
     end
   end

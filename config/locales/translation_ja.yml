@@ -72,10 +72,13 @@ ja:
       bridge_content_inspection:
         data: データ
         inspection: :activerecord.models.inspection
+        bridge_content: :activerecord.models.bridge_content
 
       soundness:
         evaluation: 評価
         evaluation_at: 評価日
+        bridge: :activerecord.models.bridge
+        overall_evaluation: 総合評価
 
   errors:
     attributes:
@@ -96,5 +99,12 @@ ja:
         substructure: 下部構造
         support_structure: 支承部
         other: その他
+    soundness:
+      overall_evaluation:
+        unselected: 未選択
+        one: 1
+        two: 2
+        three: 3
+        four: 4
 
   bridge_content: :activerecord.models.bridge_content

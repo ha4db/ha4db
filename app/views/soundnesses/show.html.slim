@@ -16,6 +16,11 @@
         li.mdc-list-item
           span.mdc-list-item__ripple
           span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Soundness.human_attribute_name(:overall_evaluation)
+            span.mdc-list-item__secondary-text = I18n.t("enums.soundness.overall_evaluation.#{@soundness.overall_evaluation}")
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
             span.mdc-list-item__primary-text = Soundness.human_attribute_name(:evaluation_at)
             span.mdc-list-item__secondary-text = @soundness.evaluation_at.strftime(I18n.t('date.formats.default'))
         li.mdc-list-item

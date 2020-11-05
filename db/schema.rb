@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_070155) do
     t.bigint "bridge_id"
     t.datetime "evaluation_at"
     t.string "evaluation"
+    t.integer "overall_evaluation", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bridge_id"], name: "index_soundnesses_on_bridge_id"
