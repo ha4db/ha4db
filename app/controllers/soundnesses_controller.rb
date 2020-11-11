@@ -77,6 +77,6 @@ class SoundnessesController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def soundness_params
-    params.fetch(:soundness, {}).permit(:evaluation_at, :evaluation)
+    params.fetch(:soundness, {}).permit(:evaluation_at, :evaluation, :overall_evaluation)
   end
 end

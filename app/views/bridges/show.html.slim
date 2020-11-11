@@ -50,6 +50,13 @@
         span.material-icons.mdc-fab__icon fact_check
         span.mdc-fab__label Listing inspections
 
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-12
+      = link_to bridge_soundnesses_path(@bridge), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon verified
+        span.mdc-fab__label Listing soundnesses
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
