@@ -38,10 +38,10 @@ module.exports = function(api) {
         }
       ],
       [
-        '@babel/preset-react',
+        '@babel/preset-typescript',
         {
-          development: isDevelopmentEnv || isTestEnv,
-          useBuiltIns: true
+          'allExtensions': true,
+          'isTSX': true
         }
       ]
     ].filter(Boolean),
