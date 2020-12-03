@@ -1,5 +1,5 @@
 section.header
-  h1.mdc-typography--headline5 login
+  = image_tag("ha4db_logo.png")
 = form_with(model: @user, url: {action:'login'}, local: true) do |f|
   .mdc-text-field.mdc-text-field--filled.username
     span.mdc-text-field__ripple
@@ -14,5 +14,5 @@ section.header
     button.mdc-button.mdc-button--raised.do-login type="submit"
       .mdc-button__ripple
       i.material-icons.mdc-button__icon login
-      span.mdc-button__label login
+      span.mdc-button__label = I18n.t('view.common.login')
 = javascript_pack_tag 'commons/sessions'
