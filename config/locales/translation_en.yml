@@ -108,3 +108,31 @@ en:
         four: 4
 
   bridge_content: :activerecord.models.bridge_content
+
+  view:
+    common:
+      title:
+        listing: "Listing %{model_name}"
+        editing: "Editing %{model_name}"
+      login: "Login"
+      logout: "Logout"
+    title:
+      admin_login: "Admin login"
+      admin: "Ha4db Admin page"
+    menu:
+      admin:
+        home: "Home"
+        users: "Users"
+    action:
+      new: "New %{model_name}"
+      back: "Back"
+      show: "Show"
+      add: "Add"
+      edit: "Edit"
+      sending: "Sending..."
+      delete: "Are you sure?"
+
+  controller:
+    common:
+      success_on_create: "%{model_name} was successfully created."
+      success_on_update: "%{model_name} was successfully updated."

@@ -15,7 +15,7 @@ html
       header.mdc-top-app-bar
         .mdc-top-app-bar__row
           section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-start
-            span.mdc-top-app-bar__title Ha4db Admin
+            span.mdc-top-app-bar__title = I18n.t('view.title.admin')
           section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-end[role="toolbar"]
             .mdc-menu-surface--anchor
               a.material-icons.mdc-top-app-bar__action-item.profile-toggle-button[href="#" aria-label="Profile"] account_circle
@@ -25,12 +25,12 @@ html
                     = link_to admin_sessions_logout_path, class: 'mdc-list-item' do
                       span.mdc-list-item__ripple
                       i.material-icons.mdc-list-item__graphic[aria-hidden="true"] clear
-                      span.mdc-list-item__text Logout
+                      span.mdc-list-item__text = I18n.t('view.common.logout')
       aside.mdc-drawer.mdc-drawer--dismissible.mdc-top-app-bar--fixed-adjust
         .mdc-drawer__content
           nav.mdc-list
-            = render partial: 'commons/drawer_menu_item', locals: { controller: 'top', action: 'index', icon: 'home', text: 'Home'}
-            = render partial: 'commons/drawer_menu_item', locals: { controller: 'users', action: 'index', icon: 'groups', text: 'Users'}
+            = render partial: 'commons/drawer_menu_item', locals: { controller: 'top', action: 'index', icon: 'home', text: I18n.t('view.menu.admin.home')}
+            = render partial: 'commons/drawer_menu_item', locals: { controller: 'users', action: 'index', icon: 'groups', text: I18n.t('view.menu.admin.users')}
       
       .mdc-drawer-app-content.mdc-top-app-bar--fixed-adjust
         main.main-content#main-content
