@@ -24,8 +24,7 @@ module.exports = function(api) {
             node: 'current'
           },
           modules: 'commonjs'
-        },
-        '@babel/preset-react'
+        }
       ],
       (isProductionEnv || isDevelopmentEnv) && [
         '@babel/preset-env',
@@ -74,12 +73,6 @@ module.exports = function(api) {
         '@babel/plugin-transform-regenerator',
         {
           async: false
-        }
-      ],
-      isProductionEnv && [
-        'babel-plugin-transform-react-remove-prop-types',
-        {
-          removeImport: true
         }
       ]
     ].filter(Boolean)
