@@ -31,8 +31,7 @@ class BridgeContentInspectionsController < UserBaseController
   # POST /bridges/1/bridge_contents/1/bridge_content_inspections
   # POST /bridges/1/bridge_contents/1/bridge_content_inspections.json
   def create
-    @bridge_content_inspection = BridgeContentInspection.new(bridge_content: @bridge_content)
-    @inspection = @bridge_content_inspection.create_inspection(bridge_content_inspection_params, inspection_params)
+    set_new_bridge_content_inspection
 
     respond_to do |format|
       if @inspection.errors.empty? && @bridge_content_inspection.errors.empty?
@@ -40,7 +39,8 @@ class BridgeContentInspectionsController < UserBaseController
           redirect_to bridge_bridge_content_bridge_content_inspection_url(@bridge,
                                                                           @bridge_content,
                                                                           @bridge_content_inspection),
-                      notice: 'Bridge content inspection was successfully created.'
+                      notice: I18n.t('controller.common.success_on_create',
+                                     model_name: BridgeContentInspection.model_name.human)
         end
         format.json { render :show, status: :created, location: @bridge_content_inspection }
       else
@@ -60,7 +60,8 @@ class BridgeContentInspectionsController < UserBaseController
           redirect_to bridge_bridge_content_bridge_content_inspection_url(@bridge,
                                                                           @bridge_content,
                                                                           @bridge_content_inspection),
-                      notice: 'Bridge content inspection was successfully updated.'
+                      notice: I18n.t('controller.common.success_on_update',
+                                     model_name: BridgeContentInspection.model_name.human)
         end
         format.json { render :show, status: :ok, location: @bridge_content_inspection }
       else
@@ -77,7 +78,8 @@ class BridgeContentInspectionsController < UserBaseController
     respond_to do |format|
       format.html do
         redirect_to bridge_bridge_content_bridge_content_inspections_url(@bridge, @bridge_content),
-                    notice: 'Bridge content inspection was successfully destroyed.'
+                    notice: I18n.t('controller.common.success_on_destroy',
+                                   model_name: BridgeContentInspection.model_name.human)
       end
       format.json { head :no_content }
     end
@@ -98,6 +100,11 @@ class BridgeContentInspectionsController < UserBaseController
 
   def set_bridge
     @bridge = Bridge.find(params[:bridge_id])
+  end
+
+  def set_new_bridge_content_inspection
+    @bridge_content_inspection = BridgeContentInspection.new(bridge_content: @bridge_content)
+    @inspection = @bridge_content_inspection.create_inspection(bridge_content_inspection_params, inspection_params)
   end
 
   # Only allow a list of trusted parameters through.

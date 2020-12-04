@@ -2,13 +2,13 @@
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
       section.header
-        h1 Dashboard
+        h1 = I18n.t("view.title.dashboard")
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-12
       .mdc-data-table
         .mdc-data-table__table-container
-          table.mdc-data-table__table[aria-label="Dashboard"]
+          table.mdc-data-table__table[aria-label=I18n.t("view.title.dashboard")]
             thead
               tr.mdc-data-table__header-row
                 th.mdc-data-table__header-cell

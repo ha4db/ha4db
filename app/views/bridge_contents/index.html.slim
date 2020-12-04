@@ -2,14 +2,14 @@
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
       section.header
-        h1 Listing bridge_contents
+        h1 = I18n.t("view.common.title.listing_with_title", title: @bridge.title, model_name: BridgeContent.model_name.human)
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
       .mdc-data-table
         .mdc-data-table__table-container
-          table.mdc-data-table__table[aria-label="Listing bridge_contents"]
+          table.mdc-data-table__table[aria-label=I18n.t("view.common.title.listing", model_name: BridgeContent.model_name.human)]
             thead
               tr.mdc-data-table__header-row
                 th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
@@ -38,7 +38,7 @@
       a.mdc-fab.mdc-fab--extended[href=new_bridge_bridge_content_path(@bridge)]
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon add
-        span.mdc-fab__label New Bridge Content
+        span.mdc-fab__label = I18n.t("view.action.new", model_name: BridgeContent.model_name.human)
 
 = javascript_pack_tag 'commons/data-table'
 = javascript_pack_tag 'commons/button'

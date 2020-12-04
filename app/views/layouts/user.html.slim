@@ -15,7 +15,8 @@ html
       header.mdc-top-app-bar
         .mdc-top-app-bar__row
           section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-start
-            span.mdc-top-app-bar__title Ha4db User
+            span.mdc-top-app-bar__title 
+              | Ha4db User
           section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-end[role="toolbar"]
             .mdc-menu-surface--anchor
               a.material-icons.mdc-top-app-bar__action-item.profile-toggle-button[href="#" aria-label="Profile"] account_circle
@@ -26,12 +27,12 @@ html
                     a.mdc-list-item[href=logout]
                       span.mdc-list-item__ripple
                       i.material-icons.mdc-list-item__graphic[aria-hidden="true"] clear
-                      span.mdc-list-item__text Logout
+                      span.mdc-list-item__text = I18n.t('view.common.logout')
       aside.mdc-drawer.mdc-drawer--dismissible.mdc-top-app-bar--fixed-adjust
         .mdc-drawer__content
           nav.mdc-list
-            = render partial: 'commons/drawer_menu_item', locals: { controller: 'top', action: 'index', icon: 'home', text: 'Dashboard'}
-            = render partial: 'commons/drawer_menu_item', locals: { controller: 'bridges', action: 'index', icon: 'place', text: 'Bridge'}
+            = render partial: 'commons/drawer_menu_item', locals: { controller: 'top', action: 'index', icon: 'home', text: I18n.t("view.title.dashboard")}
+            = render partial: 'commons/drawer_menu_item', locals: { controller: 'bridges', action: 'index', icon: 'place', text: Bridge.model_name.human}
       
       .mdc-drawer-app-content.mdc-top-app-bar--fixed-adjust
         main.main-content#main-content

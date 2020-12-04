@@ -2,7 +2,7 @@
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
       section.header
-        h1 new
+        h1 = I18n.t("view.title.import_from_excel")
 
 = form_with(url: preview_mlit_importer_url, local: true, multipart: true) do |f|
   .mdc-layout-grid
@@ -12,7 +12,7 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell
-        = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: 'preview', label: 'Preview' }
+        = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: 'preview', label: I18n.t("view.action.preview") }
 
 = javascript_pack_tag 'commons/form'
 = javascript_pack_tag 'commons/button'

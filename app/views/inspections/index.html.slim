@@ -2,7 +2,7 @@
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
       section.header
-        h1 Listing inspections
+        h1 = I18n.t("view.common.title.listing", model_name: Inspection.model_name.human)
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
@@ -32,14 +32,14 @@
                   td.mdc-data-table__cell
                     = link_to 'edit', edit_bridge_inspection_path(@bridge, inspection), class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell
-                    = link_to 'delete', [@bridge, inspection], data: { confirm: 'Are you sure?' }, method: :delete, class: 'mdc-icon-button material-icons'
+                    = link_to 'delete', [@bridge, inspection], data: { confirm: I18n.t("view.action.delete") }, method: :delete, class: 'mdc-icon-button material-icons'
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
       a.mdc-fab.mdc-fab--extended[href=new_bridge_inspection_path(@bridge)]
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon add
-        span.mdc-fab__label New Inspection
+        span.mdc-fab__label = I18n.t("view.action.new", model_name: Inspection.model_name.human)
 
 = javascript_pack_tag 'commons/data-table'
 = javascript_pack_tag 'commons/button'

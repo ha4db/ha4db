@@ -2,7 +2,7 @@
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
       section.header
-        h1 New soundness
+        h1 = I18n.t("view.common.title.new_with_title", title: @bridge.title, model_name: Soundness.model_name.human)
 
 == render 'form'
 
@@ -12,5 +12,5 @@
       = link_to bridge_soundnesses_path(@bridge), class: 'mdc-fab mdc-fab--extended' do
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon arrow_back
-        span.mdc-fab__label Back
+        span.mdc-fab__label = I18n.t("view.action.back")
 = javascript_pack_tag 'commons/button'
