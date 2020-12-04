@@ -2,7 +2,7 @@
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
       section.header
-        h1 preview
+        h1 = I18n.t("view.title.preview")
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
@@ -11,17 +11,17 @@
         li.mdc-list-item
           span.mdc-list-item__ripple
           span.mdc-list-item__text
-            span.mdc-list-item__primary-text title
+            span.mdc-list-item__primary-text = Bridge.human_attribute_name(:title)
             span.mdc-list-item__secondary-text = @bridge.title
         li.mdc-list-item
           span.mdc-list-item__ripple
           span.mdc-list-item__text
-            span.mdc-list-item__primary-text address
+            span.mdc-list-item__primary-text = Bridge.human_attribute_name(:address)
             span.mdc-list-item__secondary-text = @bridge.address
         li.mdc-list-item
           span.mdc-list-item__ripple
           span.mdc-list-item__text
-            span.mdc-list_item__primary-text road name
+            span.mdc-list_item__primary-text = Bridge.human_attribute_name(:road_name)
             span.mdc-list-item__secondary-text = @bridge.road_name
 .mdc-layout-grid
   .mdc-layout-grid__inner
@@ -37,7 +37,7 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell
-        = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: 'add', label: 'Add' }
+        = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: 'add', label: I18n.t("view.action.add") }
 
 = javascript_pack_tag 'commons/form'
 = javascript_pack_tag 'commons/button'

@@ -2,7 +2,7 @@
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
       section.header
-        h1 Editing bridge
+        h1 = I18n.t('view.common.title.editing', model_name: Bridge.model_name.human)
 
 == render 'form'
 
@@ -12,10 +12,10 @@
       = link_to @bridge, class: 'mdc-fab mdc-fab--extended' do
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon visibility
-        span.mdc-fab__label Show
+        span.mdc-fab__label = I18n.t("view.action.show")
     .mdc-layout-grid__cell--span-2
       = link_to bridges_path, class: 'mdc-fab mdc-fab--extended' do
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon arrow_back
-        span.mdc-fab__label Back
+        span.mdc-fab__label = I18n.t("view.action.back")
 = javascript_pack_tag 'commons/button'

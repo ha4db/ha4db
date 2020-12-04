@@ -31,6 +31,7 @@ class Dashboard
       bridges.each do |bridge|
         year, overall_evaluation, bridge = matrix_item(bridge)
         next if year.nil?
+
         matrix[year] = {} if matrix[year].nil?
         matrix[year][overall_evaluation] = [] if matrix[year][overall_evaluation].nil?
         matrix[year][overall_evaluation] << bridge

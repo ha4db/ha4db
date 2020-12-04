@@ -15,7 +15,10 @@ class MlitImportersController < UserBaseController
 
     respond_to do |format|
       if @bridge.save
-        format.html { redirect_to @bridge, notice: 'Bridge was successfully created.' }
+        format.html do
+          redirect_to @bridge,
+                      notice: I18n.t('controller.common.success_on_create', model_name: Bridge.model_name.human)
+        end
       else
         format.html { render :new }
       end

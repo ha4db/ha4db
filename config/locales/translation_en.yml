@@ -108,3 +108,41 @@ en:
         four: 4
 
   bridge_content: :activerecord.models.bridge_content
+
+  view:
+    common:
+      title:
+        listing: "Listing %{model_name}"
+        editing: "Editing %{model_name}"
+        listing_with_title: "%{title}: Listing %{model_name}"
+        new_with_title: "%{title}: New %{model_name}"
+        edit_with_title: "%{title}: Edit %{model_name}"
+      login: "Login"
+      logout: "Logout"
+    title:
+      admin_login: "Admin login"
+      admin: "Ha4db Admin page"
+      dashboard: "Dashboard"
+      import_from_excel: "Import from Excel"
+      preview: "Preview"
+      undefined_inspections: "Undefined inspections"
+    menu:
+      admin:
+        home: "Home"
+        users: "Users"
+    action:
+      new: "New %{model_name}"
+      back: "Back"
+      show: "Show"
+      add: "Add"
+      edit: "Edit"
+      sending: "Sending..."
+      delete: "Are you sure?"
+      import_from_excel: "Import from Excel"
+      preview: "Preview"
+
+  controller:
+    common:
+      success_on_create: "%{model_name} was successfully created."
+      success_on_update: "%{model_name} was successfully updated."
+      success_on_destroy: "%{model_name} was successfully destroyed."

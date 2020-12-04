@@ -31,7 +31,10 @@ class BridgeContentsController < UserBaseController
 
     respond_to do |format|
       if @bridge_content.save
-        format.html { redirect_to [@bridge, @bridge_content], notice: 'Bridge content was successfully created.' }
+        format.html do
+          redirect_to [@bridge, @bridge_content],
+                      notice: I18n.t('controller.common.success_on_create', model_name: BridgeContent.model_name.human)
+        end
         format.json { render :show, status: :created, location: @bridge_content }
       else
         format.html { render :new }
@@ -45,7 +48,10 @@ class BridgeContentsController < UserBaseController
   def update
     respond_to do |format|
       if @bridge_content.update(bridge_content_params)
-        format.html { redirect_to [@bridge, @bridge_content], notice: 'Bridge content was successfully updated.' }
+        format.html do
+          redirect_to [@bridge, @bridge_content],
+                      notice: I18n.t('controller.common.success_on_update', model_name: BridgeContent.model_name.human)
+        end
         format.json { render :show, status: :ok, location: @bridge_content }
       else
         format.html { render :edit }
@@ -61,7 +67,7 @@ class BridgeContentsController < UserBaseController
     respond_to do |format|
       format.html do
         redirect_to bridge_bridge_contents_url(@bridge),
-                    notice: 'Bridge content was successfully destroyed.'
+                    notice: I18n.t('controller.common.success_on_destroy', model_name: BridgeContent.model_name.human)
       end
       format.json { head :no_content }
     end

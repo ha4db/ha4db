@@ -2,18 +2,19 @@
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
       section.header
-        h1 Dashboard
+        h1 = I18n.t("view.title.dashboard")
+.mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-12
       .mdc-data-table
         .mdc-data-table__table-container
-          table.mdc-data-table__table[aria-label="Listing inspections"]
+          table.mdc-data-table__table[aria-label=I18n.t("view.title.dashboard")]
             thead
               tr.mdc-data-table__header-row
                 th.mdc-data-table__header-cell
                 - @overall_evaluations.each do |overall_evaluation|
                   th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] = I18n.t("enums.soundness.overall_evaluation.#{overall_evaluation}")
-            tbody
+            tbody.mdc-data-table__content
               - @matrix.keys.sort.reverse.each do |year|
                 - next if year.nil?
                 - value = @matrix[year]

@@ -17,11 +17,11 @@
       = link_to edit_bridge_bridge_content_bridge_content_inspection_path(@bridge, @bridge_content, @bridge_content_inspection), class: 'mdc-fab mdc-fab--extended' do
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon edit
-        span.mdc-fab__label Edit
+        span.mdc-fab__label = I18n.t("view.action.edit")
     .mdc-layout-grid__cell--span-2
       = link_to bridge_bridge_content_bridge_content_inspections_path(@bridge, @bridge_content), class: 'mdc-fab mdc-fab--extended' do
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon arrow_back
-        span.mdc-fab__label Back
+        span.mdc-fab__label = I18n.t("view.action.back")
 
 = javascript_pack_tag 'commons/button'

@@ -26,10 +26,10 @@
       .mdc-layout-grid__cell
         - if action_name == 'edit'
           - icon = 'edit'
-          - label = 'Edit'
+          - label = I18n.t("view.action.edit")
         - else
           - icon = 'add'
-          - label = 'Add'
+          - label = I18n.t("view.action.add")
         = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: icon, label: label }
 
 = javascript_pack_tag 'commons/form'

@@ -31,7 +31,10 @@ class SoundnessesController < UserBaseController
 
     respond_to do |format|
       if @soundness.save
-        format.html { redirect_to [@bridge, @soundness], notice: 'Soundness was successfully created.' }
+        format.html do
+          redirect_to [@bridge, @soundness],
+                      notice: I18n.t('controller.common.success_on_create', model_name: Soundness.model_name.human)
+        end
         format.json { render :show, status: :created, location: @soundness }
       else
         format.html { render :new }
@@ -45,7 +48,10 @@ class SoundnessesController < UserBaseController
   def update
     respond_to do |format|
       if @soundness.update(soundness_params)
-        format.html { redirect_to [@bridge, @soundness], notice: 'Soundness was successfully updated.' }
+        format.html do
+          redirect_to [@bridge, @soundness],
+                      notice: I18n.t('controller.common.success_on_update', model_name: Soundness.model_name.human)
+        end
         format.json { render :show, status: :ok, location: @soundness }
       else
         format.html { render :edit }
@@ -59,7 +65,10 @@ class SoundnessesController < UserBaseController
   def destroy
     @soundness.destroy
     respond_to do |format|
-      format.html { redirect_to bridge_soundnesses_url(@bridge), notice: 'Soundness was successfully destroyed.' }
+      format.html do
+        redirect_to bridge_soundnesses_url(@bridge),
+                    notice: I18n.t('controller.common.success_on_destroy', model_name: Soundness.model_name.human)
+      end
       format.json { head :no_content }
     end
   end

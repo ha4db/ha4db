@@ -31,7 +31,10 @@ class InspectionsController < UserBaseController
 
     respond_to do |format|
       if @inspection.save
-        format.html { redirect_to [@bridge, @inspection], notice: 'Inspection was successfully created.' }
+        format.html do
+          redirect_to [@bridge, @inspection],
+                      notice: I18n.t('controller.common.success_on_create', model_name: Inspection.model_name.human)
+        end
         format.json { render :show, status: :created, location: @inspection }
       else
         format.html { render :new }
@@ -45,7 +48,10 @@ class InspectionsController < UserBaseController
   def update
     respond_to do |format|
       if @inspection.update(inspection_params)
-        format.html { redirect_to [@bridge, @inspection], notice: 'Inspection was successfully updated.' }
+        format.html do
+          redirect_to [@bridge, @inspection],
+                      notice: I18n.t('controller.common.success_on_update', model_name: Inspection.model_name.human)
+        end
         format.json { render :show, status: :ok, location: @inspection }
       else
         format.html { render :edit }
@@ -59,7 +65,10 @@ class InspectionsController < UserBaseController
   def destroy
     @inspection.destroy
     respond_to do |format|
-      format.html { redirect_to bridge_inspections_url(@bridge), notice: 'Inspection was successfully destroyed.' }
+      format.html do
+        redirect_to bridge_inspections_url(@bridge),
+                    notice: I18n.t('controller.common.success_on_destroy', model_name: Inspection.model_name.human)
+      end
       format.json { head :no_content }
     end
   end

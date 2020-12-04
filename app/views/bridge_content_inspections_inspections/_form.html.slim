@@ -15,7 +15,7 @@
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell
         - icon = 'add'
-        - label = 'Add'
+        - label = I18n.t("view.action.add")
         = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: icon, label: label }
 
 = javascript_pack_tag 'commons/form'

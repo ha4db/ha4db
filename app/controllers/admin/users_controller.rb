@@ -30,7 +30,10 @@ module Admin
 
       respond_to do |format|
         if @user.save
-          format.html { redirect_to [:admin, @user], notice: 'User was successfully created.' }
+          format.html do
+            redirect_to [:admin, @user],
+                        notice: I18n.t('controller.common.success_on_create', model_name: User.model_name.human)
+          end
           format.json { render :show, status: :created, location: @user }
         else
           format.html { render :new }
@@ -44,7 +47,10 @@ module Admin
     def update
       respond_to do |format|
         if @user.update(user_params)
-          format.html { redirect_to [:admin, @user], notice: 'User was successfully updated.' }
+          format.html do
+            redirect_to [:admin, @user],
+                        notice: I18n.t('controller.common.success_on_update', model_name: User.model_name.human)
+          end
           format.json { render :show, status: :ok, location: @user }
         else
           format.html { render :edit }

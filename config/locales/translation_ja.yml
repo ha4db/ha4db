@@ -108,3 +108,41 @@ ja:
         four: 4
 
   bridge_content: :activerecord.models.bridge_content
+
+  view:
+    common:
+      title:
+        listing: "%{model_name}一覧"
+        editing: "%{model_name}編集"
+        listing_with_title: "%{title}: %{model_name}一覧"
+        new_with_title: "%{title}: 新規%{model_name}"
+        edit_with_title: "%{title}: %{model_name}編集"
+      login: "ログイン"
+      logout: "ログアウト"
+    title:
+      admin_login: "管理者ログイン"
+      admin: "Ha4db 管理画面"
+      dashboard: "ダッシュボード"
+      import_from_excel: "Excelからインポート"
+      preview: "プレビュー"
+      undefined_inspections: "未割り当ての点検"
+    menu:
+      admin:
+        home: "ホーム"
+        users: "ユーザ"
+    action:
+      new: "新規%{model_name}"
+      back: "戻る"
+      show: "表示"
+      add: "追加"
+      edit: "変更"
+      sending: "送信中..."
+      delete: "削除してよろしいでしょうか？"
+      import_from_excel: "Excelからインポート"
+      preview: "プレビュー"
+
+  controller:
+    common:
+      success_on_create: "%{model_name}の作成に成功しました"
+      success_on_update: "%{model_name}の編集に成功しました"
+      success_on_destroy: "%{model_name}の削除に成功しました"

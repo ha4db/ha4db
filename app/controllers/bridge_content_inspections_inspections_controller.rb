@@ -23,7 +23,8 @@ class BridgeContentInspectionsInspectionsController < UserBaseController
           redirect_to bridge_bridge_content_bridge_content_inspection_url(@bridge,
                                                                           @bridge_content,
                                                                           @bridge_content_inspection),
-                      notice: 'Bridge content inspection was successfully created.'
+                      notice: I18n.t('controller.common.success_on_create',
+                                     model_name: BridgeContentInspection.model_name.human)
         end
         format.json { render :show, status: :created, location: @bridge_content_inspection }
       else

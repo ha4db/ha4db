@@ -2,7 +2,7 @@
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell
       section.header
-        h1 New user
+        h1 = I18n.t('view.action.new', model_name: User.model_name.human)
 
 == render 'form'
 
@@ -13,5 +13,5 @@
       = link_to admin_users_path, class: 'mdc-fab mdc-fab--extended' do
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon arrow_back
-        span.mdc-fab__label Back
+        span.mdc-fab__label = I18n.t('view.action.back')
 = javascript_pack_tag 'commons/button'
