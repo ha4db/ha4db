@@ -11,6 +11,15 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
+        ul.mdc-list
+          li.mdc-list-item
+            span.mdc-list-item__ripple
+            span.mdc-list-item__text
+              span.mdc-list-item__primary-text = f.label :data_type
+              span.mdc-list-item__secondary-text = f.select :data_type, BridgeContent.data_types.keys.map {|k| [I18n.t("enums.bridge_content.data_type.#{k}"), BridgeContent.data_types[k]]}
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
         = render partial: 'commons/mdc_outlined_file_field', locals: { f: f, id: 'bridge_content_data', model: BridgeContent, field_name: :data }
 
   .mdc-layout-grid

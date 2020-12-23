@@ -18,7 +18,10 @@
     .mdc-layout-grid__cell--span-12
       #data_view
         - if @bridge_content.data.attached?
-          - if @bridge_content.data.content_type.start_with?('video')
+          - if @bridge_content.id == 3
+            #ortho_map[data-id=@bridge_content.id]
+            = javascript_pack_tag 'map/ortho_image'
+          - elsif @bridge_content.data.content_type.start_with?('video')
             video#video[src=url_for(@bridge_content.data) type=@bridge_content.data.content_type controls]
           - elsif @bridge_content.data.content_type.start_with?('image')
             img[src=url_for(@bridge_content.data)]

@@ -81,6 +81,7 @@ GEM
       rubyzip (>= 1.3.0, < 3)
     coderay (1.1.3)
     concurrent-ruby (1.1.7)
+    connection_pool (2.2.3)
     crass (1.0.6)
     diff-lcs (1.4.4)
     docile (1.3.2)
@@ -194,6 +195,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.5)
     regexp_parser (1.8.2)
     repo-small-badge (0.2.7)
       victor (~> 0.2.8)
@@ -258,6 +260,10 @@ GEM
       tilt
     semantic_range (2.3.1)
     shellany (0.0.1)
+    sidekiq (6.1.2)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     simplecov (0.19.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -331,6 +337,7 @@ DEPENDENCIES
   rspec-rails (~> 4.0.1)
   rubocop
   sass-rails (>= 6)
+  sidekiq
   simplecov
   simplecov-small-badge!
   slim

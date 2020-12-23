@@ -53,6 +53,7 @@ en:
         data_attachment: :activerecord.models.data_attachment
         data_blob: :activerecord.models.data_blob
         title: Title
+        data_type: Data Type
         bridge: :activerecord.models.bridge
         bridge_content_inspections: :activerecord.models.bridge_content_inspection
         inspections: :activerecord.models.inspection
@@ -90,6 +91,14 @@ en:
   bridge: :activerecord.models.bridge
 
   enums:
+    bridge_content:
+      data_type:
+        unselected: Unselected
+        image: Image
+        movie: Movie
+        damage_diagram: Damage Diagram
+        ortho: Ortho Image
+        pointcloud: Point Cloud
     inspection:
       category:
         unselected: Unselected
@@ -119,6 +128,7 @@ en:
         edit_with_title: "%{title}: Edit %{model_name}"
       login: "Login"
       logout: "Logout"
+      processing: "Processing..."
     title:
       admin_login: "Admin login"
       admin: "Ha4db Admin page"

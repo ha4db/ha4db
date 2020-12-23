@@ -9,6 +9,14 @@ services:
     environment:
       POSTGRES_PASSWORD: password
 
+  redis:
+    image: redis
+    ports:
+      - '6379'
+    volumes:
+      - redis:/data
+    command: redis-server --appendonly yes
+
   app:
     build:
       context: .
@@ -25,6 +33,7 @@ services:
       - /app/node_modules
     depends_on:
       - postgres
+      - redis
     stdin_open: true
     tty: true
 
