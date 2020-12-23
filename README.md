@@ -17,6 +17,7 @@ The Bridge Management System.
 - PostgreSQL
 - PostGIS
 - NodeJS + yarn
+- Redis
 
 ## Configration for development
 
@@ -27,6 +28,12 @@ export HA4DB_DEVELOPMENT_DATABASE_URL=postgis://myuser:mypass@localhost/ha4db_de
 rails db:create RAILS_ENV=development
 rails db:gis:setup RAILS_ENV=development
 rails db:migrate RAILS_ENV=development
+```
+
+### Start redis server
+
+```sh
+docker run --rm -p 6379:6379 redis
 ```
 
 ### Running development server

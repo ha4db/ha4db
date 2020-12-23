@@ -18,13 +18,23 @@
           span.mdc-list-item__text
             span.mdc-list-item__primary-text = BridgeContent.human_attribute_name(:title)
             span.mdc-list-item__secondary-text = @bridge_content.title
-
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = BridgeContent.human_attribute_name(:data_type)
+            span.mdc-list-item__secondary-text = I18n.t("enums.bridge_content.data_type.#{BridgeContent.data_types.key(@bridge_content.data_type.to_i)}")
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-12
       #data_view
         - if @bridge_content.data.attached?
-          - if @bridge_content.data.content_type.start_with?('video')
+          - if @bridge_content.data_type.to_i == BridgeContent.data_types[:ortho]
+            - if @bridge_content.ortho_tile_info.nil?
+              = I18n.t("view.common.processing")
+            - else
+              #ortho_map[data-id=@bridge_content.id data-minzoom=@bridge_content.ortho_tile_info['min_zoom'] data-maxzoom=@bridge_content.ortho_tile_info['max_zoom']]
+              = javascript_pack_tag 'map/ortho_image'
+          - elsif @bridge_content.data.content_type.start_with?('video')
             video[src=url_for(@bridge_content.data) type=@bridge_content.data.content_type controls]
           - elsif @bridge_content.data.content_type.start_with?('image')
             img[src=url_for(@bridge_content.data)]

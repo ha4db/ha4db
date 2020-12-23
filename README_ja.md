@@ -17,6 +17,7 @@
 - PostgreSQL
 - PostGIS
 - NodeJS + yarn
+- Redis
 
 ## 開発のための設定
 
@@ -27,6 +28,12 @@ export HA4DB_DEVELOPMENT_DATABASE_URL=postgis://myuser:mypass@localhost/ha4db_de
 rails db:create RAILS_ENV=development
 rails db:gis:setup RAILS_ENV=development
 rails db:migrate RAILS_ENV=development
+```
+
+### redisサーバを起動
+
+```sh
+docker run --rm -p 6379:6379 redis
 ```
 
 ### 開発サーバの起動

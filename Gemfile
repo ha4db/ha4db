@@ -83,3 +83,5 @@ group :test do
   gem 'guard-rubocop', require: false
 end
 
+# active job backend
+gem 'sidekiq'

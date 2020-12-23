@@ -13,7 +13,7 @@ digraph models {
 
   bridge_main_contents [label="bridge_main_contents(橋のメインコンテンツ)|{{id|bridge_id|data(画像/動画)|start_pos(開始位置)|end_pos(終了位置)|created_at|updated_at}|{Int|Int|ActiveStorage|Enum.ExcelPosition/Nullable|Enum.ExcelPosition/Nullable|Datetime|Datetime}}"];
 
-  bridge_contents [label="bridge_contents(橋のコンテンツ)|{{id|bridge_id|title(名前)|data(画像/動画)|created_at|updated_at}|{Int|Int|String|ActiveStroage|Datetime|Datetime}}"]
+  bridge_contents [label="bridge_contents(橋のコンテンツ)|{{id|bridge_id|title(名前)|data(画像/動画)|metadata(データの内部構造)|created_at|updated_at}|{Int|Int|String|ActiveStroage|Jsonb|Datetime|Datetime}}"]
 
   bridge_contents_inspections [label="bridge_contents_inspections(中間テーブル)|{{id|bridge_content_id|inspection_id|data(コンテンツ)|created_at|updated_at}|{Int|Int|Int|Jsonb|Datetime|Datetime}}"]
 
@@ -27,7 +27,7 @@ digraph models {
 
   // enum
   enum_position [label="Enum.ExcelPosition(Excelの開始/終了位置)|{{Top|Bottom|Left|Right}}"];
-  enum_bridge_category [label="Enum.BridgeCategory(橋脚の種類)|{{1(上部構造主桁)|2(上部構造横桁)|3(上部構造床版)|4(下部構造)|5(支承部)|6(その他)}}"]
+  enum_bridge_category [label="Enum.BridgeCategory(橋脚の種類)|{{1(上部構造主桁)|2(上部構造横桁)|3(上部構造床版)|4(下部構造)|5(支承部)|6(その他)}}"];
 
   // edges
   bridges -> bridge_main_contents [label="id=bridge_id 1..n"];

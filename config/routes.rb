@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
   resource :mlit_importer, only: %i[new create] do
     post 'preview'
@@ -29,4 +30,9 @@ Rails.application.routes.draw do
     get 'top/index'
     resources :users
   end
+
+  # sidekiq
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
+# rubocop:enable Metrics/BlockLength
