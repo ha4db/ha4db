@@ -28,6 +28,8 @@
             video[src=url_for(@bridge_content.data) type=@bridge_content.data.content_type controls]
           - elsif @bridge_content.data.content_type.start_with?('image')
             img[src=url_for(@bridge_content.data)]
+          - elsif @bridge_content.id == 5
+            .pointcloud
 
 
 .mdc-layout-grid
@@ -44,3 +46,4 @@
         span.mdc-fab__label = I18n.t("view.action.back")
 
 = javascript_pack_tag 'commons/button'
+= javascript_pack_tag 'pointcloud/app'

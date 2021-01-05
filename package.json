@@ -2,6 +2,7 @@
   "name": "ha4db",
   "private": true,
   "dependencies": {
+    "3d-tiles-renderer": "^0.2.1",
     "@babel/preset-typescript": "^7.12.7",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
@@ -13,8 +14,10 @@
     "fibers": "^5.0.0",
     "material-components-web": "^7.0.0",
     "ol": "^6.4.3",
+    "path-browserify": "^1.0.1",
     "prop-types": "^15.7.2",
     "sass": "^1.26.10",
+    "three": "^0.123.0",
     "typescript": "^4.0.5"
   },
   "version": "0.1.0",
