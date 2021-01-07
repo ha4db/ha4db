@@ -40,5 +40,8 @@ module Ha4db
     config.action_view.field_error_proc = proc do |html_tag, _|
       html_tag.html_safe
     end
+
+    # active job
+    config.active_job.queue_adapter = :sidekiq
   end
 end

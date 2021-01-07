@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_070155) do
+ActiveRecord::Schema.define(version: 2020_12_21_060718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,9 @@ ActiveRecord::Schema.define(version: 2020_11_04_070155) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "metadata"
     t.index ["bridge_id"], name: "index_bridge_contents_on_bridge_id"
+    t.index ["metadata"], name: "index_bridge_contents_on_metadata", using: :gin
   end
 
   create_table "bridges", force: :cascade do |t|

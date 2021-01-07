@@ -66,4 +66,7 @@ RSpec.configure do |config|
   FactoryBot::SyntaxRunner.class_eval do
     include ActionDispatch::TestProcess
   end
+
+  # active job
+  config.include ActiveJob::TestHelper
 end

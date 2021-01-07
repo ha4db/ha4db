@@ -53,6 +53,7 @@ ja:
         data_attachment: :activerecord.models.data_attachment
         data_blob: :activerecord.models.data_blob
         title: 名前
+        data_type: データの種類
         bridge: :activerecord.models.bridge
         bridge_content_inspections: :activerecord.models.bridge_content_inspection
         inspections: :activerecord.models.inspection
@@ -90,6 +91,14 @@ ja:
   bridge: :activerecord.models.bridge
 
   enums:
+    bridge_content:
+      data_type:
+        unselected: 未選択
+        image: 画像
+        movie: 動画
+        damage_diagram: 損傷図
+        ortho: オルソ画像
+        pointcloud: 点群
     inspection:
       category:
         unselected: 未選択
@@ -119,6 +128,7 @@ ja:
         edit_with_title: "%{title}: %{model_name}編集"
       login: "ログイン"
       logout: "ログアウト"
+      processing: "処理中..."
     title:
       admin_login: "管理者ログイン"
       admin: "Ha4db 管理画面"

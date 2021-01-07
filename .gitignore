@@ -112,3 +112,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# othro images
+public/ortho_images/*
