@@ -3,6 +3,7 @@
 require 'fileutils'
 require 'tmpdir'
 require 'tempfile'
+require 'json'
 
 # GameTile class
 class Pointcloud
@@ -14,29 +15,31 @@ class Pointcloud
   end
 
   def make
-    pdal_string = `pdal info #{file}`
-    self.extent = JSON[pdal_string].stats.bbox.native.bbox
-    self.center = calculate_extent
     convert
-    self.center
-    
+    self.center    
   end
 
   private
 
-  def calculate_extent
+  def calculate_center
     center = Hash.new
-    center[:x] = (self.extent.maxx + self.extent.minx) / 2.0
-    center[:y] = (self.extent.maxy + self.extent.miny) / 2.0
-    center[:z] = (self.extent.maxz + self.extent.minz) / 2.0
+    center[:x] = (self.extent["maxx"].to_f + self.extent["minx"].to_f) / 2.0
+    center[:y] = (self.extent["maxy"].to_f + self.extent["miny"].to_f) / 2.0
+    center[:z] = (self.extent["maxz"].to_f + self.extent["minz"].to_f) / 2.0
     center
   end
 
   def convert
+    FileUtils.mkdir_p("./#{tile_dir}")
     # fix coordinate system
     # /tmp should not be mounted to docker so I use native pdal
-    `pdal translate #{file} temp.las -f filters.transformation --filters.transformation.matrix="0 0 1 1 0 -1 0 1 1 0 0 1 0 0 0 1"`
+    `pdal translate #{file} .#{tile_dir}/temp.las -f filters.transformation --filters.transformation.matrix="0 0 1 1 0 -1 0 1 1 0 0 1 0 0 0 1"`
+    # get metadata
+    pdal_string = `pdal info #{file}`
+    self.extent = JSON.parse(pdal_string)["stats"]["bbox"]["native"]["bbox"]
+    self.center = calculate_center
     # convert to 3d tiles
-    `docker run --rm -v $(pwd):/data -it ha4db/py3dtiles py3dtiles convert /data#{tile_dir}/temp.las --out /data#{tile_dir}`
+    `docker run --rm -v $(pwd):/data -it ha4db/py3dtiles py3dtiles convert /data#{tile_dir}/temp.las --out /data#{tile_dir}/tiles`
+    `rm .#{tile_dir}/temp.las`
   end
 end

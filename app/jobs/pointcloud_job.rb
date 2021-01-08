@@ -19,8 +19,8 @@ class PointcloudJob < ApplicationJob
       target_dir = File.join('/public', 'pointclouds', bridge_content.id.to_s)
       target_dir = File.join('/tmp', 'pointclouds', bridge_content.id.to_s) if Rails.env == 'test'
       FileUtils.rm_rf(target_dir)
-      #Sidekiq.logger.error "target_dir : #{target_dir}"
-      #Sidekiq.logger.error "path : #{file.path}"
+      Sidekiq.logger.error "target_dir : #{target_dir}"
+      Sidekiq.logger.error "path : #{file.path}"
       pointcloud = Pointcloud.new(file.path, target_dir)
       pointcloud_info = pointcloud.make
       bridge_content.pointcloud_info = pointcloud_info
