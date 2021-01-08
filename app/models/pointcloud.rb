@@ -23,9 +23,9 @@ class Pointcloud
 
   def calculate_center
     center = Hash.new
-    center[:x] = (self.extent["maxx"].to_f + self.extent["minx"].to_f) / 2.0
-    center[:y] = (self.extent["maxy"].to_f + self.extent["miny"].to_f) / 2.0
-    center[:z] = (self.extent["maxz"].to_f + self.extent["minz"].to_f) / 2.0
+    center['x'] = (self.extent['maxx'].to_f + self.extent['minx'].to_f) / 2.0
+    center['y'] = (self.extent['maxy'].to_f + self.extent['miny'].to_f) / 2.0
+    center['z'] = (self.extent['maxz'].to_f + self.extent['minz'].to_f) / 2.0
     center
   end
 
@@ -34,12 +34,12 @@ class Pointcloud
     # fix coordinate system
     # /tmp should not be mounted to docker so I use native pdal
     `pdal translate #{file} .#{tile_dir}/temp.las -f filters.transformation --filters.transformation.matrix="0 0 1 1 0 -1 0 1 1 0 0 1 0 0 0 1"`
-    # get metadata
-    pdal_string = `pdal info #{file}`
-    self.extent = JSON.parse(pdal_string)["stats"]["bbox"]["native"]["bbox"]
-    self.center = calculate_center
     # convert to 3d tiles
     `docker run --rm -v $(pwd):/data -it ha4db/py3dtiles py3dtiles convert /data#{tile_dir}/temp.las --out /data#{tile_dir}/tiles`
+    # get metadata
+    pdal_string = `pdal info .#{tile_dir}/temp.las`
+    self.extent = JSON.parse(pdal_string)["stats"]["bbox"]["native"]["bbox"]
+    self.center = calculate_center
     `rm .#{tile_dir}/temp.las`
   end
 end

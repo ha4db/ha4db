@@ -2,7 +2,7 @@ import {
 	MathUtils,
 	Spherical,
 	Vector3
-} from "three/build/three.module";
+} from "three/build/three.module.js";
 
 var Ha4dbControls = function ( object, domElement ) {
 
