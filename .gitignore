@@ -115,3 +115,5 @@ $RECYCLE.BIN/
 
 # othro images
 public/ortho_images/*
+public/pointclouds/*
+

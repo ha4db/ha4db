@@ -2,6 +2,8 @@
 
 # BridgeContent Model
 class BridgeContent < ApplicationRecord
+  after_commit :pointcloud_update
+  before_save :check_pointcloud_is_update
   after_commit :ortho_image_update
   before_save :check_ortho_is_update
 
@@ -14,6 +16,8 @@ class BridgeContent < ApplicationRecord
   store_accessor :metadata, :data_type
   store_accessor :metadata, :ortho_tile_info
   store_accessor :metadata, :ortho_metadata
+  store_accessor :metadata, :pointcloud_info
+  store_accessor :metadata, :pointcloud_metadata
 
   enum data_type: {
     unselected: 0,
@@ -36,5 +40,17 @@ class BridgeContent < ApplicationRecord
     return unless data_type.to_i == BridgeContent.data_types[:ortho]
 
     GameTileJob.perform_later(id) if ortho_tile_info.nil?
+  end
+
+  def check_pointcloud_is_update
+    return unless data_type.to_i == BridgeContent.data_types[:pointcloud]
+
+    self.pointcloud_info = nil if data.changed?
+  end
+
+  def pointcloud_update
+    return unless data_type.to_i == BridgeContent.data_types[:pointcloud]
+
+    PointcloudJob.perform_later(id) if pointcloud_info.nil?
   end
 end
