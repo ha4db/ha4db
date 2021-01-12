@@ -101,7 +101,6 @@ class BridgeContentsController < UserBaseController
                                              :pointcloud_measurement_environment, :pointcloud_measuring_equipment,
                                              :pointcloud_analysis_method, :pointcloud_software,
                                              :pointcloud_crs, :pointcloud_reference_point_x,
-                                             :pointcloud_reference_point_y, :pointcloud_reference_point_z
-                                            )
+                                             :pointcloud_reference_point_y, :pointcloud_reference_point_z)
   end
 end

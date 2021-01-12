@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-CSV.generate({ row_sep: "\r\n", force_quotes: true }) do |csv|
+options = { row_sep: "\r\n", force_quotes: true }
+CSV.generate(**options) do |csv|
   cols = {
     BridgeContent.human_attribute_name(:pointcloud_data_id) => ->(u) { u.pointcloud_data_id },
     BridgeContent.human_attribute_name(:pointcloud_creation_name) => ->(u) { u.pointcloud_creation_name },
     BridgeContent.human_attribute_name(:pointcloud_created_at) => ->(u) { u.pointcloud_created_at },
     BridgeContent.human_attribute_name(:pointcloud_measurement_method) => ->(u) { u.pointcloud_measurement_method },
-    BridgeContent.human_attribute_name(:pointcloud_measurement_environment) => ->(u) { u.pointcloud_measurement_environment },
+    BridgeContent.human_attribute_name(:pointcloud_measurement_environment) => ->(u) { u.pointcloud_measurement_environment }, # rubocop:disable Layout/LineLength
     BridgeContent.human_attribute_name(:pointcloud_measuring_equipment) => ->(u) { u.pointcloud_measuring_equipment },
     BridgeContent.human_attribute_name(:pointcloud_analysis_method) => ->(u) { u.pointcloud_analysis_method },
     BridgeContent.human_attribute_name(:pointcloud_software) => ->(u) { u.pointcloud_software },

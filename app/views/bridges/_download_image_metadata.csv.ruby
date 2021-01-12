@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
+options = { row_sep: "\r\n", force_quotes: true }
 # rubocop:disable Metrics/BlockLength
-CSV.generate({ row_sep: "\r\n", force_quotes: true }) do |csv|
+CSV.generate(**options) do |csv|
   header1 = ['座標情報(test)', '標高基準(test']
   csv << header1
   cols = {
@@ -13,7 +14,7 @@ CSV.generate({ row_sep: "\r\n", force_quotes: true }) do |csv|
     BridgeContent.human_attribute_name(:euler_angle_beta) => ->(u) { u.euler_angle_beta },
     BridgeContent.human_attribute_name(:euler_angle_gamma) => ->(u) { u.euler_angle_gamma },
     BridgeContent.human_attribute_name(:photo_dimentions) => ->(u) { u.photo_dimentions },
-    '相対パス' => ->(u) { '..\R_PHOTO\001' },
+    '相対パス' => ->(_) { '..\R_PHOTO\001' },
     '点検写真ファイル名' => ->(u) { u.data.filename.to_s },
     BridgeContent.human_attribute_name(:date_of_shooting) => ->(u) { u.date_of_shooting },
     BridgeContent.human_attribute_name(:projection_method) => ->(u) { u.projection_method },
