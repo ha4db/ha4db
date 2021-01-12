@@ -57,6 +57,35 @@ ja:
         bridge: :activerecord.models.bridge
         bridge_content_inspections: :activerecord.models.bridge_content_inspection
         inspections: :activerecord.models.inspection
+        position_entry_type: 位置情報記入方法
+        center_x: 中心位置 X 座標
+        center_y: 中心位置 Y 座標
+        center_z: 中心位置 Z 座標
+        euler_angle_alpha: オイラー角 α
+        euler_angle_beta: オイラー角 β
+        euler_angle_gumma: オイラー角 γ
+        quaternion_1: 四元数 1
+        quaternion_2: 四元数 2
+        quaternion_3: 四元数 3
+        quaternion_4: 四元数 4
+        bbox_u_r_x: XUR
+        bbox_u_r_y: YUR
+        bbox_u_r_z: ZUR
+        bbox_u_l_x: XUL
+        bbox_u_l_y: YUL
+        bbox_u_l_z: ZUL
+        bbox_d_r_x: XDR
+        bbox_d_r_y: YDR
+        bbox_d_r_z: ZDR
+        bbox_d_l_x: XDL
+        bbox_d_l_y: YDL
+        bbox_d_l_z: ZDL
+        photo_dimentions: 写真寸法
+        date_of_shooting: 撮影日時
+        projection_method: 投影法
+        target_material: 対象部材
+        damage_or_not: 損傷の有無
+        representative_photo: 代表写真
 
       inspection:
         category: 種類
@@ -99,6 +128,30 @@ ja:
         damage_diagram: 損傷図
         ortho: オルソ画像
         pointcloud: 点群
+      position_entry_type:
+        center_photo: 写真中心
+        center_camera: カメラ中心
+        photo_bbox: 写真四隅
+      projection_method:
+        center_projection: 中心投影
+        orthographic_projection: 正射投影
+      target_material:
+        main_girder: 主桁
+        cross_member: 横桁
+        slab: 床版
+        substructure: 下部構造
+        bearing_h: 支承 h
+        bearing_m: 支承 m
+        bearing_c: 支承 c
+        top_plate: 頂版
+        side_wall: 側壁
+        bottom_plate: 底版
+      damage_or_not:
+        damage: 損傷部
+        not_damage: 非損傷部
+      representative_photo:
+        representative: 代表写真
+        others: その他
     inspection:
       category:
         unselected: 未選択

@@ -57,6 +57,35 @@ en:
         bridge: :activerecord.models.bridge
         bridge_content_inspections: :activerecord.models.bridge_content_inspection
         inspections: :activerecord.models.inspection
+        position_entry_type: Position Entry Type
+        center_x: Center X Coordinate
+        center_y: Center Y Coordinate
+        center_z: Center Z Coordinate
+        euler_angle_alpha: Euler angle alpha
+        euler_angle_beta: Euler angle beta
+        euler_angle_gumma: Euler angle gumma
+        quaternion_1: Quanternion 1
+        quaternion_2: Quanternion 2
+        quaternion_3: Quanternion 3
+        quaternion_4: Quanternion 4
+        bbox_u_r_x: XUR
+        bbox_u_r_y: YUR
+        bbox_u_r_z: ZUR
+        bbox_u_l_x: XUL
+        bbox_u_l_y: YUL
+        bbox_u_l_z: ZUL
+        bbox_d_r_x: XDR
+        bbox_d_r_y: YDR
+        bbox_d_r_z: ZDR
+        bbox_d_l_x: XDL
+        bbox_d_l_y: YDL
+        bbox_d_l_z: ZDL
+        photo_dimentions: Photo dimentions
+        date_of_shooting: Date of shooting
+        projection_method: Projection Method
+        target_material: Target material
+        damage_or_not: Damage or not
+        representative_photo: Representative photo
 
       inspection:
         category: Category
@@ -99,6 +128,30 @@ en:
         damage_diagram: Damage Diagram
         ortho: Ortho Image
         pointcloud: Point Cloud
+      position_entry_type:
+        center_photo: Center photo
+        center_camera: Center camera
+        photo_bbox: Photo Bbox
+      projection_method:
+        center_projection: Center Projection
+        orthographic_projection: Orthographic projection
+      target_material:
+        main_girder: Main grider
+        cross_member: Cross member
+        slab: Slab
+        substructure: Substructure
+        bearing_h: Bearing h
+        bearing_m: Bearing m
+        bearing_c: Bearing c
+        top_plate: Top plate
+        side_wall: Side wall
+        bottom_plate: Bottom plate
+      damage_or_not:
+        damage: Damage
+        not_damage: Not damage
+      representative_photo:
+        representative: Representative
+        others: Others
     inspection:
       category:
         unselected: Unselected
