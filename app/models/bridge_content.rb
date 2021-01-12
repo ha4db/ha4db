@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ClassLength
 # BridgeContent Model
 class BridgeContent < ApplicationRecord
   after_commit :pointcloud_update
@@ -131,3 +132,4 @@ class BridgeContent < ApplicationRecord
     PointcloudJob.perform_later(id) if pointcloud_info.nil?
   end
 end
+# rubocop:enable Metrics/ClassLength

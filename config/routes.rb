@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
     resources :inspections
     resources :soundnesses
+    get 'download_image_metadata'
+    get 'download_pointcloud_metadata'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'top#index'
