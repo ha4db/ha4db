@@ -86,7 +86,18 @@ en:
         target_material: Target material
         damage_or_not: Damage or not
         representative_photo: Representative photo
-
+        pointcloud_data_id: PointCloud Data ID
+        pointcloud_creation_name: Creator name
+        pointcloud_created_at: Created date time
+        pointcloud_measurement_method: Measurement method
+        pointcloud_measurement_environment: Measurement enviromnent
+        pointcloud_measuring_equipment: Measuring equipment
+        pointcloud_analysis_method: Analysis method
+        pointcloud_software: Software
+        pointcloud_crs: CRS
+        pointcloud_reference_point_x: Reference Point X Coordiante
+        pointcloud_reference_point_y: Reference Point Y Coordinate
+        pointcloud_reference_point_z: Reference Point Z Coordinate
       inspection:
         category: Category
         date: Date

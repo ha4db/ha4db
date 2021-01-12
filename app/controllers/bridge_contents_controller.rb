@@ -95,6 +95,13 @@ class BridgeContentsController < UserBaseController
                                              :bbox_d_r_x, :bbox_d_r_y, :bbox_d_r_z,
                                              :bbox_d_l_x, :bbox_d_l_y, :bbox_d_l_z,
                                              :photo_dimentions, :date_of_shooting, :projection_method,
-                                             :target_material, :damage_or_not, :representative_photo)
+                                             :target_material, :damage_or_not, :representative_photo,
+                                             :pointcloud_data_id, :pointcloud_creation_name,
+                                             :pointcloud_created_at, :pointcloud_measurement_method,
+                                             :pointcloud_measurement_environment, :pointcloud_measuring_equipment,
+                                             :pointcloud_analysis_method, :pointcloud_software,
+                                             :pointcloud_crs, :pointcloud_reference_point_x,
+                                             :pointcloud_reference_point_y, :pointcloud_reference_point_z
+                                            )
   end
 end

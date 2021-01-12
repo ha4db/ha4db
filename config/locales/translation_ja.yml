@@ -86,6 +86,18 @@ ja:
         target_material: 対象部材
         damage_or_not: 損傷の有無
         representative_photo: 代表写真
+        pointcloud_data_id: 点群データ識別ID
+        pointcloud_creation_name: 作成者
+        pointcloud_created_at: 作成日時
+        pointcloud_measurement_method: 計測方法
+        pointcloud_measurement_environment: 計測環境
+        pointcloud_measuring_equipment: 計測機器
+        pointcloud_analysis_method: 解析方法
+        pointcloud_software: ソフトウェア
+        pointcloud_crs: CRS
+        pointcloud_reference_point_x: 標定点 X 座標
+        pointcloud_reference_point_y: 標定点 Y 座標
+        pointcloud_reference_point_z: 標定点 Z 座標
 
       inspection:
         category: 種類

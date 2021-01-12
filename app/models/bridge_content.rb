@@ -18,6 +18,7 @@ class BridgeContent < ApplicationRecord
   store_accessor :metadata, :ortho_metadata
   store_accessor :metadata, :pointcloud_info
   store_accessor :metadata, :pointcloud_metadata
+  # image metadata
   store_accessor :metadata, :position_entry_type
   store_accessor :metadata, :center_x
   store_accessor :metadata, :center_y
@@ -47,6 +48,19 @@ class BridgeContent < ApplicationRecord
   store_accessor :metadata, :target_material
   store_accessor :metadata, :damage_or_not
   store_accessor :metadata, :representative_photo
+  # point cloud metadata
+  store_accessor :metadata, :pointcloud_data_id
+  store_accessor :metadata, :pointcloud_creation_name
+  store_accessor :metadata, :pointcloud_created_at
+  store_accessor :metadata, :pointcloud_measurement_method
+  store_accessor :metadata, :pointcloud_measurement_environment
+  store_accessor :metadata, :pointcloud_measuring_equipment
+  store_accessor :metadata, :pointcloud_analysis_method
+  store_accessor :metadata, :pointcloud_software
+  store_accessor :metadata, :pointcloud_crs
+  store_accessor :metadata, :pointcloud_reference_point_x
+  store_accessor :metadata, :pointcloud_reference_point_y
+  store_accessor :metadata, :pointcloud_reference_point_z
 
   enum data_type: {
     unselected: 0,
