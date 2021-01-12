@@ -54,5 +54,16 @@ RSpec.describe BridgeContent, type: :model do
       expect(File).to exist(check_file)
     end
   end
+
+  describe 'image/jpeg with exif' do
+    before do
+      @bridge_content.data = fixture_file_upload(Rails.root.join('spec', 'testdata', 'testexif.jpg'))
+      @bridge_content.data_type = BridgeContent.data_types[:image]
+      @bridge_content.save
+    end
+    it 'date_of_shooting will be update' do
+      expect(@bridge_content.date_of_shooting).to eq('2008/07/31 15:56:49')
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength
