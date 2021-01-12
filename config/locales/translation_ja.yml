@@ -63,11 +63,11 @@ ja:
         center_z: 中心位置 Z 座標
         euler_angle_alpha: オイラー角 α
         euler_angle_beta: オイラー角 β
-        euler_angle_gumma: オイラー角 γ
-        quaternion_1: 四元数 1
-        quaternion_2: 四元数 2
-        quaternion_3: 四元数 3
-        quaternion_4: 四元数 4
+        euler_angle_gamma: オイラー角 γ
+        quaternion_one: 四元数 1
+        quaternion_two: 四元数 2
+        quaternion_three: 四元数 3
+        quaternion_four: 四元数 4
         bbox_u_r_x: XUR
         bbox_u_r_y: YUR
         bbox_u_r_z: ZUR

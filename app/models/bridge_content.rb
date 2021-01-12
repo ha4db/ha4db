@@ -24,11 +24,11 @@ class BridgeContent < ApplicationRecord
   store_accessor :metadata, :center_z
   store_accessor :metadata, :euler_angle_alpha
   store_accessor :metadata, :euler_angle_beta
-  store_accessor :metadata, :euler_angle_gumma
-  store_accessor :metadata, :quaternion_1
-  store_accessor :metedata, :quaternion_2
-  store_accessor :metadata, :quaternion_3
-  store_accessor :metedata, :quaternion_4
+  store_accessor :metadata, :euler_angle_gamma
+  store_accessor :metadata, :quaternion_one
+  store_accessor :metadata, :quaternion_two
+  store_accessor :metadata, :quaternion_three
+  store_accessor :metadata, :quaternion_four
   store_accessor :metadata, :bbox_u_r_x
   store_accessor :metadata, :bbox_u_r_y
   store_accessor :metadata, :bbox_u_r_z
@@ -78,7 +78,7 @@ class BridgeContent < ApplicationRecord
     bearing_c: 'Bh',
     top_plate: 'Ct',
     side_wall: 'Sw',
-    bottom_plate: 'Cb',
+    bottom_plate: 'Cb'
   }
 
   enum damage_or_not: {

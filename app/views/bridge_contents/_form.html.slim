@@ -16,7 +16,52 @@
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
         = render partial: 'commons/mdc_outlined_file_field', locals: { f: f, id: 'bridge_content_data', model: BridgeContent, field_name: :data }
-
+  - image_metadata_style = @bridge_content.data_type == '1' ? '' : 'display: none;'
+  .mdc-layout-grid#image_metadata[style=image_metadata_style]
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: BridgeContent, field_name: :position_entry_type, data: @bridge_content.position_entry_type, text_and_values: BridgeContent.position_entry_types.keys.map {|k| [I18n.t("enums.bridge_content.position_entry_type.#{k}"), BridgeContent.position_entry_types[k].to_s]}}
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_center_x', model: BridgeContent, field_name: :center_x }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_center_y', model: BridgeContent, field_name: :center_y }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_center_z', model: BridgeContent, field_name: :center_z }
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_euler_angle_alpha', model: BridgeContent, field_name: :euler_angle_alpha }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_euler_angle_beta', model: BridgeContent, field_name: :euler_angle_beta }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_euler_angle_gamma', model: BridgeContent, field_name: :euler_angle_gamma }
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_quaternion_one', model: BridgeContent, field_name: :quaternion_one }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_quaternion_two', model: BridgeContent, field_name: :quaternion_two }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_quaternion_three', model: BridgeContent, field_name: :quaternion_three }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_quaternion_four', model: BridgeContent, field_name: :quaternion_four }
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_bbox_u_r_x', model: BridgeContent, field_name: :bbox_u_r_x }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_bbox_u_r_y', model: BridgeContent, field_name: :bbox_u_r_y }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_bbox_u_r_z', model: BridgeContent, field_name: :bbox_u_r_z }
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_bbox_u_l_x', model: BridgeContent, field_name: :bbox_u_l_x }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_bbox_u_l_y', model: BridgeContent, field_name: :bbox_u_l_y }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_bbox_u_l_z', model: BridgeContent, field_name: :bbox_u_l_z }
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_bbox_d_r_x', model: BridgeContent, field_name: :bbox_d_r_x }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_bbox_d_r_y', model: BridgeContent, field_name: :bbox_d_r_y }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_bbox_d_r_z', model: BridgeContent, field_name: :bbox_d_r_z }
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_bbox_d_l_x', model: BridgeContent, field_name: :bbox_d_l_x }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_bbox_d_l_y', model: BridgeContent, field_name: :bbox_d_l_y }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_bbox_d_l_z', model: BridgeContent, field_name: :bbox_d_l_z }
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_photo_dimentions', model: BridgeContent, field_name: :photo_dimentions }
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_content_date_of_shooting', model: BridgeContent, field_name: :date_of_shooting }
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: BridgeContent, field_name: :projection_method, data: @bridge_content.projection_method, text_and_values: BridgeContent.projection_methods.keys.map {|k| [I18n.t("enums.bridge_content.projection_method.#{k}"), BridgeContent.projection_methods[k].to_s]}}
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: BridgeContent, field_name: :target_material, data: @bridge_content.target_material, text_and_values: BridgeContent.target_materials.keys.map {|k| [I18n.t("enums.bridge_content.target_material.#{k}"), BridgeContent.target_materials[k].to_s]}}
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: BridgeContent, field_name: :damage_or_not, data: @bridge_content.damage_or_not, text_and_values: BridgeContent.damage_or_nots.keys.map {|k| [I18n.t("enums.bridge_content.damage_or_not.#{k}"), BridgeContent.damage_or_nots[k].to_s]}}
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: BridgeContent, field_name: :representative_photo, data: @bridge_content.representative_photo, text_and_values: BridgeContent.representative_photos.keys.map {|k| [I18n.t("enums.bridge_content.representative_photo.#{k}"), BridgeContent.representative_photos[k].to_s]}}        
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell
@@ -30,3 +75,5 @@
 
 = javascript_pack_tag 'commons/form'
 = javascript_pack_tag 'commons/button'
+= javascript_pack_tag 'commons/select'
+= javascript_pack_tag 'apps/select_image'

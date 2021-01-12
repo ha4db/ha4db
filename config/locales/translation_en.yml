@@ -63,11 +63,11 @@ en:
         center_z: Center Z Coordinate
         euler_angle_alpha: Euler angle alpha
         euler_angle_beta: Euler angle beta
-        euler_angle_gumma: Euler angle gumma
-        quaternion_1: Quanternion 1
-        quaternion_2: Quanternion 2
-        quaternion_3: Quanternion 3
-        quaternion_4: Quanternion 4
+        euler_angle_gamma: Euler angle gumma
+        quaternion_one: Quanternion 1
+        quaternion_two: Quanternion 2
+        quaternion_three: Quanternion 3
+        quaternion_four: Quanternion 4
         bbox_u_r_x: XUR
         bbox_u_r_y: YUR
         bbox_u_r_z: ZUR
