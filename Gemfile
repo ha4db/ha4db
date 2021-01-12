@@ -85,3 +85,6 @@ end
 
 # active job backend
 gem 'sidekiq'
+
+# Exif reader
+gem 'exifr'

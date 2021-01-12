@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'exifr/jpeg'
+
 # rubocop:disable Metrics/ClassLength
 # BridgeContent Model
 class BridgeContent < ApplicationRecord
@@ -7,6 +9,7 @@ class BridgeContent < ApplicationRecord
   before_save :check_pointcloud_is_update
   after_commit :ortho_image_update
   before_save :check_ortho_is_update
+  after_commit :check_image_has_exif
 
   belongs_to :bridge
   has_many :bridge_content_inspections
@@ -130,6 +133,23 @@ class BridgeContent < ApplicationRecord
     return unless data_type.to_i == BridgeContent.data_types[:pointcloud]
 
     PointcloudJob.perform_later(id) if pointcloud_info.nil?
+  end
+
+  def check_image_has_exif
+    return unless data_type.to_i == BridgeContent.data_types[:image]
+
+    return unless date_of_shooting.blank?
+
+    return unless data.content_type == 'image/jpeg'
+
+    # read exif
+    data.open do |file|
+      exif = EXIFR::JPEG.new(file.path)
+      break unless exif.exif?
+
+      self.date_of_shooting = exif.date_time.strftime('%Y/%m/%d %H:%M:%S')
+      save
+    end
   end
 end
 # rubocop:enable Metrics/ClassLength
