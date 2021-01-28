@@ -33,7 +33,7 @@ class Pointcloud
     FileUtils.mkdir_p("./#{tile_dir}")
     # fix coordinate system
     # /tmp should not be mounted to docker so I use native pdal
-    `pdal translate #{file} .#{tile_dir}/temp.las -f filters.transformation --filters.transformation.matrix="0 0 1 1 0 -1 0 1 1 0 0 1 0 0 0 1"`
+    `pdal translate #{file} .#{tile_dir}/temp.las -f filters.transformation --filters.transformation.matrix="1 0 0 1 0 0 1 1 0 -1 0 1 0 0 0 1"`
     # convert to 3d tiles
     `docker run --rm -v $(pwd):/data -it ha4db/py3dtiles py3dtiles convert /data#{tile_dir}/temp.las --out /data#{tile_dir}/tiles`
     # get metadata
