@@ -119,3 +119,7 @@ public/pointclouds/*
 
 
 /config/credentials/*
+
+/config/credentials/test.key
+
+/config/credentials/production.key
