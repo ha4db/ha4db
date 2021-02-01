@@ -117,3 +117,5 @@ $RECYCLE.BIN/
 public/ortho_images/*
 public/pointclouds/*
 
+
+/config/credentials/*
