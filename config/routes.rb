@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  get 'status', to: 'status#index', format: :json
+
   # sidekiq
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
