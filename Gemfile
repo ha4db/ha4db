@@ -92,4 +92,7 @@ gem 'exifr'
 # capistrano
 group :development do
   gem "capistrano", "~> 3.14", require: false
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
 end
