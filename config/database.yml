@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: ha4db_production
-  username: ha4db
-  password: <%= ENV['HA4DB_DATABASE_PASSWORD'] %>
+  url: <%= Rails.application.credentials["database_url"] %>
