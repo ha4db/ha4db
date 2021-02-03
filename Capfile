@@ -39,6 +39,7 @@ require 'capistrano/puma'
 set :rbenv_type, :user
 set :rbenv_ruby, '2.7.1'
 install_plugin Capistrano::Puma
+install_plugin Capistrano::Puma::Daemon
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
