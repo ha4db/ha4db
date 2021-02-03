@@ -91,6 +91,10 @@ GEM
     capistrano-rbenv (2.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
+    capistrano3-puma (5.0.2)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (>= 4.0, < 6.0)
     caxlsx (3.0.2)
       htmlentities (~> 4.3, >= 4.3.4)
       mimemagic (~> 0.3)
@@ -348,6 +352,7 @@ DEPENDENCIES
   capistrano-locally
   capistrano-rails
   capistrano-rbenv
+  capistrano3-puma
   caxlsx
   exifr
   factory_bot_rails

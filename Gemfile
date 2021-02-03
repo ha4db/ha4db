@@ -96,4 +96,5 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-locally', require: false
+  gem 'capistrano3-puma'
 end
