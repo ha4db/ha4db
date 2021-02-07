@@ -20,11 +20,11 @@ camera.position.x = parseFloat(initialX);
 camera.position.y = parseFloat(initialY);
 camera.position.z = parseFloat(initialZ);
 const renderer = new THREE.WebGLRenderer();
+document.querySelector('#pointcloud').appendChild(renderer.domElement)
 const dom = renderer.domElement;
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.querySelector('#pointcloud').appendChild(renderer.domElement)
-const controls = new Ha4dbControls( camera, renderer.domElement );
+renderer.setSize(dom.clientWidth, dom.clientHeight);
+const controls = new Ha4dbControls( camera, dom );
 controls.rotateSpeed = 1.0;
 controls.zoomSpeed = 1.0;
 controls.panSpeed = 1.0;
@@ -32,6 +32,10 @@ controls.panSpeed = 1.0;
 // initialize raycaster
 const raycaster = new THREE.Raycaster();
 document.addEventListener('click', raycast);
+const sphereGeometry = new THREE.SphereGeometry( 0.1, 32, 32 );
+const sphereMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
+scene.add(sphere);
 
 const tilesRenderer = new TilesRenderer( path );
 tilesRenderer.setCamera( camera );
@@ -65,6 +69,7 @@ function raycast(e) {
 	console.log(intersects);
 
 	if (intersects.length > 0) {
+		sphere.position.copy(intersects[0].point);
 		return intersects[0];
 	}
 	else {
