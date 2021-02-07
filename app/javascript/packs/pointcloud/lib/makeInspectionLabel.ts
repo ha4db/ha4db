@@ -29,7 +29,7 @@ function makeInspectionLabel(view, position: THREE.Vector3) {
 	// create sprite
 	const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
 	const sprite = new THREE.Sprite(spriteMaterial);
-	sprite.scale.set(2, 1, 1);
+	sprite.scale.set(1, 1, 1);
 	sprite.position.set(position.x, position.y, position.z);
 	pastSprite = sprite;
 	view.scene.add(sprite);
