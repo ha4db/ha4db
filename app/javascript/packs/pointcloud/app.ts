@@ -20,6 +20,7 @@ camera.position.x = parseFloat(initialX);
 camera.position.y = parseFloat(initialY);
 camera.position.z = parseFloat(initialZ);
 const renderer = new THREE.WebGLRenderer();
+const dom = renderer.domElement;
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.querySelector('#pointcloud').appendChild(renderer.domElement)
@@ -27,6 +28,10 @@ const controls = new Ha4dbControls( camera, renderer.domElement );
 controls.rotateSpeed = 1.0;
 controls.zoomSpeed = 1.0;
 controls.panSpeed = 1.0;
+
+// initialize raycaster
+const raycaster = new THREE.Raycaster();
+document.addEventListener('click', raycast);
 
 const tilesRenderer = new TilesRenderer( path );
 tilesRenderer.setCamera( camera );
@@ -46,4 +51,23 @@ function renderLoop() {
 	tilesRenderer.update();
     renderer.render( scene, camera );
 
+}
+
+// mouse click and raycast
+function raycast(e) {
+	const mouse = {
+		x: (e.offsetX / dom.clientWidth) * 2 - 1,
+		y: - (e.offsetY / dom.clientHeight) * 2 + 1
+	};
+	console.log(mouse);
+	raycaster.setFromCamera( mouse, camera );
+	const intersects = raycaster.intersectObject(tilesRenderer.group, true);
+	console.log(intersects);
+
+	if (intersects.length > 0) {
+		return intersects[0];
+	}
+	else {
+		return false;
+	}
 }

@@ -312,7 +312,6 @@ var Ha4dbControls = function ( object, domElement ) {
 
 			var phi = MathUtils.degToRad( 90 - lat );
 			var theta = MathUtils.degToRad( lon );
-			console.log(phi)
 
 			if ( this.constrainVertical ) {
 
