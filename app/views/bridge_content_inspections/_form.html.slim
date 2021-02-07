@@ -9,6 +9,8 @@
   = f.hidden_field :seek
   = javascript_pack_tag 'apps/seek'
   = f.hidden_field :position
+  = f.hidden_field :pointposition
+  = javascript_pack_tag 'pointcloud/edit_inspection'
   = fields model: @bridge_content_inspection.inspection do |i|
     = render partial: 'inspections/form_inspection', locals: { f: i }
 

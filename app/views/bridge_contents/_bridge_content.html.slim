@@ -25,4 +25,7 @@
             video#video[src=url_for(@bridge_content.data) type=@bridge_content.data.content_type controls]
           - elsif @bridge_content.data.content_type.start_with?('image')
             img[src=url_for(@bridge_content.data)]
+          - elsif @bridge_content.data_type.to_i == BridgeContent.data_types[:pointcloud]
+            #pointcloud[data-id=@bridge_content.id data-originx=@bridge_content.pointcloud_info['x'] data-originy=@bridge_content.pointcloud_info['y'] data-originz=@bridge_content.pointcloud_info['z']]
+
 

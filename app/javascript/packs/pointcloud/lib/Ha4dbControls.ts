@@ -81,6 +81,15 @@ var Ha4dbControls = function ( object, domElement ) {
 
 	//
 
+	this.setLatLon = function (latlon) {
+		lat = latlon[0];
+		lon = latlon[1];
+	}
+
+	this.getLatLon = function() {
+		return [lat, lon];
+	}
+
 	this.handleResize = function () {
 
 		if ( this.domElement === document ) {
