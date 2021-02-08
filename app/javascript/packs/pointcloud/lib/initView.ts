@@ -28,7 +28,12 @@ function initView() {
 	camera.position.z = parseFloat(initialZ);
 	// make renderer and attach to dom
 	const renderer = new THREE.WebGLRenderer();
-	document.querySelector('#pointcloud').appendChild(renderer.domElement)
+	const div = document.querySelector('#pointcloud');
+	div.appendChild(renderer.domElement);
+	renderer.domElement.width = div.clientWidth * window.devicePixelRatio;
+	renderer.domElement.height = div.clientHeight * window.devicePixelRatio;
+	renderer.domElement.style.width = div.clientWidth + 'px';
+	renderer.domElement.style.height = div.clientHeight + 'px';
 	const dom = renderer.domElement;
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(dom.clientWidth, dom.clientHeight);
