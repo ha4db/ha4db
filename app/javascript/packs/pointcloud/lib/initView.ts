@@ -45,6 +45,7 @@ function initView() {
 
 		// The camera matrix is expected to be up to date
 		// before calling tilesRenderer.update
+		renderer.setClearColor(0xffffff, 1);
 		controls.update(clock.getDelta())
 		camera.updateMatrixWorld();
 		tilesRenderer.update();
