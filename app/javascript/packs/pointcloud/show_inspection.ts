@@ -13,7 +13,8 @@ const showInspection = () => {
     console.log(pointPosition.value);
     const inspectionPosition = new THREE.Vector3().fromArray(values.inspectionPosition)
     const cameraPosition = new THREE.Vector3().fromArray(values.cameraPosition);
-    makeInspectionLabel(view, inspectionPosition)
+    const inspectionText = document.querySelector('#content_inspection_title').textContent
+    makeInspectionLabel(view, inspectionText, inspectionPosition)
     view.camera.position.copy(cameraPosition);
     view.controls.setLatLon(values.cameraRotation);
     view.controls.enabled = true;

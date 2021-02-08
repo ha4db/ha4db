@@ -14,12 +14,14 @@ const editInspection = () => {
     console.log(pointPosition.value);
     const inspectionPosition = new THREE.Vector3().fromArray(values.inspectionPosition)
     const cameraPosition = new THREE.Vector3().fromArray(values.cameraPosition);
-    makeInspectionLabel(view, inspectionPosition)
+    const inspectionText = (document.getElementById('inspection_title') as HTMLInputElement).value;
+    makeInspectionLabel(view, inspectionText, inspectionPosition)
     view.camera.position.copy(cameraPosition);
     view.controls.setLatLon(values.cameraRotation);
     view.controls.enabled = true;
     const updatePointPosition = (position: THREE.Vector3) => {
-        makeInspectionLabel(view, position);
+        const inspectionText = (document.getElementById('inspection_title') as HTMLInputElement).value;
+        makeInspectionLabel(view, inspectionText, position);
         const values: PointInspection = {
             cameraPosition: view.camera.position.toArray(),
             cameraRotation: view.controls.getLatLon(),

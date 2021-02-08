@@ -4,18 +4,18 @@ let pastSprite = null;
 let pastSphere = null;
 
 // make sprite for inspection
-function makeInspectionLabel(view, position: THREE.Vector3) {
-	view.scene.remove(pastSprite);
-	view.scene.remove(pastSphere);
+function makeInspectionLabel(view, text, position: THREE.Vector3) {
+	view.annotationScene.remove(pastSprite);
+	view.annotationScene.remove(pastSphere);
 	// initialize
-	const canvasWidth = 500;
 	const canvasHeight = 100;
 	const fontSize = 60;
-	const text = '損傷01_下部工…';
 	// create canvas
 	const canvasForText = document.createElement('canvas');
 	const ctx = canvasForText.getContext('2d');
-	ctx.canvas.width = canvasWidth;
+	ctx.font = `${fontSize}px arial`;
+	const textWidth = ctx.measureText(text).width;
+	ctx.canvas.width = textWidth + 40;
 	ctx.canvas.height = canvasHeight;
 	ctx.fillStyle = 'rgba(0.2, 0.2, 0.2, 0.7)';
 	ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -23,15 +23,16 @@ function makeInspectionLabel(view, position: THREE.Vector3) {
 	ctx.font = `${fontSize}px arial`;
 	ctx.fillText(
 		text,
-		(canvasWidth - ctx.measureText(text).width) / 2,
+		(ctx.canvas.width - ctx.measureText(text).width) / 2,
 		canvasHeight / 2 + ctx.measureText(text).actualBoundingBoxAscent / 2
 	);
 	// create texture
 	const texture = new THREE.CanvasTexture(canvasForText);
 	// create sprite
+	const baseScale = 0.5;
 	const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
 	const sprite = new THREE.Sprite(spriteMaterial);
-	sprite.scale.set(2.5, 0.5, 1);
+	sprite.scale.set((ctx.canvas.width / ctx.canvas.height) * baseScale, baseScale, 1);
 	sprite.center = new THREE.Vector2(0.0, 0.0);
 	sprite.position.set(position.x, position.y, position.z);
 	pastSprite = sprite;
