@@ -35,13 +35,13 @@ function makeInspectionLabel(view, position: THREE.Vector3) {
 	sprite.center = new THREE.Vector2(0.0, 0.0);
 	sprite.position.set(position.x, position.y, position.z);
 	pastSprite = sprite;
-	view.scene.add(sprite);
+	view.annotationScene.add(sprite);
 	// create sphere
 	const sphereGeometry = new THREE.SphereGeometry(0.1, 32, 32);
 	const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 	const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 	sphere.position.set(position.x, position.y, position.z);
 	pastSphere = sphere;
-	view.scene.add(sphere);
+	view.annotationScene.add(sphere);
 }
 export {makeInspectionLabel}

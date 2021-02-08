@@ -17,6 +17,10 @@ function initView() {
 	const scene = new THREE.Scene();
 	const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
 	scene.add(ambientLight);
+	// make scene for annotation
+	const annotationScene = new THREE.Scene();
+	const anotambientLight = new THREE.AmbientLight(0xffffff, 1.0);
+	annotationScene.add(anotambientLight);
 	// make camera
 	const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 2000);
 	camera.position.x = parseFloat(initialX);
@@ -28,6 +32,7 @@ function initView() {
 	const dom = renderer.domElement;
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(dom.clientWidth, dom.clientHeight);
+	renderer.autoClear = false;
 	// init 3D tiles renderer
 	const tilesRenderer = new TilesRenderer(path);
 	tilesRenderer.setCamera(camera);
@@ -49,7 +54,10 @@ function initView() {
 		controls.update(clock.getDelta())
 		camera.updateMatrixWorld();
 		tilesRenderer.update();
+		renderer.clear();
 		renderer.render(scene, camera);
+		renderer.clearDepth();
+		renderer.render(annotationScene, camera);
 
 	}
 	renderLoop();
@@ -57,6 +65,7 @@ function initView() {
 		dom: dom,
 		camera: camera,
 		scene: scene,
+		annotationScene: annotationScene,
 		controls: controls,
 		points: tilesRenderer.group
 	});
