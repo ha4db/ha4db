@@ -109,7 +109,7 @@ class BridgeContentInspectionsController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def bridge_content_inspection_params
-    params.fetch(:bridge_content_inspection, {}).permit(:seek, :position)
+    params.fetch(:bridge_content_inspection, {}).permit(:seek, :position, :pointposition)
   end
 
   def inspection_params

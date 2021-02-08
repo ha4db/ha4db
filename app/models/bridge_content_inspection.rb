@@ -8,6 +8,7 @@ class BridgeContentInspection < ApplicationRecord
   validates :inspection, presence: true, uniqueness: { scope: :bridge_content }
   store_accessor :data, :seek
   store_accessor :data, :position
+  store_accessor :data, :pointposition
   validates :seek, numericality: { only_integer: false }, allow_blank: true
 
   def create_inspection(bridge_content_inspection_params, inspection_params)

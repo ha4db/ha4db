@@ -10,6 +10,9 @@
 - if @bridge_content_inspection.seek
   = hidden_field_tag 'bridge_content_inspection_seek', @bridge_content_inspection.seek
   = javascript_pack_tag 'apps/seek'
+- if @bridge_content_inspection.pointposition
+  = hidden_field_tag 'bridge_content_inspection_pointposition', @bridge_content_inspection.pointposition
+  = javascript_pack_tag 'pointcloud/show_inspection'
 
 .mdc-layout-grid
   .mdc-layout-grid__inner

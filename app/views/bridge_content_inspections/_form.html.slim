@@ -9,8 +9,11 @@
   = f.hidden_field :seek
   = javascript_pack_tag 'apps/seek'
   = f.hidden_field :position
+  = f.hidden_field :pointposition
   = fields model: @bridge_content_inspection.inspection do |i|
     = render partial: 'inspections/form_inspection', locals: { f: i }
+  - if @bridge_content.data_type.to_i == BridgeContent.data_types[:pointcloud]
+    = javascript_pack_tag 'pointcloud/edit_inspection'
 
   .mdc-layout-grid
     .mdc-layout-grid__inner
