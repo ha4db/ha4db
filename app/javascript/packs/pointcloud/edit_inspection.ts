@@ -17,6 +17,6 @@ const editInspection = () => {
         pointPosition.value = JSON.stringify(values);
     }
     const raycast = createRaycast(view, updatePointPosition);
-    document.addEventListener('click', raycast);    
+    view.dom.addEventListener('click', raycast);
 }
 editInspection();
