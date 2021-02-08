@@ -6,8 +6,9 @@ import {PointInspection} from './lib/point_inspection';
 const showInspection = () => {
     const view = initView();
     if(!view) return;
-    view.controls.enabled = false;
     const pointPosition = document.getElementById('bridge_content_inspection_pointposition') as HTMLInputElement
+    if(!pointPosition) return;
+    view.controls.enabled = false;
     const values: PointInspection = JSON.parse(pointPosition.value);
     console.log(pointPosition.value);
     const inspectionPosition = new THREE.Vector3().fromArray(values.inspectionPosition)
