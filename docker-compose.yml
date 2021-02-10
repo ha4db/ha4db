@@ -39,3 +39,4 @@ services:
 
 volumes:
   pgdata:
+  redis:
