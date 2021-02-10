@@ -1,11 +1,1 @@
-@use "@material/theme" with (
-  $primary: #FEDBD0,
-  $secondary: #FEEAE6,
-  $surface: #FFFBFA,
-  $background: #FFFFFF,
-  $on-primary: #442C2E,
-  $on-secondary: #442C2E,
-  $on-surface: #442C2E,
-  // when set on-background, get error
-  //$on-background: #442C2E,
-);
+@use "@material/theme";
