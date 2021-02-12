@@ -15,7 +15,7 @@ class PointcloudJob < ApplicationJob
 
   def exec_perform(bridge_content)
     bridge_content.data.open do |file|
-      #target_dir needs local path for docker
+      # target_dir needs local path for docker
       target_dir = File.join('/public', 'pointclouds', bridge_content.id.to_s)
       target_dir = File.join('/tmp', 'pointclouds', bridge_content.id.to_s) if Rails.env == 'test'
       FileUtils.rm_rf(target_dir)

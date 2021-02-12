@@ -14,14 +14,14 @@ digraph models {
   bridges [label="bridges(橋梁)|{{id|location(座標)|title(名称)|address(住所)|other_data(その他の内容)|created_at|updated_at}|{Int|Geometry(Point)|String|String|Jsonb|Datetime|Datetime}}"];
 
   // 定期点検 regular_inspections
-  regular_inspections [label="regular_inspections(定期点検)|{{id|bridge_id|inspected_at}|{Int|Int|Datetime}}"];
+  regular_inspections [label="regular_inspections(定期点検)|{{id|bridge_id|name(名称)|other_data(その他データ)}|{Int|Int|String|jsonb}}"];
   // 部材 components
   components [label="components(部材)|{{id|bridge_id|component_category(部材の種類)|name}|{Int|Int|Enum.ComponentCategory|String}}"];
   // 画像
   bridge_contents [label="bridge_contents(橋のコンテンツ)|{{id|bridge_id|title(名前)|data(画像/動画)|metadata(データの内部構造)|created_at|updated_at}|{Int|Int|String|ActiveStroage|Jsonb|Datetime|Datetime}}"]
 
   // 定期点検 -> 診断結果 diagnosises // 判定区分2〜3のときにinjuriesを参照する(現在は一つのみ)
-  diagnosises [label="diagnosises(診断結果)|{{id|regular_inspection_id|component_category(部材名)|result(判定区分(1〜3))|injury_id(損傷状況)|observation(所見)}|{Int|Int|Enum.ComponentCategory|Int|Int|String}}"];
+  diagnosises [label="diagnosises(診断結果)|{{id|regular_inspection_id|component_category(部材の種類)|result(判定区分(1〜3))|injury_id(損傷状況)|observation(所見)}|{Int|Int|Enum.ComponentCategory|Int|Int|String}}"];
   // 定期点検 -> 損傷状況 injuries
   injuries [label="injuries(損傷状況)|{{id|regular_inspection_id|component_id|injury_type(損傷の種類)|injury_grade(損傷程度)}|{Int|Int|Int|Int|Int}}"];
   bridge_contents_injuries [label="bridge_contetns_injuries(中間テーブル)|{{id|bridge_content_id|injury_id}|{Int|Int|Int}}"]

@@ -1,0 +1,19 @@
+h1 Listing regular_inspections
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @regular_inspections.each do |regular_inspection|
+      tr
+        td = link_to 'Show', regular_inspection
+        td = link_to 'Edit', edit_regular_inspection_path(regular_inspection)
+        td = link_to 'Destroy', regular_inspection, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Regular inspection', new_regular_inspection_path

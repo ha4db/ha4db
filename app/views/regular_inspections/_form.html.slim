@@ -1,0 +1,9 @@
+= form_for @regular_inspection do |f|
+  - if @regular_inspection.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@regular_inspection.errors.count, "error")} prohibited this regular_inspection from being saved:"
+      ul
+        - @regular_inspection.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

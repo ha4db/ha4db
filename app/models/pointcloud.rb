@@ -16,16 +16,16 @@ class Pointcloud
 
   def make
     convert
-    self.center    
+    center
   end
 
   private
 
   def calculate_center
-    center = Hash.new
-    center['x'] = (self.extent['maxx'].to_f + self.extent['minx'].to_f) / 2.0
-    center['y'] = (self.extent['maxy'].to_f + self.extent['miny'].to_f) / 2.0
-    center['z'] = (self.extent['maxz'].to_f + self.extent['minz'].to_f) / 2.0
+    center = {}
+    center['x'] = (extent['maxx'].to_f + extent['minx'].to_f) / 2.0
+    center['y'] = (extent['maxy'].to_f + extent['miny'].to_f) / 2.0
+    center['z'] = (extent['maxz'].to_f + extent['minz'].to_f) / 2.0
     center
   end
 
@@ -38,7 +38,7 @@ class Pointcloud
     `docker run --rm -v $(pwd):/data -it ha4db/py3dtiles py3dtiles convert /data#{tile_dir}/temp.las --out /data#{tile_dir}/tiles`
     # get metadata
     pdal_string = `pdal info .#{tile_dir}/temp.las`
-    self.extent = JSON.parse(pdal_string)["stats"]["bbox"]["native"]["bbox"]
+    self.extent = JSON.parse(pdal_string)['stats']['bbox']['native']['bbox']
     self.center = calculate_center
     `rm .#{tile_dir}/temp.las`
   end
