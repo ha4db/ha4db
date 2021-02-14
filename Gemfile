@@ -98,3 +98,8 @@ group :development do
   gem 'capistrano-locally', require: false
   gem 'capistrano3-puma'
 end
+
+# solargraph
+group :development do
+  gem 'solargraph'
+end
