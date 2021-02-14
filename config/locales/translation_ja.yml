@@ -10,6 +10,7 @@ ja:
       inspection: 点検
       bridge_content_inspection: 橋のコンテンツと点検の中間モデル
       soundness: 健全性
+      regular_inspection: 定期点検
 
     attributes:
       admin_user:
@@ -26,6 +27,7 @@ ja:
         road_name: 道路名
         inspections: 点検
         soundnesses: 健全性
+        regular_inspections: 定期点検
 
       user:
         login_name: ログイン名
@@ -98,6 +100,7 @@ ja:
         pointcloud_reference_point_x: 標定点 X 座標
         pointcloud_reference_point_y: 標定点 Y 座標
         pointcloud_reference_point_z: 標定点 Z 座標
+        metadata: メタデータ
 
       inspection:
         category: 種類
@@ -122,6 +125,10 @@ ja:
         bridge: :activerecord.models.bridge
         overall_evaluation: 総合評価
 
+      regular_inspection:
+        other_data: その他のデータ
+        title: 名前
+
   errors:
     attributes:
       password:
@@ -140,13 +147,16 @@ ja:
         damage_diagram: 損傷図
         ortho: オルソ画像
         pointcloud: 点群
+
       position_entry_type:
         center_photo: 写真中心
         center_camera: カメラ中心
         photo_bbox: 写真四隅
+
       projection_method:
         center_projection: 中心投影
         orthographic_projection: 正射投影
+
       target_material:
         main_girder: 主桁
         cross_member: 横桁
@@ -158,12 +168,15 @@ ja:
         top_plate: 頂版
         side_wall: 側壁
         bottom_plate: 底版
+
       damage_or_not:
         damage: 損傷部
         not_damage: 非損傷部
+
       representative_photo:
         representative: 代表写真
         others: その他
+
     inspection:
       category:
         unselected: 未選択
@@ -173,6 +186,7 @@ ja:
         substructure: 下部構造
         support_structure: 支承部
         other: その他
+
     soundness:
       overall_evaluation:
         unselected: 未選択
@@ -191,9 +205,11 @@ ja:
         listing_with_title: "%{title}: %{model_name}一覧"
         new_with_title: "%{title}: 新規%{model_name}"
         edit_with_title: "%{title}: %{model_name}編集"
+
       login: "ログイン"
       logout: "ログアウト"
       processing: "処理中..."
+
     title:
       admin_login: "管理者ログイン"
       admin: "Ha4db 管理画面"
@@ -201,10 +217,12 @@ ja:
       import_from_excel: "Excelからインポート"
       preview: "プレビュー"
       undefined_inspections: "未割り当ての点検"
+
     menu:
       admin:
         home: "ホーム"
         users: "ユーザ"
+
     action:
       new: "新規%{model_name}"
       back: "戻る"

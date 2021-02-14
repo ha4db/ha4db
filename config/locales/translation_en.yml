@@ -10,6 +10,7 @@ en:
       inspection: Inspection
       bridge_content_inspection: Junction model between Bridge content and Inspection
       soundness: Soundness
+      regular_inspection: Regular inspection
 
     attributes:
       admin_user:
@@ -26,6 +27,7 @@ en:
         road_name: Road name
         inspections: Inspections
         soundnesses: Soundnesses
+        regular_inspections: Regular inspections
 
       user:
         login_name: Login name
@@ -98,6 +100,8 @@ en:
         pointcloud_reference_point_x: Reference Point X Coordiante
         pointcloud_reference_point_y: Reference Point Y Coordinate
         pointcloud_reference_point_z: Reference Point Z Coordinate
+        metadata: Metadata
+
       inspection:
         category: Category
         date: Date
@@ -121,6 +125,10 @@ en:
         bridge: :activerecord.models.bridge
         overall_evaluation: Overall evaluation
 
+      regular_inspection:
+        other_data: Other data
+        title: Title
+
   errors:
     attributes:
       password:
@@ -139,13 +147,16 @@ en:
         damage_diagram: Damage Diagram
         ortho: Ortho Image
         pointcloud: Point Cloud
+
       position_entry_type:
         center_photo: Center photo
         center_camera: Center camera
         photo_bbox: Photo Bbox
+
       projection_method:
         center_projection: Center Projection
         orthographic_projection: Orthographic projection
+
       target_material:
         main_girder: Main grider
         cross_member: Cross member
@@ -157,12 +168,15 @@ en:
         top_plate: Top plate
         side_wall: Side wall
         bottom_plate: Bottom plate
+
       damage_or_not:
         damage: Damage
         not_damage: Not damage
+
       representative_photo:
         representative: Representative
         others: Others
+
     inspection:
       category:
         unselected: Unselected
@@ -172,6 +186,7 @@ en:
         substructure: Substructure
         support_structure: Support structure
         other: Other
+
     soundness:
       overall_evaluation:
         unselected: Unselected
@@ -190,9 +205,11 @@ en:
         listing_with_title: "%{title}: Listing %{model_name}"
         new_with_title: "%{title}: New %{model_name}"
         edit_with_title: "%{title}: Edit %{model_name}"
+
       login: "Login"
       logout: "Logout"
       processing: "Processing..."
+
     title:
       admin_login: "Admin login"
       admin: "Ha4db Admin page"
@@ -200,10 +217,12 @@ en:
       import_from_excel: "Import from Excel"
       preview: "Preview"
       undefined_inspections: "Undefined inspections"
+
     menu:
       admin:
         home: "Home"
         users: "Users"
+
     action:
       new: "New %{model_name}"
       back: "Back"
