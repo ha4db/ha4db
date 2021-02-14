@@ -4,7 +4,8 @@ require 'rails_helper'
 
 RSpec.describe 'regular_inspections/edit', type: :view do
   before(:each) do
-    @regular_inspection = assign(:regular_inspection, RegularInspection.create!)
+    bridge = assign(:bridge, FactoryBot.create(:bridge))
+    @regular_inspection = assign(:regular_inspection, RegularInspection.create!(bridge: bridge))
   end
 
   it 'renders the edit regular_inspection form' do

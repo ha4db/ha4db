@@ -4,9 +4,10 @@ require 'rails_helper'
 
 RSpec.describe 'regular_inspections/index', type: :view do
   before(:each) do
+    bridge = assign(:bridge, FactoryBot.create(:bridge))
     assign(:regular_inspections, [
-             RegularInspection.create!,
-             RegularInspection.create!
+             RegularInspection.create!(bridge: bridge),
+             RegularInspection.create!(bridge: bridge)
            ])
   end
 
