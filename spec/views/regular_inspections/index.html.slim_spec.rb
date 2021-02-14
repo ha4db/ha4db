@@ -6,8 +6,8 @@ RSpec.describe 'regular_inspections/index', type: :view do
   before(:each) do
     bridge = assign(:bridge, FactoryBot.create(:bridge))
     assign(:regular_inspections, [
-             RegularInspection.create!(bridge: bridge),
-             RegularInspection.create!(bridge: bridge)
+             FactoryBot.create(:regular_inspection, bridge: bridge),
+             FactoryBot.create(:regular_inspection, bridge: bridge)
            ])
   end
 

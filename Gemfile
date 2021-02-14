@@ -103,3 +103,6 @@ end
 group :development do
   gem 'solargraph'
 end
+
+# serialize jsonb
+gem 'attr_json'

@@ -128,6 +128,11 @@ ja:
       regular_inspection:
         other_data: その他のデータ
         title: 名前
+        person_responsible: 点検担当者
+        periodic_inspection_date: 定期点検実施年月日
+        record_updated_date: 調書更新年月日
+        start_date: 開始日
+        end_date: 終了日
 
   errors:
     attributes:
