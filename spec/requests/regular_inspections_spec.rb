@@ -16,6 +16,10 @@ require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
 RSpec.describe '/regular_inspections', type: :request do
+  before do
+    @user = FactoryBot.create(:user)
+    allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return({ user_id: @user.id })
+  end
   # RegularInspection. As you add validations to RegularInspection, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
