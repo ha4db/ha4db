@@ -23,7 +23,7 @@ digraph models {
   // 定期点検 -> 診断結果 diagnosises // 判定区分2〜3のときにinjuriesを参照する(現在は一つのみ)
   diagnoses [label="diagnoses(診断結果)|{{id|regular_inspection_id|component_category(部材の種類)|result(判定区分(1〜3))|injury_id(損傷状況)|observation(所見)}|{Int|Int|Enum.ComponentCategory|Int|Int|String}}"];
   // 定期点検 -> 損傷状況 injuries
-  injuries [label="injuries(損傷状況)|{{id|regular_inspection_id|component_id|injury_type(損傷の種類)|injury_grade(損傷程度)}|{Int|Int|Int|Int|Int}}"];
+  injuries [label="injuries(損傷状況)|{{id|regular_inspection_id|component_id|injury_type(損傷の種類)|injury_grade(損傷程度)|other_data}|{Int|Int|Int|String|Int|jsonb}}"];
   bridge_contents_injuries [label="bridge_contetns_injuries(中間テーブル)|{{id|bridge_content_id|injury_id}|{Int|Int|Int}}"]
   // 定期点検 -> 点検状況 state_of_inspections
   state_of_inspections [label="state_of_inspections(点検状況)|{{id|regular_inspection_id|component_category|bridge_content_id}|{Int|Int|Enum.ComponentCategory|Int}}"]
@@ -48,6 +48,7 @@ digraph models {
 
   /* enum */
   enum_component_categories [label="Enum.ComponentCategories(部材の種類)|{{1(上部構造主桁)|2(上部構造横桁)|3(上部構造床版)|4(下部構造)|5(支承部)|6(その他)}}"];
+  enum_injury_grades [label="Enum.InjuryGrades(損傷程度)|{{1(a)|2(b)|3(c)|4(d)}}"];
 
   /* edges */
 
