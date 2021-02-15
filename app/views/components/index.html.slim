@@ -1,0 +1,44 @@
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      section.header
+        h1 = I18n.t("view.common.title.listing", model_name: Component.model_name.human)
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      .mdc-data-table
+        .mdc-data-table__table-container
+          table.mdc-data-table__table[aria-label="Listing Users"]
+            thead
+              tr.mdc-data-table__header-row
+                th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Bridge.human_attribute_name(:title)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Component.human_attribute_name(:component_category0)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Component.human_attribute_name(:title)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+            tbody.mdc-data-table__content
+              - @components.each do |component|
+                tr.mdc-data-table__row
+                  td.mdc-data-table__cell.mdc-data-table__cell--numeric = component.id
+                  td.mdc-data-table__cell = component.bridge.title
+                  td.mdc-data-table__cell = I18n.t("enums.component.category.#{Component.categories.invert[component.component_category]}")
+                  td.mdc-data-table__cell = component.title
+                  td.mdc-data-table__cell
+                    = link_to 'visibility', component, class: 'mdc-icon-button material-icons'
+                  td.mdc-data-table__cell
+                    = link_to 'edit', edit_component_path(component), class: 'mdc-icon-button material-icons'
+                  td.mdc-data-table__cell
+                    = link_to 'delete', component, data: { confirm: I18n.t('view.action.delete') }, method: :delete, class: 'mdc-icon-button material-icons'
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      a.mdc-fab.mdc-fab--extended[href=new_component_path]
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon add
+        span.mdc-fab__label = I18n.t("view.action.new", model_name: Bridge.model_name.human)
+
+= javascript_pack_tag 'commons/data-table'
+= javascript_pack_tag 'commons/button'

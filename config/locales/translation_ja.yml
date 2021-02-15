@@ -11,6 +11,7 @@ ja:
       bridge_content_inspection: 橋のコンテンツと点検の中間モデル
       soundness: 健全性
       regular_inspection: 定期点検
+      component: 部材
 
     attributes:
       admin_user:
@@ -28,6 +29,7 @@ ja:
         inspections: 点検
         soundnesses: 健全性
         regular_inspections: 定期点検
+        components: 部材
 
       user:
         login_name: ログイン名
@@ -133,6 +135,11 @@ ja:
         record_updated_date: 調書更新年月日
         start_date: 開始日
         end_date: 終了日
+        bridge: :activerecord.models.bridge
+
+      component:
+        component_category: 部材の種類
+        title: 名称
 
   errors:
     attributes:
@@ -199,6 +206,17 @@ ja:
         two: 2
         three: 3
         four: 4
+
+    component:
+      category:
+        unselected: 未選択
+        superstructure_main_girder: 上部構造主桁
+        superstructure_horizontal_grider: 上部構造横桁
+        superstructure_slab: 上部構造床版
+        substructure: 下部構造
+        support_structure: 支承部
+        other: その他
+
 
   bridge_content: :activerecord.models.bridge_content
 

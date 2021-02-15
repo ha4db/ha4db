@@ -1,0 +1,45 @@
+- unless notice.nil?
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        p#notice = notice
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      ul.mdc-list
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text id
+            span.mdc-list-item__secondary-text = @component.id
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Bridge.human_attribute_name(:title)
+            span.mdc-list-item__secondary-text = @component.bridge.title
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Component.human_attribute_name(:component_category)
+            span.mdc-list-item__secondary-text = I18n.t("enums.component.category.#{Component.categories.invert[@component.component_category]}")
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Component.human_attribute_name(:title)
+            span.mdc-list-item__secondary-text = @component.title
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-2
+      = link_to edit_component_path(@component), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon edit
+        span.mdc-fab__label = I18n.t("view.action.edit")
+    .mdc-layout-grid__cell--span-2
+      = link_to components_path, class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label = I18n.t("view.action.back")
+
+= javascript_pack_tag 'commons/button'

@@ -16,7 +16,7 @@ digraph models {
   // 定期点検 regular_inspections
   regular_inspections [label="regular_inspections(定期点検)|{{id|bridge_id|title(名称)|other_data(その他データ)}|{Int|Int|String|jsonb}}"];
   // 部材 components
-  components [label="components(部材)|{{id|bridge_id|component_category(部材の種類)|title}|{Int|Int|Enum.ComponentCategory|String}}"];
+  components [label="components(部材)|{{id|bridge_id|component_category(部材の種類)|title(名称)}|{Int|Int|Enum.ComponentCategories|String}}"];
   // 画像
   bridge_contents [label="bridge_contents(橋のコンテンツ)|{{id|bridge_id|title(名前)|data(画像/動画)|metadata(データの内部構造)|created_at|updated_at}|{Int|Int|String|ActiveStroage|Jsonb|Datetime|Datetime}}"]
 
@@ -47,7 +47,7 @@ digraph models {
 */
 
   /* enum */
-  enum_components_category [label="Enum.ComponentCategory(部材の種類)|{{1(上部構造主桁)|2(上部構造横桁)|3(上部構造床版)|4(下部構造)|5(支承部)|6(その他)}}"];
+  enum_component_categories [label="Enum.ComponentCategories(部材の種類)|{{1(上部構造主桁)|2(上部構造横桁)|3(上部構造床版)|4(下部構造)|5(支承部)|6(その他)}}"];
 
   /* edges */
 

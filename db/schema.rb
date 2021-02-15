@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_062426) do
+ActiveRecord::Schema.define(version: 2021_02_15_012323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 2021_02_12_062426) do
     t.jsonb "other_data"
     t.index ["location"], name: "index_bridges_on_location", using: :gist
     t.index ["other_data"], name: "index_bridges_on_other_data", using: :gin
+  end
+
+  create_table "components", force: :cascade do |t|
+    t.bigint "bridge_id"
+    t.string "title"
+    t.integer "component_category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bridge_id"], name: "index_components_on_bridge_id"
   end
 
   create_table "inspections", force: :cascade do |t|

@@ -11,6 +11,7 @@ en:
       bridge_content_inspection: Junction model between Bridge content and Inspection
       soundness: Soundness
       regular_inspection: Regular inspection
+      component: Component
 
     attributes:
       admin_user:
@@ -28,6 +29,7 @@ en:
         inspections: Inspections
         soundnesses: Soundnesses
         regular_inspections: Regular inspections
+        components: Components
 
       user:
         login_name: Login name
@@ -133,6 +135,11 @@ en:
         record_updated_date: Record update date
         start_date: Start date
         end_date: End date
+        bridge: :activerecord.models.bridge
+
+      component:
+        component_category: Component category
+        title: Title
 
   errors:
     attributes:
@@ -199,6 +206,17 @@ en:
         two: 2
         three: 3
         four: 4
+
+    component:
+      category:
+        unselected: Unselected
+        superstructure_main_girder: Superstructure main girder
+        superstructure_horizontal_grider: Superstructure horizontal grider
+        superstructure_slab: Superstructure slab
+        substructure: Substructure
+        support_structure: Support structure
+        other: Other
+
 
   bridge_content: :activerecord.models.bridge_content
 
