@@ -19,15 +19,18 @@ RSpec.describe '/regular_inspections', type: :request do
   before do
     @user = FactoryBot.create(:user)
     allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return({ user_id: @user.id })
+    @bridge = FactoryBot.create(:bridge)
   end
   # RegularInspection. As you add validations to RegularInspection, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    FactoryBot.build(:regular_inspection, bridge: @bridge).attributes
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    regular_inspection = FactoryBot.build(:regular_inspection, bridge: @bridge)
+    regular_inspection.title = ''
+    regular_inspection.attributes
   end
 
   describe 'GET /index' do
@@ -92,14 +95,14 @@ RSpec.describe '/regular_inspections', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        FactoryBot.build(:regular_inspection, bridge: @bridge, title: 'test!').attributes
       end
 
       it 'updates the requested regular_inspection' do
         regular_inspection = RegularInspection.create! valid_attributes
         patch regular_inspection_url(regular_inspection), params: { regular_inspection: new_attributes }
         regular_inspection.reload
-        skip('Add assertions for updated state')
+        expect(regular_inspection.title).to eq('test!')
       end
 
       it 'redirects to the regular_inspection' do

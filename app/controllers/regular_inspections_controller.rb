@@ -7,7 +7,7 @@ class RegularInspectionsController < UserBaseController
   # GET /regular_inspections
   # GET /regular_inspections.json
   def index
-    @regular_inspections = RegularInspection.all
+    @regular_inspections = RegularInspection.joins(:bridge).all
   end
 
   # GET /regular_inspections/1
@@ -29,7 +29,11 @@ class RegularInspectionsController < UserBaseController
 
     respond_to do |format|
       if @regular_inspection.save
-        format.html { redirect_to @regular_inspection, notice: 'Regular inspection was successfully created.' }
+        format.html do
+          redirect_to @regular_inspection,
+                      notice: I18n.t('controller.common.success_on_create',
+                                     model_name: RegularInspection.model_name.human)
+        end
         format.json { render :show, status: :created, location: @regular_inspection }
       else
         format.html { render :new }
@@ -43,7 +47,11 @@ class RegularInspectionsController < UserBaseController
   def update
     respond_to do |format|
       if @regular_inspection.update(regular_inspection_params)
-        format.html { redirect_to @regular_inspection, notice: 'Regular inspection was successfully updated.' }
+        format.html do
+          redirect_to @regular_inspection,
+                      notice: I18n.t('controller.common.success_on_update',
+                                     model_name: RegularInspection.model_name.human)
+        end
         format.json { render :show, status: :ok, location: @regular_inspection }
       else
         format.html { render :edit }
@@ -57,7 +65,11 @@ class RegularInspectionsController < UserBaseController
   def destroy
     @regular_inspection.destroy
     respond_to do |format|
-      format.html { redirect_to regular_inspections_url, notice: 'Regular inspection was successfully destroyed.' }
+      format.html do
+        redirect_to regular_inspections_url,
+                    notice: I18n.t('controller.common.success_on_destroy',
+                                   model_name: RegularInspection.model_name.human)
+      end
       format.json { head :no_content }
     end
   end
@@ -71,6 +83,7 @@ class RegularInspectionsController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def regular_inspection_params
-    params.fetch(:regular_inspection, {})
+    params.fetch(:regular_inspection, {}).permit(:bridge_id, :title, :person_responsible, :periodic_inspection_date,
+                                                 :record_updated_date, :start_date, :end_date)
   end
 end

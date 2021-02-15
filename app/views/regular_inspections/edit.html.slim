@@ -1,8 +1,21 @@
-h1 Editing regular_inspection
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      section.header
+        h1 = I18n.t('view.common.title.editing', model_name: RegularInspection.model_name.human)
 
 == render 'form'
 
-=> link_to 'Show', @regular_inspection
-'|
-=< link_to 'Back', regular_inspections_path
-
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-2
+      = link_to @regular_inspection, class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon visibility
+        span.mdc-fab__label = I18n.t("view.action.show")
+    .mdc-layout-grid__cell--span-2
+      = link_to regular_inspections_path, class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label = I18n.t("view.action.back")
+= javascript_pack_tag 'commons/button'
