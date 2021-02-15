@@ -21,7 +21,7 @@ digraph models {
   bridge_contents [label="bridge_contents(橋のコンテンツ)|{{id|bridge_id|title(名前)|data(画像/動画)|metadata(データの内部構造)|created_at|updated_at}|{Int|Int|String|ActiveStroage|Jsonb|Datetime|Datetime}}"]
 
   // 定期点検 -> 診断結果 diagnosises // 判定区分2〜3のときにinjuriesを参照する(現在は一つのみ)
-  diagnosises [label="diagnosises(診断結果)|{{id|regular_inspection_id|component_category(部材の種類)|result(判定区分(1〜3))|injury_id(損傷状況)|observation(所見)}|{Int|Int|Enum.ComponentCategory|Int|Int|String}}"];
+  diagnoses [label="diagnoses(診断結果)|{{id|regular_inspection_id|component_category(部材の種類)|result(判定区分(1〜3))|injury_id(損傷状況)|observation(所見)}|{Int|Int|Enum.ComponentCategory|Int|Int|String}}"];
   // 定期点検 -> 損傷状況 injuries
   injuries [label="injuries(損傷状況)|{{id|regular_inspection_id|component_id|injury_type(損傷の種類)|injury_grade(損傷程度)}|{Int|Int|Int|Int|Int}}"];
   bridge_contents_injuries [label="bridge_contetns_injuries(中間テーブル)|{{id|bridge_content_id|injury_id}|{Int|Int|Int}}"]
@@ -58,8 +58,8 @@ digraph models {
   bridges -> soundnesses [label="id=bridge_id 1..n"];
   
   // to diagnosises
-  regular_inspections -> diagnosises [label="id=regular_inspection_id"];
-  injuries -> diagnosises [label="id=injury_id"];
+  regular_inspections -> diagnoses [label="id=regular_inspection_id"];
+  injuries -> diagnoses [label="id=injury_id"];
 
   // to injuries
   regular_inspections -> injuries [label="id=regular_inspection_id"];
