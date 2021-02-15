@@ -6,6 +6,10 @@ class Component < ApplicationRecord
   validates :bridge, presence: true
   validates :component_category, presence: true
 
+  def show_name
+    I18n.t("enums.component.category.#{Component.categories.invert[component_category]}") + title
+  end
+
   enum category: {
     unselected: 0,
     superstructure_main_girder: 1,

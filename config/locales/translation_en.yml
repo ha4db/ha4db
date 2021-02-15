@@ -12,6 +12,7 @@ en:
       soundness: Soundness
       regular_inspection: Regular inspection
       component: Component
+      injury: Injury
 
     attributes:
       admin_user:
@@ -140,6 +141,14 @@ en:
       component:
         component_category: Component category
         title: Title
+        bridge: :activerecord.models.bridge
+
+      injury:
+        injury_grade: Injury grade
+        injury_type: Injury type
+        other_data: Other data
+        regular_inspection: :activerecord.models.regular_inspection
+        component: :activerecord.models.component
 
   errors:
     attributes:
@@ -217,6 +226,14 @@ en:
         support_structure: Support structure
         other: Other
 
+    injury:
+      grade:
+        unselected: Unselected
+        a: a
+        b: b
+        c: c
+        d: d
+        e: e
 
   bridge_content: :activerecord.models.bridge_content
 
@@ -262,3 +279,5 @@ en:
       success_on_create: "%{model_name} was successfully created."
       success_on_update: "%{model_name} was successfully updated."
       success_on_destroy: "%{model_name} was successfully destroyed."
+
+  component: :activerecord.models.component

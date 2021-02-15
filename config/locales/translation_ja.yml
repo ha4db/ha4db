@@ -12,6 +12,7 @@ ja:
       soundness: 健全性
       regular_inspection: 定期点検
       component: 部材
+      injury: 損傷状況
 
     attributes:
       admin_user:
@@ -140,6 +141,14 @@ ja:
       component:
         component_category: 部材の種類
         title: 名称
+        bridge: :activerecord.models.bridge
+
+      injury:
+        injury_grade: 損傷程度
+        injury_type: 損傷の種類
+        other_data: その他のデータ
+        regular_inspection: :activerecord.models.regular_inspection
+        component: :activerecord.models.component
 
   errors:
     attributes:
@@ -217,6 +226,14 @@ ja:
         support_structure: 支承部
         other: その他
 
+    injury:
+      grade:
+        unselected: 未選択
+        a: a
+        b: b
+        c: c
+        d: d
+        e: e
 
   bridge_content: :activerecord.models.bridge_content
 
@@ -262,3 +279,5 @@ ja:
       success_on_create: "%{model_name}の作成に成功しました"
       success_on_update: "%{model_name}の編集に成功しました"
       success_on_destroy: "%{model_name}の削除に成功しました"
+
+  component: :activerecord.models.component

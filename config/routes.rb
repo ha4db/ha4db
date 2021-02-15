@@ -3,7 +3,9 @@
 # rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
   resources :components
-  resources :regular_inspections
+  resources :regular_inspections do
+    resources :injuries
+  end
   resource :mlit_importer, only: %i[new create] do
     post 'preview'
   end

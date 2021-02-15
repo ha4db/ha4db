@@ -13,6 +13,7 @@ RSpec.describe Component, type: :model do
   it { should respond_to(:bridge) }
   it { should respond_to(:title) }
   it { should respond_to(:component_category) }
+  it { should respond_to(:show_name) }
 
   it { should be_valid }
 
