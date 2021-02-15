@@ -71,7 +71,7 @@ class InjuriesController < UserBaseController
     @injury.destroy
     respond_to do |format|
       format.html do
-        redirect_to regular_inspections_injuries_url(@regular_inspection),
+        redirect_to regular_inspection_injury_url(@regular_inspection),
                     notice: I18n.t('controller.common.success_on_destroy', model_name: Injury.model_name.human)
       end
       format.json { head :no_content }
