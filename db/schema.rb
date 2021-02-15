@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_043050) do
+ActiveRecord::Schema.define(version: 2021_02_15_225204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,19 @@ ActiveRecord::Schema.define(version: 2021_02_15_043050) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bridge_id"], name: "index_components_on_bridge_id"
+  end
+
+  create_table "diagnoses", force: :cascade do |t|
+    t.bigint "regular_inspection_id"
+    t.integer "component_category"
+    t.integer "result"
+    t.bigint "injury_id"
+    t.string "observation"
+    t.jsonb "other_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["injury_id"], name: "index_diagnoses_on_injury_id"
+    t.index ["regular_inspection_id"], name: "index_diagnoses_on_regular_inspection_id"
   end
 
   create_table "injuries", force: :cascade do |t|

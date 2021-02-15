@@ -60,7 +60,7 @@ digraph models {
   
   // to diagnosises
   regular_inspections -> diagnoses [label="id=regular_inspection_id"];
-  injuries -> diagnoses [label="id=injury_id"];
+  injuries -> diagnoses [label="id=injury_id", style="dashed"];
 
   // to injuries
   regular_inspections -> injuries [label="id=regular_inspection_id"];
