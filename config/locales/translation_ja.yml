@@ -243,6 +243,8 @@ ja:
       login: "ログイン"
       logout: "ログアウト"
       processing: "処理中..."
+      preview: プレビュー
+      no_preview: "プレビューなし"
 
     title:
       admin_login: "管理者ログイン"

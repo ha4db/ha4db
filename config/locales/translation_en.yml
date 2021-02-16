@@ -242,6 +242,8 @@ en:
       login: "Login"
       logout: "Logout"
       processing: "Processing..."
+      preview: Preview
+      no_preview: "No Preview"
 
     title:
       admin_login: "Admin login"
