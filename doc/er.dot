@@ -24,11 +24,11 @@ digraph models {
   diagnoses [label="diagnoses(診断結果)|{{id|regular_inspection_id|component_category(部材の種類)|result(判定区分(1〜3))|injury_id(損傷状況)|observation(所見)}|{Int|Int|Enum.ComponentCategory|Int|Int|String}}"];
   // 定期点検 -> 損傷状況 injuries
   injuries [label="injuries(損傷状況)|{{id|regular_inspection_id|component_id|injury_type(損傷の種類)|injury_grade(損傷程度)|other_data}|{Int|Int|Int|String|Int|jsonb}}"];
-  bridge_contents_injuries [label="bridge_contetns_injuries(中間テーブル)|{{id|bridge_content_id|injury_id|other_data}|{Int|Int|Int|jsonb}}"]
+  bridge_contents_injuries [label="bridge_contents_injuries(中間テーブル)|{{id|bridge_content_id|injury_id|other_data}|{Int|Int|Int|jsonb}}"];
   // 定期点検 -> 点検状況 // state_of_inspections -> bridge_contentsにマージ
 
   // 評価(ダッシュボード用)
-  soundnesses [label="soundnesses(健全度)|{{id|bridge_id|evaluation_at(評価日)|evaluation(評価)|evaluation_data(各評価)|created_at|updated_at}|{Int|Int|Datetime|String|Jsonb|Datetime|Datetime}}"]
+  soundnesses [label="soundnesses(健全度)|{{id|bridge_id|evaluation_at(評価日)|evaluation(評価)|evaluation_data(各評価)|created_at|updated_at}|{Int|Int|Datetime|String|Jsonb|Datetime|Datetime}}"];
 
   bridge_main_contents [label="bridge_main_contents(橋のメインコンテンツ)|{{id|bridge_content_id}|{Int|Int}}"];
 
@@ -75,7 +75,7 @@ digraph models {
   injuries -> bridge_contents_injuries [label="1..n id=injury_id"];
 
   // to bridge_contents
-  bridge_contents -> bridge_main_contents [label="1..n id=bridge_content_id"]
+  bridge_contents -> bridge_main_contents [label="1..n id=bridge_content_id"];
 
   /*
   bridges -> bridge_main_contents [label="id=bridge_id 1..n"];
