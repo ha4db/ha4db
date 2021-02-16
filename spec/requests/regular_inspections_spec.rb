@@ -136,5 +136,21 @@ RSpec.describe '/regular_inspections', type: :request do
       expect(response).to redirect_to(regular_inspections_url)
     end
   end
+
+  describe 'GET /bridge_id/download_image_metadata' do
+    it 'download simple template' do
+      regular_inspection = RegularInspection.create! valid_attributes
+      get regular_inspection_download_image_metadata_url(regular_inspection)
+      expect(response).to be_successful
+    end
+  end
+
+  describe 'GET /bridge_id/download_pointcloud_metadata' do
+    it 'download simple template' do
+      regular_inspection = RegularInspection.create! valid_attributes
+      get regular_inspection_download_pointcloud_metadata_url(regular_inspection)
+      expect(response).to be_successful
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength

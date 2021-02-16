@@ -11,7 +11,8 @@ class BridgeContent < ApplicationRecord
   before_save :check_ortho_is_update
   after_commit :check_image_has_exif
 
-  belongs_to :bridge
+  belongs_to :regular_inspection
+  belongs_to :component, optional: true
   has_many :bridge_content_inspections
   has_many :inspections, through: :bridge_content_inspections
   validates :title, presence: true

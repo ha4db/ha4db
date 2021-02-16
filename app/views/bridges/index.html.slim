@@ -19,9 +19,6 @@
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
-                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
-                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
-                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
 
             tbody.mdc-data-table__content
               - @bridges.each do |bridge|
@@ -36,15 +33,9 @@
                   td.mdc-data-table__cell
                     = link_to 'delete', bridge, data: { confirm: I18n.t('view.action.delete') }, method: :delete, class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell
-                    = link_to 'collections', bridge_bridge_contents_path(bridge), class: 'mdc-icon-button material-icons'
-                  td.mdc-data-table__cell
                     = link_to 'fact_check', bridge_inspections_path(bridge), class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell
                     = link_to 'verified', bridge_soundnesses_path(bridge), class: 'mdc-icon-button material-icons'
-                  td.mdc-data-table__cell
-                    = link_to 'text_snippet', bridge_download_image_metadata_path(bridge), class: 'mdc-icon-button material-icons'
-                  td.mdc-data-table__cell
-                    = link_to 'cloud_download', bridge_download_pointcloud_metadata_path(bridge), class: 'mdc-icon-button material-icons'
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell

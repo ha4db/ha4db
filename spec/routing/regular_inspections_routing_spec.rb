@@ -36,6 +36,18 @@ RSpec.describe RegularInspectionsController, type: :routing do
     it 'routes to #destroy' do
       expect(delete: '/regular_inspections/1').to route_to('regular_inspections#destroy', id: '1')
     end
+
+    it 'routes to #download_image_metadata' do
+      expect(
+        get: '/regular_inspections/1/download_image_metadata'
+      ).to route_to('regular_inspections#download_image_metadata', regular_inspection_id: '1')
+    end
+
+    it 'routes to #download_pointcloud_metadata' do
+      expect(
+        get: '/regular_inspections/1/download_pointcloud_metadata'
+      ).to route_to('regular_inspections#download_pointcloud_metadata', regular_inspection_id: '1')
+    end
   end
 end
 # rubocop:enable Metrics/BlockLength

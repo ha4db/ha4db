@@ -37,22 +37,6 @@
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-12
-      = link_to bridge_bridge_contents_path(@bridge), class: 'mdc-fab mdc-fab--extended' do
-        .mdc-fab__ripple
-        span.material-icons.mdc-fab__icon collections
-        span.mdc-fab__label = I18n.t("view.common.title.listing", model_name: BridgeContent.model_name.human)
-
-.mdc-layout-grid
-  .mdc-layout-grid__inner
-    .mdc-layout-grid__cell--span-12
-      = link_to bridge_inspections_path(@bridge), class: 'mdc-fab mdc-fab--extended' do
-        .mdc-fab__ripple
-        span.material-icons.mdc-fab__icon fact_check
-        span.mdc-fab__label = I18n.t("view.common.title.listing", model_name: Inspection.model_name.human)
-
-.mdc-layout-grid
-  .mdc-layout-grid__inner
-    .mdc-layout-grid__cell--span-12
       = link_to bridge_soundnesses_path(@bridge), class: 'mdc-fab mdc-fab--extended' do
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon verified

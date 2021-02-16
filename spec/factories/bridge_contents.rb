@@ -3,7 +3,8 @@
 # BridgeContent Factorybot
 FactoryBot.define do
   factory :bridge_content do
-    bridge
+    regular_inspection
+    component { nil }
     sequence(:title) { |i| "Bridge Contents #{i}" }
     after(:build) do |bridge_content|
       bridge_content.data = fixture_file_upload(Rails.root.join('spec', 'testdata', 'testimage.jpg'))

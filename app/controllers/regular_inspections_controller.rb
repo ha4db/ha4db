@@ -74,6 +74,28 @@ class RegularInspectionsController < UserBaseController
     end
   end
 
+  def download_image_metadata
+    @regular_inspection = RegularInspection.includes(:bridge_contents).find(params[:regular_inspection_id])
+    send_data(
+      render_to_string(
+        partial: 'regular_inspections/download_image_metadata.csv'
+      ),
+      filename: 'image_metadata.csv',
+      type: 'csv'
+    )
+  end
+
+  def download_pointcloud_metadata
+    @regular_inspection = RegularInspection.includes(:bridge_contents).find(params[:regular_inspection_id])
+    send_data(
+      render_to_string(
+        partial: 'regular_inspections/download_pointcloud_metadata.csv'
+      ),
+      filename: 'pointcloud_metadata.csv',
+      type: 'csv'
+    )
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

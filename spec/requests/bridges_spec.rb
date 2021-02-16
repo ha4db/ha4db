@@ -137,21 +137,5 @@ RSpec.describe '/bridges', type: :request do
       expect(response).to redirect_to(bridges_url)
     end
   end
-
-  describe 'GET /bridge_id/download_image_metadata' do
-    it 'download simple template' do
-      bridge = Bridge.create! valid_attributes
-      get bridge_download_image_metadata_url(bridge)
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /bridge_id/download_pointcloud_metadata' do
-    it 'download simple template' do
-      bridge = Bridge.create! valid_attributes
-      get bridge_download_pointcloud_metadata_url(bridge)
-      expect(response).to be_successful
-    end
-  end
 end
 # rubocop:enable Metrics/BlockLength

@@ -12,7 +12,8 @@ RSpec.describe BridgeContent, type: :model do
 
   it { should respond_to(:title) }
   it { should respond_to(:data) }
-  it { should respond_to(:bridge) }
+  it { should respond_to(:regular_inspection) }
+  it { should respond_to(:component) }
   it { should be_valid }
 
   describe 'when title is not present' do

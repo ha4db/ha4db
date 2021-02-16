@@ -17,7 +17,7 @@ CSV.generate(**options) do |csv|
     BridgeContent.human_attribute_name(:pointcloud_reference_point_z) => ->(u) { u.pointcloud_reference_point_z }
   }
   csv << cols.keys
-  @bridge.bridge_contents.each do |bridge_content|
+  @regular_inspection.bridge_contents.each do |bridge_content|
     next unless bridge_content.data_type.to_i == BridgeContent.data_types['pointcloud']
 
     csv << cols.map.each do |_k, col|

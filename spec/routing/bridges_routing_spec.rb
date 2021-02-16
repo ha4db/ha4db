@@ -36,16 +36,6 @@ RSpec.describe BridgesController, type: :routing do
     it 'routes to #destroy' do
       expect(delete: '/bridges/1').to route_to('bridges#destroy', id: '1')
     end
-
-    it 'routes to #download_image_metadata' do
-      expect(get: '/bridges/1/download_image_metadata').to route_to('bridges#download_image_metadata',
-                                                                    bridge_id: '1')
-    end
-
-    it 'routes to #download_pointcloud_metadata' do
-      expect(get: '/bridges/1/download_pointcloud_metadata').to route_to('bridges#download_pointcloud_metadata',
-                                                                         bridge_id: '1')
-    end
   end
 end
 # rubocop:enable Metrics/BlockLength

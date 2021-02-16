@@ -23,7 +23,7 @@ CSV.generate(**options) do |csv|
     BridgeContent.human_attribute_name(:representative_photo) => ->(u) { u.representative_photo }
   }
   csv << cols.keys
-  @bridge.bridge_contents.each do |bridge_content|
+  @regular_inspection.bridge_contents.each do |bridge_content|
     next unless bridge_content.data_type.to_i == BridgeContent.data_types['image']
 
     csv << cols.map.each do |_k, col|
