@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Diagnosis, type: :model do
   before do
     @bridge = FactoryBot.create(:bridge)
-    @regular_inspection = FactoryBot.create(:regular_inspection)
+    @regular_inspection = FactoryBot.create(:regular_inspection, bridge: @bridge)
     @diagnosis = FactoryBot.create(:diagnosis, regular_inspection: @regular_inspection)
   end
 
@@ -22,5 +22,24 @@ RSpec.describe Diagnosis, type: :model do
   describe 'when result to two, it to be invalid' do
     before { @diagnosis.result = Diagnosis.diagnosis_results[:two] }
     it { should_not be_valid }
+  end
+
+  describe 'when result to two with injury' do
+    before { @diagnosis.result = Diagnosis.diagnosis_results[:two] }
+    describe 'with same component_category' do
+      before do
+        injury = FactoryBot.create(:injury, regular_inspection: @regular_inspection)
+        @diagnosis.injury = injury
+      end
+      it { should be_valid }
+    end
+    describe 'with other component_category' do
+      before do
+        component = FactoryBot.create(:component, bridge: @bridge, component_category: Component.categories[:other])
+        injury = FactoryBot.create(:injury, regular_inspection: @regular_inspection, component: component)
+        @diagnosis.injury = injury
+      end
+      it { should_not be_valid }
+    end
   end
 end

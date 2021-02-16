@@ -156,10 +156,18 @@ ja:
       diagnosis:
         component_category: 部材の種類
         injury: :activerecord.models.injury
+        injury_id: :activerecord.models.injury
         observation: 所見
         other_data: その他のデータ
         regular_inspection: :activerecord.models.regular_inspection
         result: 判定区分
+
+    errors:
+      models:
+        diagnosis:
+          attributes:
+            injury_id:
+              injury_component_category_is_not_same: は同じ部材の種類を選んでください.
 
   errors:
     attributes:

@@ -1,5 +1,5 @@
 .mdc-card#error_explanation
-  h3 = "#{pluralize(obj.errors.count, "error")} prohibited this user from being saved:"
+  h3 = I18n.t('errors.template.header', count: obj.errors.count, model: obj.model_name.human)
   ul.mdc-list
     - obj.errors.full_messages.each do |message|
       li.mdc-list-item

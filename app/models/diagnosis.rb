@@ -11,6 +11,7 @@ class Diagnosis < ApplicationRecord
   validates :component_category, presence: true
   validates :result, presence: true
   validates :injury, presence: true, if: :need_injury?
+  validates_with SameComponentCategoryValidator
 
   enum diagnosis_result: {
     unselected: 0,

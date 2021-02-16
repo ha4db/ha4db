@@ -161,6 +161,13 @@ en:
         regular_inspection: :activerecord.models.regular_inspection
         result: Result
 
+    errors:
+      models:
+        diagnosis:
+          attributes:
+            injury_id:
+              injury_component_category_is_not_same: must same component category.
+
   errors:
     attributes:
       password:
