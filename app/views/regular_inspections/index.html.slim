@@ -23,6 +23,7 @@
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
             tbody.mdc-data-table__content
               - @regular_inspections.each do |regular_inspection|
                 tr.mdc-data-table__row
@@ -33,6 +34,8 @@
                   td.mdc-data-table__cell = regular_inspection.try(:record_updated_date)&.strftime(I18n.t('date.formats.default'))
                   td.mdc-data-table__cell = regular_inspection.try(:start_date)&.strftime(I18n.t('date.formats.default'))
                   td.mdc-data-table__cell = regular_inspection.try(:end_date)&.strftime(I18n.t('date.formats.default'))
+                  td.mdc-data-table__cell
+                    = link_to 'rule', regular_inspection_diagnoses_path(regular_inspection), class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell
                     = link_to 'sms_failed', regular_inspection_injuries_path(regular_inspection), class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell

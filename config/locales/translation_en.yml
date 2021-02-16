@@ -13,6 +13,7 @@ en:
       regular_inspection: Regular inspection
       component: Component
       injury: Injury
+      diagnosis: Diagnosis
 
     attributes:
       admin_user:
@@ -137,6 +138,8 @@ en:
         start_date: Start date
         end_date: End date
         bridge: :activerecord.models.bridge
+        diagnoses: :activerecord.models.diagnosis
+        injuries: :activerecord.models.injury
 
       component:
         component_category: Component category
@@ -149,6 +152,14 @@ en:
         other_data: Other data
         regular_inspection: :activerecord.models.regular_inspection
         component: :activerecord.models.component
+
+      diagnosis:
+        component_category: Component category
+        injury: :activerecord.models.injury
+        observation: Observation
+        other_data: Other data
+        regular_inspection: :activerecord.models.regular_inspection
+        result: Result
 
   errors:
     attributes:
@@ -234,6 +245,13 @@ en:
         c: c
         d: d
         e: e
+
+    diagnosis:
+      diagnosis_result:
+        unselected: Unselected
+        one: 1
+        two: 2
+        three: 3
 
   bridge_content: :activerecord.models.bridge_content
 

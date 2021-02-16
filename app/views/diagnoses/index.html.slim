@@ -1,0 +1,47 @@
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      section.header
+        h1 = I18n.t("view.common.title.listing_with_title", title: "#{@regular_inspection.bridge.title} #{@regular_inspection.title}", model_name: Diagnosis.model_name.human)
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      .mdc-data-table
+        .mdc-data-table__table-container
+          table.mdc-data-table__table[aria-label=I18n.t("view.common.title.listing", model_name: Diagnosis.model_name.human)]
+            thead
+              tr.mdc-data-table__header-row
+                th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:component_category)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:result)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:injury)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:observation)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+
+            tbody.mdc-data-table__content
+              - @diagnoses.each do |diagnosis|
+                tr.mdc-data-table__row
+                  td.mdc-data-table__cell.mdc-data-table__cell--numeric = diagnosis.id
+                  td.mdc-data-table__cell = I18n.t("enums.component.category.#{Component.categories.key(diagnosis.component_category)}")
+                  td.mdc-data-table__cell = I18n.t("enums.diagnosis.diagnosis_result.#{Diagnosis.diagnosis_results.key(diagnosis.result)}")
+                  td.mdc-data-table__cell = diagnosis.injury && I18n.t("enums.component.category.#{Component.categories.invert[diagnosis.injury.component.component_category]}") + " #{diagnosis.injury.injury_type} #{diagnosis.injury.injury_grade}"
+                  td.mdc-data-table__cell = diagnosis.observation
+                  td.mdc-data-table__cell
+                    = link_to 'visibility', [@regular_inspection, diagnosis], class: 'mdc-icon-button material-icons'
+                  td.mdc-data-table__cell
+                    = link_to 'edit', edit_regular_inspection_diagnosis_path(@regular_inspection, diagnosis), class: 'mdc-icon-button material-icons'
+                  td.mdc-data-table__cell
+                    = link_to 'delete', [@regular_inspection, diagnosis], data: { confirm: 'Are you sure?' }, method: :delete, class: 'mdc-icon-button material-icons'
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      a.mdc-fab.mdc-fab--extended[href=new_regular_inspection_diagnosis_path(@regular_inspection)]
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon add
+        span.mdc-fab__label = I18n.t("view.action.new", model_name: Diagnosis.model_name.human)
+
+= javascript_pack_tag 'commons/data-table'
+= javascript_pack_tag 'commons/button'

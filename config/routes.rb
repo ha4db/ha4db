@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :components
   resources :regular_inspections do
     resources :injuries
+    resources :diagnoses
   end
   resource :mlit_importer, only: %i[new create] do
     post 'preview'

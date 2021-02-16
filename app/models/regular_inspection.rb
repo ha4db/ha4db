@@ -6,6 +6,8 @@ class RegularInspection < ApplicationRecord
   attr_json_config(default_container_attribute: :other_data)
 
   belongs_to :bridge
+  has_many :injuries
+  has_many :diagnoses
   validates :bridge, presence: true
   validates :title, presence: true
 

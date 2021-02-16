@@ -13,6 +13,7 @@ ja:
       regular_inspection: 定期点検
       component: 部材
       injury: 損傷状況
+      diagnosis: 診断結果
 
     attributes:
       admin_user:
@@ -137,6 +138,8 @@ ja:
         start_date: 開始日
         end_date: 終了日
         bridge: :activerecord.models.bridge
+        diagnoses: :activerecord.models.diagnosis
+        injuries: :activerecord.models.injury
 
       component:
         component_category: 部材の種類
@@ -149,6 +152,14 @@ ja:
         other_data: その他のデータ
         regular_inspection: :activerecord.models.regular_inspection
         component: :activerecord.models.component
+
+      diagnosis:
+        component_category: 部材の種類
+        injury: :activerecord.models.injury
+        observation: 所見
+        other_data: その他のデータ
+        regular_inspection: :activerecord.models.regular_inspection
+        result: 判定区分
 
   errors:
     attributes:
@@ -234,6 +245,13 @@ ja:
         c: c
         d: d
         e: e
+
+    diagnosis:
+      diagnosis_result:
+        unselected: 未選択
+        one: 1
+        two: 2
+        three: 3
 
   bridge_content: :activerecord.models.bridge_content
 

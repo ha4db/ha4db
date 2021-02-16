@@ -12,7 +12,7 @@ class Diagnosis < ApplicationRecord
   validates :result, presence: true
   validates :injury, presence: true, if: :need_injury?
 
-  enum result: {
+  enum diagnosis_result: {
     unselected: 0,
     one: 1,
     two: 2,
@@ -22,7 +22,7 @@ class Diagnosis < ApplicationRecord
   private
 
   def need_injury?
-    if result == 'two' || result == 'three'
+    if result == 2 || result == 3
       true
     else
       false

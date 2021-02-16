@@ -20,7 +20,7 @@ RSpec.describe Diagnosis, type: :model do
   it { should be_valid }
 
   describe 'when result to two, it to be invalid' do
-    before { @diagnosis.result = Diagnosis.results[:two] }
+    before { @diagnosis.result = Diagnosis.diagnosis_results[:two] }
     it { should_not be_valid }
   end
 end
