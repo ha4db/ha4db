@@ -4,11 +4,7 @@
 Rails.application.routes.draw do
   resources :components
   resources :regular_inspections do
-    resources :bridge_contents do
-      resources :bridge_content_inspections
-      get 'inspections/:inspection_id/new', action: :new, controller: :bridge_content_inspections_inspections
-      post 'inspections/:inspection_id/create', action: :create, controller: :bridge_content_inspections_inspections
-    end
+    resources :bridge_contents
     resources :injuries
     resources :diagnoses
     get 'download_image_metadata'

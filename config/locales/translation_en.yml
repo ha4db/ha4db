@@ -118,11 +118,6 @@ en:
         bridge_contents: :activerecord.models.bridge_content
         geom3d: 3D Geometry
 
-      bridge_content_inspection:
-        data: Data
-        inspection: :activerecord.models.inspection
-        bridge_content: :activerecord.models.bridge_content
-
       soundness:
         evaluation: Evaluation
         evaluation_at: Evaluation Date

@@ -118,11 +118,6 @@ ja:
         bridge_contents: :activerecord.models.bridge_content
         geom3d: 3Dジオメトリ
 
-      bridge_content_inspection:
-        data: データ
-        inspection: :activerecord.models.inspection
-        bridge_content: :activerecord.models.bridge_content
-
       soundness:
         evaluation: 評価
         evaluation_at: 評価日
