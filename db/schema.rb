@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_210157) do
+ActiveRecord::Schema.define(version: 2021_02_16_211108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,21 +99,6 @@ ActiveRecord::Schema.define(version: 2021_02_16_210157) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["component_id"], name: "index_injuries_on_component_id"
     t.index ["regular_inspection_id"], name: "index_injuries_on_regular_inspection_id"
-  end
-
-  create_table "inspections", force: :cascade do |t|
-    t.bigint "bridge_id"
-    t.geography "geom", limit: {:srid=>4326, :type=>"geometry", :geographic=>true}
-    t.geometry "geom3d", limit: {:srid=>0, :type=>"geometry", :has_z=>true}
-    t.string "title"
-    t.integer "category", default: 0
-    t.jsonb "report_data"
-    t.datetime "date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["bridge_id"], name: "index_inspections_on_bridge_id"
-    t.index ["geom"], name: "index_inspections_on_geom", using: :gist
-    t.index ["geom3d"], name: "index_inspections_on_geom3d", using: :gist
   end
 
   create_table "regular_inspections", force: :cascade do |t|

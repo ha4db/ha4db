@@ -7,8 +7,6 @@ ja:
       active_storage/attachment: アクティブストレージ/アタッチメント
       active_storage/blob: アクティブストレージ/ブロブ
       bridge_content: 橋のコンテンツ
-      inspection: 点検
-      bridge_content_inspection: 橋のコンテンツと点検の中間モデル
       soundness: 健全性
       regular_inspection: 定期点検
       component: 部材
@@ -28,7 +26,6 @@ ja:
         bridge_contents: 橋のコンテンツ
         other_data: その他のデータ
         road_name: 道路名
-        inspections: 点検
         soundnesses: 健全性
         regular_inspections: 定期点検
         components: 部材
@@ -61,8 +58,6 @@ ja:
         title: 名前
         data_type: データの種類
         bridge: :activerecord.models.bridge
-        bridge_content_inspections: :activerecord.models.bridge_content_inspection
-        inspections: :activerecord.models.inspection
         position_entry_type: 位置情報記入方法
         center_x: 中心位置 X 座標
         center_y: 中心位置 Y 座標
@@ -105,18 +100,6 @@ ja:
         pointcloud_reference_point_y: 標定点 Y 座標
         pointcloud_reference_point_z: 標定点 Z 座標
         metadata: メタデータ
-
-      inspection:
-        category: 種類
-        date: 検査日
-        description: 詳細
-        geom: ジオメトリ
-        report_data: 点検内容
-        title: 名前
-        bridge: :activerecord.models.bridge
-        bridge_content_inspections: :activerecord.models.bridge_content_inspection
-        bridge_contents: :activerecord.models.bridge_content
-        geom3d: 3Dジオメトリ
 
       soundness:
         evaluation: 評価
@@ -211,16 +194,6 @@ ja:
       representative_photo:
         representative: 代表写真
         others: その他
-
-    inspection:
-      category:
-        unselected: 未選択
-        superstructure_main_girder: 上部構造主桁
-        superstructure_horizontal_grider: 上部構造横桁
-        superstructure_slab: 上部構造床版
-        substructure: 下部構造
-        support_structure: 支承部
-        other: その他
 
     soundness:
       overall_evaluation:
