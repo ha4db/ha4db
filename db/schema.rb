@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_211108) do
+ActiveRecord::Schema.define(version: 2021_02_16_235615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 2021_02_16_211108) do
     t.index ["component_id"], name: "index_bridge_contents_on_component_id"
     t.index ["metadata"], name: "index_bridge_contents_on_metadata", using: :gin
     t.index ["regular_inspection_id"], name: "index_bridge_contents_on_regular_inspection_id"
+  end
+
+  create_table "bridge_main_contents", force: :cascade do |t|
+    t.bigint "bridge_content_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bridge_content_id"], name: "index_bridge_main_contents_on_bridge_content_id"
   end
 
   create_table "bridges", force: :cascade do |t|

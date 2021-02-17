@@ -13,6 +13,7 @@ class BridgeContent < ApplicationRecord
 
   belongs_to :regular_inspection
   belongs_to :component, optional: true
+  has_one :bridge_main_content
   validates :title, presence: true
   has_one_attached :data
   validates :data, presence: true
@@ -107,6 +108,12 @@ class BridgeContent < ApplicationRecord
     representative: 1,
     others: 0
   }
+
+  def main_content?
+    return true unless bridge_main_content.nil?
+
+    false
+  end
 
   private
 
