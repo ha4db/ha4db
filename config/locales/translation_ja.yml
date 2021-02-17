@@ -6,13 +6,14 @@ ja:
       user: ユーザー
       active_storage/attachment: アクティブストレージ/アタッチメント
       active_storage/blob: アクティブストレージ/ブロブ
-      bridge_content: 橋のコンテンツ
+      bridge_content: 橋脚のコンテンツ
       soundness: 健全性
       regular_inspection: 定期点検
       component: 部材
       injury: 損傷状況
       diagnosis: 診断結果
       bridge_main_content: 橋梁のメイン画像
+      bridge_content_injury: 橋脚のコンテントと損傷状況の中間テーブル
 
     attributes:
       admin_user:
@@ -149,6 +150,12 @@ ja:
 
       bridge_main_content:
         bridge_content: :activerecord.models.bridge_content
+
+      bridge_content_injury:
+        bridge_content: :activerecord.models.bridge_content
+        injury: :activerecord.models.injury
+        injury_id: :activerecord.models.injury
+        other_data: その他のデータ
 
     errors:
       models:

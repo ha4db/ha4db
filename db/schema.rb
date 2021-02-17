@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_17_002037) do
+ActiveRecord::Schema.define(version: 2021_02_17_012723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 2021_02_17_002037) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "bridge_content_injuries", force: :cascade do |t|
+    t.bigint "bridge_content_id"
+    t.bigint "injury_id"
+    t.jsonb "other_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bridge_content_id"], name: "index_bridge_content_injuries_on_bridge_content_id"
+    t.index ["injury_id"], name: "index_bridge_content_injuries_on_injury_id"
   end
 
   create_table "bridge_contents", force: :cascade do |t|

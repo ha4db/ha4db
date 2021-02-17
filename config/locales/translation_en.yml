@@ -13,6 +13,7 @@ en:
       injury: Injury
       diagnosis: Diagnosis
       bridge_main_content: Bridge main content
+      bridge_content_injury: Bridge content and injury intermediate table
 
     attributes:
       admin_user:
@@ -148,6 +149,12 @@ en:
 
       bridge_main_content:
         bridge_content: :activerecord.models.bridge_content
+
+      bridge_content_injury:
+        bridge_content: :activerecord.models.bridge_content
+        injury: :activerecord.models.injury
+        injury_id: :activerecord.models.injury
+        other_data: Other data
 
     errors:
       models:
