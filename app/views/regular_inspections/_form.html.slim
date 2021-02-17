@@ -1,0 +1,49 @@
+= form_with(model: @regular_inspection, local: true) do |f|
+  - if @regular_inspection.errors.any?
+    .mdc-layout-grid
+      .mdc-layout-grid__inner
+        .mdc-layout-grid__cell--span-12
+          = render partial: 'commons/error_messages', locals: { obj: @regular_inspection }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: RegularInspection, field_name: :bridge_id, data: @regular_inspection.try(:bridge).try(:id), text_and_values: Bridge.all.map {|k| [k.title, k.id]}}
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: RegularInspection, field_name: :title }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: RegularInspection, field_name: :person_responsible }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_date_field', locals: { f: f, model: RegularInspection, field_name: :periodic_inspection_date }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_date_field', locals: { f: f, model: RegularInspection, field_name: :record_updated_date }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_date_field', locals: { f: f, model: RegularInspection, field_name: :start_date }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_date_field', locals: { f: f, model: RegularInspection, field_name: :end_date }
+
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell
+        - if action_name == 'edit'
+          - icon = 'edit'
+          - label = I18n.t("view.action.edit")
+        - else
+          - icon = 'add'
+          - label = I18n.t("view.action.add")
+        = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: icon, label: label }
+
+= javascript_pack_tag 'commons/form'
+= javascript_pack_tag 'commons/button'
+= javascript_pack_tag 'commons/select'

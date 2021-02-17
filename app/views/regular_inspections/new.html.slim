@@ -1,0 +1,17 @@
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      section.header
+        h1 = I18n.t('view.action.new', model_name: RegularInspection.model_name.human)
+
+== render 'form'
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      = link_to regular_inspections_path, class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label = I18n.t("view.action.back")
+= javascript_pack_tag 'commons/button'
+

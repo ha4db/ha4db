@@ -1,0 +1,22 @@
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      section.header
+        h1 = I18n.t("view.common.title.new_with_title", title: "#{@regular_inspection.bridge.title} #{@regular_inspection.title}", model_name: BridgeContentInjury.model_name.human)
+
+== render 'form'
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-2
+      = link_to [@regular_inspection, @injury, @bridge_content_injury], class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon visibility
+        span.mdc-fab__label = I18n.t("view.action.show")
+    .mdc-layout-grid__cell--span-2
+      = link_to regular_inspection_injury_bridge_content_injuries_path(@regular_inspection, @injury), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label = I18n.t("view.action.back")
+
+= javascript_pack_tag 'commons/button'

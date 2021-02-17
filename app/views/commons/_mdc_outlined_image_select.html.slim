@@ -1,0 +1,34 @@
+.mdc-select.mdc-select--outlined.ha4db-select-width-class[id="#{field_name}-select" data-target="#{model.to_s.underscore}_#{field_name}"]
+  .mdc-select__anchor[aria-labelledby="#{field_name}-label #{field_name}-selected-text" aria-haspopup="listbox" aria-expanded="false"]
+    span.mdc-notched-outline
+      span.mdc-notched-outline__leading
+      span.mdc-notched-outline__notch
+        span.mdc-floating-label[id="#{field_name}-label"] = model.human_attribute_name(field_name)
+      span.mdc-notched-outline__trailing
+    span.mdc-select__selected-text-container
+      span.mdc-select__selected-text[id="#{field_name}-selected-text"]
+    span.mdc-select__dropdown-icon
+      svg.mdc-select__dropdown-icon-graphic[viewBox="7 10 10 5" focusable="false"]
+        polygon.mdc-select__dropdown-icon-inactive[stroke="none" fill-rule="evenodd" points="7 10 12 15 17 10"]
+        polygon.mdc-select__dropdown-icon-active[stroke="none" fill-rule="evenodd" points="7 15 12 10 17 15"]
+  .mdc-select__menu.mdc-menu.mdc-menu-surface.mdc-menu-surface--fullwidth
+    ul.mdc-list[role="listbox"]
+      - text_and_value_and_images.each do |text_and_value_and_image|
+        - text = text_and_value_and_image[0]
+        - value = text_and_value_and_image[1]
+        - image = text_and_value_and_image[2]
+        - if value == data
+          li.mdc-list-item.mdc-list-item--selected[aria-selected="true" data-value="#{value}" role="option"]
+            span.mdc-list-item__ripple
+            span.mdc-list-item__text
+              - unless image.nil?
+                = image_tag image
+              = text
+        - else
+          li.mdc-list-item[aria-selected="false" data-value="#{value}" role="option"]
+            span.mdc-list-item__ripple
+            span.mdc-list-item__text
+              - unless image.nil?
+                = image_tag image
+              = text
+= f.hidden_field field_name

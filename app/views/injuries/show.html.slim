@@ -1,0 +1,47 @@
+- unless notice.nil?
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        p#notice = notice
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      ul.mdc-list
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text id
+            span.mdc-list-item__secondary-text = @injury.id
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Injury.human_attribute_name(:component)
+            span.mdc-list-item__secondary-text = @injury.component.show_name
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Injury.human_attribute_name(:injury_type)
+            span.mdc-list-item__secondary-text = @injury.injury_type
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Injury.human_attribute_name(:injury_grade)
+            span.mdc-list-item__secondary-text = I18n.t("enums.injury.grade.#{Injury.grades.key(@injury.injury_grade)}")
+  
+
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-2
+      = link_to edit_regular_inspection_injury_path(@regular_inspection, @injury), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon edit
+        span.mdc-fab__label = I18n.t("view.action.edit")
+    .mdc-layout-grid__cell--span-2
+      = link_to regular_inspection_injuries_path(@regular_inspection), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label = I18n.t("view.action.back")
+
+= javascript_pack_tag 'commons/button'

@@ -1,0 +1,50 @@
+- unless notice.nil?
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        p#notice = notice
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      ul.mdc-list
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text id
+            span.mdc-list-item__secondary-text = @diagnosis.id
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Diagnosis.human_attribute_name(:component_category)
+            span.mdc-list-item__secondary-text = I18n.t("enums.component.category.#{Component.categories.key(@diagnosis.component_category)}")
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Diagnosis.human_attribute_name(:result)
+            span.mdc-list-item__secondary-text = I18n.t("enums.diagnosis.diagnosis_result.#{Diagnosis.diagnosis_results.key(@diagnosis.result)}")
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Diagnosis.human_attribute_name(:injury)
+            span.mdc-list-item__secondary-text = I18n.t("enums.component.category.#{Component.categories.invert[@diagnosis.injury.component.component_category]}") + " #{@diagnosis.injury.injury_type} #{@diagnosis.injury.injury_grade}"
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Diagnosis.human_attribute_name(:observation)
+            span.mdc-list-item__secondary-text = @diagnosis.observation
+  
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-2
+      = link_to edit_regular_inspection_diagnosis_path(@regular_inspection, @diagnosis), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon edit
+        span.mdc-fab__label = I18n.t("view.action.edit")
+    .mdc-layout-grid__cell--span-2
+      = link_to regular_inspection_diagnoses_path(@regular_inspection), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label = I18n.t("view.action.back")
+
+= javascript_pack_tag 'commons/button'

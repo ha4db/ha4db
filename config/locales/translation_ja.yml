@@ -6,10 +6,14 @@ ja:
       user: ユーザー
       active_storage/attachment: アクティブストレージ/アタッチメント
       active_storage/blob: アクティブストレージ/ブロブ
-      bridge_content: 橋のコンテンツ
-      inspection: 点検
-      bridge_content_inspection: 橋のコンテンツと点検の中間モデル
+      bridge_content: 橋脚のコンテンツ
       soundness: 健全性
+      regular_inspection: 定期点検
+      component: 部材
+      injury: 損傷状況
+      diagnosis: 診断結果
+      bridge_main_content: 橋梁のメイン画像
+      bridge_content_injury: 橋脚のコンテントと損傷状況の中間テーブル
 
     attributes:
       admin_user:
@@ -24,8 +28,9 @@ ja:
         bridge_contents: 橋のコンテンツ
         other_data: その他のデータ
         road_name: 道路名
-        inspections: 点検
         soundnesses: 健全性
+        regular_inspections: 定期点検
+        components: 部材
 
       user:
         login_name: ログイン名
@@ -55,8 +60,6 @@ ja:
         title: 名前
         data_type: データの種類
         bridge: :activerecord.models.bridge
-        bridge_content_inspections: :activerecord.models.bridge_content_inspection
-        inspections: :activerecord.models.inspection
         position_entry_type: 位置情報記入方法
         center_x: 中心位置 X 座標
         center_y: 中心位置 Y 座標
@@ -98,29 +101,69 @@ ja:
         pointcloud_reference_point_x: 標定点 X 座標
         pointcloud_reference_point_y: 標定点 Y 座標
         pointcloud_reference_point_z: 標定点 Z 座標
-
-      inspection:
-        category: 種類
-        date: 検査日
-        description: 詳細
-        geom: ジオメトリ
-        report_data: 点検内容
-        title: 名前
-        bridge: :activerecord.models.bridge
-        bridge_content_inspections: :activerecord.models.bridge_content_inspection
-        bridge_contents: :activerecord.models.bridge_content
-        geom3d: 3Dジオメトリ
-
-      bridge_content_inspection:
-        data: データ
-        inspection: :activerecord.models.inspection
-        bridge_content: :activerecord.models.bridge_content
+        metadata: メタデータ
+        bridge_main_content: :activerecord.models.bridge_main_content
+        component: :activerecord.models.component
+        regular_inspection: :activerecord.models.regular_inspection
 
       soundness:
         evaluation: 評価
         evaluation_at: 評価日
         bridge: :activerecord.models.bridge
         overall_evaluation: 総合評価
+
+      regular_inspection:
+        other_data: その他のデータ
+        title: 名前
+        person_responsible: 点検担当者
+        periodic_inspection_date: 定期点検実施年月日
+        record_updated_date: 調書更新年月日
+        start_date: 開始日
+        end_date: 終了日
+        bridge: :activerecord.models.bridge
+        diagnoses: :activerecord.models.diagnosis
+        injuries: :activerecord.models.injury
+        bridge_contents: :activerecord.models.bridge_content
+
+      component:
+        component_category: 部材の種類
+        title: 名称
+        bridge: :activerecord.models.bridge
+        span_number: 径間番号
+
+      injury:
+        injury_grade: 損傷程度
+        injury_type: 損傷の種類
+        other_data: その他のデータ
+        regular_inspection: :activerecord.models.regular_inspection
+        component: :activerecord.models.component
+        component_id: :activerecord.models.component
+
+      diagnosis:
+        component_category: 部材の種類
+        injury: :activerecord.models.injury
+        injury_id: :activerecord.models.injury
+        observation: 所見
+        other_data: その他のデータ
+        regular_inspection: :activerecord.models.regular_inspection
+        result: 判定区分
+
+      bridge_main_content:
+        bridge_content: :activerecord.models.bridge_content
+
+      bridge_content_injury:
+        bridge_content: :activerecord.models.bridge_content
+        bridge_content_id: :activerecord.models.bridge_content
+        injury: :activerecord.models.injury
+        injury_id: :activerecord.models.injury
+        other_data: その他のデータ
+
+    errors:
+      models:
+        diagnosis:
+          attributes:
+            injury_id:
+              injury_component_category_is_not_same: は同じ部材の種類を選んでください.
 
   errors:
     attributes:
@@ -140,13 +183,16 @@ ja:
         damage_diagram: 損傷図
         ortho: オルソ画像
         pointcloud: 点群
+
       position_entry_type:
         center_photo: 写真中心
         center_camera: カメラ中心
         photo_bbox: 写真四隅
+
       projection_method:
         center_projection: 中心投影
         orthographic_projection: 正射投影
+
       target_material:
         main_girder: 主桁
         cross_member: 横桁
@@ -158,13 +204,24 @@ ja:
         top_plate: 頂版
         side_wall: 側壁
         bottom_plate: 底版
+
       damage_or_not:
         damage: 損傷部
         not_damage: 非損傷部
+
       representative_photo:
         representative: 代表写真
         others: その他
-    inspection:
+
+    soundness:
+      overall_evaluation:
+        unselected: 未選択
+        one: 1
+        two: 2
+        three: 3
+        four: 4
+
+    component:
       category:
         unselected: 未選択
         superstructure_main_girder: 上部構造主桁
@@ -173,13 +230,22 @@ ja:
         substructure: 下部構造
         support_structure: 支承部
         other: その他
-    soundness:
-      overall_evaluation:
+
+    injury:
+      grade:
+        unselected: 未選択
+        a: a
+        b: b
+        c: c
+        d: d
+        e: e
+
+    diagnosis:
+      diagnosis_result:
         unselected: 未選択
         one: 1
         two: 2
         three: 3
-        four: 4
 
   bridge_content: :activerecord.models.bridge_content
 
@@ -191,9 +257,13 @@ ja:
         listing_with_title: "%{title}: %{model_name}一覧"
         new_with_title: "%{title}: 新規%{model_name}"
         edit_with_title: "%{title}: %{model_name}編集"
+
       login: "ログイン"
       logout: "ログアウト"
       processing: "処理中..."
+      preview: プレビュー
+      no_preview: "プレビューなし"
+
     title:
       admin_login: "管理者ログイン"
       admin: "Ha4db 管理画面"
@@ -201,10 +271,12 @@ ja:
       import_from_excel: "Excelからインポート"
       preview: "プレビュー"
       undefined_inspections: "未割り当ての点検"
+
     menu:
       admin:
         home: "ホーム"
         users: "ユーザ"
+
     action:
       new: "新規%{model_name}"
       back: "戻る"
@@ -221,3 +293,5 @@ ja:
       success_on_create: "%{model_name}の作成に成功しました"
       success_on_update: "%{model_name}の編集に成功しました"
       success_on_destroy: "%{model_name}の削除に成功しました"
+
+  component: :activerecord.models.component

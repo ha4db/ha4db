@@ -2,9 +2,9 @@
 
 # Bridge class
 class Bridge < ApplicationRecord
-  has_many :bridge_contents
-  has_many :inspections
   has_many :soundnesses
+  has_many :regular_inspections
+  has_many :components
 
   validates :title, presence: true
   validates :address, presence: true

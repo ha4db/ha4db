@@ -6,35 +6,51 @@ require 'rails_helper'
 RSpec.describe BridgeContentsController, type: :routing do
   describe 'routing' do
     it 'routes to #index' do
-      expect(get: '/bridges/1/bridge_contents').to route_to('bridge_contents#index', bridge_id: '1')
+      expect(
+        get: '/regular_inspections/1/bridge_contents'
+      ).to route_to('bridge_contents#index', regular_inspection_id: '1')
     end
 
     it 'routes to #new' do
-      expect(get: '/bridges/1/bridge_contents/new').to route_to('bridge_contents#new', bridge_id: '1')
+      expect(
+        get: '/regular_inspections/1/bridge_contents/new'
+      ).to route_to('bridge_contents#new', regular_inspection_id: '1')
     end
 
     it 'routes to #show' do
-      expect(get: '/bridges/1/bridge_contents/1').to route_to('bridge_contents#show', bridge_id: '1', id: '1')
+      expect(
+        get: '/regular_inspections/1/bridge_contents/1'
+      ).to route_to('bridge_contents#show', regular_inspection_id: '1', id: '1')
     end
 
     it 'routes to #edit' do
-      expect(get: '/bridges/1/bridge_contents/1/edit').to route_to('bridge_contents#edit', bridge_id: '1', id: '1')
+      expect(
+        get: '/regular_inspections/1/bridge_contents/1/edit'
+      ).to route_to('bridge_contents#edit', regular_inspection_id: '1', id: '1')
     end
 
     it 'routes to #create' do
-      expect(post: '/bridges/1/bridge_contents').to route_to('bridge_contents#create', bridge_id: '1')
+      expect(
+        post: '/regular_inspections/1/bridge_contents'
+      ).to route_to('bridge_contents#create', regular_inspection_id: '1')
     end
 
     it 'routes to #update via PUT' do
-      expect(put: '/bridges/1/bridge_contents/1').to route_to('bridge_contents#update', bridge_id: '1', id: '1')
+      expect(
+        put: '/regular_inspections/1/bridge_contents/1'
+      ).to route_to('bridge_contents#update', regular_inspection_id: '1', id: '1')
     end
 
     it 'routes to #update via PATCH' do
-      expect(patch: '/bridges/1/bridge_contents/1').to route_to('bridge_contents#update', bridge_id: '1', id: '1')
+      expect(
+        patch: '/regular_inspections/1/bridge_contents/1'
+      ).to route_to('bridge_contents#update', regular_inspection_id: '1', id: '1')
     end
 
     it 'routes to #destroy' do
-      expect(delete: '/bridges/1/bridge_contents/1').to route_to('bridge_contents#destroy', bridge_id: '1', id: '1')
+      expect(
+        delete: '/regular_inspections/1/bridge_contents/1'
+      ).to route_to('bridge_contents#destroy', regular_inspection_id: '1', id: '1')
     end
   end
 end

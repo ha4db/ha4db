@@ -72,28 +72,6 @@ class BridgesController < UserBaseController
     end
   end
 
-  def download_image_metadata
-    @bridge = Bridge.includes(:bridge_contents).find(params[:bridge_id])
-    send_data(
-      render_to_string(
-        partial: 'bridges/download_image_metadata.csv'
-      ),
-      filename: 'image_metadata.csv',
-      type: 'csv'
-    )
-  end
-
-  def download_pointcloud_metadata
-    @bridge = Bridge.includes(:bridge_contents).find(params[:bridge_id])
-    send_data(
-      render_to_string(
-        partial: 'bridges/download_pointcloud_metadata.csv'
-      ),
-      filename: 'pointcloud_metadata.csv',
-      type: 'csv'
-    )
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.

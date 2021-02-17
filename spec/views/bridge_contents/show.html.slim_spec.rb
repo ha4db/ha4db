@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe 'bridge_contents/show', type: :view do
   before(:each) do
-    @bridge = assign(:bridge, FactoryBot.create(:bridge))
-    @bridge_content = assign(:bridge_content, FactoryBot.create(:bridge_content, bridge: @bridge))
+    regular_inspection = assign(:regular_inspection, FactoryBot.create(:regular_inspection))
+    assign(:bridge_content, FactoryBot.create(:bridge_content, regular_inspection: regular_inspection))
   end
 
   it 'renders attributes in <p>' do

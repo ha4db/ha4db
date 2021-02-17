@@ -1,0 +1,60 @@
+- unless notice.nil?
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        p#notice = notice
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      ul.mdc-list
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text id
+            span.mdc-list-item__secondary-text = @regular_inspection.id
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = RegularInspection.human_attribute_name(:title)
+            span.mdc-list-item__secondary-text = @regular_inspection.title
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = RegularInspection.human_attribute_name(:person_responsible)
+            span.mdc-list-item__secondary-text = @regular_inspection.person_responsible
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = RegularInspection.human_attribute_name(:periodic_inspection_date)
+            span.mdc-list-item__secondary-text = @regular_inspection.try(:periodic_inspection_date)&.strftime(I18n.t('date.formats.default'))
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = RegularInspection.human_attribute_name(:record_updated_date)
+            span.mdc-list-item__secondary-text = @regular_inspection.try(:record_updated_date)&.strftime(I18n.t('date.formats.default'))
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = RegularInspection.human_attribute_name(:start_date)
+            span.mdc-list-item__secondary-text = @regular_inspection.try(:start_date)&.strftime(I18n.t('date.formats.default'))
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = RegularInspection.human_attribute_name(:end_date)
+            span.mdc-list-item__secondary-text = @regular_inspection.try(:end_date)&.strftime(I18n.t('date.formats.default'))
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-2
+      = link_to edit_regular_inspection_path(@regular_inspection), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon edit
+        span.mdc-fab__label = I18n.t("view.action.edit")
+    .mdc-layout-grid__cell--span-2
+      = link_to regular_inspections_path, class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label = I18n.t("view.action.back")
+
+= javascript_pack_tag 'commons/button'

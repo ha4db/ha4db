@@ -11,9 +11,9 @@ class BridgeContent < ApplicationRecord
   before_save :check_ortho_is_update
   after_commit :check_image_has_exif
 
-  belongs_to :bridge
-  has_many :bridge_content_inspections
-  has_many :inspections, through: :bridge_content_inspections
+  belongs_to :regular_inspection
+  belongs_to :component, optional: true
+  has_one :bridge_main_content
   validates :title, presence: true
   has_one_attached :data
   validates :data, presence: true
@@ -108,6 +108,12 @@ class BridgeContent < ApplicationRecord
     representative: 1,
     others: 0
   }
+
+  def main_content?
+    return true unless bridge_main_content.nil?
+
+    false
+  end
 
   private
 

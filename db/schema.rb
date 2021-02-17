@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_21_060718) do
+ActiveRecord::Schema.define(version: 2021_02_17_012723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,24 +44,33 @@ ActiveRecord::Schema.define(version: 2020_12_21_060718) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "bridge_content_inspections", force: :cascade do |t|
+  create_table "bridge_content_injuries", force: :cascade do |t|
     t.bigint "bridge_content_id"
-    t.bigint "inspection_id"
-    t.jsonb "data"
+    t.bigint "injury_id"
+    t.jsonb "other_data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bridge_content_id"], name: "index_bridge_content_inspections_on_bridge_content_id"
-    t.index ["inspection_id"], name: "index_bridge_content_inspections_on_inspection_id"
+    t.index ["bridge_content_id"], name: "index_bridge_content_injuries_on_bridge_content_id"
+    t.index ["injury_id"], name: "index_bridge_content_injuries_on_injury_id"
   end
 
   create_table "bridge_contents", force: :cascade do |t|
-    t.bigint "bridge_id"
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "metadata"
-    t.index ["bridge_id"], name: "index_bridge_contents_on_bridge_id"
+    t.bigint "regular_inspection_id"
+    t.bigint "component_id"
+    t.index ["component_id"], name: "index_bridge_contents_on_component_id"
     t.index ["metadata"], name: "index_bridge_contents_on_metadata", using: :gin
+    t.index ["regular_inspection_id"], name: "index_bridge_contents_on_regular_inspection_id"
+  end
+
+  create_table "bridge_main_contents", force: :cascade do |t|
+    t.bigint "bridge_content_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bridge_content_id"], name: "index_bridge_main_contents_on_bridge_content_id"
   end
 
   create_table "bridges", force: :cascade do |t|
@@ -75,19 +84,48 @@ ActiveRecord::Schema.define(version: 2020_12_21_060718) do
     t.index ["other_data"], name: "index_bridges_on_other_data", using: :gin
   end
 
-  create_table "inspections", force: :cascade do |t|
+  create_table "components", force: :cascade do |t|
     t.bigint "bridge_id"
-    t.geography "geom", limit: {:srid=>4326, :type=>"geometry", :geographic=>true}
-    t.geometry "geom3d", limit: {:srid=>0, :type=>"geometry", :has_z=>true}
     t.string "title"
-    t.integer "category", default: 0
-    t.jsonb "report_data"
-    t.datetime "date"
+    t.integer "component_category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bridge_id"], name: "index_inspections_on_bridge_id"
-    t.index ["geom"], name: "index_inspections_on_geom", using: :gist
-    t.index ["geom3d"], name: "index_inspections_on_geom3d", using: :gist
+    t.integer "span_number"
+    t.index ["bridge_id"], name: "index_components_on_bridge_id"
+  end
+
+  create_table "diagnoses", force: :cascade do |t|
+    t.bigint "regular_inspection_id"
+    t.integer "component_category"
+    t.integer "result"
+    t.bigint "injury_id"
+    t.string "observation"
+    t.jsonb "other_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["injury_id"], name: "index_diagnoses_on_injury_id"
+    t.index ["regular_inspection_id"], name: "index_diagnoses_on_regular_inspection_id"
+  end
+
+  create_table "injuries", force: :cascade do |t|
+    t.bigint "regular_inspection_id"
+    t.bigint "component_id"
+    t.string "injury_type"
+    t.integer "injury_grade"
+    t.jsonb "other_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["component_id"], name: "index_injuries_on_component_id"
+    t.index ["regular_inspection_id"], name: "index_injuries_on_regular_inspection_id"
+  end
+
+  create_table "regular_inspections", force: :cascade do |t|
+    t.bigint "bridge_id"
+    t.string "title"
+    t.jsonb "other_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bridge_id"], name: "index_regular_inspections_on_bridge_id"
   end
 
   create_table "soundnesses", force: :cascade do |t|

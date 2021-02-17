@@ -7,9 +7,13 @@ en:
       active_storage/attachment: Active storage/attachment
       active_storage/blob: Active storage/blob
       bridge_content: Bridge content
-      inspection: Inspection
-      bridge_content_inspection: Junction model between Bridge content and Inspection
       soundness: Soundness
+      regular_inspection: Regular inspection
+      component: Component
+      injury: Injury
+      diagnosis: Diagnosis
+      bridge_main_content: Bridge main content
+      bridge_content_injury: Bridge content and injury intermediate table
 
     attributes:
       admin_user:
@@ -24,8 +28,9 @@ en:
         bridge_contents: Bridge contents
         other_data: Other data
         road_name: Road name
-        inspections: Inspections
         soundnesses: Soundnesses
+        regular_inspections: Regular inspections
+        components: Components
 
       user:
         login_name: Login name
@@ -55,8 +60,6 @@ en:
         title: Title
         data_type: Data Type
         bridge: :activerecord.models.bridge
-        bridge_content_inspections: :activerecord.models.bridge_content_inspection
-        inspections: :activerecord.models.inspection
         position_entry_type: Position Entry Type
         center_x: Center X Coordinate
         center_y: Center Y Coordinate
@@ -98,28 +101,68 @@ en:
         pointcloud_reference_point_x: Reference Point X Coordiante
         pointcloud_reference_point_y: Reference Point Y Coordinate
         pointcloud_reference_point_z: Reference Point Z Coordinate
-      inspection:
-        category: Category
-        date: Date
-        description: Description
-        geom: Geometry
-        report_data: Report data
-        title: Title
-        bridge: :activerecord.models.bridge
-        bridge_content_inspections: :activerecord.models.bridge_content_inspection
-        bridge_contents: :activerecord.models.bridge_content
-        geom3d: 3D Geometry
-
-      bridge_content_inspection:
-        data: Data
-        inspection: :activerecord.models.inspection
-        bridge_content: :activerecord.models.bridge_content
+        metadata: Metadata
+        bridge_main_content: :activerecord.models.bridge_main_content
+        component: :activerecord.models.component
+        regular_inspection: :activerecord.models.regular_inspection
 
       soundness:
         evaluation: Evaluation
         evaluation_at: Evaluation Date
         bridge: :activerecord.models.bridge
         overall_evaluation: Overall evaluation
+
+      regular_inspection:
+        other_data: Other data
+        title: Title
+        person_responsible: The person responsible for inspection
+        periodic_inspection_date: Date of peridodic inspection
+        record_updated_date: Record update date
+        start_date: Start date
+        end_date: End date
+        bridge: :activerecord.models.bridge
+        diagnoses: :activerecord.models.diagnosis
+        injuries: :activerecord.models.injury
+        bridge_contents: Bridge contents
+
+      component:
+        component_category: Component category
+        title: Title
+        bridge: :activerecord.models.bridge
+        span_number: Span number
+
+      injury:
+        injury_grade: Injury grade
+        injury_type: Injury type
+        other_data: Other data
+        regular_inspection: :activerecord.models.regular_inspection
+        component: :activerecord.models.component
+        component_id: :activerecord.models.component
+
+      diagnosis:
+        component_category: Component category
+        injury: :activerecord.models.injury
+        observation: Observation
+        other_data: Other data
+        regular_inspection: :activerecord.models.regular_inspection
+        result: Result
+
+      bridge_main_content:
+        bridge_content: :activerecord.models.bridge_content
+
+      bridge_content_injury:
+        bridge_content: :activerecord.models.bridge_content
+        bridge_content_id: :activerecord.models.bridge_content
+        injury: :activerecord.models.injury
+        injury_id: :activerecord.models.injury
+        other_data: Other data
+
+    errors:
+      models:
+        diagnosis:
+          attributes:
+            injury_id:
+              injury_component_category_is_not_same: must same component category.
 
   errors:
     attributes:
@@ -139,13 +182,16 @@ en:
         damage_diagram: Damage Diagram
         ortho: Ortho Image
         pointcloud: Point Cloud
+
       position_entry_type:
         center_photo: Center photo
         center_camera: Center camera
         photo_bbox: Photo Bbox
+
       projection_method:
         center_projection: Center Projection
         orthographic_projection: Orthographic projection
+
       target_material:
         main_girder: Main grider
         cross_member: Cross member
@@ -157,13 +203,24 @@ en:
         top_plate: Top plate
         side_wall: Side wall
         bottom_plate: Bottom plate
+
       damage_or_not:
         damage: Damage
         not_damage: Not damage
+
       representative_photo:
         representative: Representative
         others: Others
-    inspection:
+
+    soundness:
+      overall_evaluation:
+        unselected: Unselected
+        one: 1
+        two: 2
+        three: 3
+        four: 4
+
+    component:
       category:
         unselected: Unselected
         superstructure_main_girder: Superstructure main girder
@@ -172,13 +229,22 @@ en:
         substructure: Substructure
         support_structure: Support structure
         other: Other
-    soundness:
-      overall_evaluation:
+
+    injury:
+      grade:
+        unselected: Unselected
+        a: a
+        b: b
+        c: c
+        d: d
+        e: e
+
+    diagnosis:
+      diagnosis_result:
         unselected: Unselected
         one: 1
         two: 2
         three: 3
-        four: 4
 
   bridge_content: :activerecord.models.bridge_content
 
@@ -190,9 +256,13 @@ en:
         listing_with_title: "%{title}: Listing %{model_name}"
         new_with_title: "%{title}: New %{model_name}"
         edit_with_title: "%{title}: Edit %{model_name}"
+
       login: "Login"
       logout: "Logout"
       processing: "Processing..."
+      preview: Preview
+      no_preview: "No Preview"
+
     title:
       admin_login: "Admin login"
       admin: "Ha4db Admin page"
@@ -200,10 +270,12 @@ en:
       import_from_excel: "Import from Excel"
       preview: "Preview"
       undefined_inspections: "Undefined inspections"
+
     menu:
       admin:
         home: "Home"
         users: "Users"
+
     action:
       new: "New %{model_name}"
       back: "Back"
@@ -220,3 +292,5 @@ en:
       success_on_create: "%{model_name} was successfully created."
       success_on_update: "%{model_name} was successfully updated."
       success_on_destroy: "%{model_name} was successfully destroyed."
+
+  component: :activerecord.models.component

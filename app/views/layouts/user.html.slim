@@ -33,6 +33,8 @@ html
           nav.mdc-list
             = render partial: 'commons/drawer_menu_item', locals: { controller: 'top', action: 'index', icon: 'home', text: I18n.t("view.title.dashboard")}
             = render partial: 'commons/drawer_menu_item', locals: { controller: 'bridges', action: 'index', icon: 'place', text: Bridge.model_name.human}
+            = render partial: 'commons/drawer_menu_item', locals: { controller: 'regular_inspections', action: 'index', icon: 'check_box', text: RegularInspection.model_name.human}
+            = render partial: 'commons/drawer_menu_item', locals: { controller: 'components', action: 'index', icon: 'build_circle', text: Component.model_name.human}
       
       .mdc-drawer-app-content.mdc-top-app-bar--fixed-adjust
         main.main-content#main-content
