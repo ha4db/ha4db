@@ -152,6 +152,7 @@ en:
 
       bridge_content_injury:
         bridge_content: :activerecord.models.bridge_content
+        bridge_content_id: :activerecord.models.bridge_content
         injury: :activerecord.models.injury
         injury_id: :activerecord.models.injury
         other_data: Other data

@@ -7,6 +7,7 @@ class Injury < ApplicationRecord
 
   belongs_to :regular_inspection
   belongs_to :component
+  has_many :bridge_content_injuries
 
   enum grade: {
     unselected: 0,
@@ -16,4 +17,9 @@ class Injury < ApplicationRecord
     d: 4,
     e: 5
   }
+
+  def show_name
+    I18n.t("enums.component.category.#{Component.categories.invert[component.component_category]}") +
+      " #{injury_type} #{injury_grade}"
+  end
 end

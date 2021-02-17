@@ -17,12 +17,15 @@
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
 
             tbody.mdc-data-table__content
               - @injuries.each do |injury|
                 tr.mdc-data-table__row
                   td.mdc-data-table__cell.mdc-data-table__cell--numeric = injury.id
                   td.mdc-data-table__cell = injury.component.show_name
+                  td.mdc-data-table__cell
+                    = link_to 'collections', regular_inspection_injury_bridge_content_injuries_path(@regular_inspection, injury), class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell
                     = link_to 'visibility', [@regular_inspection, injury], class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell

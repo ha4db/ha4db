@@ -1,0 +1,42 @@
+- unless notice.nil?
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        p#notice = notice
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      ul.mdc-list
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text id
+            span.mdc-list-item__secondary-text = @bridge_content_injury.id
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = BridgeContentInjury.human_attribute_name(:injury)
+            span.mdc-list-item__secondary-text = @bridge_content_injury.injury.show_name
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = BridgeContentInjury.human_attribute_name(:bridge_content)
+            span.mdc-list-item__secondary-text = @bridge_content_injury.bridge_content.data.filename.to_s
+  
+
+
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-2
+      = link_to edit_regular_inspection_injury_bridge_content_injury_path(@regular_inspection, @injury, @bridge_content_injury), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon edit
+        span.mdc-fab__label = I18n.t("view.action.edit")
+    .mdc-layout-grid__cell--span-2
+      = link_to regular_inspection_injury_bridge_content_injuries_path(@regular_inspection, @injury), class: 'mdc-fab mdc-fab--extended' do
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label = I18n.t("view.action.back")
+
+= javascript_pack_tag 'commons/button'

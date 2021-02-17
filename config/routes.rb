@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :components
   resources :regular_inspections do
     resources :bridge_contents
-    resources :injuries
+    resources :injuries do
+      resources :bridge_content_injuries
+    end
     resources :diagnoses
     get 'download_image_metadata'
     get 'download_pointcloud_metadata'
