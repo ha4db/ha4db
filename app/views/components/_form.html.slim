@@ -11,6 +11,10 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Component, field_name: :span_number }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
         = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: Component, field_name: :component_category, data: @component.component_category, text_and_values: Component.categories.keys.map {|k| [I18n.t("enums.component.category.#{k}"), Component.categories[k]]}}
   .mdc-layout-grid
     .mdc-layout-grid__inner

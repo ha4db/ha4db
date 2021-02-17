@@ -4,10 +4,14 @@
 class Component < ApplicationRecord
   belongs_to :bridge
   validates :bridge, presence: true
+  validates :span_number, presence: true
   validates :component_category, presence: true
 
   def show_name
-    I18n.t("enums.component.category.#{Component.categories.invert[component_category]}") + title
+    I18n.t('activerecord.attributes.component.span_number') +
+      " #{span_number} " +
+      I18n.t("enums.component.category.#{Component.categories.invert[component_category]}") +
+      title
   end
 
   enum category: {

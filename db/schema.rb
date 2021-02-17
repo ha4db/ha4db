@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_235615) do
+ActiveRecord::Schema.define(version: 2021_02_17_002037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2021_02_16_235615) do
     t.integer "component_category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "span_number"
     t.index ["bridge_id"], name: "index_components_on_bridge_id"
   end
 

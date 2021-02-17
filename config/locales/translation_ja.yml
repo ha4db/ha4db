@@ -12,6 +12,7 @@ ja:
       component: 部材
       injury: 損傷状況
       diagnosis: 診断結果
+      bridge_main_content: 橋梁のメイン画像
 
     attributes:
       admin_user:
@@ -100,6 +101,9 @@ ja:
         pointcloud_reference_point_y: 標定点 Y 座標
         pointcloud_reference_point_z: 標定点 Z 座標
         metadata: メタデータ
+        bridge_main_content: :activerecord.models.bridge_main_content
+        component: :activerecord.models.component
+        regular_inspection: :activerecord.models.regular_inspection
 
       soundness:
         evaluation: 評価
@@ -118,11 +122,13 @@ ja:
         bridge: :activerecord.models.bridge
         diagnoses: :activerecord.models.diagnosis
         injuries: :activerecord.models.injury
+        bridge_contents: :activerecord.models.bridge_content
 
       component:
         component_category: 部材の種類
         title: 名称
         bridge: :activerecord.models.bridge
+        span_number: 径間番号
 
       injury:
         injury_grade: 損傷程度
@@ -130,6 +136,7 @@ ja:
         other_data: その他のデータ
         regular_inspection: :activerecord.models.regular_inspection
         component: :activerecord.models.component
+        component_id: :activerecord.models.component
 
       diagnosis:
         component_category: 部材の種類
@@ -139,6 +146,9 @@ ja:
         other_data: その他のデータ
         regular_inspection: :activerecord.models.regular_inspection
         result: 判定区分
+
+      bridge_main_content:
+        bridge_content: :activerecord.models.bridge_content
 
     errors:
       models:

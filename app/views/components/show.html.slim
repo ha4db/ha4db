@@ -21,6 +21,11 @@
         li.mdc-list-item
           span.mdc-list-item__ripple
           span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Component.human_attribute_name(:span_number)
+            span.mdc-list-item__secondary-text = @component.span_number
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
             span.mdc-list-item__primary-text = Component.human_attribute_name(:component_category)
             span.mdc-list-item__secondary-text = I18n.t("enums.component.category.#{Component.categories.invert[@component.component_category]}")
         li.mdc-list-item

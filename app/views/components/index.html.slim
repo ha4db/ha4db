@@ -14,6 +14,7 @@
               tr.mdc-data-table__header-row
                 th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Bridge.human_attribute_name(:title)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Component.human_attribute_name(:span_number)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Component.human_attribute_name(:component_category)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Component.human_attribute_name(:title)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
@@ -24,6 +25,7 @@
                 tr.mdc-data-table__row
                   td.mdc-data-table__cell.mdc-data-table__cell--numeric = component.id
                   td.mdc-data-table__cell = component.bridge.title
+                  td.mdc-data-table__cell = component.span_number
                   td.mdc-data-table__cell = I18n.t("enums.component.category.#{Component.categories.invert[component.component_category]}")
                   td.mdc-data-table__cell = component.title
                   td.mdc-data-table__cell

@@ -80,6 +80,6 @@ class ComponentsController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def component_params
-    params.fetch(:component, {}).permit(:bridge_id, :component_category, :title)
+    params.fetch(:component, {}).permit(:bridge_id, :span_number, :component_category, :title)
   end
 end
