@@ -27,13 +27,11 @@
                   td.mdc-data-table__cell = bridge_content.title
                   td.mdc-data-table__cell = I18n.t("enums.bridge_content.data_type.#{BridgeContent.data_types.invert[bridge_content.data_type.to_i]}")
                   td.mdc-data-table__cell
-                    - if bridge_content.data_type.to_i == BridgeContent.data_types[:ortho]
+                    - if bridge_content.data_type.to_i == BridgeContent.data_types[:pointcloud]
+                      = I18n.t("view.common.no_preview")
+                    - elsif bridge_content.data.previewable?
                       = image_tag bridge_content.data.preview(resize: "100x100>")
-                    - elsif bridge_content.data.content_type.start_with?('video')
-                      = image_tag bridge_content.data.preview(resize: "100x100>")
-                    - elsif bridge_content.data.content_type.start_with?('image')
-                      = image_tag bridge_content.data.preview(resize: "100x100>")
-                    - elsif bridge_content.data_type.to_i == BridgeContent.data_types[:pointcloud]
+                    - else
                       = I18n.t("view.common.no_preview")
                   td.mdc-data-table__cell
                     = link_to 'visibility', [@regular_inspection, bridge_content], class: 'mdc-icon-button material-icons'
