@@ -153,6 +153,8 @@ class BridgeContent < ApplicationRecord
       exif = EXIFR::JPEG.new(file.path)
       break unless exif.exif?
 
+      break if exif.date_time.nil?
+
       self.date_of_shooting = exif.date_time.strftime('%Y/%m/%d %H:%M:%S')
       save
     end
