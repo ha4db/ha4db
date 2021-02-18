@@ -9,4 +9,7 @@ class BridgeContentInjury < ApplicationRecord
   belongs_to :injury
 
   validates_with BridgeContentInjurySameOriginValidator
+
+  # 動画 seek
+  attr_json :seek, :integer
 end

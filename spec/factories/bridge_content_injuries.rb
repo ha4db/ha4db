@@ -4,5 +4,6 @@ FactoryBot.define do
   factory :bridge_content_injury do
     bridge_content
     injury
+    seek { 0 }
   end
 end

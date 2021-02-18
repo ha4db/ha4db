@@ -1,9 +1,9 @@
-const seekSupport = () => {
+const seekSupport = ():void => {
   const video = document.getElementById('video') as HTMLVideoElement
   if (!video) {
     return
   }
-  const seek = document.getElementById('bridge_content_inspection_seek') as HTMLInputElement
+  const seek = document.getElementById('bridge_content_injury_seek') as HTMLInputElement
   if (!seek) {
     return
   }
@@ -16,3 +16,5 @@ const seekSupport = () => {
 }
 
 seekSupport()
+
+export default seekSupport
