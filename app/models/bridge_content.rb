@@ -141,6 +141,7 @@ class BridgeContent < ApplicationRecord
     PointcloudJob.perform_later(id) if pointcloud_info.nil?
   end
 
+  # rubocop:disable Metrics/AbcSize
   def check_image_has_exif
     return unless data_type.to_i == BridgeContent.data_types[:image]
 
@@ -159,5 +160,6 @@ class BridgeContent < ApplicationRecord
       save
     end
   end
+  # rubocop:enable Metrics/AbcSize
 end
 # rubocop:enable Metrics/ClassLength
