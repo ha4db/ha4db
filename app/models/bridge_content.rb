@@ -141,6 +141,7 @@ class BridgeContent < ApplicationRecord
     PointcloudJob.perform_later(id) if pointcloud_info.nil?
   end
 
+  # rubocop:disable Metrics/AbcSize
   def check_image_has_exif
     return unless data_type.to_i == BridgeContent.data_types[:image]
 
@@ -153,9 +154,12 @@ class BridgeContent < ApplicationRecord
       exif = EXIFR::JPEG.new(file.path)
       break unless exif.exif?
 
+      break if exif.date_time.nil?
+
       self.date_of_shooting = exif.date_time.strftime('%Y/%m/%d %H:%M:%S')
       save
     end
   end
+  # rubocop:enable Metrics/AbcSize
 end
 # rubocop:enable Metrics/ClassLength

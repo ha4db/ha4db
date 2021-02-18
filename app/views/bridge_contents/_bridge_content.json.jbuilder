@@ -52,7 +52,7 @@ json.extract! bridge_content,
               :updated_at
 json.url regular_inspection_bridge_content_url(@regular_inspection, bridge_content, format: :json)
 json.src url_for(bridge_content.data)
-if bridge_content.data_type.to_i == 1 or bridge_content.data_type.to_i == 2
+if bridge_content.data_type.to_i == 1 || bridge_content.data_type.to_i == 2
   json.content_type bridge_content.data.content_type
 else
   json.content_type ''
