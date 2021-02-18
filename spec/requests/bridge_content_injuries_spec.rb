@@ -109,7 +109,9 @@ RSpec.describe '/bridge_content_injuries', type: :request do
     context 'with valid parameters' do
       let(:new_attributes) do
         @new_bridge_content = FactoryBot.create(:bridge_content, regular_inspection: @regular_inspection)
-        FactoryBot.build(:bridge_content_injury, bridge_content: @new_bridge_content).attributes
+        bridge_content_injury = FactoryBot.build(:bridge_content_injury, bridge_content: @new_bridge_content).attributes
+        bridge_content_injury['seek'] = 2
+        bridge_content_injury
       end
 
       it 'updates the requested bridge_content_injury' do
@@ -120,6 +122,7 @@ RSpec.describe '/bridge_content_injuries', type: :request do
               params: { bridge_content_injury: new_attributes }
         bridge_content_injury.reload
         expect(bridge_content_injury.bridge_content).to eq(@new_bridge_content)
+        expect(bridge_content_injury.seek).to eq(2)
       end
 
       it 'redirects to the bridge_content_injury' do

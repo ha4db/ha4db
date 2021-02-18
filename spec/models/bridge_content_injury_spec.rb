@@ -14,6 +14,7 @@ RSpec.describe BridgeContentInjury, type: :model do
 
   it { should respond_to(:injury) }
   it { should respond_to(:bridge_content) }
+  it { should respond_to(:seek) }
 
   it { should be_valid }
 
