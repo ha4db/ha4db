@@ -135,6 +135,7 @@ ja:
         start_date: 開始日
         end_date: 終了日
         bridge: :activerecord.models.bridge
+        bridge_id: 橋梁
         diagnoses: :activerecord.models.diagnosis
         injuries: :activerecord.models.injury
         bridge_contents: :activerecord.models.bridge_content
