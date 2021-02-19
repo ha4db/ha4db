@@ -33,6 +33,18 @@ en:
         components: Components
         bridge_length: Length
         width: Width
+        applicable_specifications_upper: Application Specifications (Upper)
+        applicable_specifications_lower: Application Specifications (Lower)
+        traffic_count: Traffic count
+        large_vehicle_mixing_rate: Large vehicle mixing rate
+        year_in_service: Year in service
+        priority: Priority
+        administrator_name: Administrator Name
+        bridge_type: Bridge Type
+        street_condition: Street condition
+        availabillity_of_alternative_route: Availabillity of alternative routes
+        freeway_or_public_road: Freeway or public road
+        emergency_transport_road: Emergency transport road
 
       user:
         login_name: Login name
@@ -177,6 +189,17 @@ en:
   bridge: :activerecord.models.bridge
 
   enums:
+    bridge:
+      availabillity_of_alternative_route_type:
+        unknown: Unknown
+        available: Available
+        unavailable: Unavailable
+
+      freeway_or_public_road_type:
+        unselected: Unselected
+        freeway: Freeway
+        public_road: Public road
+
     bridge_content:
       data_type:
         unselected: Unselected
@@ -294,6 +317,10 @@ en:
       delete: "Are you sure?"
       import_from_excel: "Import from Excel"
       preview: "Preview"
+    
+    select:
+      true: "Yes"
+      false: "No"
 
   controller:
     common:

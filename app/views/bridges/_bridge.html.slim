@@ -1,0 +1,91 @@
+ul.mdc-list
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text id
+      span.mdc-list-item__secondary-text = bridge.id
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:title)
+      span.mdc-list-item__secondary-text = bridge.title
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:address)
+      span.mdc-list-item__secondary-text = bridge.address
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:road_name)
+      span.mdc-list-item__secondary-text = bridge.road_name
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:bridge_length)
+      span.mdc-list-item__secondary-text = bridge.bridge_length
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:width)
+      span.mdc-list-item__secondary-text = bridge.width
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:applicable_specifications_upper)
+      span.mdc-list-item__secondary-text = bridge.applicable_specifications_upper
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:applicable_specifications_lower)
+      span.mdc-list-item__secondary-text = bridge.applicable_specifications_lower
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:traffic_count)
+      span.mdc-list-item__secondary-text = bridge.traffic_count
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:large_vehicle_mixing_rate)
+      span.mdc-list-item__secondary-text = bridge.large_vehicle_mixing_rate
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:year_in_service)
+      span.mdc-list-item__secondary-text = bridge.year_in_service
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:priority)
+      span.mdc-list-item__secondary-text = bridge.priority
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:administrator_name)
+      span.mdc-list-item__secondary-text = bridge.administrator_name
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:bridge_type)
+      span.mdc-list-item__secondary-text = bridge.bridge_type
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:street_condition)
+      span.mdc-list-item__secondary-text = bridge.street_condition
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:availabillity_of_alternative_route)
+      span.mdc-list-item__secondary-text = bridge.availabillity_of_alternative_route.nil? ? '' : I18n.t("enums.bridge.availabillity_of_alternative_route_type.#{Bridge.availabillity_of_alternative_route_types.invert[bridge.availabillity_of_alternative_route]}")
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:freeway_or_public_road)
+      span.mdc-list-item__secondary-text = bridge.freeway_or_public_road.nil? ? '' : I18n.t("enums.bridge.freeway_or_public_road_type.#{Bridge.freeway_or_public_road_types.invert[bridge.freeway_or_public_road]}")
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:emergency_transport_road)
+      span.mdc-list-item__secondary-text = bridge.emergency_transport_road == true ? I18n.t("view.select.true") : I18n.t("view.select.false")

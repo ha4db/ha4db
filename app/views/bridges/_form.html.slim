@@ -27,6 +27,54 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :applicable_specifications_upper }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :applicable_specifications_lower }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :traffic_count }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :large_vehicle_mixing_rate }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :year_in_service }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :priority }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :administrator_name }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :bridge_type }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :street_condition }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: Bridge, field_name: :availabillity_of_alternative_route, data: @bridge.availabillity_of_alternative_route, text_and_values: Bridge.availabillity_of_alternative_route_types.keys.map {|k| [I18n.t("enums.bridge.availabillity_of_alternative_route_type.#{k}"), Bridge.availabillity_of_alternative_route_types[k]]}}
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: Bridge, field_name: :freeway_or_public_road, data: @bridge.freeway_or_public_road, text_and_values: Bridge.freeway_or_public_road_types.keys.map {|k| [I18n.t("enums.bridge.freeway_or_public_road_type.#{k}"), Bridge.freeway_or_public_road_types[k]]}}
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: Bridge, field_name: :emergency_transport_road, data: @bridge.emergency_transport_road, text_and_values: [[I18n.t("view.select.true"), true], [I18n.t("view.select.false"), false]] }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
         #edit_poi_map.edit_poi_map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude]
         = javascript_pack_tag 'map/edit_poi'
         = f.hidden_field :location
@@ -44,6 +92,7 @@
 
 = javascript_pack_tag 'commons/form'
 = javascript_pack_tag 'commons/button'
+= javascript_pack_tag 'commons/select'
 
 javascript:
   change_value_before_on_submit = (event) => {
