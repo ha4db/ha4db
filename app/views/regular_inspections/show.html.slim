@@ -112,6 +112,27 @@
                   td.mdc-data-table__cell = injury.component.show_name
                   td.mdc-data-table__cell = injury.injury_type
 
+#bridge_content_images.contents.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-8
+      ul#bridge_content_list.mdc-image-list
+        - @regular_inspection.bridge_contents.each do |bridge_content|
+          li.mdc-image-list__item[data-id=bridge_content.id]
+            .mdc-image-list__image-aspect-container
+              - if bridge_content.data_type.to_i == BridgeContent.data_types[:pointcloud]
+                = I18n.t("view.common.no_preview")
+              - elsif bridge_content.data.variable?
+                = image_tag bridge_content.data.variant(resize: "100x100>"), class: "mdc-image-list__image"
+              - elsif bridge_content.data.previewable?
+                = image_tag bridge_content.data.preview(resize: "100x100>"), class: "mdc-image-list__image"
+              - else
+                = I18n.t("view.common.no_preview")
+            .mdc-image-list__supporting
+              span.mdc-image-list__label
+                = bridge_content.data.filename.to_s
+    .mdc-layout-grid__cell--span-4
+      #show_data_view[data-regular_inspection_id=@regular_inspection.id data-id='']
+
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-2
@@ -128,4 +149,5 @@
 = javascript_pack_tag 'commons/button'
 = javascript_pack_tag 'commons/tab'
 = javascript_pack_tag 'commons/data-table'
+= javascript_pack_tag 'commons/image-list'
 = javascript_pack_tag 'apps/regular_inspection_tab'
