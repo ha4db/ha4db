@@ -44,6 +44,74 @@
             span.mdc-list-item__primary-text = RegularInspection.human_attribute_name(:end_date)
             span.mdc-list-item__secondary-text = @regular_inspection.try(:end_date)&.strftime(I18n.t('date.formats.default'))
 
+.mdc-tab-bar[role='tablist']
+  .mdc-tab-scroller
+    .mdc-tab-scroller__scroll-area
+      .mdc-tab-scroller__scroll-content
+        button.mdc-tab.mdc-tab--active[role='tab' aria-selected="true" tabindex="0"]
+          span.mdc-tab__content
+            .mdc-tab__icon.material-icons[aria-hidden="true"] rule
+            .mdc-tab__text-label = Diagnosis.model_name.human
+          span.mdc-tab-indicator.mdc-tab-indicator--active
+            span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline
+          span.mdc-tab__ripple
+        button.mdc-tab.mdc-tab--active[role='tab' aria-selected="false" tabindex="1"]
+          span.mdc-tab__content
+            .mdc-tab__icon.material-icons[aria-hidden="true"] sms_failed
+            .mdc-tab__text-label = Injury.model_name.human
+          span.mdc-tab-indicator
+            span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline
+          span.mdc-tab__ripple
+        button.mdc-tab.mdc-tab--active[role='tab' aria-selected="false" tabindex="2"]
+          span.mdc-tab__content
+            .mdc-tab__icon.material-icons[aria-hidden="true"] collections
+            .mdc-tab__text-label 点検状況
+          span.mdc-tab-indicator
+            span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline
+          span.mdc-tab__ripple
+
+#diagnosis.contents.mdc-layout-grid 
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      .mdc-data-table
+        .mdc-data-table__table-container
+          table.mdc-data-table__table[aria-label='I18n.t("view.common.title.listing", model_name: Diagnosis.model_name.human)']
+            thead
+              tr.mdc-data-table__header-row
+                th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:component_category)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:result)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:injury)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:observation)
+ 
+            tbody.mdc-data-table__content
+              - @regular_inspection.diagnoses.each do |diagnosis|
+                tr.mdc-data-table__row
+                  td.mdc-data-table__cell.mdc-data-table__cell--numeric = diagnosis.id
+                  td.mdc-data-table__cell = I18n.t("enums.component.category.#{Component.categories.key(diagnosis.component_category)}")
+                  td.mdc-data-table__cell = I18n.t("enums.diagnosis.diagnosis_result.#{Diagnosis.diagnosis_results.key(diagnosis.result)}")
+                  td.mdc-data-table__cell = diagnosis.injury && I18n.t("enums.component.category.#{Component.categories.invert[diagnosis.injury.component.component_category]}") + " #{diagnosis.injury.injury_type} #{diagnosis.injury.injury_grade}"
+                  td.mdc-data-table__cell = diagnosis.observation
+
+#injury.contents.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      .mdc-data-table
+        .mdc-data-table__table-container
+          table.mdc-data-table__table[aria-label=I18n.t("view.common.title.listing", model_name: Injury.model_name.human)]
+            thead
+              tr.mdc-data-table__header-row
+                th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Injury.human_attribute_name(:component)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Injury.human_attribute_name(:injury_type)
+
+            tbody.mdc-data-table__content
+              - @regular_inspection.injuries.each do |injury|
+                tr.mdc-data-table__row
+                  td.mdc-data-table__cell.mdc-data-table__cell--numeric = injury.id
+                  td.mdc-data-table__cell = injury.component.show_name
+                  td.mdc-data-table__cell = injury.injury_type
+
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-2
@@ -58,3 +126,6 @@
         span.mdc-fab__label = I18n.t("view.action.back")
 
 = javascript_pack_tag 'commons/button'
+= javascript_pack_tag 'commons/tab'
+= javascript_pack_tag 'commons/data-table'
+= javascript_pack_tag 'apps/regular_inspection_tab'
