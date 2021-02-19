@@ -1,9 +1,11 @@
 import seekSupport from './seek'
+import initOrthoView from '../map/ortho_image'
+import { remove_select_tag } from '../map/editor/ortho_geojson_editor'
 
 const target_id = 'show_data_view'
 const target = document.getElementById(target_id)
 
-const show_image = (url):void => {
+const show_image = (url: string):void => {
   while (target.firstChild) {
     target.removeChild(target.firstChild)
   }
@@ -13,7 +15,7 @@ const show_image = (url):void => {
   target.appendChild(image_tag)
 }
 
-const show_video = (url, content_type):void => {
+const show_video = (url: string, content_type: string):void => {
   while (target.firstChild) {
     target.removeChild(target.firstChild)
   }
@@ -27,6 +29,24 @@ const show_video = (url, content_type):void => {
   seekSupport()
 }
 
+const show_ortho = (bridge_content_id: number, max_zoom: number, ortho_geojson: string): void => {
+  while (target.firstChild) {
+    target.removeChild(target.firstChild)
+  }
+  const div_tag = document.createElement('div') as HTMLDivElement
+  div_tag.dataset.id = bridge_content_id
+  div_tag.dataset.maxzoom = max_zoom
+  div_tag.id = 'ortho_map'
+  div_tag.style.maxWidth = '100%'
+  target.appendChild(div_tag)
+  const input_tag = document.createElement('input') as HTMLInputElement
+  input_tag.hidden = true
+  input_tag.id = 'bridge_content_injury_ortho_geojson'
+  input_tag.value = ortho_geojson
+  target.appendChild(input_tag)
+  initOrthoView()
+}
+
 const show_bridge_content = ():void => {
   const bridge_content_id = parseInt(target.dataset.id)
   if (bridge_content_id > 0) {
@@ -35,11 +55,15 @@ const show_bridge_content = ():void => {
     fetch(api_path)
       .then(response => response.json())
       .then(data => {
+        remove_select_tag()
         if (data.data_type == "1") {
           show_image(data.src)
         } else if (data.data_type == "2") {
           const content_type = data.content_type
           show_video(data.src, content_type)
+        } else if (data.data_type == "4") {
+          console.log(data)
+          show_ortho(bridge_content_id, data.ortho_tile_info.max_zoom, data.ortho_geojson)
         }
       })
   }

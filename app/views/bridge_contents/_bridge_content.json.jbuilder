@@ -57,3 +57,8 @@ if bridge_content.data_type.to_i == 1 || bridge_content.data_type.to_i == 2
 else
   json.content_type ''
 end
+if bridge_content.bridge_content_injury.present?
+  json.ortho_geojson bridge_content.bridge_content_injury.ortho_geojson
+else
+  json.ortho_geojson
+end

@@ -11,6 +11,7 @@
       .mdc-layout-grid__cell--span-12
         #show_data_view[data-regular_inspection_id=@regular_inspection.id data-id=(@bridge_content_injury.bridge_content.nil? ? '' : @bridge_content_injury.bridge_content_id)]
   = f.hidden_field :seek
+  = f.hidden_field :ortho_geojson
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell

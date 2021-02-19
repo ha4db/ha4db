@@ -12,4 +12,6 @@ class BridgeContentInjury < ApplicationRecord
 
   # 動画 seek
   attr_json :seek, :integer
+  # オルソ geojson
+  attr_json :ortho_geojson, :string
 end

@@ -77,7 +77,8 @@ class BridgeContentsController < UserBaseController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_bridge_content
-    @bridge_content = BridgeContent.where(regular_inspection: @regular_inspection).find(params[:id])
+    @bridge_content = BridgeContent.where(regular_inspection: @regular_inspection)
+                                   .includes(:bridge_content_injury).find(params[:id])
   end
 
   def set_regular_inspection
