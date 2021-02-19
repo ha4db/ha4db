@@ -8,7 +8,7 @@ class Diagnosis < ApplicationRecord
   belongs_to :regular_inspection
   belongs_to :injury, optional: true
 
-  validates :component_category, presence: true
+  validates :component_category, presence: true, uniqueness: { scope: [:regular_inspection] }
   validates :result, presence: true
   validates :injury, presence: true, if: :need_injury?
   validates_with SameComponentCategoryValidator

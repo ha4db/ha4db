@@ -8,7 +8,9 @@ RSpec.describe 'diagnoses/index', type: :view do
     assign(:regular_inspection, regular_inspection)
     assign(:diagnoses, [
              FactoryBot.create(:diagnosis, regular_inspection: regular_inspection),
-             FactoryBot.create(:diagnosis, regular_inspection: regular_inspection)
+             FactoryBot.create(:diagnosis,
+                               regular_inspection: regular_inspection,
+                               component_category: Component.categories[:superstructure_horizontal_grider])
            ])
   end
 

@@ -43,5 +43,13 @@ RSpec.describe Diagnosis, type: :model do
       it { should_not be_valid }
     end
   end
+
+  describe 'when result to two with same component_category' do
+    before do
+      @new_diagnosis = FactoryBot.build(:diagnosis, regular_inspection: @regular_inspection)
+    end
+    subject { @new_diagnosis }
+    it { should_not be_valid }
+  end
 end
 # rubocop:enable Metrics/BlockLength
