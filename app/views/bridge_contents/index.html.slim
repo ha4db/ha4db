@@ -19,6 +19,8 @@
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
 
             tbody.mdc-data-table__content
               - @bridge_contents.each do |bridge_content|
@@ -35,6 +37,16 @@
                       = image_tag bridge_content.data.preview(resize: "100x100>")
                     - else
                       = I18n.t("view.common.no_preview")
+                  td.mdc-data-table__cell = bridge_content.bridge_main_content.nil? ? 'sub' : 'main'
+                  td.mdc-data-table__cell
+                    - if bridge_content.bridge_main_content.nil?
+                      - bridge_main_content = BridgeMainContent.new(bridge_content: bridge_content)
+                      = form_for [@regular_inspection, bridge_main_content], local: true, multipart: true do |f|
+                        = f.hidden_field :bridge_content_id
+                        = render partial: 'commons/mdc_fab_submit', locals: { f: f, icon: 'add', label: 'to be main' }
+                    - else
+                      - bridge_main_content = bridge_content.bridge_main_content 
+                      = link_to 'delete', [@regular_inspection, bridge_main_content], data: { confirm: 'Are you sure?' }, method: :delete, class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell
                     = link_to 'visibility', [@regular_inspection, bridge_content], class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell

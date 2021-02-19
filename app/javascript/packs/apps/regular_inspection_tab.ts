@@ -4,7 +4,7 @@ const diagnosis = document.getElementById('diagnosis')
 const injury = document.getElementById('injury')
 const bridge_content_images = document.getElementById('bridge_content_images')
 
-const tab_bar = document.querySelector('.mdc-tab-bar')
+const tab_bar = document.querySelector('.mdc-tab-bar#regular_inspection_tab_bar')
 if (tab_bar) {
   const mdc_tab_bar = new MDCTabBar(tab_bar)
   mdc_tab_bar.listen('MDCTabBar:activated', (data: MDCTabBarActivatedEvent) => {

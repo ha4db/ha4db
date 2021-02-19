@@ -6,7 +6,7 @@
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
-    .mdc-layout-grid__cell
+    .mdc-layout-grid__cell--span-6
       ul.mdc-list
         li.mdc-list-item
           span.mdc-list-item__ripple
@@ -43,8 +43,34 @@
           span.mdc-list-item__text
             span.mdc-list-item__primary-text = RegularInspection.human_attribute_name(:end_date)
             span.mdc-list-item__secondary-text = @regular_inspection.try(:end_date)&.strftime(I18n.t('date.formats.default'))
+    .mdc-layout-grid__cell--span-6
+      #regular_inspection_main_contents_tab_bar.mdc-tab-bar[role='tablist']
+        .mdc-tab-scroller
+          .mdc-tab-scroller__scroll-area
+            .mdc-tab-scroller__scroll-content
+              - i = 1
+              - @regular_inspection.bridge_contents.each do |bridge_content|
+                - unless bridge_content.bridge_main_content.nil?
+                  button.mdc-tab.mdc-tab--active[role='tab' aria-selected="false" tabindex=i]
+                    span.mdc-tab__content
+                      .mdc-tab__text-label = i
+                    span.mdc-tab-indicator.mdc-tab-indicator--active
+                      span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline
+                    span.mdc-tab__ripple
+                  - i = i + 1
+      - i = 0
+      - @regular_inspection.bridge_contents.each do |bridge_content|
+        - unless bridge_content.bridge_main_content.nil?
+          .show-main-content[data-index=i]
+            - if bridge_content.data.attached?
+              - if bridge_content.data.content_type.start_with?('video')
+                video[src=url_for(bridge_content.data) type=bridge_content.data.content_type controls style="max-width: 100%"]
+              - elsif bridge_content.data.content_type.start_with?('image')
+                img[src=url_for(bridge_content.data) style="max-width: 100%"]
+              - else
+          - i = i + 1
 
-.mdc-tab-bar[role='tablist']
+#regular_inspection_tab_bar.mdc-tab-bar[role='tablist']
   .mdc-tab-scroller
     .mdc-tab-scroller__scroll-area
       .mdc-tab-scroller__scroll-content
@@ -153,3 +179,4 @@
 = javascript_pack_tag 'commons/image-list'
 = javascript_pack_tag 'apps/regular_inspection_tab'
 = javascript_pack_tag 'apps/regular_inspection_image_list'
+= javascript_pack_tag 'apps/regular_inspection_main_contents'
