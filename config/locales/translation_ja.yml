@@ -142,16 +142,17 @@ ja:
       component:
         component_category: 部材の種類
         title: 名称
-        bridge: :activerecord.models.bridge
+        bridge: 橋梁
+        bridge_id: 橋梁
         span_number: 径間番号
 
       injury:
         injury_grade: 損傷程度
         injury_type: 損傷の種類
         other_data: その他のデータ
-        regular_inspection: :activerecord.models.regular_inspection
-        component: :activerecord.models.component
-        component_id: :activerecord.models.component
+        regular_inspection: 定期点検
+        component: 部材
+        component_id: 部材ID
         bridge_content_injuries: 橋の内容物の怪我  #g
 
       diagnosis:

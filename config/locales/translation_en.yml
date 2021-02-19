@@ -135,6 +135,7 @@ en:
         start_date: Start date
         end_date: End date
         bridge: :activerecord.models.bridge
+        bridge_id: Bridge
         diagnoses: :activerecord.models.diagnosis
         injuries: :activerecord.models.injury
         bridge_contents: Bridge contents
@@ -143,6 +144,7 @@ en:
         component_category: Component category
         title: Title
         bridge: :activerecord.models.bridge
+        bridge_id: Bridge
         span_number: Span number
 
       injury:
