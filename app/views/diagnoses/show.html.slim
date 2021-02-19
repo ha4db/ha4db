@@ -27,7 +27,7 @@
           span.mdc-list-item__ripple
           span.mdc-list-item__text
             span.mdc-list-item__primary-text = Diagnosis.human_attribute_name(:injury)
-            span.mdc-list-item__secondary-text = I18n.t("enums.component.category.#{Component.categories.invert[@diagnosis.injury.component.component_category]}") + " #{@diagnosis.injury.injury_type} #{@diagnosis.injury.injury_grade}"
+            span.mdc-list-item__secondary-text = @diagnosis.injury.nil? ? '' : I18n.t("enums.component.category.#{Component.categories.invert[@diagnosis.injury.component.component_category]}") + " #{@diagnosis.injury.injury_type} #{@diagnosis.injury.injury_grade}"
         li.mdc-list-item
           span.mdc-list-item__ripple
           span.mdc-list-item__text

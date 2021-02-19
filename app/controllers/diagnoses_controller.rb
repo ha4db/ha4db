@@ -8,7 +8,8 @@ class DiagnosesController < UserBaseController
   # GET /regular_inspections/1/diagnoses
   # GET /regular_inspections/1/diagnoses.json
   def index
-    @diagnoses = Diagnosis.where(regular_inspection: @regular_inspection).joins(:injury).all
+    @diagnoses = Diagnosis.where(regular_inspection: @regular_inspection)
+                          .includes(:injury).order(:component_category).all
   end
 
   # GET /regular_inspections/1/diagnoses/1
