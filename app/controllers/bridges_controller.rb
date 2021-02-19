@@ -81,6 +81,11 @@ class BridgesController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def bridge_params
-    params.fetch(:bridge, {}).permit(:title, :address, :location, :road_name, :bridge_length, :width)
+    params.fetch(:bridge, {}).permit(:title, :address, :location, :road_name, :bridge_length, :width,
+                                     :applicable_specifications_upper, :applicable_specifications_lower,
+                                     :traffic_count, :large_vehicle_mixing_rate, :year_in_service,
+                                     :priority, :administrator_name, :bridge_type,
+                                     :street_condition, :availabillity_of_alternative_route,
+                                     :freeway_or_public_road, :emergency_transport_road)
   end
 end

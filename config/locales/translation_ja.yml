@@ -33,6 +33,18 @@ ja:
         components: 部材
         bridge_length: 橋長
         width: 幅員
+        applicable_specifications_upper: 適用示方書上部
+        applicable_specifications_lower: 適用示方書下部
+        traffic_count: 交通量
+        large_vehicle_mixing_rate: 大型車混入率
+        year_in_service: 供用年
+        priority: 重要度
+        administrator_name: 管理者名
+        bridge_type: 橋梁形式
+        street_condition: 路下条件
+        availabillity_of_alternative_route: 代替路の有無
+        freeway_or_public_road: 自専道or一般道
+        emergency_transport_road: 緊急輸送道路
 
       user:
         login_name: ログイン名
@@ -178,6 +190,17 @@ ja:
   bridge: :activerecord.models.bridge
 
   enums:
+    bridge:
+      availabillity_of_alternative_route_type:
+        unknown: 不明
+        available: あり
+        unavailable: なし
+      
+      freeway_or_public_road_type:
+        unselected: 未選択
+        freeway: 自動車専用道路
+        public_road: 一般道
+
     bridge_content:
       data_type:
         unselected: 未選択
@@ -295,6 +318,10 @@ ja:
       delete: "削除してよろしいでしょうか？"
       import_from_excel: "Excelからインポート"
       preview: "プレビュー"
+
+    select:
+      true: "はい"
+      false: "いいえ"
 
   controller:
     common:
