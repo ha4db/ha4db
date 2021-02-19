@@ -132,6 +132,7 @@
                 = bridge_content.data.filename.to_s
     .mdc-layout-grid__cell--span-4
       #show_data_view[data-regular_inspection_id=@regular_inspection.id data-id='']
+      = hidden_field_tag "bridge_content_injury_seek"
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
@@ -151,3 +152,4 @@
 = javascript_pack_tag 'commons/data-table'
 = javascript_pack_tag 'commons/image-list'
 = javascript_pack_tag 'apps/regular_inspection_tab'
+= javascript_pack_tag 'apps/regular_inspection_image_list'
