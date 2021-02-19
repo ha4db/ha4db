@@ -99,6 +99,6 @@ class BridgeContentInjuriesController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def bridge_content_injury_params
-    params.fetch(:bridge_content_injury, {}).permit(:bridge_content_id, :seek)
+    params.fetch(:bridge_content_injury, {}).permit(:bridge_content_id, :seek, :ortho_geojson)
   end
 end

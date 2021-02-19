@@ -1,9 +1,10 @@
 import seekSupport from './seek'
+import initOrthoView from '../map/ortho_image'
 
 const target_id = 'show_data_view'
 const target = document.getElementById(target_id)
 
-const show_image = (url):void => {
+const show_image = (url: string):void => {
   while (target.firstChild) {
     target.removeChild(target.firstChild)
   }
@@ -13,7 +14,7 @@ const show_image = (url):void => {
   target.appendChild(image_tag)
 }
 
-const show_video = (url, content_type):void => {
+const show_video = (url: string, content_type: string):void => {
   while (target.firstChild) {
     target.removeChild(target.firstChild)
   }
@@ -25,6 +26,19 @@ const show_video = (url, content_type):void => {
   video_tag.type = content_type
   target.appendChild(video_tag)
   seekSupport()
+}
+
+const show_ortho = (bridge_content_id: number, max_zoom: number): void => {
+  while (target.firstChild) {
+    target.removeChild(target.firstChild)
+  }
+  const div_tag = document.createElement('div') as HTMLDivElement
+  div_tag.dataset.id = bridge_content_id
+  div_tag.dataset.maxzoom = max_zoom
+  div_tag.id = 'ortho_map'
+  div_tag.style.maxWidth = '100%'
+  target.appendChild(div_tag)
+  initOrthoView()
 }
 
 const show_bridge_content = ():void => {
@@ -40,6 +54,8 @@ const show_bridge_content = ():void => {
         } else if (data.data_type == "2") {
           const content_type = data.content_type
           show_video(data.src, content_type)
+        } else if (data.data_type == "4") {
+          show_ortho(bridge_content_id, data.ortho_tile_info.max_zoom)
         }
       })
   }
