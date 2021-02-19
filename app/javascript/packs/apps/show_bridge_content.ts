@@ -29,7 +29,7 @@ const show_video = (url: string, content_type: string):void => {
   seekSupport()
 }
 
-const show_ortho = (bridge_content_id: number, max_zoom: number): void => {
+const show_ortho = (bridge_content_id: number, max_zoom: number, ortho_geojson: string): void => {
   while (target.firstChild) {
     target.removeChild(target.firstChild)
   }
@@ -39,6 +39,11 @@ const show_ortho = (bridge_content_id: number, max_zoom: number): void => {
   div_tag.id = 'ortho_map'
   div_tag.style.maxWidth = '100%'
   target.appendChild(div_tag)
+  const input_tag = document.createElement('input') as HTMLInputElement
+  input_tag.hidden = true
+  input_tag.id = 'bridge_content_injury_ortho_geojson'
+  input_tag.value = ortho_geojson
+  target.appendChild(input_tag)
   initOrthoView()
 }
 
@@ -57,7 +62,8 @@ const show_bridge_content = ():void => {
           const content_type = data.content_type
           show_video(data.src, content_type)
         } else if (data.data_type == "4") {
-          show_ortho(bridge_content_id, data.ortho_tile_info.max_zoom)
+          console.log(data)
+          show_ortho(bridge_content_id, data.ortho_tile_info.max_zoom, data.ortho_geojson)
         }
       })
   }

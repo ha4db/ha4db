@@ -14,6 +14,7 @@ class BridgeContent < ApplicationRecord
   belongs_to :regular_inspection
   belongs_to :component, optional: true
   has_one :bridge_main_content
+  has_one :bridge_content_injury
   validates :title, presence: true
   has_one_attached :data
   validates :data, presence: true

@@ -8,6 +8,10 @@ import { Draw, Modify, Snap } from 'ol/interaction'
 const select_tag_id = 'ortho_editor_type'
 
 const setup_geometry_type = (ortho_geojson_input: HTMLInputElement):void => {
+  const form = document.querySelector('form') as HTMLFormElement
+  if (!form) {
+    return
+  }
   remove_select_tag()
   const select_tag = document.createElement('select') as HTMLSelectElement
   select_tag.id = select_tag_id
@@ -27,10 +31,6 @@ const setup_geometry_type = (ortho_geojson_input: HTMLInputElement):void => {
 }
 
 const setup_ortho_geojson_editor = (map: Map, ortho_geojson_input: HTMLInputElement):void => {
-  const form = document.querySelector('form') as HTMLFormElement
-  if (!form) {
-    return
-  }
   setup_geometry_type(ortho_geojson_input)
 
   const image = new CircleStyle({
@@ -124,6 +124,12 @@ const setup_ortho_geojson_editor = (map: Map, ortho_geojson_input: HTMLInputElem
   })
 
   map.addLayer(vectorLayer)
+
+  const form = document.querySelector('form') as HTMLFormElement
+  if (!form) {
+    return
+  }
+
 
   const modify = new Modify({source: vectorSource})
   map.addInteraction(modify)
