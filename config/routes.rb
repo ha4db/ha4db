@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :bridge_content_injuries
     end
     resources :diagnoses
+    resources :bridge_main_contents, only: %i[create destroy]
     get 'download_image_metadata'
     get 'download_pointcloud_metadata'
   end

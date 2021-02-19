@@ -100,7 +100,7 @@ class RegularInspectionsController < UserBaseController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_regular_inspection
-    @regular_inspection = RegularInspection.includes([:diagnoses, { injuries: [:component]}]).find(params[:id])
+    @regular_inspection = RegularInspection.includes([:diagnoses, { injuries: [:component] }]).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
