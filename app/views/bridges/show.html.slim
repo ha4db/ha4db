@@ -28,6 +28,16 @@
           span.mdc-list-item__text
             span.mdc-list-item__primary-text = Bridge.human_attribute_name(:road_name)
             span.mdc-list-item__secondary-text = @bridge.road_name
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Bridge.human_attribute_name(:bridge_length)
+            span.mdc-list-item__secondary-text = @bridge.bridge_length
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Bridge.human_attribute_name(:width)
+            span.mdc-list-item__secondary-text = @bridge.width
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-12

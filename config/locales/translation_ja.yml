@@ -31,6 +31,8 @@ ja:
         soundnesses: 健全性
         regular_inspections: 定期点検
         components: 部材
+        bridge_length: 橋長
+        width: 幅員
 
       user:
         login_name: ログイン名
@@ -138,6 +140,7 @@ ja:
         regular_inspection: :activerecord.models.regular_inspection
         component: :activerecord.models.component
         component_id: :activerecord.models.component
+        bridge_content_injuries: 橋の内容物の怪我  #g
 
       diagnosis:
         component_category: 部材の種類

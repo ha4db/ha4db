@@ -31,6 +31,8 @@ en:
         soundnesses: Soundnesses
         regular_inspections: Regular inspections
         components: Components
+        bridge_length: Length
+        width: Width
 
       user:
         login_name: Login name
@@ -138,6 +140,7 @@ en:
         regular_inspection: :activerecord.models.regular_inspection
         component: :activerecord.models.component
         component_id: :activerecord.models.component
+        bridge_content_injuries: :activerecord.models.bridge_content_injury
 
       diagnosis:
         component_category: Component category

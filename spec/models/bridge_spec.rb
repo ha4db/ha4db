@@ -15,6 +15,8 @@ RSpec.describe Bridge, type: :model do
   it { should respond_to(:soundnesses) }
   it { should respond_to(:regular_inspections) }
   it { should respond_to(:components) }
+  it { should respond_to(:bridge_length) }
+  it { should respond_to(:width) }
 
   it { should be_valid }
 

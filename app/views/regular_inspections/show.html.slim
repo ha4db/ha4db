@@ -6,7 +6,7 @@
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
-    .mdc-layout-grid__cell
+    .mdc-layout-grid__cell--span-6
       ul.mdc-list
         li.mdc-list-item
           span.mdc-list-item__ripple
@@ -43,6 +43,122 @@
           span.mdc-list-item__text
             span.mdc-list-item__primary-text = RegularInspection.human_attribute_name(:end_date)
             span.mdc-list-item__secondary-text = @regular_inspection.try(:end_date)&.strftime(I18n.t('date.formats.default'))
+    .mdc-layout-grid__cell--span-6
+      #regular_inspection_main_contents_tab_bar.mdc-tab-bar[role='tablist']
+        .mdc-tab-scroller
+          .mdc-tab-scroller__scroll-area
+            .mdc-tab-scroller__scroll-content
+              - i = 1
+              - @regular_inspection.bridge_contents.each do |bridge_content|
+                - unless bridge_content.bridge_main_content.nil?
+                  button.mdc-tab.mdc-tab--active[role='tab' aria-selected="false" tabindex=i]
+                    span.mdc-tab__content
+                      .mdc-tab__text-label = i
+                    span.mdc-tab-indicator.mdc-tab-indicator--active
+                      span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline
+                    span.mdc-tab__ripple
+                  - i = i + 1
+      - i = 0
+      - @regular_inspection.bridge_contents.each do |bridge_content|
+        - unless bridge_content.bridge_main_content.nil?
+          .show-main-content[data-index=i]
+            - if bridge_content.data.attached?
+              - if bridge_content.data.content_type.start_with?('video')
+                video[src=url_for(bridge_content.data) type=bridge_content.data.content_type controls style="max-width: 100%"]
+              - elsif bridge_content.data.content_type.start_with?('image')
+                img[src=url_for(bridge_content.data) style="max-width: 100%"]
+              - else
+          - i = i + 1
+
+#regular_inspection_tab_bar.mdc-tab-bar[role='tablist']
+  .mdc-tab-scroller
+    .mdc-tab-scroller__scroll-area
+      .mdc-tab-scroller__scroll-content
+        button.mdc-tab.mdc-tab--active[role='tab' aria-selected="true" tabindex="0"]
+          span.mdc-tab__content
+            .mdc-tab__icon.material-icons[aria-hidden="true"] rule
+            .mdc-tab__text-label = Diagnosis.model_name.human
+          span.mdc-tab-indicator.mdc-tab-indicator--active
+            span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline
+          span.mdc-tab__ripple
+        button.mdc-tab.mdc-tab--active[role='tab' aria-selected="false" tabindex="1"]
+          span.mdc-tab__content
+            .mdc-tab__icon.material-icons[aria-hidden="true"] sms_failed
+            .mdc-tab__text-label = Injury.model_name.human
+          span.mdc-tab-indicator
+            span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline
+          span.mdc-tab__ripple
+        button.mdc-tab.mdc-tab--active[role='tab' aria-selected="false" tabindex="2"]
+          span.mdc-tab__content
+            .mdc-tab__icon.material-icons[aria-hidden="true"] collections
+            .mdc-tab__text-label 点検状況
+          span.mdc-tab-indicator
+            span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline
+          span.mdc-tab__ripple
+
+#diagnosis.contents.mdc-layout-grid 
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      .mdc-data-table
+        .mdc-data-table__table-container
+          table.mdc-data-table__table[aria-label='I18n.t("view.common.title.listing", model_name: Diagnosis.model_name.human)']
+            thead
+              tr.mdc-data-table__header-row
+                th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:component_category)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:result)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:injury)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:observation)
+ 
+            tbody.mdc-data-table__content
+              - @regular_inspection.diagnoses.each do |diagnosis|
+                tr.mdc-data-table__row
+                  td.mdc-data-table__cell.mdc-data-table__cell--numeric = diagnosis.id
+                  td.mdc-data-table__cell = I18n.t("enums.component.category.#{Component.categories.key(diagnosis.component_category)}")
+                  td.mdc-data-table__cell = I18n.t("enums.diagnosis.diagnosis_result.#{Diagnosis.diagnosis_results.key(diagnosis.result)}")
+                  td.mdc-data-table__cell = diagnosis.injury && I18n.t("enums.component.category.#{Component.categories.invert[diagnosis.injury.component.component_category]}") + " #{diagnosis.injury.injury_type} #{diagnosis.injury.injury_grade}"
+                  td.mdc-data-table__cell = diagnosis.observation
+
+#injury.contents.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell
+      .mdc-data-table
+        .mdc-data-table__table-container
+          table.mdc-data-table__table[aria-label=I18n.t("view.common.title.listing", model_name: Injury.model_name.human)]
+            thead
+              tr.mdc-data-table__header-row
+                th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Injury.human_attribute_name(:component)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Injury.human_attribute_name(:injury_type)
+
+            tbody.mdc-data-table__content
+              - @regular_inspection.injuries.each do |injury|
+                tr.mdc-data-table__row
+                  td.mdc-data-table__cell.mdc-data-table__cell--numeric = injury.id
+                  td.mdc-data-table__cell = injury.component.show_name
+                  td.mdc-data-table__cell = injury.injury_type
+
+#bridge_content_images.contents.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-8
+      ul#bridge_content_list.mdc-image-list
+        - @regular_inspection.bridge_contents.each do |bridge_content|
+          li.mdc-image-list__item[data-id=bridge_content.id]
+            .mdc-image-list__image-aspect-container
+              - if bridge_content.data_type.to_i == BridgeContent.data_types[:pointcloud]
+                = I18n.t("view.common.no_preview")
+              - elsif bridge_content.data.variable?
+                = image_tag bridge_content.data.variant(resize: "100x100>"), class: "mdc-image-list__image"
+              - elsif bridge_content.data.previewable?
+                = image_tag bridge_content.data.preview(resize: "100x100>"), class: "mdc-image-list__image"
+              - else
+                = I18n.t("view.common.no_preview")
+            .mdc-image-list__supporting
+              span.mdc-image-list__label
+                = bridge_content.data.filename.to_s
+    .mdc-layout-grid__cell--span-4
+      #show_data_view[data-regular_inspection_id=@regular_inspection.id data-id='']
+      = hidden_field_tag "bridge_content_injury_seek"
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
@@ -58,3 +174,9 @@
         span.mdc-fab__label = I18n.t("view.action.back")
 
 = javascript_pack_tag 'commons/button'
+= javascript_pack_tag 'commons/tab'
+= javascript_pack_tag 'commons/data-table'
+= javascript_pack_tag 'commons/image-list'
+= javascript_pack_tag 'apps/regular_inspection_tab'
+= javascript_pack_tag 'apps/regular_inspection_image_list'
+= javascript_pack_tag 'apps/regular_inspection_main_contents'

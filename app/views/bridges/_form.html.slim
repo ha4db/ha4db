@@ -7,15 +7,23 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
-        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_title', model: Bridge, field_name: :title }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :title }
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
-        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_address', model: Bridge, field_name: :address }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :address }
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
-        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, id: 'bridge_road_name', model: Bridge, field_name: :road_name }
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :road_name }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :bridge_length }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :width }
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12

@@ -24,7 +24,10 @@ RSpec.describe '/bridges', type: :request do
   # Bridge. As you add validations to Bridge, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    FactoryBot.build(:bridge).attributes
+    bridge = FactoryBot.build(:bridge).attributes
+    bridge['bridge_length'] = bridge['other_data']['bridge_length']
+    bridge['width'] = bridge['other_data']['width']
+    bridge
   end
 
   let(:invalid_attributes) do
@@ -95,7 +98,10 @@ RSpec.describe '/bridges', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        FactoryBot.build(:bridge).attributes
+        bridge = FactoryBot.build(:bridge).attributes
+        bridge['bridge_length'] = 20
+        bridge['width'] = 6.5
+        bridge
       end
 
       it 'updates the requested bridge' do
@@ -104,6 +110,8 @@ RSpec.describe '/bridges', type: :request do
         patch bridge_url(bridge), params: { bridge: new_params }
         bridge.reload
         expect(bridge.title).to eq(new_params['title'])
+        expect(bridge.bridge_length).to eq(20)
+        expect(bridge.width).to eq(6.5)
       end
 
       it 'redirects to the bridge' do
