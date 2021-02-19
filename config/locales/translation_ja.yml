@@ -274,6 +274,11 @@ ja:
       import_from_excel: "Excelからインポート"
       preview: "プレビュー"
       undefined_inspections: "未割り当ての点検"
+      injury_list: "変状情報"
+      photo_list: "写真一覧"
+      status: "状況"
+      note: "備考"
+      inspection_status: "点検状況"
 
     menu:
       admin:

@@ -273,6 +273,11 @@ en:
       import_from_excel: "Import from Excel"
       preview: "Preview"
       undefined_inspections: "Undefined inspections"
+      injury_list: "Injury list"
+      photo_list: "Photo list"
+      status: "Status"
+      note: "Note"
+      inspection_status: "Inspection status"
 
     menu:
       admin:
