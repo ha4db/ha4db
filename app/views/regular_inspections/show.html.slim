@@ -194,7 +194,7 @@
 
 #bridge_content_images.contents.mdc-layout-grid
   .mdc-layout-grid__inner
-    .mdc-layout-grid__cell--span-8
+    .mdc-layout-grid__cell--span-6
       ul#bridge_content_list.mdc-image-list
         - @regular_inspection.bridge_contents.each do |bridge_content|
           li.mdc-image-list__item[data-id=bridge_content.id]
@@ -210,7 +210,7 @@
             .mdc-image-list__supporting
               span.mdc-image-list__label
                 = bridge_content.data.filename.to_s
-    .mdc-layout-grid__cell--span-4
+    .mdc-layout-grid__cell--span-6
       #show_data_view[data-regular_inspection_id=@regular_inspection.id data-id='']
       = hidden_field_tag "bridge_content_injury_seek"
 
