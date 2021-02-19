@@ -1,5 +1,6 @@
 import seekSupport from './seek'
 import initOrthoView from '../map/ortho_image'
+import { remove_select_tag } from '../map/editor/ortho_geojson_editor'
 
 const target_id = 'show_data_view'
 const target = document.getElementById(target_id)
@@ -49,6 +50,7 @@ const show_bridge_content = ():void => {
     fetch(api_path)
       .then(response => response.json())
       .then(data => {
+        remove_select_tag()
         if (data.data_type == "1") {
           show_image(data.src)
         } else if (data.data_type == "2") {

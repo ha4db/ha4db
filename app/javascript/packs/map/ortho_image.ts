@@ -9,6 +9,7 @@ import {
   DragRotateAndZoom,
   defaults as defaultInteractions,
 } from 'ol/interaction'
+import setup_ortho_geojson_editor from './editor/ortho_geojson_editor'
 
 const initOrthoView = ():void => {
 
@@ -56,6 +57,13 @@ const initOrthoView = ():void => {
   map.on('singleclick', evt => {
     console.log(evt.coordinate)
   })
+
+  const ortho_geojson_id = 'bridge_content_injury_ortho_geojson'
+  const ortho_geojson_input = document.getElementById(ortho_geojson_id) as HTMLInputElement
+  if (!ortho_geojson_input) {
+    return
+  }
+  setup_ortho_geojson_editor(map, ortho_geojson_input)
 }
 
 initOrthoView()
