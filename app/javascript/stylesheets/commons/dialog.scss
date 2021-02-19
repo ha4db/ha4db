@@ -1,0 +1,4 @@
+@use "../common";
+@use "@material/dialog/_index" as dialog;
+
+@include dialog.core-styles;
