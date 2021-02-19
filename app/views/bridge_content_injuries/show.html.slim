@@ -23,6 +23,9 @@
           span.mdc-list-item__text
             span.mdc-list-item__primary-text = BridgeContentInjury.human_attribute_name(:bridge_content)
             span.mdc-list-item__secondary-text = @bridge_content_injury.bridge_content.data.filename.to_s
+      - if @bridge_content_injury.pointposition
+        = hidden_field_tag 'bridge_content_injuries_pointposition', @bridge_content_injury.pointposition
+        = javascript_pack_tag 'pointcloud/show_injury'
   
 
 

@@ -14,4 +14,5 @@ class BridgeContentInjury < ApplicationRecord
   attr_json :seek, :integer
   # オルソ geojson
   attr_json :ortho_geojson, :string
+  attr_json :pointposition, :string
 end

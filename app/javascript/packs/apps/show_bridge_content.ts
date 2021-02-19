@@ -1,6 +1,7 @@
 import seekSupport from './seek'
 import initOrthoView from '../map/ortho_image'
 import { remove_select_tag } from '../map/editor/ortho_geojson_editor'
+import edit_injury from '../pointcloud/edit_injury'
 
 const target_id = 'show_data_view'
 const target = document.getElementById(target_id)
@@ -47,6 +48,21 @@ const show_ortho = (bridge_content_id: number, max_zoom: number, ortho_geojson: 
   initOrthoView()
 }
 
+const show_pointcloud = (id, info):void => {
+  while (target.firstChild) {
+    target.removeChild(target.firstChild)
+  }
+  const pointcloud_tag = document.createElement('div') as HTMLElement
+  pointcloud_tag.style = 'max-width: 100%; height: 700px;'
+  pointcloud_tag.id = 'pointcloud'
+  pointcloud_tag.dataset.id = id
+  pointcloud_tag.dataset.x = info.x
+  pointcloud_tag.dataset.y = info.y
+  pointcloud_tag.dataset.z = info.z
+  target.appendChild(pointcloud_tag)
+  edit_injury()
+}
+
 const show_bridge_content = ():void => {
   const bridge_content_id = parseInt(target.dataset.id)
   if (bridge_content_id > 0) {
@@ -64,6 +80,8 @@ const show_bridge_content = ():void => {
         } else if (data.data_type == "4") {
           console.log(data)
           show_ortho(bridge_content_id, data.ortho_tile_info.max_zoom, data.ortho_geojson)
+        } else if (data.data_type === '5') {
+          show_pointcloud(data.id, data.pointcloud_info)
         }
       })
   }
