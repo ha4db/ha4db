@@ -4,14 +4,13 @@ import {createRaycast} from './lib/raycaster';
 import {makeInspectionLabel} from './lib/makeInspectionLabel';
 import {PointInspection} from './lib/point_inspection';
 
-const editInspection = () => {
+const editInjury = (preview: boolean|null) => {
     const view = initView();
     if(!view) return;
     const pointPosition = document.getElementById('bridge_content_injury_pointposition') as HTMLInputElement
     if (pointPosition.value !== '') {
         const values = JSON.parse(pointPosition.value);
         view.controls.enabled = false;
-        console.log(pointPosition.dataset.id);
         const inspectionPosition = new THREE.Vector3().fromArray(values.inspectionPosition)
         const cameraPosition = new THREE.Vector3().fromArray(values.cameraPosition);
         const inspectionText = (document.getElementById('bridge_content_injury_injury_type') as HTMLInputElement).value;
@@ -19,6 +18,9 @@ const editInspection = () => {
         view.camera.position.copy(cameraPosition);
         view.controls.setLatLon(values.cameraRotation);
         view.controls.enabled = true;
+    }
+    if (preview) {
+      return
     }
     const updatePointPosition = (position: THREE.Vector3) => {
         const inspectionText = (document.getElementById('bridge_content_injury_injury_type') as HTMLInputElement).value;
@@ -33,4 +35,4 @@ const editInspection = () => {
     const raycast = createRaycast(view, updatePointPosition);
     view.dom.addEventListener('click', raycast);
 }
-export default editInspection;
+export default editInjury;

@@ -49,7 +49,7 @@ const show_ortho = (target: HTMLDivElement, bridge_content_id: number, max_zoom:
   initOrthoView()
 }
 
-const show_pointcloud = (target: HTMLDivElement, id, info):void => {
+const show_pointcloud = (target: HTMLDivElement, id, info, pointposition):void => {
   while (target.firstChild) {
     target.removeChild(target.firstChild)
   }
@@ -61,7 +61,21 @@ const show_pointcloud = (target: HTMLDivElement, id, info):void => {
   pointcloud_tag.dataset.y = info.y
   pointcloud_tag.dataset.z = info.z
   target.appendChild(pointcloud_tag)
-  edit_injury()
+  if (pointcloud_tag.clientWidth < 250) {
+    pointcloud_tag.style.minWidth = "500px";
+  }
+  if (target.dataset.preview == 'true') {
+    const input_tag = document.getElementById('bridge_content_injury_pointposition') as HTMLInputElement
+    if (input_tag) {
+      input_tag.value = pointposition
+      const bridge_content_injury_injury_type = document.createElement('input') as HTMLInputElement
+      bridge_content_injury_injury_type.id = 'bridge_content_injury_injury_type'
+      bridge_content_injury_injury_type.value = "test"
+      bridge_content_injury_injury_type.hidden = true
+      target.appendChild(bridge_content_injury_injury_type)
+    }
+  }
+  edit_injury(target.dataset.preview == 'true')
 }
 
 const show_bridge_content = (target_node: HTMLDivElement | null):void => {
@@ -94,7 +108,8 @@ const show_bridge_content = (target_node: HTMLDivElement | null):void => {
         } else if (data.data_type == "4") {
           show_ortho(target, bridge_content_id, data.ortho_tile_info.max_zoom, data.ortho_geojson)
         } else if (data.data_type === '5') {
-          show_pointcloud(target, data.id, data.pointcloud_info)
+          console.log(data)
+          show_pointcloud(target, data.id, data.pointcloud_info, data.pointposition)
         }
       })
   }

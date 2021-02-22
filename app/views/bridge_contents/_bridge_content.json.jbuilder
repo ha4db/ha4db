@@ -59,6 +59,8 @@ else
 end
 if bridge_content.bridge_content_injury.present?
   json.ortho_geojson bridge_content.bridge_content_injury.ortho_geojson
+  json.pointposition bridge_content.bridge_content_injury.pointposition
 else
   json.ortho_geojson
+  json.pointposition
 end
