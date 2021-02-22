@@ -102,6 +102,8 @@ RSpec.describe '/bridges', type: :request do
         bridge['bridge_length'] = 20
         bridge['width'] = 6.5
         bridge['emergency_transport_road'] = true
+        bridge['title'] = 'title'
+        bridge['kana_title'] = 'kana'
         bridge
       end
 
@@ -114,6 +116,7 @@ RSpec.describe '/bridges', type: :request do
         expect(bridge.bridge_length).to eq(20)
         expect(bridge.width).to eq(6.5)
         expect(bridge.emergency_transport_road).to eq(true)
+        expect(bridge.full_title).to eq('title (kana)')
       end
 
       it 'redirects to the bridge' do

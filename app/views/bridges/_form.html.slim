@@ -11,6 +11,10 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :kana_title }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
         = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :address }
   .mdc-layout-grid
     .mdc-layout-grid__inner

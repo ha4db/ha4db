@@ -45,6 +45,7 @@ ja:
         availabillity_of_alternative_route: 代替路の有無
         freeway_or_public_road: 自専道or一般道
         emergency_transport_road: 緊急輸送道路
+        kana_title: フリガナ
 
       user:
         login_name: ログイン名
