@@ -1,6 +1,7 @@
 import seekSupport from './seek'
 import initOrthoView from '../map/ortho_image'
 import { remove_select_tag } from '../map/editor/ortho_geojson_editor'
+import edit_injury from '../pointcloud/edit_injury'
 
 const show_image = (target: HTMLDivElement, url: string): void => {
   while (target.firstChild) {
@@ -48,6 +49,36 @@ const show_ortho = (target: HTMLDivElement, bridge_content_id: number, max_zoom:
   initOrthoView()
 }
 
+const show_pointcloud = (target: HTMLDivElement, id, info, pointposition, injury_type):void => {
+  while (target.firstChild) {
+    target.removeChild(target.firstChild)
+  }
+  const pointcloud_tag = document.createElement('div') as HTMLElement
+  pointcloud_tag.style = 'max-width: 100%; height: 700px;'
+  pointcloud_tag.id = 'pointcloud'
+  pointcloud_tag.dataset.id = id
+  pointcloud_tag.dataset.x = info.x
+  pointcloud_tag.dataset.y = info.y
+  pointcloud_tag.dataset.z = info.z
+  target.appendChild(pointcloud_tag)
+  if (pointcloud_tag.clientWidth < 250) {
+    pointcloud_tag.style.minWidth = "500px";
+  }
+  if (target.dataset.preview == 'true') {
+    const input_tag = document.getElementById('bridge_content_injury_pointposition') as HTMLInputElement
+    if (input_tag) {
+      input_tag.value = pointposition
+      const bridge_content_injury_injury_type = document.createElement('input') as HTMLInputElement
+      bridge_content_injury_injury_type.id = 'bridge_content_injury_injury_type'
+      console.log(injury_type)
+      bridge_content_injury_injury_type.value = injury_type
+      bridge_content_injury_injury_type.hidden = true
+      target.appendChild(bridge_content_injury_injury_type)
+    }
+  }
+  edit_injury(target.dataset.preview == 'true')
+}
+
 const show_bridge_content = (target_node: HTMLDivElement | null):void => {
   const target_id1 = 'show_data_view'
   const target1 = document.getElementById(target_id1) as HTMLDivElement
@@ -77,6 +108,9 @@ const show_bridge_content = (target_node: HTMLDivElement | null):void => {
           show_video(target, data.src, content_type)
         } else if (data.data_type == "4") {
           show_ortho(target, bridge_content_id, data.ortho_tile_info.max_zoom, data.ortho_geojson)
+        } else if (data.data_type === '5') {
+          console.log(data)
+          show_pointcloud(target, data.id, data.pointcloud_info, data.pointposition, data.injury_type)
         }
       })
   }
