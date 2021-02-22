@@ -28,6 +28,31 @@
           span.mdc-list-item__text
             span.mdc-list-item__primary-text = Injury.human_attribute_name(:injury_grade)
             span.mdc-list-item__secondary-text = I18n.t("enums.injury.grade.#{Injury.grades.key(@injury.injury_grade)}")
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Injury.human_attribute_name(:quantitatively_obtained_value)
+            span.mdc-list-item__secondary-text = @injury.quantitatively_obtained_value
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Injury.human_attribute_name(:unit)
+            span.mdc-list-item__secondary-text = @injury.unit
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Injury.human_attribute_name(:injury_pattern)
+            span.mdc-list-item__secondary-text = @injury.injury_pattern
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Injury.human_attribute_name(:classification)
+            span.mdc-list-item__secondary-text = @injury.classification
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = Injury.human_attribute_name(:impression)
+            span.mdc-list-item__secondary-text = @injury.impression
   
 
 

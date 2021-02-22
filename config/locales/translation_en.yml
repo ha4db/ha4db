@@ -153,6 +153,11 @@ en:
         component: :activerecord.models.component
         component_id: :activerecord.models.component
         bridge_content_injuries: :activerecord.models.bridge_content_injury
+        quantitatively_obtained_value: Quantitatively obtained value
+        unit: Unit
+        injury_pattern: Injury pattern
+        classification: Classification
+        impression: Impression
 
       diagnosis:
         component_category: Component category

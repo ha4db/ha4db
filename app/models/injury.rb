@@ -22,4 +22,15 @@ class Injury < ApplicationRecord
     I18n.t("enums.component.category.#{Component.categories.invert[component.component_category]}") +
       " #{injury_type} #{injury_grade}"
   end
+
+  # 定量的に取得した値
+  attr_json :quantitatively_obtained_value, :string
+  # 単位
+  attr_json :unit, :string
+  # 損傷パターン
+  attr_json :injury_pattern, :string
+  # 分類
+  attr_json :classification, :string
+  # 所見
+  attr_json :impression, :string
 end

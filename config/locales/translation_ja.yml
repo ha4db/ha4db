@@ -152,7 +152,12 @@ ja:
         regular_inspection: :activerecord.models.regular_inspection
         component: :activerecord.models.component
         component_id: :activerecord.models.component
-        bridge_content_injuries: 橋の内容物の怪我  #g
+        bridge_content_injuries: :activerecord.models.bridge_content_injury
+        quantitatively_obtained_value: 定量的に取得した値
+        unit: 単位
+        injury_pattern: 損傷パターン
+        classification: 分類
+        impression: 所見
 
       diagnosis:
         component_category: 部材の種類

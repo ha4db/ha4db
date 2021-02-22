@@ -184,6 +184,12 @@
                 th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Injury.human_attribute_name(:component)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Injury.human_attribute_name(:injury_type)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Injury.human_attribute_name(:injury_grade)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Injury.human_attribute_name(:quantitatively_obtained_value)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Injury.human_attribute_name(:unit)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Injury.human_attribute_name(:injury_pattern)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Injury.human_attribute_name(:classification)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Injury.human_attribute_name(:impression)
 
             tbody.mdc-data-table__content
               - @regular_inspection.injuries.each do |injury|
@@ -191,6 +197,12 @@
                   td.mdc-data-table__cell.mdc-data-table__cell--numeric = injury.id
                   td.mdc-data-table__cell = injury.component.show_name
                   td.mdc-data-table__cell = injury.injury_type
+                  td.mdc-data-table__cell = injury.injury_grade && I18n.t("enums.injury.grade.#{Injury.grades.key(injury.injury_grade)}")
+                  td.mdc-data-table__cell = injury.quantitatively_obtained_value
+                  td.mdc-data-table__cell = injury.unit
+                  td.mdc-data-table__cell = injury.injury_pattern
+                  td.mdc-data-table__cell = injury.classification
+                  td.mdc-data-table__cell = injury.impression
 
 #bridge_content_images.contents.mdc-layout-grid
   .mdc-layout-grid__inner
