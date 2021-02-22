@@ -6,7 +6,7 @@
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
-    .mdc-layout-grid__cell
+    .mdc-layout-grid__cell--span-12
       ul.mdc-list
         li.mdc-list-item
           span.mdc-list-item__ripple
@@ -53,6 +53,20 @@
           span.mdc-list-item__text
             span.mdc-list-item__primary-text = Injury.human_attribute_name(:impression)
             span.mdc-list-item__secondary-text = @injury.impression
+      .mdc-list-group
+        h3.mdc-list-group__subheader = I18n.t("view.title.photo_list")
+        ul.mdc-list.mdc-list--image-list#bridge_content_injury_list
+          - @injury.bridge_content_injuries.each do |bridge_content_injury|
+            li.mdc-list-item[data-id=bridge_content_injury.bridge_content.id data-seek=bridge_content_injury.seek]
+              - if bridge_content_injury.bridge_content.data.variable?
+                = image_tag bridge_content_injury.bridge_content.data.variant(resize: "100x100>")
+              - elsif bridge_content_injury.bridge_content.data.previewable?
+                = image_tag bridge_content_injury.bridge_content.data.preview(resize: "100x100>")
+              - else
+                span.mdc-list-item__text = I18n.t("view.common.no_preview")
+        h3.mdc-list-group__subheader = I18n.t("view.title.preview")
+        .show_data_view_in_dialog[data-regular_inspection_id=@regular_inspection.id data-id='' data-preview=false]
+        = hidden_field_tag 'bridge_content_injury_seek'
 
 
 .mdc-layout-grid
@@ -69,3 +83,4 @@
         span.mdc-fab__label = I18n.t("view.action.back")
 
 = javascript_pack_tag 'commons/button'
+= javascript_pack_tag 'apps/injury_image_list'

@@ -59,6 +59,9 @@ const show_bridge_content = (target_node: HTMLDivElement | null):void => {
     target = target1
   }
 
+  if (!target || !target.dataset.id) {
+    return
+  }
   const bridge_content_id = parseInt(target.dataset.id)
   if (bridge_content_id > 0) {
     const regular_inspection_id = parseInt(target.dataset.regular_inspection_id)
