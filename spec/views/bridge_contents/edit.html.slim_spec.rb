@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'bridge_contents/edit', type: :view do
   before(:each) do
+    assign(:components, [])
     @regular_inspection = assign(:regular_inspection, FactoryBot.create(:regular_inspection))
     @bridge_content = assign(:bridge_content,
                              FactoryBot.create(:bridge_content, regular_inspection: @regular_inspection))

@@ -83,6 +83,7 @@ class BridgeContentsController < UserBaseController
 
   def set_regular_inspection
     @regular_inspection = RegularInspection.joins(:bridge).find(params[:regular_inspection_id])
+    @components = @regular_inspection.bridge.components
   end
 
   # Only allow a list of trusted parameters through.
