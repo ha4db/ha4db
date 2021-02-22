@@ -45,6 +45,8 @@ en:
         availabillity_of_alternative_route: Availabillity of alternative routes
         freeway_or_public_road: Freeway or public road
         emergency_transport_road: Emergency transport road
+        kana_title: kana
+        bridge_identification_number: identification number for bridge
 
       user:
         login_name: Login name
@@ -306,6 +308,7 @@ en:
       status: "Status"
       note: "Note"
       inspection_status: "Inspection status"
+      bridge_base: "Bridge basic information"
 
     menu:
       admin:

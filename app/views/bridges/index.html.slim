@@ -13,6 +13,7 @@
             thead
               tr.mdc-data-table__header-row
                 th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Bridge.human_attribute_name(:bridge_identification_number)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Bridge.human_attribute_name(:title)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Bridge.human_attribute_name(:address)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
@@ -23,7 +24,8 @@
               - @bridges.each do |bridge|
                 tr.mdc-data-table__row
                   td.mdc-data-table__cell.mdc-data-table__cell--numeric = bridge.id
-                  td.mdc-data-table__cell = bridge.title
+                  td.mdc-data-table__cell = bridge.bridge_identification_number
+                  td.mdc-data-table__cell = bridge.full_title
                   td.mdc-data-table__cell = bridge.address
                   td.mdc-data-table__cell
                     = link_to 'visibility', bridge, class: 'mdc-icon-button material-icons'

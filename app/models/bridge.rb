@@ -39,6 +39,10 @@ class Bridge < ApplicationRecord
   attr_json :freeway_or_public_road, :integer
   # 緊急輸送道路
   attr_json :emergency_transport_road, :boolean
+  # フリガナ
+  attr_json :kana_title, :string
+  # 橋梁ID
+  attr_json :bridge_identification_number, :string
 
   enum availabillity_of_alternative_route_type: {
     unknown: 0,
@@ -51,4 +55,10 @@ class Bridge < ApplicationRecord
     freeway: 1,
     public_road: 2
   }
+
+  def full_title
+    return title if kana_title.blank?
+
+    "#{title} (#{kana_title})"
+  end
 end

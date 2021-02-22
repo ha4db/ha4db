@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Bridge, type: :model do
   before do
     @bridge = FactoryBot.build(:bridge)
@@ -34,4 +35,19 @@ RSpec.describe Bridge, type: :model do
     before { @bridge.location = nil }
     it { should_not be_valid }
   end
+
+  describe 'full_title function' do
+    describe 'without kana_title' do
+      before { @bridge.title = 'test' }
+      it { expect(@bridge.full_title).to eq('test') }
+    end
+    describe 'with kana_title' do
+      before do
+        @bridge.title = 'test'
+        @bridge.kana_title = 'kana'
+      end
+      it { expect(@bridge.full_title).to eq('test (kana)') }
+    end
+  end
 end
+# rubocop:enable Metrics/BlockLength

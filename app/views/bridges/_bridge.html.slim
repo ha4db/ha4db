@@ -8,7 +8,12 @@ ul.mdc-list
     span.mdc-list-item__ripple
     span.mdc-list-item__text
       span.mdc-list-item__primary-text = Bridge.human_attribute_name(:title)
-      span.mdc-list-item__secondary-text = bridge.title
+      span.mdc-list-item__secondary-text = bridge.full_title
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:bridge_identification_number)
+      span.mdc-list-item__secondary-text = bridge.bridge_identification_number
   li.mdc-list-item
     span.mdc-list-item__ripple
     span.mdc-list-item__text

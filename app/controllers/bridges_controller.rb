@@ -76,7 +76,7 @@ class BridgesController < UserBaseController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_bridge
-    @bridge = Bridge.find(params[:id])
+    @bridge = Bridge.includes(:soundnesses, :regular_inspections).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
@@ -86,6 +86,7 @@ class BridgesController < UserBaseController
                                      :traffic_count, :large_vehicle_mixing_rate, :year_in_service,
                                      :priority, :administrator_name, :bridge_type,
                                      :street_condition, :availabillity_of_alternative_route,
-                                     :freeway_or_public_road, :emergency_transport_road)
+                                     :freeway_or_public_road, :emergency_transport_road,
+                                     :kana_title, :bridge_identification_number)
   end
 end

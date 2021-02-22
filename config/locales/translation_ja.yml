@@ -45,6 +45,8 @@ ja:
         availabillity_of_alternative_route: 代替路の有無
         freeway_or_public_road: 自専道or一般道
         emergency_transport_road: 緊急輸送道路
+        kana_title: フリガナ
+        bridge_identification_number: 橋梁ID
 
       user:
         login_name: ログイン名
@@ -307,6 +309,7 @@ ja:
       status: "状況"
       note: "備考"
       inspection_status: "点検状況"
+      bridge_base: "橋梁基本諸元"
 
     menu:
       admin:

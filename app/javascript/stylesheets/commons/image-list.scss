@@ -1,2 +1,7 @@
 @use "../common";
 @use "@material/image-list/mdc-image-list";
+@use "@material/image-list";
+
+.my-image-list {
+  @include image-list.standard-columns(5);
+}
