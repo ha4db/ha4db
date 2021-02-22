@@ -1,6 +1,7 @@
 import seekSupport from './seek'
 import initOrthoView from '../map/ortho_image'
 import { remove_select_tag } from '../map/editor/ortho_geojson_editor'
+import edit_injury from '../pointcloud/edit_injury'
 
 const show_image = (target: HTMLDivElement, url: string): void => {
   while (target.firstChild) {
@@ -48,6 +49,21 @@ const show_ortho = (target: HTMLDivElement, bridge_content_id: number, max_zoom:
   initOrthoView()
 }
 
+const show_pointcloud = (target: HTMLDivElement, id, info):void => {
+  while (target.firstChild) {
+    target.removeChild(target.firstChild)
+  }
+  const pointcloud_tag = document.createElement('div') as HTMLElement
+  pointcloud_tag.style = 'max-width: 100%; height: 700px;'
+  pointcloud_tag.id = 'pointcloud'
+  pointcloud_tag.dataset.id = id
+  pointcloud_tag.dataset.x = info.x
+  pointcloud_tag.dataset.y = info.y
+  pointcloud_tag.dataset.z = info.z
+  target.appendChild(pointcloud_tag)
+  edit_injury()
+}
+
 const show_bridge_content = (target_node: HTMLDivElement | null):void => {
   const target_id1 = 'show_data_view'
   const target1 = document.getElementById(target_id1) as HTMLDivElement
@@ -77,6 +93,8 @@ const show_bridge_content = (target_node: HTMLDivElement | null):void => {
           show_video(target, data.src, content_type)
         } else if (data.data_type == "4") {
           show_ortho(target, bridge_content_id, data.ortho_tile_info.max_zoom, data.ortho_geojson)
+        } else if (data.data_type === '5') {
+          show_pointcloud(target, data.id, data.pointcloud_info)
         }
       })
   }

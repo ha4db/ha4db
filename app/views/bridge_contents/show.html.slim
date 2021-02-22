@@ -42,7 +42,7 @@
             - if @bridge_content.pointcloud_info.nil?
               =I18n.t("view.common.processing")
             - else
-              #pointcloud[data-id=@bridge_content.id data-originx=@bridge_content.pointcloud_info['x'] data-originy=@bridge_content.pointcloud_info['y'] data-originz=@bridge_content.pointcloud_info['z']]
+              #pointcloud[data-id=@bridge_content.id data-x=@bridge_content.pointcloud_info['x'] data-y=@bridge_content.pointcloud_info['y'] data-z=@bridge_content.pointcloud_info['z']]
               = javascript_pack_tag 'pointcloud/viewer'
   
 

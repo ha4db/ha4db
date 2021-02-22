@@ -9,9 +9,9 @@ function initView() {
 	const target_obj = document.getElementById(target)
 	if(!target_obj) return false;
 	const id: string = target_obj.dataset.id
-	const initialX = target_obj.dataset.originx
-	const initialY = target_obj.dataset.originy
-	const initialZ = target_obj.dataset.originz
+	const initialX = target_obj.dataset.x
+	const initialY = target_obj.dataset.y
+	const initialZ = target_obj.dataset.z
 	const path = `/pointclouds/${id}/tiles/tileset.json`
 	// make scene
 	const scene = new THREE.Scene();
