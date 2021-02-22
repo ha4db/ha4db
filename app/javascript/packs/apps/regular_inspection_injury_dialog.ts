@@ -12,6 +12,15 @@ document.querySelectorAll('span.note').forEach((span: HTMLSpanElement) => {
     dialog.listen('MDCDialog:opened', () => {
       list.layout()
     })
+    dialog.listen('MDCDialog:closing', () => {
+      const targets = document.querySelectorAll('.show_data_view_in_dialog')
+      targets.forEach((target) => {
+        target.dataset.preview = false
+        while (target.firstChild) {
+          target.removeChild(target.firstChild)
+        }
+      })
+    })
     dialog.open()
   })
 })
