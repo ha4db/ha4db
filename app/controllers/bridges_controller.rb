@@ -87,6 +87,6 @@ class BridgesController < UserBaseController
                                      :priority, :administrator_name, :bridge_type,
                                      :street_condition, :availabillity_of_alternative_route,
                                      :freeway_or_public_road, :emergency_transport_road,
-                                     :kana_title)
+                                     :kana_title, :bridge_identification_number)
   end
 end

@@ -46,6 +46,7 @@ en:
         freeway_or_public_road: Freeway or public road
         emergency_transport_road: Emergency transport road
         kana_title: kana
+        bridge_identification_number: identification number for bridge
 
       user:
         login_name: Login name

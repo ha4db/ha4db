@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Bridge, type: :model do
   before do
     @bridge = FactoryBot.build(:bridge)
@@ -49,3 +50,4 @@ RSpec.describe Bridge, type: :model do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

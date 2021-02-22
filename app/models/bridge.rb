@@ -41,6 +41,8 @@ class Bridge < ApplicationRecord
   attr_json :emergency_transport_road, :boolean
   # フリガナ
   attr_json :kana_title, :string
+  # 橋梁ID
+  attr_json :bridge_identification_number, :string
 
   enum availabillity_of_alternative_route_type: {
     unknown: 0,

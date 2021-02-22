@@ -46,6 +46,7 @@ ja:
         freeway_or_public_road: 自専道or一般道
         emergency_transport_road: 緊急輸送道路
         kana_title: フリガナ
+        bridge_identification_number: 橋梁ID
 
       user:
         login_name: ログイン名
