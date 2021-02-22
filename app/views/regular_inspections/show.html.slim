@@ -231,7 +231,7 @@
 #bridge_content_images.contents.mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-6
-      ul#bridge_content_list.mdc-image-list
+      ul#bridge_content_list.mdc-image-list.my-image-list
         - @regular_inspection.bridge_contents.each do |bridge_content|
           li.mdc-image-list__item[data-id=bridge_content.id]
             .mdc-image-list__image-aspect-container

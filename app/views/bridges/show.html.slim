@@ -6,14 +6,58 @@
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
-    .mdc-layout-grid__cell
-      = render partial: 'bridge', locals: {bridge: @bridge}
-
-.mdc-layout-grid
-  .mdc-layout-grid__inner
-    .mdc-layout-grid__cell--span-12
+    .mdc-layout-grid__cell--span-6
+      - unless @bridge.regular_inspections.blank?
+        - regular_inspection = @bridge.regular_inspections.last
+        ul#bridge_content_list.mdc-image-list.my-image-list
+          - regular_inspection.bridge_contents.each do |bridge_content|
+            li.mdc-image-list__item[data-id=bridge_content.id]
+              .mdc-image-list__image-aspect-container
+                - if bridge_content.data_type.to_i == BridgeContent.data_types[:pointcloud]
+                  = I18n.t("view.common.no_preview")
+                - elsif bridge_content.data.variable?
+                  = image_tag bridge_content.data.variant(resize: "100x100>"), class: "mdc-image-list__image"
+                - elsif bridge_content.data.previewable?
+                  = image_tag bridge_content.data.preview(resize: "100x100>"), class: "mdc-image-list__image"
+                - else
+                  = I18n.t("view.common.no_preview")
+              .mdc-image-list__supporting
+                span.mdc-image-list__label
+                  = bridge_content.title
+        #show_data_view[data-regular_inspection_id=regular_inspection.id data-id='']
       #preview_map.preview_map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude data-feature=@bridge.location.to_s]
       = javascript_pack_tag 'map/preview'
+      span
+        = @bridge.location.latitude
+        = ", "
+        = @bridge.location.longitude
+    .mdc-layout-grid__cell--span-6
+      h1
+        = @bridge.title
+        = " "
+        = @bridge.bridge_identification_number
+      - unless @bridge.soundnesses.blank?
+        - soundness = @bridge.soundnesses.last
+        .mdc-layout-grid
+          .mdc-layout-grid__inner
+            .mdc-layout-grid__cell--span-4
+              .mdc-card
+                .card-title = I18n.t("activerecord.models.soundness")
+                .card-content = soundness.overall_evaluation
+            .mdc-layout-grid__cell--span-8
+              div
+                = soundness.evaluation
+      - unless @bridge.regular_inspections.blank?
+        - regular_inspection = @bridge.regular_inspections.last
+        .mdc-layout-grid
+          .mdc-layout-grid__inner
+            - regular_inspection.diagnoses.each do |diagnosis|
+              .mdc-layout-grid__cell--span-2
+                .mdc-card
+                  .card-title = I18n.t("enums.component.category.#{Component.categories.key(diagnosis.component_category)}")
+                  .card-content = I18n.t("enums.diagnosis.diagnosis_result.#{Diagnosis.diagnosis_results.key(diagnosis.result)}")
+      h3 = I18n.t("view.title.bridge_base")
+      = render partial: 'bridge', locals: {bridge: @bridge}
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
@@ -36,4 +80,8 @@
         span.material-icons.mdc-fab__icon arrow_back
         span.mdc-fab__label = I18n.t("view.action.back")
 
+= hidden_field_tag "bridge_content_injury_seek"
 = javascript_pack_tag 'commons/button'
+= javascript_pack_tag 'commons/card'
+= javascript_pack_tag 'commons/image-list'
+= javascript_pack_tag 'apps/regular_inspection_image_list'

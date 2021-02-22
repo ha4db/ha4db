@@ -309,6 +309,7 @@ ja:
       status: "状況"
       note: "備考"
       inspection_status: "点検状況"
+      bridge_base: "橋梁基本諸元"
 
     menu:
       admin:

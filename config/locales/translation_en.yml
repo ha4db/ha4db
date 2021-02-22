@@ -308,6 +308,7 @@ en:
       status: "Status"
       note: "Note"
       inspection_status: "Inspection status"
+      bridge_base: "Bridge basic information"
 
     menu:
       admin:
