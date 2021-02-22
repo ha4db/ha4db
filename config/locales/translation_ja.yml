@@ -137,6 +137,7 @@ ja:
         start_date: 開始日
         end_date: 終了日
         bridge: :activerecord.models.bridge
+        bridge_id: :activerecord.models.bridge
         diagnoses: :activerecord.models.diagnosis
         injuries: :activerecord.models.injury
         bridge_contents: :activerecord.models.bridge_content
@@ -144,6 +145,7 @@ ja:
       component:
         component_category: 部材の種類
         title: 名称
+        bridge_id: :activerecord.models.bridge
         bridge: :activerecord.models.bridge
         span_number: 径間番号
 
