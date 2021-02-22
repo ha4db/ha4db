@@ -23,6 +23,11 @@
           span.mdc-list-item__text
             span.mdc-list-item__primary-text = BridgeContent.human_attribute_name(:data_type)
             span.mdc-list-item__secondary-text = I18n.t("enums.bridge_content.data_type.#{BridgeContent.data_types.key(@bridge_content.data_type.to_i)}")
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
+            span.mdc-list-item__primary-text = BridgeContent.human_attribute_name(:component)
+            span.mdc-list-item__secondary-text = @bridge_content.component.nil? ? '' : @bridge_content.component.show_name
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-12

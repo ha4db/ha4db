@@ -87,7 +87,7 @@ class BridgeContentsController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def bridge_content_params
-    params.fetch(:bridge_content, {}).permit(:title, :data, :data_type, :position_entry_type,
+    params.fetch(:bridge_content, {}).permit(:title, :data, :data_type, :position_entry_type, :component_id,
                                              :center_x, :center_y, :center_z,
                                              :euler_angle_alpha, :euler_angle_beta, :euler_angle_gamma,
                                              :quaternion_one, :quaternion_two, :quaternion_three, :quaternion_four,
