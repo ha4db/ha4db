@@ -16,6 +16,11 @@
         li.mdc-list-item
           span.mdc-list-item__ripple
           span.mdc-list-item__text
+            span.mdc-list-item__primary-text = RegularInspection.human_attribute_name(:bridge)
+            span.mdc-list-item__secondary-text = @regular_inspection.bridge.full_title
+        li.mdc-list-item
+          span.mdc-list-item__ripple
+          span.mdc-list-item__text
             span.mdc-list-item__primary-text = RegularInspection.human_attribute_name(:title)
             span.mdc-list-item__secondary-text = @regular_inspection.title
         li.mdc-list-item

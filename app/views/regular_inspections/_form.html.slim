@@ -7,7 +7,7 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
-        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: RegularInspection, field_name: :bridge_id, data: @regular_inspection.try(:bridge).try(:id), text_and_values: Bridge.all.map {|k| [k.title, k.id]}}
+        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: RegularInspection, field_name: :bridge_id, data: @regular_inspection.try(:bridge).try(:id), text_and_values: Bridge.all.map {|k| [k.full_title, k.id]}}
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
