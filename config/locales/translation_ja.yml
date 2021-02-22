@@ -332,6 +332,7 @@ ja:
     select:
       true: "はい"
       false: "いいえ"
+      none: "なし"
 
   controller:
     common:

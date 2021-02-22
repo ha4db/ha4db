@@ -180,10 +180,46 @@
 
 #injury.contents.mdc-layout-grid
   .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-12
+      .mdc-form-field#injury_filter_span_number
+        .mdc-radio
+          input.mdc-radio__native-control[type="radio" id="injury_filter_span_number_clear" name="injury_filter_span_number" value="0" checked]
+          .mdc-radio__background
+            .mdc-radio__outer-circle
+            .mdc-radio__inner-circle
+          .mdc-radio__ripple
+        label[for="injury_filter_span_number_clear"] = I18n.t('view.select.none')
+        - @regular_inspection.injuries.map(&:component).filter {|k| k != nil}.map(&:span_number).sort.uniq.each do |span_number|
+          .mdc-radio
+            input.mdc-radio__native-control[type="radio" id="injury_filter_span_number_#{span_number}" name="injury_filter_span_number" value=span_number]
+            .mdc-radio__background
+              .mdc-radio__outer-circle
+              .mdc-radio__inner-circle
+            .mdc-radio__ripple
+          label[for="injury_filter_span_number_#{span_number}"] = I18n.t('activerecord.attributes.component.span_number') + " #{span_number}"
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-12
+      .mdc-form-field#injury_filter_component_category
+        .mdc-radio
+          input.mdc-radio__native-control[type="radio" id="injury_filter_component_category_clear" name="injury_filter_component_category" value="0" checked]
+          .mdc-radio__background
+            .mdc-radio__outer-circle
+            .mdc-radio__inner-circle
+          .mdc-radio__ripple
+        label[for="injury_filter_component_category_clear"] = I18n.t('view.select.none')
+        - Component.categories.keys.map {|k| [I18n.t("enums.component.category.#{k}"), Component.categories[k]]}.each do |category|
+          .mdc-radio
+            input.mdc-radio__native-control[type="radio" id="injury_filter_component_category_#{category[1]}" name="injury_filter_component_category" value=category[1]]
+            .mdc-radio__background
+              .mdc-radio__outer-circle
+              .mdc-radio__inner-circle
+            .mdc-radio__ripple
+          label[for="injury_filter_category_#{category[1]}"] = category[0]
+  .mdc-layout-grid__inner
     .mdc-layout-grid
       .mdc-data-table
         .mdc-data-table__table-container
-          table.mdc-data-table__table[aria-label=I18n.t("view.common.title.listing", model_name: Injury.model_name.human)]
+          table.mdc-data-table__table#regular_inspection_injuries[aria-label=I18n.t("view.common.title.listing", model_name: Injury.model_name.human)]
             thead
               tr.mdc-data-table__header-row
                 th.mdc-data-table__header-cell.mdc-data-table__header-cell--numeric[role="columnheader" scope="col"] id
@@ -199,7 +235,7 @@
 
             tbody.mdc-data-table__content
               - @regular_inspection.injuries.each do |injury|
-                tr.mdc-data-table__row
+                tr.mdc-data-table__row[data-span_number=injury.component.try(:span_number) data-component_category=injury.component.try(:component_category)]
                   td.mdc-data-table__cell.mdc-data-table__cell--numeric = injury.id
                   td.mdc-data-table__cell = injury.component.show_name
                   td.mdc-data-table__cell = injury.injury_type
@@ -235,10 +271,46 @@
 
 #bridge_content_images.contents.mdc-layout-grid
   .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-12
+      .mdc-form-field#bridge_content_image_filter_span_number
+        .mdc-radio
+          input.mdc-radio__native-control[type="radio" id="bridge_content_image_filter_span_number_clear" name="bridge_content_image_filter_span_number" value="0" checked]
+          .mdc-radio__background
+            .mdc-radio__outer-circle
+            .mdc-radio__inner-circle
+          .mdc-radio__ripple
+        label[for="bridge_content_image_filter_span_number_clear"] = I18n.t('view.select.none')
+        - @regular_inspection.bridge_contents.map(&:component).filter {|k| k != nil}.map(&:span_number).sort.uniq.each do |span_number|
+          .mdc-radio
+            input.mdc-radio__native-control[type="radio" id="bridge_content_image_filter_span_number_#{span_number}" name="bridge_content_image_filter_span_number" value=span_number]
+            .mdc-radio__background
+              .mdc-radio__outer-circle
+              .mdc-radio__inner-circle
+            .mdc-radio__ripple
+          label[for="bridge_content_image_filter_span_number_#{span_number}"] = I18n.t('activerecord.attributes.component.span_number') + " #{span_number}"
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-12
+      .mdc-form-field#bridge_content_image_filter_component_category
+        .mdc-radio
+          input.mdc-radio__native-control[type="radio" id="bridge_content_image_filter_component_category_clear" name="bridge_content_image_filter_component_category" value="0" checked]
+          .mdc-radio__background
+            .mdc-radio__outer-circle
+            .mdc-radio__inner-circle
+          .mdc-radio__ripple
+        label[for="bridge_content_image_filter_component_category_clear"] = I18n.t('view.select.none')
+        - Component.categories.keys.map {|k| [I18n.t("enums.component.category.#{k}"), Component.categories[k]]}.each do |category|
+          .mdc-radio
+            input.mdc-radio__native-control[type="radio" id="bridge_content_image_filter_component_category_#{category[1]}" name="bridge_content_image_filter_component_category" value=category[1]]
+            .mdc-radio__background
+              .mdc-radio__outer-circle
+              .mdc-radio__inner-circle
+            .mdc-radio__ripple
+          label[for="bridge_content_image_filter_category_#{category[1]}"] = category[0]
+  .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-6
       ul#bridge_content_list.mdc-image-list.my-image-list
         - @regular_inspection.bridge_contents.each do |bridge_content|
-          li.mdc-image-list__item[data-id=bridge_content.id]
+          li.mdc-image-list__item[data-id=bridge_content.id data-span_number=bridge_content.component.try(:span_number) data-component_category=bridge_content.component.try(:component_category)]
             .mdc-image-list__image-aspect-container
               - if bridge_content.data_type.to_i == BridgeContent.data_types[:pointcloud]
                 = I18n.t("view.common.no_preview")
@@ -273,8 +345,11 @@
 = javascript_pack_tag 'commons/tab'
 = javascript_pack_tag 'commons/data-table'
 = javascript_pack_tag 'commons/image-list'
+= javascript_pack_tag 'commons/radio'
 = javascript_pack_tag 'apps/regular_inspection_tab'
 = javascript_pack_tag 'apps/regular_inspection_image_list'
 = javascript_pack_tag 'apps/regular_inspection_main_contents'
 = javascript_pack_tag 'apps/regular_inspection_injury_dialog'
 = javascript_pack_tag 'apps/injury_image_list'
+= javascript_pack_tag 'apps/regular_inspection_bridge_content_filter'
+= javascript_pack_tag 'apps/regular_inspection_injury_filter'

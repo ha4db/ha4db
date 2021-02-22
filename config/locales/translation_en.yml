@@ -331,6 +331,7 @@ en:
     select:
       true: "Yes"
       false: "No"
+      none: "None"
 
   controller:
     common:
