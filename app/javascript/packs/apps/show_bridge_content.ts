@@ -49,7 +49,7 @@ const show_ortho = (target: HTMLDivElement, bridge_content_id: number, max_zoom:
   initOrthoView()
 }
 
-const show_pointcloud = (target: HTMLDivElement, id, info, pointposition):void => {
+const show_pointcloud = (target: HTMLDivElement, id, info, pointposition, injury_type):void => {
   while (target.firstChild) {
     target.removeChild(target.firstChild)
   }
@@ -70,7 +70,8 @@ const show_pointcloud = (target: HTMLDivElement, id, info, pointposition):void =
       input_tag.value = pointposition
       const bridge_content_injury_injury_type = document.createElement('input') as HTMLInputElement
       bridge_content_injury_injury_type.id = 'bridge_content_injury_injury_type'
-      bridge_content_injury_injury_type.value = "test"
+      console.log(injury_type)
+      bridge_content_injury_injury_type.value = injury_type
       bridge_content_injury_injury_type.hidden = true
       target.appendChild(bridge_content_injury_injury_type)
     }
@@ -109,7 +110,7 @@ const show_bridge_content = (target_node: HTMLDivElement | null):void => {
           show_ortho(target, bridge_content_id, data.ortho_tile_info.max_zoom, data.ortho_geojson)
         } else if (data.data_type === '5') {
           console.log(data)
-          show_pointcloud(target, data.id, data.pointcloud_info, data.pointposition)
+          show_pointcloud(target, data.id, data.pointcloud_info, data.pointposition, data.injury_type)
         }
       })
   }
