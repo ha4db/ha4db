@@ -2,10 +2,7 @@ import seekSupport from './seek'
 import initOrthoView from '../map/ortho_image'
 import { remove_select_tag } from '../map/editor/ortho_geojson_editor'
 
-const target_id = 'show_data_view'
-const target = document.getElementById(target_id)
-
-const show_image = (url: string):void => {
+const show_image = (target: HTMLDivElement, url: string): void => {
   while (target.firstChild) {
     target.removeChild(target.firstChild)
   }
@@ -15,7 +12,7 @@ const show_image = (url: string):void => {
   target.appendChild(image_tag)
 }
 
-const show_video = (url: string, content_type: string):void => {
+const show_video = (target: HTMLDivElement, url: string, content_type: string): void => {
   while (target.firstChild) {
     target.removeChild(target.firstChild)
   }
@@ -29,7 +26,7 @@ const show_video = (url: string, content_type: string):void => {
   seekSupport()
 }
 
-const show_ortho = (bridge_content_id: number, max_zoom: number, ortho_geojson: string): void => {
+const show_ortho = (target: HTMLDivElement, bridge_content_id: number, max_zoom: number, ortho_geojson: string): void => {
   while (target.firstChild) {
     target.removeChild(target.firstChild)
   }
@@ -39,6 +36,10 @@ const show_ortho = (bridge_content_id: number, max_zoom: number, ortho_geojson: 
   div_tag.id = 'ortho_map'
   div_tag.style.maxWidth = '100%'
   target.appendChild(div_tag)
+  console.log(div_tag.clientWidth)
+  if (div_tag.clientWidth < 250) {
+    div_tag.style.minWidth = "500px";
+  }
   const input_tag = document.createElement('input') as HTMLInputElement
   input_tag.hidden = true
   input_tag.id = 'bridge_content_injury_ortho_geojson'
@@ -47,7 +48,20 @@ const show_ortho = (bridge_content_id: number, max_zoom: number, ortho_geojson: 
   initOrthoView()
 }
 
-const show_bridge_content = ():void => {
+const show_bridge_content = (target_node: HTMLDivElement | null):void => {
+  const target_id1 = 'show_data_view'
+  const target1 = document.getElementById(target_id1) as HTMLDivElement
+  const target2 = target_node
+  let target: HTMLDivElement
+  if (target2 && target2.dataset.preview == 'true') {
+    target = target2
+  } else {
+    target = target1
+  }
+
+  if (!target || !target.dataset.id) {
+    return
+  }
   const bridge_content_id = parseInt(target.dataset.id)
   if (bridge_content_id > 0) {
     const regular_inspection_id = parseInt(target.dataset.regular_inspection_id)
@@ -57,18 +71,17 @@ const show_bridge_content = ():void => {
       .then(data => {
         remove_select_tag()
         if (data.data_type == "1") {
-          show_image(data.src)
+          show_image(target, data.src)
         } else if (data.data_type == "2") {
           const content_type = data.content_type
-          show_video(data.src, content_type)
+          show_video(target, data.src, content_type)
         } else if (data.data_type == "4") {
-          console.log(data)
-          show_ortho(bridge_content_id, data.ortho_tile_info.max_zoom, data.ortho_geojson)
+          show_ortho(target, bridge_content_id, data.ortho_tile_info.max_zoom, data.ortho_geojson)
         }
       })
   }
 }
 
-show_bridge_content()
+show_bridge_content(null)
 
 export default show_bridge_content
