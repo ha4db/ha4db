@@ -16,6 +16,26 @@
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
         = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: Injury, field_name: :injury_grade, data: @injury.injury_grade, text_and_values: Injury.grades.keys.map {|k| [I18n.t("enums.injury.grade.#{k}"), Injury.grades[k]]}}
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Injury, field_name: :quantitatively_obtained_value }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Injury, field_name: :unit }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Injury, field_name: :injury_pattern }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Injury, field_name: :classification }
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Injury, field_name: :impression }
 
   .mdc-layout-grid
     .mdc-layout-grid__inner

@@ -91,6 +91,7 @@ class InjuriesController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def injury_params
-    params.fetch(:injury, {}).permit(:component_id, :injury_type, :injury_grade)
+    params.fetch(:injury, {}).permit(:component_id, :injury_type, :injury_grade, :quantitatively_obtained_value,
+                                     :unit, :injury_pattern, :classification, :impression)
   end
 end

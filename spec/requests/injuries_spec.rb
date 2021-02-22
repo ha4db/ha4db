@@ -98,9 +98,10 @@ RSpec.describe '/injuries', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        invalid_value = FactoryBot.build(:injury, regular_inspection: @regular_inspection, component: @component)
-        invalid_value.injury_type = 'test!'
-        invalid_value.attributes
+        new_value = FactoryBot.build(:injury, regular_inspection: @regular_inspection, component: @component).attributes
+        new_value['injury_type'] = 'test!'
+        new_value['unit'] = 'm'
+        new_value
       end
 
       it 'updates the requested injury' do
@@ -108,6 +109,7 @@ RSpec.describe '/injuries', type: :request do
         patch regular_inspection_injury_url(@regular_inspection, injury), params: { injury: new_attributes }
         injury.reload
         expect(injury.injury_type).to eq('test!')
+        expect(injury.unit).to eq('m')
       end
 
       it 'redirects to the injury' do
