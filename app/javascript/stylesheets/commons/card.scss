@@ -2,3 +2,20 @@
 @use "@material/card/_index" as card;
 
 @include card.core-styles;
+
+.mdc-card-wrapper__text-section {
+  padding-left: 16px;
+  padding-right: 16px;
+  .card-title {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    font-weight: 500;
+    letter-spacing: .0125em;
+    text-decoration: inherit;
+    text-transform: inherit;
+    text-align: center;
+  }
+  .card-content {
+    text-align: center;
+  }
+}

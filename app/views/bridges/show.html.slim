@@ -42,8 +42,9 @@
           .mdc-layout-grid__inner
             .mdc-layout-grid__cell--span-4
               .mdc-card
-                .card-title = I18n.t("activerecord.models.soundness")
-                .card-content = soundness.overall_evaluation
+                .mdc-card-wrapper__text-section
+                  .card-title = I18n.t("activerecord.models.soundness")
+                  .card-content = I18n.t("enums.soundness.overall_evaluation.#{soundness.overall_evaluation}")
             .mdc-layout-grid__cell--span-8
               div
                 = soundness.evaluation
@@ -54,8 +55,9 @@
             - regular_inspection.diagnoses.each do |diagnosis|
               .mdc-layout-grid__cell--span-2
                 .mdc-card
-                  .card-title = I18n.t("enums.component.category.#{Component.categories.key(diagnosis.component_category)}")
-                  .card-content = I18n.t("enums.diagnosis.diagnosis_result.#{Diagnosis.diagnosis_results.key(diagnosis.result)}")
+                  .mdc-card-wrapper__text-section
+                    .card-title = I18n.t("enums.component.category.#{Component.categories.key(diagnosis.component_category)}")
+                    .card-content = I18n.t("enums.diagnosis.diagnosis_result.#{Diagnosis.diagnosis_results.key(diagnosis.result)}")
       h3 = I18n.t("view.title.bridge_base")
       = render partial: 'bridge', locals: {bridge: @bridge}
 
