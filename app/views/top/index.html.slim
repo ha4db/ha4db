@@ -28,5 +28,13 @@
                             li.mdc-list-item
                               span.mdc-list-item__ripple
                               span.mdc-list-item__text = link_to(bridge.title, bridge)
+    .mdc-layout-grid__cell--span-12
+      #map.map
+      - @bridges.each do |bridge|
+        span.bridge_list[data-title=bridge.full_title data-longitude=bridge.location.longitude data-latitude=bridge.location.latitude data-url=url_for(bridge)]
+      #popup.ol-popup
+        a#popup-closer.popup-closer[href="#"]
+        #popup-content
 
 = javascript_pack_tag 'commons/data-table'
+= javascript_pack_tag 'map/bridges'
