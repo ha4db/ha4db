@@ -31,6 +31,9 @@ class Pointcloud
 
   def convert
     FileUtils.mkdir_p("./#{tile_dir}")
+    puts "tiledir = #{tile_dir}"
+    puts "file = #{file}"
+    puts "pwd = #{Dir.pwd}"
     # fix coordinate system
     # /tmp should not be mounted to docker so I use native pdal
     `pdal translate #{file} .#{tile_dir}/temp.las -f filters.transformation --filters.transformation.matrix="1 0 0 1 0 0 1 1 0 -1 0 1 0 0 0 1"`
