@@ -1,13 +1,9 @@
-= form_with(model: @component, local: true) do |f|
+= form_for [@bridge, @component], local: true, multipart: true do |f|
   - if @component.errors.any?
     .mdc-layout-grid
       .mdc-layout-grid__inner
         .mdc-layout-grid__cell--span-12
           = render partial: 'commons/error_messages', locals: { obj: @component }
-  .mdc-layout-grid
-    .mdc-layout-grid__inner
-      .mdc-layout-grid__cell--span-12
-        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: Component, field_name: :bridge_id, data: @component.bridge_id, text_and_values: Bridge.all.map {|k| [k.title, k.id]}}
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12

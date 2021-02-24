@@ -19,6 +19,7 @@
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"]
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"]
 
             tbody.mdc-data-table__content
               - @bridges.each do |bridge|
@@ -33,6 +34,8 @@
                     = link_to 'edit', edit_bridge_path(bridge), class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell
                     = link_to 'delete', bridge, data: { confirm: I18n.t('view.action.delete') }, method: :delete, class: 'mdc-icon-button material-icons'
+                  td.mdc-data-table__cell
+                    = link_to 'build_circle', bridge_components_path(bridge), class: 'mdc-icon-button material-icons'
                   td.mdc-data-table__cell
                     = link_to 'verified', bridge_soundnesses_path(bridge), class: 'mdc-icon-button material-icons'
 .mdc-layout-grid

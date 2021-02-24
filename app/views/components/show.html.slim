@@ -37,12 +37,12 @@
 .mdc-layout-grid
   .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-2
-      = link_to edit_component_path(@component), class: 'mdc-fab mdc-fab--extended' do
+      = link_to edit_bridge_component_path(@bridge, @component), class: 'mdc-fab mdc-fab--extended' do
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon edit
         span.mdc-fab__label = I18n.t("view.action.edit")
     .mdc-layout-grid__cell--span-2
-      = link_to components_path, class: 'mdc-fab mdc-fab--extended' do
+      = link_to bridge_components_path(@bridge), class: 'mdc-fab mdc-fab--extended' do
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon arrow_back
         span.mdc-fab__label = I18n.t("view.action.back")
