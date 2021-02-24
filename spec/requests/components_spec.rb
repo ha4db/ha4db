@@ -37,7 +37,7 @@ RSpec.describe '/components', type: :request do
   describe 'GET /index' do
     it 'renders a successful response' do
       Component.create! valid_attributes
-      get components_url
+      get bridge_components_url(@bridge)
       expect(response).to be_successful
     end
   end
@@ -45,14 +45,14 @@ RSpec.describe '/components', type: :request do
   describe 'GET /show' do
     it 'renders a successful response' do
       component = Component.create! valid_attributes
-      get component_url(component)
+      get bridge_component_url(@bridge, component)
       expect(response).to be_successful
     end
   end
 
   describe 'GET /new' do
     it 'renders a successful response' do
-      get new_component_url
+      get new_bridge_component_url(@bridge)
       expect(response).to be_successful
     end
   end
@@ -60,7 +60,7 @@ RSpec.describe '/components', type: :request do
   describe 'GET /edit' do
     it 'render a successful response' do
       component = Component.create! valid_attributes
-      get edit_component_url(component)
+      get edit_bridge_component_url(@bridge, component)
       expect(response).to be_successful
     end
   end
@@ -69,25 +69,25 @@ RSpec.describe '/components', type: :request do
     context 'with valid parameters' do
       it 'creates a new Component' do
         expect do
-          post components_url, params: { component: valid_attributes }
+          post bridge_components_url(@bridge), params: { component: valid_attributes }
         end.to change(Component, :count).by(1)
       end
 
       it 'redirects to the created component' do
-        post components_url, params: { component: valid_attributes }
-        expect(response).to redirect_to(component_url(Component.last))
+        post bridge_components_url(@bridge), params: { component: valid_attributes }
+        expect(response).to redirect_to(bridge_component_url(@bridge, Component.last))
       end
     end
 
     context 'with invalid parameters' do
       it 'does not create a new Component' do
         expect do
-          post components_url, params: { component: invalid_attributes }
+          post bridge_components_url(@bridge), params: { component: invalid_attributes }
         end.to change(Component, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post components_url, params: { component: invalid_attributes }
+        post bridge_components_url(@bridge), params: { component: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -103,23 +103,23 @@ RSpec.describe '/components', type: :request do
 
       it 'updates the requested component' do
         component = Component.create! valid_attributes
-        patch component_url(component), params: { component: new_attributes }
+        patch bridge_component_url(@bridge, component), params: { component: new_attributes }
         component.reload
         expect(component.component_category).to eq(6)
       end
 
       it 'redirects to the component' do
         component = Component.create! valid_attributes
-        patch component_url(component), params: { component: new_attributes }
+        patch bridge_component_url(@bridge, component), params: { component: new_attributes }
         component.reload
-        expect(response).to redirect_to(component_url(component))
+        expect(response).to redirect_to(bridge_component_url(@bridge, component))
       end
     end
 
     context 'with invalid parameters' do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         component = Component.create! valid_attributes
-        patch component_url(component), params: { component: invalid_attributes }
+        patch bridge_component_url(@bridge, component), params: { component: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -129,14 +129,14 @@ RSpec.describe '/components', type: :request do
     it 'destroys the requested component' do
       component = Component.create! valid_attributes
       expect do
-        delete component_url(component)
+        delete bridge_component_url(@bridge, component)
       end.to change(Component, :count).by(-1)
     end
 
     it 'redirects to the components list' do
       component = Component.create! valid_attributes
-      delete component_url(component)
-      expect(response).to redirect_to(components_url)
+      delete bridge_component_url(@bridge, component)
+      expect(response).to redirect_to(bridge_components_url(@bridge))
     end
   end
 end

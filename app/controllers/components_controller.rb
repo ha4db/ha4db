@@ -2,12 +2,13 @@
 
 # ComponentsController
 class ComponentsController < UserBaseController
+  before_action :set_bridge
   before_action :set_component, only: %i[show edit update destroy]
 
   # GET /components
   # GET /components.json
   def index
-    @components = Component.joins(:bridge).all
+    @components = Component.where(bridge: @bridge).all
   end
 
   # GET /components/1
@@ -16,7 +17,7 @@ class ComponentsController < UserBaseController
 
   # GET /components/new
   def new
-    @component = Component.new
+    @component = Component.new(bridge: @bridge)
   end
 
   # GET /components/1/edit
@@ -26,11 +27,12 @@ class ComponentsController < UserBaseController
   # POST /components.json
   def create
     @component = Component.new(component_params)
+    @component.bridge = @bridge
 
     respond_to do |format|
       if @component.save
         format.html do
-          redirect_to @component,
+          redirect_to [@bridge, @component],
                       notice: I18n.t('controller.common.success_on_create', model_name: Component.model_name.human)
         end
         format.json { render :show, status: :created, location: @component }
@@ -47,7 +49,7 @@ class ComponentsController < UserBaseController
     respond_to do |format|
       if @component.update(component_params)
         format.html do
-          redirect_to @component,
+          redirect_to [@bridge, @component],
                       notice: I18n.t('controller.common.success_on_update', model_name: Component.model_name.human)
         end
         format.json { render :show, status: :ok, location: @component }
@@ -64,7 +66,7 @@ class ComponentsController < UserBaseController
     @component.destroy
     respond_to do |format|
       format.html do
-        redirect_to components_url,
+        redirect_to bridge_components_url(@bridge),
                     notice: I18n.t('controller.common.success_on_destroy', model_name: Component.model_name.human)
       end
       format.json { head :no_content }
@@ -78,8 +80,12 @@ class ComponentsController < UserBaseController
     @component = Component.find(params[:id])
   end
 
+  def set_bridge
+    @bridge = Bridge.find(params[:bridge_id])
+  end
+
   # Only allow a list of trusted parameters through.
   def component_params
-    params.fetch(:component, {}).permit(:bridge_id, :span_number, :component_category, :title)
+    params.fetch(:component, {}).permit(:span_number, :component_category, :title)
   end
 end

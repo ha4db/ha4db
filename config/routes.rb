@@ -2,7 +2,6 @@
 
 # rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
-  resources :components
   resources :regular_inspections do
     resources :bridge_contents
     resources :injuries do
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
     post 'preview'
   end
   resources :bridges do
+    resources :components
     resources :soundnesses
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
