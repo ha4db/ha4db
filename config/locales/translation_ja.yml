@@ -200,6 +200,12 @@ ja:
 
   enums:
     bridge:
+      priority_type:
+        priority_unselected: 未選択
+        priority_a: A
+        priority_b: B
+        priority_c: C
+
       availabillity_of_alternative_route_type:
         unknown: 不明
         available: あり

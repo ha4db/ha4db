@@ -199,6 +199,12 @@ en:
 
   enums:
     bridge:
+      priority_type:
+        priority_unselected: Unselected
+        priority_a: A
+        priority_b: B
+        priority_c: C
+
       availabillity_of_alternative_route_type:
         unknown: Unknown
         available: Available

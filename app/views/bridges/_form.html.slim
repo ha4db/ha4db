@@ -55,7 +55,7 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
-        = render partial: 'commons/mdc_outlined_text_field', locals: { f: f, model: Bridge, field_name: :priority }
+        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: Bridge, field_name: :priority, data: @bridge.priority, text_and_values: Bridge.priority_types.keys.map {|k| [I18n.t("enums.bridge.priority_type.#{k}"), Bridge.priority_types[k]]}}
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
