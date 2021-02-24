@@ -63,7 +63,7 @@ ul.mdc-list
     span.mdc-list-item__ripple
     span.mdc-list-item__text
       span.mdc-list-item__primary-text = Bridge.human_attribute_name(:priority)
-      span.mdc-list-item__secondary-text = bridge.priority
+      span.mdc-list-item__secondary-text = bridge.priority.nil? ? '' : I18n.t("enums.bridge.priority_type.#{Bridge.priority_types.invert[bridge.priority]}")
   li.mdc-list-item
     span.mdc-list-item__ripple
     span.mdc-list-item__text

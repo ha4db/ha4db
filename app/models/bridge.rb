@@ -26,7 +26,7 @@ class Bridge < ApplicationRecord
   # 供用年
   attr_json :year_in_service, :integer
   # 重要度
-  attr_json :priority, :string
+  attr_json :priority, :integer, default: 0
   # 管理者名
   attr_json :administrator_name, :string
   # 橋梁形式
@@ -43,6 +43,13 @@ class Bridge < ApplicationRecord
   attr_json :kana_title, :string
   # 橋梁ID
   attr_json :bridge_identification_number, :string
+
+  enum priority_type: {
+    priority_unselected: 0,
+    priority_a: 1,
+    priority_b: 2,
+    priority_c: 3
+  }
 
   enum availabillity_of_alternative_route_type: {
     unknown: 0,
