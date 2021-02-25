@@ -342,6 +342,7 @@ ja:
 
     chart:
       soundness: "健全性グラフ"
+      priority: "重要度グラフ"
 
   controller:
     common:

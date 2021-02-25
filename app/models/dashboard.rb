@@ -30,6 +30,17 @@ class Dashboard
       values
     end
 
+    def priority_chart(bridges)
+      priority_types = Bridge.priority_types.map { |k, _| k }
+      values = {}
+      priority_types.each { |k| values[k.to_s] = 0 }
+      bridges.each do |bridge|
+        key = Bridge.priority_types.invert[bridge.priority]
+        values[key] += 1
+      end
+      values
+    end
+
     private
 
     def matrix_item(bridge)
