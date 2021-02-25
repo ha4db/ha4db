@@ -28,6 +28,8 @@
                             li.mdc-list-item
                               span.mdc-list-item__ripple
                               span.mdc-list-item__text = link_to(bridge.title, bridge)
+.mdc-layout-grid
+  .mdc-layout-grid__inner
     .mdc-layout-grid__cell--span-12
       #map.map
       - @bridges.each do |bridge|
@@ -35,6 +37,15 @@
       #popup.ol-popup
         a#popup-closer.popup-closer[href="#"]
         #popup-content
+.mdc-layout-grid
+  .mdc-layout-grid__inner
+    .mdc-layout-grid__cell--span-6
+      #soundness_chart[style="width: 100%" data-title=I18n.t('view.chart.soundness')]
+        canvas#soundness_chart_area
+      - @soundness_chart.each do |key, value|
+        span.soundness_chart_value[data-key=key data-value=value data-key_name=I18n.t("enums.soundness.overall_evaluation.#{key}")]
+    .mdc-layout-grid__cell--span-6
 
 = javascript_pack_tag 'commons/data-table'
 = javascript_pack_tag 'map/bridges'
+= javascript_pack_tag 'apps/soundness_chart'

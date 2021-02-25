@@ -10,6 +10,7 @@
     "@rails/webpacker": "5.2.1",
     "@types/ol": "^6.4.1",
     "@types/webpack-env": "^1.15.2",
+    "chart.js": "^2.9.4",
     "dart-sass": "^1.25.0",
     "fibers": "^5.0.0",
     "material-components-web": "^9.0.0",
