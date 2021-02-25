@@ -83,6 +83,10 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
+        = render partial: 'commons/mdc_outlined_select', locals: { f: f, model: Bridge, field_name: :kind_of_bridge, data: @bridge.kind_of_bridge, text_and_values: Bridge.kind_of_bridge_types.keys.map {|k| [I18n.t("enums.bridge.kind_of_bridge_type.#{k}"), Bridge.kind_of_bridge_types[k]]}}
+  .mdc-layout-grid
+    .mdc-layout-grid__inner
+      .mdc-layout-grid__cell--span-12
         #edit_poi_map.edit_poi_map[data-map=true data-longitude=@bridge.location.longitude data-latitude=@bridge.location.latitude]
         = javascript_pack_tag 'map/edit_poi'
         = f.hidden_field :location

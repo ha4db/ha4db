@@ -5,10 +5,10 @@ require 'rails_helper'
 # rubocop:disable Metrics/BlockLength
 RSpec.describe Dashboard, type: :model do
   before do
-    @bridge1 = FactoryBot.create(:bridge)
+    @bridge1 = FactoryBot.create(:bridge, year_in_service: 1981, kind_of_bridge: 1)
     @bridge2 = FactoryBot.create(:bridge)
     @bridge3 = FactoryBot.create(:bridge)
-    @bridge4 = FactoryBot.create(:bridge)
+    @bridge4 = FactoryBot.create(:bridge, year_in_service: 2012, kind_of_bridge: 2)
     FactoryBot.create(:soundness, bridge: @bridge1, evaluation_at: '2018/05/21', overall_evaluation: 'one')
     FactoryBot.create(:soundness, bridge: @bridge2, evaluation_at: '2018/05/21', overall_evaluation: 'two')
     FactoryBot.create(:soundness, bridge: @bridge3, evaluation_at: '2018/05/21', overall_evaluation: 'three')
@@ -59,6 +59,13 @@ RSpec.describe Dashboard, type: :model do
     it 'return priority values' do
       result = Dashboard.priority_chart(@bridges)
       expect(result['priority_unselected']).to eq(4)
+    end
+  end
+
+  describe 'kind_of_bridge_chart' do
+    it 'return kink_of_bridge values' do
+      result = Dashboard.kind_of_bridge_chart(@bridges)
+      expect(result[1981]['concrete']).to eq(1)
     end
   end
 end
