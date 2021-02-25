@@ -47,6 +47,7 @@ en:
         emergency_transport_road: Emergency transport road
         kana_title: kana
         bridge_identification_number: identification number for bridge
+        kind_of_bridge: Kind of Bridge
 
       user:
         login_name: Login name
@@ -214,6 +215,12 @@ en:
         unselected: Unselected
         freeway: Freeway
         public_road: Public road
+
+      kind_of_bridge_type:
+        others: others
+        concrete: concrete
+        steel: Steel
+        mixing: Mixing
 
     bridge_content:
       data_type:

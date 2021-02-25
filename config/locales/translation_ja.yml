@@ -47,6 +47,7 @@ ja:
         emergency_transport_road: 緊急輸送道路
         kana_title: フリガナ
         bridge_identification_number: 橋梁ID
+        kind_of_bridge: 橋種
 
       user:
         login_name: ログイン名
@@ -215,6 +216,12 @@ ja:
         unselected: 未選択
         freeway: 自動車専用道路
         public_road: 一般道
+
+      kind_of_bridge_type:
+        others: その他
+        concrete: コンクリート
+        steel: 鋼
+        mixing: 混合
 
     bridge_content:
       data_type:

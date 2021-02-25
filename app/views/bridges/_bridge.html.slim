@@ -94,3 +94,8 @@ ul.mdc-list
     span.mdc-list-item__text
       span.mdc-list-item__primary-text = Bridge.human_attribute_name(:emergency_transport_road)
       span.mdc-list-item__secondary-text = bridge.emergency_transport_road == true ? I18n.t("view.select.true") : I18n.t("view.select.false")
+  li.mdc-list-item
+    span.mdc-list-item__ripple
+    span.mdc-list-item__text
+      span.mdc-list-item__primary-text = Bridge.human_attribute_name(:kind_of_bridge)
+      span.mdc-list-item__secondary-text = bridge.kind_of_bridge.nil? ? '' : I18n.t("enums.bridge.kind_of_bridge_type.#{Bridge.kind_of_bridge_types.invert[bridge.kind_of_bridge]}")

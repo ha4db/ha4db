@@ -43,6 +43,8 @@ class Bridge < ApplicationRecord
   attr_json :kana_title, :string
   # 橋梁ID
   attr_json :bridge_identification_number, :string
+  # 橋種
+  attr_json :kind_of_bridge, :integer, default: 0
 
   enum priority_type: {
     priority_unselected: 0,
@@ -61,6 +63,13 @@ class Bridge < ApplicationRecord
     unselected: 0,
     freeway: 1,
     public_road: 2
+  }
+
+  enum kind_of_bridge_type: {
+    others: 0,
+    concrete: 1,
+    steel: 2,
+    mixing: 3
   }
 
   def full_title
