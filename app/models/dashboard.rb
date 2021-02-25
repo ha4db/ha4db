@@ -36,7 +36,11 @@ class Dashboard
       priority_types.each { |k| values[k.to_s] = 0 }
       bridges.each do |bridge|
         key = Bridge.priority_types.invert[bridge.priority]
-        values[key] += 1
+        if !key.nil?
+          values[key] += 1
+        else
+          values['priority_unselected']
+        end
       end
       values
     end
