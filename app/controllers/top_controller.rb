@@ -3,8 +3,9 @@
 # TopController path=/
 class TopController < UserBaseController
   def index
-    @matrix = Dashboard.matrix
+    @bridges = Bridge.includes(:soundnesses)
+    @matrix = Dashboard.matrix(@bridges)
     @overall_evaluations = Dashboard.sorted_overall_evaluations
-    @bridges = Bridge.all
+    @soundness_chart = Dashboard.soundness_chart(@bridges)
   end
 end

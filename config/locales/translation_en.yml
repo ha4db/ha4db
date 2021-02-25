@@ -339,6 +339,9 @@ en:
       false: "No"
       none: "None"
 
+    chart:
+      soundness: "Soundness chart"
+
   controller:
     common:
       success_on_create: "%{model_name} was successfully created."

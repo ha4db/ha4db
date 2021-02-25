@@ -3,8 +3,8 @@
 # Dashboard class
 class Dashboard
   class << self
-    def matrix
-      bridges = Bridge.includes(:soundnesses).order('soundnesses.evaluation_at')
+    def matrix(bridges)
+      bridges = bridges.order('soundnesses.evaluation_at')
       make_matrix(bridges)
     end
 
@@ -13,6 +13,21 @@ class Dashboard
       unselected = overall_evaluations.shift
       overall_evaluations << unselected
       overall_evaluations.reverse
+    end
+
+    def soundness_chart(bridges)
+      bridges = bridges.order('soundnesses.evaluation_at')
+      values = {}
+      sorted_overall_evaluations.each { |k| values[k.to_s] = 0 }
+      bridges.each do |bridge|
+        soundness = bridge.soundnesses.last
+        if soundness.nil?
+          values['unselected'] += 1
+        else
+          values[soundness.overall_evaluation] += 1
+        end
+      end
+      values
     end
 
     private
