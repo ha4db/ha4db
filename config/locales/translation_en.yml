@@ -341,6 +341,7 @@ en:
 
     chart:
       soundness: "Soundness chart"
+      priority: "Priority chart"
 
   controller:
     common:

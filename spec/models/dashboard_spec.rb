@@ -14,6 +14,7 @@ RSpec.describe Dashboard, type: :model do
     FactoryBot.create(:soundness, bridge: @bridge3, evaluation_at: '2018/05/21', overall_evaluation: 'three')
     @bridges = Bridge.includes(:soundnesses)
   end
+
   describe 'matrix_item' do
     context 'call matrix' do
       it 'return values' do
@@ -36,12 +37,14 @@ RSpec.describe Dashboard, type: :model do
       end
     end
   end
+
   describe 'sorted_overall_evaluations' do
     it 'return sorted value' do
       result = Dashboard.sorted_overall_evaluations
       expect(result).to eq(%w[unselected four three two one])
     end
   end
+
   describe 'soundness_chart' do
     it 'return chart values' do
       result = Dashboard.soundness_chart(@bridges)
@@ -49,6 +52,13 @@ RSpec.describe Dashboard, type: :model do
       expect(result['one']).to eq(1)
       expect(result['two']).to eq(1)
       expect(result['three']).to eq(1)
+    end
+  end
+
+  describe 'priority_chart' do
+    it 'return priority values' do
+      result = Dashboard.priority_chart(@bridges)
+      expect(result['priority_unselected']).to eq(4)
     end
   end
 end
