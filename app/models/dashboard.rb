@@ -45,6 +45,13 @@ class Dashboard
       values
     end
 
+    def kind_of_bridge_chart(bridges)
+      year_in_services = bridges.map(&:year_in_service).filter { |k| !k.nil? }.sort.uniq
+      return {} if year_in_services.empty?
+
+      make_kind_of_bridge_chart(year_in_services)
+    end
+
     private
 
     def matrix_item(bridge)
@@ -67,6 +74,31 @@ class Dashboard
         matrix[year][overall_evaluation] << bridge
       end
       matrix
+    end
+
+    def make_kind_of_bridge_chart(year_in_services)
+      start_year = year_in_services[0]
+      end_year = year_in_services[-1]
+      values = init_kind_of_bridge_chart(start_year, end_year)
+      year_in_services.each do |year_in_service|
+        targets = Bridge.jsonb_contains(year_in_service: year_in_service)
+        targets.each do |bridge|
+          values[year_in_service][Bridge.kind_of_bridge_types.invert[bridge.kind_of_bridge].to_s] += 1
+        end
+      end
+      values
+    end
+
+    def init_kind_of_bridge_chart(start_year, end_year)
+      values = {}
+      Range.new(start_year, end_year).each do |year|
+        sub_values = {}
+        Bridge.kind_of_bridge_types.each do |k, _|
+          sub_values[k.to_s] = 0
+        end
+        values[year] = sub_values
+      end
+      values
     end
   end
 end

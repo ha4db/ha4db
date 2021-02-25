@@ -49,8 +49,16 @@
         canvas#priority_chart_area
       - @priority_chart.each do |key, value|
         span.priority_chart_value[data-key=key data-value=value data-key_name=I18n.t("enums.bridge.priority_type.#{key}")]
+    .mdc-layout-grid__cell--span-12
+      #kind_of_bridge_chart[style="width: 100%" data-title=I18n.t('view.chart.priority')]
+        canvas#kind_of_bridge_chart_area
+      - @kind_of_bridge_chart.each do |key, value|
+        span.kind_of_bridge_chart_value[data-key=key data-value=value.to_json]
+      - Bridge.kind_of_bridge_types.each do |key, value|
+        span.kind_of_bridge_chart_i18n[data-key=key data-value=I18n.t("enums.bridge.kind_of_bridge_type.#{key}")]
 
 = javascript_pack_tag 'commons/data-table'
 = javascript_pack_tag 'map/bridges'
 = javascript_pack_tag 'apps/soundness_chart'
 = javascript_pack_tag 'apps/priority_chart'
+= javascript_pack_tag 'apps/kind_of_bridge_chart'

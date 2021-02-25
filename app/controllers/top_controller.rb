@@ -8,5 +8,6 @@ class TopController < UserBaseController
     @overall_evaluations = Dashboard.sorted_overall_evaluations
     @soundness_chart = Dashboard.soundness_chart(@bridges)
     @priority_chart = Dashboard.priority_chart(@bridges)
+    @kind_of_bridge_chart = Dashboard.kind_of_bridge_chart(@bridges)
   end
 end

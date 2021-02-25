@@ -3,6 +3,7 @@
 # Bridge class
 class Bridge < ApplicationRecord
   include AttrJson::Record
+  include AttrJson::Record::QueryScopes
   attr_json_config(default_container_attribute: :other_data)
 
   has_many :soundnesses
