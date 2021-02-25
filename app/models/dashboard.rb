@@ -39,7 +39,7 @@ class Dashboard
         if !key.nil?
           values[key] += 1
         else
-          values['priority_unselected']
+          values['priority_unselected'] += 1
         end
       end
       values
