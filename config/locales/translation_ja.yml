@@ -168,7 +168,7 @@ ja:
         component_category: 部材の種類
         injury: :activerecord.models.injury
         injury_id: :activerecord.models.injury
-        observation: 所見
+        remark: 備考
         other_data: その他のデータ
         regular_inspection: :activerecord.models.regular_inspection
         result: 判定区分

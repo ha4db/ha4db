@@ -16,7 +16,7 @@ RSpec.describe Diagnosis, type: :model do
   it { should respond_to(:component_category) }
   it { should respond_to(:result) }
   it { should respond_to(:injury) }
-  it { should respond_to(:observation) }
+  it { should respond_to(:remark) }
 
   it { should be_valid }
 
