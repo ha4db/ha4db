@@ -25,6 +25,11 @@ RSpec.describe Diagnosis, type: :model do
     it { should_not be_valid }
   end
 
+  describe 'when result to four, it to be valid' do
+    before { @diagnosis.result = Diagnosis.diagnosis_results[:four] }
+    it { should be_valid }
+  end
+
   describe 'when result to two with injury' do
     before { @diagnosis.result = Diagnosis.diagnosis_results[:two] }
     describe 'with same component_category' do
