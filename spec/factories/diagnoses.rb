@@ -6,6 +6,6 @@ FactoryBot.define do
     component_category { Component.categories[:superstructure_main_girder] }
     result { Diagnosis.diagnosis_results[:one] }
     injury { nil }
-    sequence(:observation) { |i| "observation #{i}" }
+    sequence(:remark) { |i| "remark #{i}" }
   end
 end

@@ -87,6 +87,6 @@ class DiagnosesController < UserBaseController
 
   # Only allow a list of trusted parameters through.
   def diagnosis_params
-    params.fetch(:diagnosis, {}).permit(:component_category, :result, :injury_id, :observation)
+    params.fetch(:diagnosis, {}).permit(:component_category, :result, :injury_id, :remark)
   end
 end

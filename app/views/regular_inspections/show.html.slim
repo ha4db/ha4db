@@ -113,7 +113,7 @@
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:component_category)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:result)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:injury)
-                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:observation)
+                th.mdc-data-table__header-cell[role="columnheader" scope="col"] = Diagnosis.human_attribute_name(:remark)
                 th.mdc-data-table__header-cell[role="columnheader" scope="col"] = I18n.t("view.title.note")
  
             tbody.mdc-data-table__content
@@ -123,7 +123,7 @@
                   td.mdc-data-table__cell = I18n.t("enums.component.category.#{Component.categories.key(diagnosis.component_category)}")
                   td.mdc-data-table__cell = I18n.t("enums.diagnosis.diagnosis_result.#{Diagnosis.diagnosis_results.key(diagnosis.result)}")
                   td.mdc-data-table__cell = diagnosis.injury && I18n.t("enums.component.category.#{Component.categories.invert[diagnosis.injury.component.component_category]}") + " #{diagnosis.injury.injury_type} #{diagnosis.injury.injury_grade}"
-                  td.mdc-data-table__cell = diagnosis.observation
+                  td.mdc-data-table__cell = diagnosis.remark
                   td.mdc-data-table__cell
                     - unless diagnosis.injury.nil?
                       span.note = I18n.t("view.title.status")

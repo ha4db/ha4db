@@ -167,7 +167,7 @@ en:
       diagnosis:
         component_category: Component category
         injury: :activerecord.models.injury
-        observation: Observation
+        remark: Remark
         other_data: Other data
         regular_inspection: :activerecord.models.regular_inspection
         result: Result
