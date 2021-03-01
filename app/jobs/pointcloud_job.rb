@@ -5,7 +5,9 @@ class PointcloudJob < ApplicationJob
   queue_as :default
 
   def perform(bridge_content_id)
-    bridge_content = BridgeContent.find(bridge_content_id)
+    bridge_content = BridgeContent.find_by_id(bridge_content_id)
+    return if bridge_content.nil?
+
     return unless bridge_content.data_type.to_i == BridgeContent.data_types[:pointcloud]
 
     exec_perform(bridge_content)
