@@ -59,7 +59,7 @@
           - @injury.bridge_content_injuries.each do |bridge_content_injury|
             li.mdc-list-item[data-id=bridge_content_injury.bridge_content.id data-seek=bridge_content_injury.seek]
               - if bridge_content_injury.bridge_content.data.variable?
-                = image_tag bridge_content_injury.bridge_content.data.variant(resize: "100x100>")
+                = image_tag bridge_content_injury.bridge_content.data.variant(resize_to_fill: [100, nil])
               - elsif bridge_content_injury.bridge_content.data.previewable?
                 = image_tag bridge_content_injury.bridge_content.data.preview(resize: "100x100>")
               - else

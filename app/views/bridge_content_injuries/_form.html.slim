@@ -7,7 +7,7 @@
   .mdc-layout-grid
     .mdc-layout-grid__inner
       .mdc-layout-grid__cell--span-12
-        = render partial: 'commons/mdc_outlined_image_select', locals: { f: f, model: BridgeContentInjury, field_name: :bridge_content_id, data: @bridge_content_injury.bridge_content_id, text_and_value_and_images: @regular_inspection.bridge_contents.map {|k| [k.title, k.id, k.data.previewable? ? k.data.preview(resize: "100x100>") : k.data.variable? ? k.data.variant(resize: "100x100>") : nil]}}
+        = render partial: 'commons/mdc_outlined_image_select', locals: { f: f, model: BridgeContentInjury, field_name: :bridge_content_id, data: @bridge_content_injury.bridge_content_id, text_and_value_and_images: @regular_inspection.bridge_contents.map {|k| [k.title, k.id, k.data.previewable? ? k.data.preview(resize: "100x100>") : k.data.variable? ? k.data.variant(resize_to_fill: [100, nil]) : nil]}}
       .mdc-layout-grid__cell--span-12
         #show_data_view[data-regular_inspection_id=@regular_inspection.id data-id=(@bridge_content_injury.bridge_content.nil? ? '' : @bridge_content_injury.bridge_content_id)]
   = f.hidden_field :seek
