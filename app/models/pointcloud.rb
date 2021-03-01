@@ -42,7 +42,8 @@ class Pointcloud
     # convert to 3d tiles
     `docker run --rm -v #{pwd}:/data ha4db/py3dtiles py3dtiles convert /data#{tile_dir}/temp.las --out /data#{tile_dir}/tiles`
     # get metadata
-    pdal_string = `pdal info .#{tile_dir}/temp.las`
+    # use pdal 2.2.0
+    pdal_string = `docker run --rm -v #{pwd}:/data ha4db/py3dtiles pdal info /data#{tile_dir}/temp.las`
     self.extent = JSON.parse(pdal_string)['stats']['bbox']['native']['bbox']
     self.center = calculate_center
     `rm .#{tile_dir}/temp.las`
