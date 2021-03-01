@@ -43,8 +43,5 @@ module Ha4db
 
     # active job
     config.active_job.queue_adapter = :sidekiq
-
-    # use vips
-    config.active_storage.variant_processor = :vips
   end
 end
