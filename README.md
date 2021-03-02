@@ -18,6 +18,9 @@ The Bridge Management System.
 - PostGIS
 - NodeJS + yarn
 - Redis
+- vips
+- pdal
+- docker
 
 ## Configration for development
 
