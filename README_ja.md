@@ -18,6 +18,7 @@
 - PostGIS
 - NodeJS + yarn
 - Redis
+- ImageMagick
 - vips
 - pdal
 - docker
