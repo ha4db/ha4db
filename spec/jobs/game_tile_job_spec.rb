@@ -11,6 +11,7 @@ RSpec.describe GameTileJob, type: :job do
       GameTileJob.perform_now(@bridge_content.id)
     end
     it '8/0_0.png' do
+      expect(Dir).to exist(File.join('/tmp', 'ortho_images', @bridge_content.id.to_s))
       check_file = File.join('/tmp', 'ortho_images', @bridge_content.id.to_s, '8/0_0.png')
       expect(File).to exist(check_file)
     end
