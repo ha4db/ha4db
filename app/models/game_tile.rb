@@ -45,6 +45,7 @@ class GameTile
   end
 
   def make_marge_file(scale, tiles_per_column, tiles_per_row)
+    puts scale.to_s
     # make resize image
     tmp = Tempfile.new(['tmp', '.png'])
     tmp.close
