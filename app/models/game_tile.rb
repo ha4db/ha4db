@@ -31,7 +31,8 @@ class GameTile
     self.height = `identify -format "%h" #{file}`.to_i
     base = width > height ? width : height
     max_zoom = (Math.log(base) / Math.log(2)).ceil
-    min_zoom = (Math.log(TILE_SIZE) / Math.log(2)).to_i
+    min_zoom = 8
+    max_zoom = 15 if max_zoom > 15
     [min_zoom..(max_zoom + 1), max_zoom]
   end
 
