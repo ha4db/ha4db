@@ -74,6 +74,7 @@ class GameTile
       tilebase = File.join(working_dir, "#{zoom}_#{i}.png")
       top = row * TILE_SIZE
       left = column * TILE_SIZE
+      puts "vips extract_area #{merge_file.path} #{tilebase} #{left} #{top} #{TILE_SIZE} #{TILE_SIZE}"
       `vips extract_area #{merge_file.path} #{tilebase} #{left} #{top} #{TILE_SIZE} #{TILE_SIZE}`
       column += 1
       if column >= tiles_per_column
