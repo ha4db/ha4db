@@ -45,11 +45,9 @@ class GameTile
   end
 
   def make_marge_file(scale, tiles_per_column, tiles_per_row)
-    puts scale.to_s
     # make resize image
     tmp = Tempfile.new(['tmp', '.png'])
     tmp.close
-    puts `identify #{file}`
     `vips resize #{file} #{tmp.path} #{scale}`
     # make background image
     bg_width = tiles_per_column * TILE_SIZE
@@ -57,8 +55,6 @@ class GameTile
     bg_file = Tempfile.new(['bg', '.png'])
     bg_file.close
     `vips black #{bg_file.path} #{bg_width} #{bg_height}`
-    puts `identify #{bg_file.path}`
-    puts `identify #{tmp.path}`
     # make marge image
     merge_file = Tempfile.new(['merge', '.png'])
     merge_file.close
@@ -69,7 +65,6 @@ class GameTile
   end
 
   def crap_images(working_dir, tiles_per_column, tiles_per_row, zoom, merge_file)
-    puts `identify #{merge_file.path}`
     # crop image
     n = 0
     row = 0
@@ -79,7 +74,6 @@ class GameTile
       tilebase = File.join(working_dir, "#{zoom}_#{i}.png")
       top = row * TILE_SIZE
       left = column * TILE_SIZE
-      puts "vips extract_area #{merge_file.path} #{tilebase} #{left} #{top} #{TILE_SIZE} #{TILE_SIZE}"
       `vips extract_area #{merge_file.path} #{tilebase} #{left} #{top} #{TILE_SIZE} #{TILE_SIZE}`
       column += 1
       if column >= tiles_per_column
