@@ -56,13 +56,13 @@ class GameTile
     bg_height = tiles_per_row * TILE_SIZE
     bg_file = Tempfile.new(['bg', '.png'])
     bg_file.close
-    `convert -size #{bg_width}x#{bg_height} xc:none #{bg_file.path}`
+    `vips black #{bg_file.path} #{bg_width} #{bg_height}`
     puts `identify #{bg_file.path}`
     puts `identify #{tmp.path}`
     # make marge image
     merge_file = Tempfile.new(['merge', '.png'])
     merge_file.close
-    `vips composite "#{bg_file.path} #{tmp.path}" #{merge_file.path} 12 --x 0 --y 0`
+    `vips insert #{bg_file.path} #{tmp.path} #{merge_file.path} 0 0`
     tmp.delete
     bg_file.delete
     merge_file
