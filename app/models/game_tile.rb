@@ -49,6 +49,7 @@ class GameTile
     # make resize image
     tmp = Tempfile.new(['tmp', '.png'])
     tmp.close
+    puts `idenfity #{file}`
     `vips resize #{file} #{tmp.path} #{scale}`
     # make background image
     bg_width = tiles_per_column * TILE_SIZE
@@ -56,6 +57,8 @@ class GameTile
     bg_file = Tempfile.new(['bg', '.png'])
     bg_file.close
     `convert -size #{bg_width}x#{bg_height} xc:none #{bg_file.path}`
+    puts `idenfity #{bg_file.path}`
+    puts `idenfity #{tmp.path}`
     # make marge image
     merge_file = Tempfile.new(['merge', '.png'])
     merge_file.close
