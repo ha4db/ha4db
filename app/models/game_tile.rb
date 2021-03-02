@@ -62,7 +62,7 @@ class GameTile
     # make marge image
     merge_file = Tempfile.new(['merge', '.png'])
     merge_file.close
-    `vips composite2 #{bg_file.path} #{tmp.path} #{merge_file.path} add --x 0 --y 0`
+    `vips composite "#{bg_file.path} #{tmp.path}" #{merge_file.path} 12 --x 0 --y 0`
     tmp.delete
     bg_file.delete
     merge_file
