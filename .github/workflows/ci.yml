@@ -42,7 +42,7 @@ jobs:
           apt-get install -y yarn nodejs
       - name: Install dependency
         run: |
-          apt-get install -y libvips-tools
+          apt-get install -y libvips-tools imagemagick
       - name: Cache bundle directory
         uses: actions/cache@v1
         with:
