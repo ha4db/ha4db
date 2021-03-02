@@ -18,6 +18,10 @@
 - PostGIS
 - NodeJS + yarn
 - Redis
+- ImageMagick
+- vips
+- pdal
+- docker
 
 ## 開発のための設定
 

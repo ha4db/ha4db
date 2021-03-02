@@ -41,33 +41,46 @@ class GameTile
     height = (self.height * scale).to_i
     tiles_per_column = (width.to_f / TILE_SIZE).ceil
     tiles_per_row = (height.to_f / TILE_SIZE).ceil
-    [width, height, tiles_per_column, tiles_per_row]
+    [scale, tiles_per_column, tiles_per_row]
   end
 
-  def make_marge_file(width, height, tiles_per_column, tiles_per_row)
+  def make_marge_file(scale, tiles_per_column, tiles_per_row)
     # make resize image
     tmp = Tempfile.new(['tmp', '.png'])
     tmp.close
-    `convert -resize #{width}x#{height} #{file} #{tmp.path}`
+    `vips resize #{file} #{tmp.path} #{scale}`
     # make background image
     bg_width = tiles_per_column * TILE_SIZE
     bg_height = tiles_per_row * TILE_SIZE
     bg_file = Tempfile.new(['bg', '.png'])
     bg_file.close
-    `convert -size #{bg_width}x#{bg_height} xc:none #{bg_file.path}`
+    `vips black #{bg_file.path} #{bg_width} #{bg_height}`
     # make marge image
     merge_file = Tempfile.new(['merge', '.png'])
     merge_file.close
-    `convert #{bg_file.path} #{tmp.path} -gravity northwest -geometry +0+0 -composite #{merge_file.path}`
+    `vips insert #{bg_file.path} #{tmp.path} #{merge_file.path} 0 0`
     tmp.delete
     bg_file.delete
     merge_file
   end
 
-  def crap_images(working_dir, zoom, merge_file)
+  def crap_images(working_dir, tiles_per_column, tiles_per_row, zoom, merge_file)
     # crop image
-    tilebase = File.join(working_dir, "#{zoom}_%d.png")
-    `convert -crop #{TILE_SIZE}x#{TILE_SIZE} +repage #{merge_file.path} #{tilebase}`
+    n = 0
+    row = 0
+    column = 0
+    total_files = tiles_per_column * tiles_per_row
+    (n...total_files).each do |i|
+      tilebase = File.join(working_dir, "#{zoom}_#{i}.png")
+      top = row * TILE_SIZE
+      left = column * TILE_SIZE
+      `vips extract_area #{merge_file.path} #{tilebase} #{left} #{top} #{TILE_SIZE} #{TILE_SIZE}`
+      column += 1
+      if column >= tiles_per_column
+        column = 0
+        row += 1
+      end
+    end
     merge_file.delete
   end
 
@@ -90,14 +103,14 @@ class GameTile
   end
 
   def make_tile(zoom)
-    width, height, tiles_per_column, tiles_per_row = calculate_params(zoom)
+    scale, tiles_per_column, tiles_per_row = calculate_params(zoom)
 
     output_dir = File.join(tile_dir, zoom.to_s)
     FileUtils.mkdir_p(output_dir) unless File.exist?(output_dir)
 
     Dir.mktmpdir do |working_dir|
-      merge_file = make_marge_file(width, height, tiles_per_column, tiles_per_row)
-      crap_images(working_dir, zoom, merge_file)
+      merge_file = make_marge_file(scale, tiles_per_column, tiles_per_row)
+      crap_images(working_dir, tiles_per_column, tiles_per_row, zoom, merge_file)
       generate_tiles(working_dir, zoom, tiles_per_column)
     end
   end
