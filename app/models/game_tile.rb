@@ -65,6 +65,7 @@ class GameTile
   end
 
   def crap_images(working_dir, tiles_per_column, tiles_per_row, zoom, merge_file)
+    puts `identify #{merge_file.path}`
     # crop image
     n = 0
     row = 0
