@@ -32,7 +32,6 @@ class GameTile
     base = width > height ? width : height
     max_zoom = (Math.log(base) / Math.log(2)).ceil
     min_zoom = 8
-    max_zoom = 15 if max_zoom > 15
     [min_zoom..(max_zoom + 1), max_zoom]
   end
 
