@@ -27,8 +27,8 @@ class GameTile
   private
 
   def zooms
-    self.width = `identify -format "%w" #{file}`.to_i
-    self.height = `identify -format "%h" #{file}`.to_i
+    self.width = `identify -ping -format "%w" #{file}`.to_i
+    self.height = `identify -ping -format "%h" #{file}`.to_i
     base = width > height ? width : height
     max_zoom = (Math.log(base) / Math.log(2)).ceil
     min_zoom = 8
@@ -65,41 +65,19 @@ class GameTile
     merge_file
   end
 
-  def crap_images(working_dir, tiles_per_column, tiles_per_row, zoom, merge_file)
-    # crop image
-    n = 0
-    row = 0
-    column = 0
-    total_files = tiles_per_column * tiles_per_row
-    (n...total_files).each do |i|
-      tilebase = File.join(working_dir, "#{zoom}_#{i}.png")
-      top = row * TILE_SIZE
-      left = column * TILE_SIZE
-      `vips extract_area #{merge_file.path} #{tilebase} #{left} #{top} #{TILE_SIZE} #{TILE_SIZE}`
-      column += 1
-      if column >= tiles_per_column
-        column = 0
-        row += 1
-      end
-    end
+  def crap_images(working_dir, zoom, merge_file)
+    vips_opts = "--suffix .png --tile-size 256 --basename image_#{zoom} --depth one --overlap 0 --background 0"
+    `vips dzsave #{merge_file.path} #{working_dir}/image #{vips_opts}`
     merge_file.delete
   end
 
-  def generate_tiles(working_dir, zoom, tiles_per_column)
-    total_tiles = Dir[File.join(working_dir, "#{zoom}_*.png")].length
-    n = 0
-    row = 0
-    column = 0
-
-    (n...total_tiles).each do |i|
-      filename = File.join(working_dir, "#{zoom}_#{i}.png")
-      target = File.join(tile_dir, zoom.to_s, "#{column}_#{row}.png")
-      `cp -f #{filename} #{target}`
-      column += 1
-      if column >= tiles_per_column
-        column = 0
-        row += 1
-      end
+  def generate_tiles(working_dir, zoom)
+    search_file = File.join(working_dir, "image_#{zoom}_files", '0', '*.png')
+    total_tiles = Dir[search_file]
+    total_tiles.each do |file_path|
+      base_name = File.basename(file_path, '.png')
+      target = File.join(tile_dir, zoom.to_s, "#{base_name}.png")
+      `cp -f #{file_path} #{target}`
     end
   end
 
@@ -111,8 +89,8 @@ class GameTile
 
     Dir.mktmpdir do |working_dir|
       merge_file = make_marge_file(scale, tiles_per_column, tiles_per_row)
-      crap_images(working_dir, tiles_per_column, tiles_per_row, zoom, merge_file)
-      generate_tiles(working_dir, zoom, tiles_per_column)
+      crap_images(working_dir, zoom, merge_file)
+      generate_tiles(working_dir, zoom)
     end
   end
 end
