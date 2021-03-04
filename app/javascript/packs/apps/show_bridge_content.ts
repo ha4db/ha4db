@@ -41,11 +41,16 @@ const show_ortho = (target: HTMLDivElement, bridge_content_id: number, max_zoom:
   if (div_tag.clientWidth < 250) {
     div_tag.style.minWidth = "500px";
   }
-  const input_tag = document.createElement('input') as HTMLInputElement
-  input_tag.hidden = true
-  input_tag.id = 'bridge_content_injury_ortho_geojson'
-  input_tag.value = ortho_geojson
-  target.appendChild(input_tag)
+  if (!document.getElementById('bridge_content_injury_ortho_geojson')) {
+    const input_tag = document.createElement('input') as HTMLInputElement
+    input_tag.hidden = true
+    input_tag.id = 'bridge_content_injury_ortho_geojson'
+    input_tag.value = ortho_geojson
+    target.appendChild(input_tag)
+  } else {
+    const input_tag = document.getElementById('bridge_content_injury_ortho_geojson') as HTMLInputElement
+    input_tag.value = ortho_geojson
+  }
   initOrthoView()
 }
 
