@@ -36,11 +36,16 @@
 
 .mdc-layout-grid
   .mdc-layout-grid__inner
-    .mdc-layout-grid__cell
+    .mdc-layout-grid__cell--span-2
       a.mdc-fab.mdc-fab--extended[href=new_bridge_soundness_path(@bridge)]
         .mdc-fab__ripple
         span.material-icons.mdc-fab__icon add
-        span.mdc-fab__label = I18n.t("view.action.add", model_name: Soundness.model_name.human)
+        span.mdc-fab__label = I18n.t("view.action.new", model_name: Soundness.model_name.human)
+    .mdc-layout-grid__cell--span-2
+      a.mdc-fab.mdc-fab--extended[href=bridges_path]
+        .mdc-fab__ripple
+        span.material-icons.mdc-fab__icon arrow_back
+        span.mdc-fab__label = I18n.t("view.common.title.listing", model_name: Bridge.model_name.human)
 
 = javascript_pack_tag 'commons/data-table'
 = javascript_pack_tag 'commons/button'
